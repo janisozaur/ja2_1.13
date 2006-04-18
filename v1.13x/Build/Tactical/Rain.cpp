@@ -51,14 +51,16 @@
 
 #define DROP_ANGLE_CHANGE_RATE  1.0f
 
-#define MIN_DROP_LENGTH 4.0f
+#define MIN_DROP_LENGTH 2.0f
 #define ADD_DROP_LENGTH_IF_STORM 2.0f
-#define DROP_LENGTH_RANGE 10.0f
+#define DROP_LENGTH_RANGE 2.0f
 #define DROP_LENGTH_CHANGE_RATE 0.1f
+#define DROP_LENGTH_RAND 2.0f
 
-#define BASE_DROP_SPEED 10.0f
-#define DROP_SPEED_RANGE 10.0f
+#define BASE_DROP_SPEED 7.0f
+#define DROP_SPEED_RANGE 3.5f
 #define DROP_SPEED_CHANGE_RATE 0.1f
+#define DROP_SPEED_RAND 5.0f
 
 UINT32 guiMaxRainDrops = 79;
 
@@ -124,7 +126,7 @@ INT8 GetRainIntensityFromEnvWeather()
 	INT8 bRes = 0;
 
 	// Debug!!!
-	//	guiEnvWeather |= WEATHER_FORECAST_THUNDERSHOWERS;
+//	guiEnvWeather |= WEATHER_FORECAST_THUNDERSHOWERS;
 
 	if( guiEnvWeather & WEATHER_FORECAST_SHOWERS ) bRes += 1;
 	if( guiEnvWeather & WEATHER_FORECAST_THUNDERSHOWERS ) bRes += 2;
@@ -140,7 +142,7 @@ BOOLEAN IsItAllowedToRenderRain()
 
 	if( guiCurrentScreen != GAME_SCREEN && guiCurrentScreen != SHOPKEEPER_SCREEN ) return FALSE;
 
-	return TRUE;	
+	return TRUE;
 }
 
 void InitializeRainVideoObject( )
@@ -185,7 +187,7 @@ void GenerateRainDropsList()
 {
 	guiCurrMaxAmountOfRainDrops = (UINT32)BASE_MAXIMUM_DROPS * gbCurrentRainIntensity;
 
-	pRainDrops = (TRainDrop *) MemAlloc( sizeof( TRainDrop ) * guiCurrMaxAmountOfRainDrops );
+	pRainDrops = (TRainDrop *)MemAlloc( sizeof( TRainDrop ) * guiCurrMaxAmountOfRainDrops );
 	memset( pRainDrops, 0, sizeof( TRainDrop ) * guiCurrMaxAmountOfRainDrops );
 }
 
@@ -213,24 +215,31 @@ void CreateRainDrops()
 {
 	UINT32 uiIndex;
 	UINT32 uiCreatedDrops = 0;
-	FLOAT fpCos, fpSin;
+	FLOAT fpCos, fpSin, fpAbsTg;
 	FLOAT fpDropLength = fpCurrDropLength;
 	FLOAT fpDropSpeed = fpCurrDropSpeed;
+	FLOAT fpNumDropsToXBorder = 0;
 	BOOLEAN fLoopIsDone;
+	UINT32 uiIndRand;
 
 	fpCos = cos( DEGREE(fpCurrDropAngleOfFalling) );
 	fpSin = sin( DEGREE(fpCurrDropAngleOfFalling) );
 
+	if( fpCos )
+		fpAbsTg = fabs( fpSin / fpCos ); // take only absolute valuse
+	else
+		fpAbsTg = 0; // well, it can't really be ;)
+
 	for( uiIndex = 0; uiIndex < guiCurrMaxAmountOfRainDrops; ++uiIndex )
 	{
 		TRainDrop *pCurr = &pRainDrops[ uiIndex ];
-		UINT32 uiIndRand  = (((UINT32)pCurr) / sizeof(TRainDrop) ) % 20;
 
 		if( pCurr->fAlive )continue;
 
-		fpDropLength = fpCurrDropLength;
-		fpDropSpeed = fpCurrDropSpeed;
+		uiIndRand  = (((UINT32)pCurr) / sizeof(TRainDrop) ) % 20;
 
+		fpDropLength = fpCurrDropLength + ( (((UINT32)pCurr) / sizeof(TRainDrop) ) % 7 ) * DROP_LENGTH_RAND / 6;
+		fpDropSpeed = fpCurrDropSpeed + ( ( ((UINT32)pCurr) / sizeof(TRainDrop) + 43 ) % 13 ) * DROP_SPEED_RAND / 12;
 
 		pCurr->fAlive = TRUE;
 
@@ -242,9 +251,29 @@ void CreateRainDrops()
 
 		// where we want the drops to fall
 
-		if( uiCreatedDrops < guiCurrAmountOfDeadRainDrops * PERCENT_OF_DROPS_GOING_TO_THE_EDGE_OF_SCREEN )
+		if( uiIndex < guiCurrMaxAmountOfRainDrops * PERCENT_OF_DROPS_GOING_TO_THE_EDGE_OF_SCREEN )
 		{
-			if( !fpCos || uiCreatedDrops < guiCurrAmountOfDeadRainDrops * PERCENT_OF_DROPS_GOING_TO_THE_EDGE_OF_SCREEN * (((FLOAT)SCREEN_WIDTH - SCREEN_HEIGHT + 120) / (FLOAT)SCREEN_WIDTH) * fpSin )
+			if( !fpCos ) 
+				fpNumDropsToXBorder = 0;
+			else
+			{
+				if( fpAbsTg < 1 )
+				{
+					fpNumDropsToXBorder = 1.0f - fpAbsTg;
+					fpNumDropsToXBorder *= (((FLOAT)SCREEN_HEIGHT - 120) / (FLOAT)SCREEN_WIDTH);
+					fpNumDropsToXBorder *= guiCurrMaxAmountOfRainDrops * PERCENT_OF_DROPS_GOING_TO_THE_EDGE_OF_SCREEN / 2;
+
+					fpNumDropsToXBorder += guiCurrMaxAmountOfRainDrops * PERCENT_OF_DROPS_GOING_TO_THE_EDGE_OF_SCREEN / 2;
+				}
+				else
+				{
+					fpNumDropsToXBorder = 1 / fpAbsTg;
+					fpNumDropsToXBorder *= (((FLOAT)SCREEN_HEIGHT - 120) / (FLOAT)SCREEN_WIDTH);
+					fpNumDropsToXBorder *= guiCurrMaxAmountOfRainDrops * PERCENT_OF_DROPS_GOING_TO_THE_EDGE_OF_SCREEN / 2;
+				}
+			}
+
+			if( uiIndex >= fpNumDropsToXBorder )
 			{
 				pCurr->fpX = gRainRegion.left + Random( gRainRegion.right - gRainRegion.left );
 				pCurr->fpY = gRainRegion.bottom - 1;
@@ -296,6 +325,7 @@ void CreateRainDrops()
 		uiCreatedDrops++;
 
 		// drop creation is done!!!
+
 	}
 }
 

@@ -6149,33 +6149,70 @@ void MoveMercFacingDirection( SOLDIERTYPE *pSoldier, BOOLEAN fReverse, FLOAT dMo
 
 }
 
+//void BeginSoldierClimbUpRoof( SOLDIERTYPE *pSoldier )
+//{
+//	INT8							bNewDirection;
+//
+//	if ( FindHeigherLevel( pSoldier, pSoldier->sGridNo, pSoldier->bDirection, &bNewDirection ) && ( pSoldier->bLevel == 0 ) )
+//	{
+//		if ( EnoughPoints( pSoldier, GetAPsToClimbRoof( pSoldier, FALSE ), 0, TRUE ) )
+//		{
+//			if (pSoldier->bTeam == gbPlayerNum)
+//			{
+//				// OK, SET INTERFACE FIRST
+//				SetUIBusy( pSoldier->ubID );
+//			}
+//
+//			pSoldier->sTempNewGridNo = NewGridNo( (UINT16)pSoldier->sGridNo, (UINT16)DirectionInc(bNewDirection ) );
+//
+//			pSoldier->ubPendingDirection = bNewDirection;
+//			//pSoldier->usPendingAnimation = CLIMBUPROOF;
+//			EVENT_InitNewSoldierAnim( pSoldier, CLIMBUPROOF, 0 , FALSE );
+//
+//			InternalReceivingSoldierCancelServices( pSoldier, FALSE );				
+//			InternalGivingSoldierCancelServices( pSoldier, FALSE );				
+//
+//		}		
+//	}
+//
+//}
+
+
 void BeginSoldierClimbUpRoof( SOLDIERTYPE *pSoldier )
 {
-	INT8							bNewDirection;
+	INT8 bNewDirection;
+	UINT8 ubWhoIsThere;
 
 	if ( FindHeigherLevel( pSoldier, pSoldier->sGridNo, pSoldier->bDirection, &bNewDirection ) && ( pSoldier->bLevel == 0 ) )
 	{
 		if ( EnoughPoints( pSoldier, GetAPsToClimbRoof( pSoldier, FALSE ), 0, TRUE ) )
 		{
-			if (pSoldier->bTeam == gbPlayerNum)
+			//Kaiden: Helps if we look where we are going before we try to climb on top of someone
+			ubWhoIsThere = WhoIsThere2( NewGridNo( (UINT16)pSoldier->sGridNo, (UINT16)DirectionInc(bNewDirection ) ), 1 );
+			if ( ubWhoIsThere != NOBODY && ubWhoIsThere != pSoldier->ubID )
 			{
-				// OK, SET INTERFACE FIRST
-				SetUIBusy( pSoldier->ubID );
+				return;
 			}
+			else
+			{
+				if (pSoldier->bTeam == gbPlayerNum)
+				{
+					// OK, SET INTERFACE FIRST
+					SetUIBusy( pSoldier->ubID );
+				}
+				pSoldier->sTempNewGridNo = NewGridNo( (UINT16)pSoldier->sGridNo, (UINT16)DirectionInc(bNewDirection ) );
 
-			pSoldier->sTempNewGridNo = NewGridNo( (UINT16)pSoldier->sGridNo, (UINT16)DirectionInc(bNewDirection ) );
+				pSoldier->ubPendingDirection = bNewDirection;
+				//pSoldier->usPendingAnimation = CLIMBUPROOF;
+				EVENT_InitNewSoldierAnim( pSoldier, CLIMBUPROOF, 0 , FALSE );
 
-			pSoldier->ubPendingDirection = bNewDirection;
-			//pSoldier->usPendingAnimation = CLIMBUPROOF;
-			EVENT_InitNewSoldierAnim( pSoldier, CLIMBUPROOF, 0 , FALSE );
-
-			InternalReceivingSoldierCancelServices( pSoldier, FALSE );				
-			InternalGivingSoldierCancelServices( pSoldier, FALSE );				
-
-		}		
+				InternalReceivingSoldierCancelServices( pSoldier, FALSE );
+				InternalGivingSoldierCancelServices( pSoldier, FALSE );
+			}
+		}
 	}
-
 }
+
 
 void BeginSoldierClimbFence( SOLDIERTYPE *pSoldier )
 {

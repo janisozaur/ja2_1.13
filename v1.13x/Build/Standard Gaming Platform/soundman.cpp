@@ -8,7 +8,6 @@
 *********************************************************************************/
 #ifdef JA2_PRECOMPILED_HEADERS
 	#include "JA2 SGP ALL.H"
-	#include "Debug Control.h"
 #elif defined( WIZ8_PRECOMPILED_HEADERS )
 	#include "WIZ8 SGP ALL.H"
 #else
@@ -21,7 +20,6 @@
 	#include "random.h"
     #include "fmod.h"
     #include "fmod_errors.h"
-	#include "Debug Control.h"
 #endif
 
 // Uncomment this to disable the startup of sound hardware
@@ -36,8 +34,11 @@
 #define		SOUND_MAX_CHANNELS		32						// number of mixer channels
 #endif
 
-#define		SOUND_DEFAULT_MEMORY	(8048*1024)		// default memory limit
-#define		SOUND_DEFAULT_THRESH	(256*8024)		// size for sample to be double-buffered
+// default memory limit
+#define		SOUND_DEFAULT_MEMORY	(8048*1024)
+
+// size for sample to be double-buffered
+#define		SOUND_DEFAULT_THRESH	(256*8024)
 
 // playing/random value to indicate default
 #define		SOUND_PARMS_DEFAULT		0xffffffff
@@ -47,6 +48,10 @@
 
 // Max volume
 #define     MAX_VOLUME  (127)
+
+// Initialization parameters
+#define AUDIO_BUFFER_LEN    100
+#define STREAM_BUFFER_LEN   200
 
 // Lesh modifications
 // Sound debug
@@ -145,7 +150,6 @@ typedef struct {
 //		streams
 typedef struct {
 				UINT32			uiSample;       // Sample slot in cache
-				FSOUND_SAMPLE*	hSample;        // Sample fmod handler
 				FSOUND_STREAM*	hStream;        // Stream fmod handler
 				UINT32		    uiFMODChannel;  // Fmod channel
 				UINT32			uiFlags;        // Sample flags
@@ -471,7 +475,7 @@ BOOLEAN SoundIndexIsPlaying(UINT32 uiSound)
 {
 	if(fSoundSystemInit)
 	{
-		if((pSoundList[uiSound].hSample!=NULL) || (pSoundList[uiSound].hStream!=NULL))
+		if( pSoundList[uiSound].hStream!=NULL )
             return(FSOUND_IsPlaying(pSoundList[uiSound].uiFMODChannel));
 	}
 
@@ -646,7 +650,7 @@ UINT32 uiVolCap;
 	{
         uiVolCap=__min(uiVolume, MAX_VOLUME);
 		
-		if((pSoundList[uiChannel].hSample!=NULL) || (pSoundList[uiChannel].hStream!=NULL))
+		if( pSoundList[uiChannel].hStream!=NULL )
             FSOUND_SetVolume(pSoundList[uiChannel].uiFMODChannel, uiVolCap * 2);
 
         return(TRUE);
@@ -674,7 +678,7 @@ UINT32 uiSound, uiPanCap;
 		
 		if((uiSound=SoundGetIndexByID(uiSoundID))!=NO_SAMPLE)
 		{
-			if((pSoundList[uiSound].hSample!=NULL) || (pSoundList[uiSound].hStream!=NULL))
+			if( pSoundList[uiSound].hStream!=NULL )
 				FSOUND_SetPan(pSoundList[uiSound].uiFMODChannel, uiPanCap);
 
 			return(TRUE);
@@ -721,7 +725,7 @@ UINT32 SoundGetVolumeIndex(UINT32 uiChannel)
 {
     if(fSoundSystemInit)
 	{
-		if( (pSoundList[uiChannel].hSample!=NULL) || (pSoundList[uiChannel].hStream!=NULL) )
+		if( pSoundList[uiChannel].hStream!=NULL )
 			return((UINT32)FSOUND_GetVolume(pSoundList[uiChannel].uiFMODChannel) / 2);
 	}
 
@@ -803,7 +807,7 @@ SOUNDPARMS spParms;
 			pSampleList[uiSample].uiInstances++;
 			return(TRUE);
 		}
-        //else
+        else
             SoundLog((CHAR8 *)String("  ERROR in SoundStartRandom(): Sample #%d start error - %s", uiSample, FMOD_ErrorString(FSOUND_GetError())));
 	}
     else
@@ -831,12 +835,12 @@ UINT32 uiChannel, uiSample;
 	// Stop all currently playing random sounds
 	for(uiChannel=0; uiChannel < SOUND_MAX_CHANNELS; uiChannel++)
 	{
-        if((pSoundList[uiChannel].hSample!=NULL))
+        if( pSoundList[uiChannel].hStream!=NULL )
 		{
 			uiSample=pSoundList[uiChannel].uiSample;
 			
 			// if this was a random sample, decrease the iteration count
-			if(pSampleList[uiSample].uiFlags&SAMPLE_RANDOM)
+			if ( (uiSample != -1) && (pSampleList[uiSample].uiFlags&SAMPLE_RANDOM) )
 				SoundStopIndex(uiChannel);
 		}
 	}
@@ -873,7 +877,7 @@ UINT32 uiCount;
 	{
 		for(uiCount=0; uiCount < SOUND_MAX_CHANNELS; uiCount++)
 		{
-			if( (pSoundList[uiCount].hStream!=NULL) )
+            if( (pSoundList[uiCount].hStream!=NULL) && (pSoundList[uiCount].uiSample==-1) )
 			{
 				// If a sound has a handle, but isn't playing, stop it and free up the handle
 				if(!SoundIsPlaying(pSoundList[uiCount].uiSoundID))
@@ -1358,6 +1362,7 @@ BOOLEAN SoundInitHardware(void)
 
 	// Try to start up the FMOD Sound System
     FSOUND_SetOutput(FSOUND_OUTPUT_DSOUND);
+    FSOUND_SetBufferSize(AUDIO_BUFFER_LEN);
 	if( !FSOUND_Init(44100, SOUND_MAX_CHANNELS, FSOUND_INIT_GLOBALFOCUS|FSOUND_INIT_DONTLATENCYADJUST) )
     {
         SoundLog((CHAR8 *)String("  ERROR in SoundInitHardware(): %s", FMOD_ErrorString(FSOUND_GetError())));
@@ -1411,7 +1416,7 @@ UINT32 uiCount;
 			SoundStopIndex(uiCount);
 		}
 
-		if( (pSoundList[uiCount].hSample==NULL) && ((pSoundList[uiCount].hStream==NULL)) )
+		if( pSoundList[uiCount].hStream==NULL )
 			return(uiCount);
 	}
 
@@ -1435,12 +1440,14 @@ UINT32 uiSoundID;
     if(!fSoundSystemInit)
 		return(SOUND_ERROR);
 
-    // Take sample from cache
-    //pSoundList[uiChannel].hSample = FSOUND_Sample_Load(FSOUND_UNMANAGED, pSampleList[uiSample].pData, FSOUND_LOADMEMORY|FSOUND_LOOP_OFF, 0, pSampleList[uiSample].uiSize);
-	pSoundList[uiChannel].hSample = FSOUND_Sample_Load(FSOUND_UNMANAGED, (const char *)pSampleList[uiSample].pData, FSOUND_LOADMEMORY|FSOUND_LOOP_OFF, 0, pSampleList[uiSample].uiSize); //lal
-    if (pSoundList[uiChannel].hSample==NULL)
+    // Setting up stream buffer
+    FSOUND_Stream_SetBufferSize(STREAM_BUFFER_LEN);
+
+    // Creating stream
+	pSoundList[uiChannel].hStream=FSOUND_Stream_Open((char *)pSampleList[uiSample].pData, FSOUND_LOADMEMORY|FSOUND_LOOP_NORMAL|FSOUND_2D, 0, pSampleList[uiSample].uiSize);
+	if(pSoundList[uiChannel].hStream==NULL)
 	{
-		SoundLog((CHAR8 *)String( " ERROR in SoundStartSample(): %s", FMOD_ErrorString(FSOUND_GetError()) ));
+        SoundLog((CHAR8 *)String(" ERROR in SoundStartSample(): %s", FMOD_ErrorString(FSOUND_GetError()) ));
 		return(SOUND_ERROR);
 	}
 
@@ -1448,29 +1455,25 @@ UINT32 uiSoundID;
     // Loop
 	if((pParms!=NULL) && (pParms->uiLoop!=SOUND_PARMS_DEFAULT))
 	{
-        if(pParms->uiLoop==1)//lal changed to ==1 for continuous play
-        {
-            FSOUND_Sample_SetMode(pSoundList[uiChannel].hSample, FSOUND_LOOP_OFF);
-        }
-        else
-            FSOUND_Sample_SetMode(pSoundList[uiChannel].hSample, FSOUND_LOOP_NORMAL);
-
 		// If looping infinately, lock the sample so it can't be unloaded
 		// and mark it as a looping sound
 		if(pParms->uiLoop==0)
-		{			
+		{
 			pSampleList[uiSample].uiFlags|=SAMPLE_LOCKED;
 			pSoundList[uiChannel].fLooping=TRUE;
 		}
+        else
+            FSOUND_Stream_SetLoopCount(pSoundList[uiChannel].hStream, pParms->uiLoop-1);
 	}
 
-    // Start sample at pause
-    pSoundList[uiChannel].uiFMODChannel = FSOUND_PlaySoundEx(uiChannel, pSoundList[uiChannel].hSample, NULL, TRUE);
-    if (pSoundList[uiChannel].uiFMODChannel==-1)
-	{
-		SoundLog((CHAR8 *)String( " ERROR in SoundStartSample(): %s", FMOD_ErrorString(FSOUND_GetError()) ));
+    // Starting stream in pause
+    pSoundList[uiChannel].uiFMODChannel = FSOUND_Stream_PlayEx(uiChannel, pSoundList[uiChannel].hStream, NULL, TRUE);
+    if(pSoundList[uiChannel].uiFMODChannel==-1)
+    {
+        FSOUND_Stream_Close(pSoundList[uiChannel].hStream);
+        SoundLog((CHAR8 *)String(" ERROR in SoundStartSample(): %s", FMOD_ErrorString(FSOUND_GetError()) ));
 		return(SOUND_ERROR);
-	}
+    }
 
 	// Speed and pitchbend don't use
 
@@ -1536,21 +1539,11 @@ UINT32 uiSoundID;
 	if(!fSoundSystemInit)
 		return(SOUND_ERROR);
 
-	// Snap: First see if the file is in the custom Data catalogue:
-	std::string filePath;
-	if ( gCustomDataCat.FindFile(pFilename) ) {
-		filePath = gCustomDataCat.GetRootDir() + '\\';
-	}
-	filePath += pFilename;
-	// Bad cast! pFilename should have been const.  Oh well...
-	pFilename = const_cast<STR>( filePath.c_str() );
-	// Now pFilename points either to the original file name,
-	// or to the full file path in the custom Data directory.
-	// Except for this substitution, the rest of the function is unchanged.
-
+    // Setting up stream buffer
+    FSOUND_Stream_SetBufferSize(STREAM_BUFFER_LEN);
 
     // Creating stream
-	pSoundList[uiChannel].hStream=FSOUND_Stream_Open(pFilename, FSOUND_LOOP_OFF|FSOUND_2D, 0, 0);
+	pSoundList[uiChannel].hStream=FSOUND_Stream_Open(pFilename, FSOUND_LOOP_NORMAL|FSOUND_2D, 0, 0);
 	if(pSoundList[uiChannel].hStream==NULL)
 	{
         SoundLog((CHAR8 *)String(" ERROR in SoundStartStream(): %s ('%s')", FMOD_ErrorString(FSOUND_GetError()), pFilename));
@@ -1561,7 +1554,8 @@ UINT32 uiSoundID;
     // Loop
 	if( (pParms!=NULL) && (pParms->uiLoop!=SOUND_PARMS_DEFAULT ) )
 	{
-        FSOUND_Stream_SetLoopCount(pSoundList[uiChannel].hStream, pParms->uiLoop);
+		if(pParms->uiLoop>0)
+            FSOUND_Stream_SetLoopCount(pSoundList[uiChannel].hStream, pParms->uiLoop-1);
     }
 
     // Starting stream in pause
@@ -1613,6 +1607,7 @@ UINT32 uiSoundID;
     // Other stuff
 	pSoundList[uiChannel].uiTimeStamp=GetTickCount();
 	pSoundList[uiChannel].uiFadeVolume = SoundGetVolumeIndex(uiChannel);
+    pSoundList[uiChannel].uiSample = -1;    // it's streaming directly from file !!!!
 
     return(uiSoundID);
 }
@@ -1622,8 +1617,7 @@ UINT32 uiSoundID;
 // ========================
 static void * F_CALLBACKAPI SoundFileOpen(const CHAR8 *pName)
 {
-	//return((void*)FileOpen(pName, FILE_ACCESS_READ | FILE_OPEN_EXISTING, FALSE));
-    return((void*)FileOpen((STR)pName, FILE_ACCESS_READ | FILE_OPEN_EXISTING, FALSE)); //lal
+    return((void*)FileOpen((STR)pName, FILE_ACCESS_READ | FILE_OPEN_EXISTING, FALSE));
 }
 
 static void F_CALLBACKAPI SoundFileClose(void *uiHandle)
@@ -1724,33 +1718,22 @@ UINT32 uiSample;
 	{
 		if(uiChannel!=NO_SAMPLE)
 		{
-            // Is sample to stop?
-			if(pSoundList[uiChannel].hSample!=NULL)
-			{
-                FSOUND_StopSound(uiChannel);
-                FSOUND_Sample_Free(pSoundList[uiChannel].hSample);
-				uiSample=pSoundList[uiChannel].uiSample;
-
-                // if this was a random sample, decrease the iteration count
-				if(pSampleList[uiSample].uiFlags&SAMPLE_RANDOM)
-					pSampleList[uiSample].uiInstances--;
-
-				if(pSoundList[uiChannel].EOSCallback!=NULL)
-					pSoundList[uiChannel].EOSCallback(pSoundList[uiChannel].pCallbackData);
-
-				if(pSoundList[uiChannel].fLooping && !SoundSampleIsInUse(uiChannel))
-					SoundRemoveSampleFlags(uiSample, SAMPLE_LOCKED);
-
-                memset(&pSoundList[uiChannel], 0, sizeof(SOUNDTAG));
-			}
-
-            // Is stream to stop?
 			if(pSoundList[uiChannel].hStream!=NULL)
 			{
 				FSOUND_Stream_Stop(pSoundList[uiChannel].hStream);
                 FSOUND_Stream_Close(pSoundList[uiChannel].hStream);
-				if(pSoundList[uiChannel].EOSCallback!=NULL)
+
+			    uiSample=pSoundList[uiChannel].uiSample;
+
+                // if this was a random sample, decrease the iteration count
+				if ( (uiSample != -1) && (pSampleList[uiSample].uiFlags&SAMPLE_RANDOM) )
+					pSampleList[uiSample].uiInstances--;
+
+                if(pSoundList[uiChannel].EOSCallback!=NULL)
 					pSoundList[uiChannel].EOSCallback(pSoundList[uiChannel].pCallbackData);
+
+                if(!pSoundList[uiChannel].fLooping && !SoundSampleIsInUse(uiChannel))
+					SoundRemoveSampleFlags(uiSample, SAMPLE_LOCKED);
 
                 memset(&pSoundList[uiChannel], 0, sizeof(SOUNDTAG));
 			}

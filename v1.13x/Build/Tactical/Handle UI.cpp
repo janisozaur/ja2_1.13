@@ -78,9 +78,9 @@
 //extern BOOLEAN gfDisplayFullCountRingBurst;
 extern UINT16 PickSoldierReadyAnimation( SOLDIERTYPE *pSoldier, BOOLEAN fEndReady );
 
-#define AP_TO_AIM_TILE_IF_GETTING_READY 1
+//#define AP_TO_AIM_TILE_IF_GETTING_READY 1
 #define AP_TO_AIM_TILE_IF_ALREADY_READY ( Weapon[ Item[pSoldier->inv[HANDPOS].usItem].ubClassIndex ].ubReadyTime ? 2 : 1 )
-
+#define AP_TO_AIM_TILE_IF_GETTING_READY AP_TO_AIM_TILE_IF_ALREADY_READY
 
 #define MAX_ON_DUTY_SOLDIERS 6
 
