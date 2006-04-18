@@ -44,6 +44,10 @@
 	#include "SkillCheck.h"
 #endif
 
+//rain
+#define VIS_DIST_DECREASE_PER_RAIN_INTENSITY 20
+//end rain
+
 #define WE_SEE_WHAT_MILITIA_SEES_AND_VICE_VERSA
 
 extern void SetSoldierAniSpeed( SOLDIERTYPE *pSoldier );
@@ -255,6 +259,14 @@ UINT8			gubSightFlags = 0;
 }
 
 
+//rain
+extern INT8 gbCurrentRainIntensity;
+extern BOOLEAN gfLightningInProgress;
+extern BOOLEAN gfHaveSeenSomeone;
+extern UINT8 ubRealAmbientLightLevel;
+//end rain
+
+
 INT16 AdjustMaxSightRangeForEnvEffects( SOLDIERTYPE *pSoldier, INT8 bLightLevel, INT16 sDistVisible )
 {
 	INT16 sNewDist = 0;
@@ -264,8 +276,16 @@ INT16 AdjustMaxSightRangeForEnvEffects( SOLDIERTYPE *pSoldier, INT8 bLightLevel,
 	// Adjust it based on weather...
 	if ( guiEnvWeather & ( WEATHER_FORECAST_SHOWERS | WEATHER_FORECAST_THUNDERSHOWERS ) )
 	{
-		sNewDist = sNewDist * 70 / 100;		
+		//sNewDist = sNewDist * 70 / 100;
+		//rain
+		sNewDist = sNewDist * ( 100 - VIS_DIST_DECREASE_PER_RAIN_INTENSITY * gbCurrentRainIntensity ) / 100;
+		//end rain
 	}
+	
+	//rain
+	if( gfLightningInProgress )
+		sNewDist += sNewDist * ( ubRealAmbientLightLevel ) / 10;	// 10% per dark level
+	//end rain
 
 	return( sNewDist );
 }
@@ -2246,6 +2266,9 @@ else
      // then locate to him and set his locator flag
      bDoLocate = TRUE;
 
+	//rain
+	if( gfLightningInProgress ) gfHaveSeenSomeone = TRUE;
+	//end rain
 	 }
 
    // make opponent visible (to us)
@@ -2311,7 +2334,10 @@ else
 		 {
 			 if (!pOpponent->bNeutral && (pSoldier->bSide != pOpponent->bSide))
 			 {
-					SlideTo(0,pOpponent->ubID, pSoldier->ubID, SETLOCATOR);
+					//SlideTo(0,pOpponent->ubID, pSoldier->ubID, SETLOCATOR);
+					//rain
+					SlideTo(0,pOpponent->ubID, pSoldier->ubID, SETLOCATORFAST);
+					//end rain
 			 }
 		 }
     }

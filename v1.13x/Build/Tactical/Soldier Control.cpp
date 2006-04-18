@@ -85,6 +85,14 @@
 	#include "overhead map.h"
 #endif
 
+//turnspeed
+UINT8 gubPlayerTurnSpeedUpFactor = 1;
+UINT8 gubEnemyTurnSpeedUpFactor = 1;
+UINT8 gubCreatureTurnSpeedUpFactor = 1;
+UINT8 gubMilitiaTurnSpeedUpFactor = 1;
+UINT8 gubCivTurnSpeedUpFactor = 1;
+//turnspeed
+
 extern INT16 DirIncrementer[8];
 
 #define		PALETTEFILENAME							"BINARYDATA\\ja2pal.dat"
@@ -5781,6 +5789,25 @@ void CalculateSoldierAniSpeed( SOLDIERTYPE *pSoldier, SOLDIERTYPE *pStatsSoldier
 
 }
 
+UINT8 GetSpeedUpFactor( )
+{
+	switch(  gTacticalStatus.ubCurrentTeam )
+	{
+	case OUR_TEAM:
+		return gubPlayerTurnSpeedUpFactor;
+	case ENEMY_TEAM:
+		return gubEnemyTurnSpeedUpFactor;
+	case CREATURE_TEAM:
+		return gubCreatureTurnSpeedUpFactor;
+	case MILITIA_TEAM:
+		return gubMilitiaTurnSpeedUpFactor;
+	case CIV_TEAM:
+		return gubCivTurnSpeedUpFactor;
+	}
+	
+
+	return 1;
+}
 
 void SetSoldierAniSpeed( SOLDIERTYPE *pSoldier )
 {
@@ -5827,6 +5854,11 @@ void SetSoldierAniSpeed( SOLDIERTYPE *pSoldier )
 		//pSoldier->sAniDelay = 1000;
 	}
 
+	if ( gTacticalStatus.uiFlags & TURNBASED && gTacticalStatus.uiFlags & INCOMBAT )
+		if( GetSpeedUpFactor() )
+			pSoldier->sAniDelay /= GetSpeedUpFactor();	
+		else 
+			pSoldier->sAniDelay = 0;
 }
 
 

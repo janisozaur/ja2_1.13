@@ -361,6 +361,10 @@ void EndTurnEvents( void )
 	DecayRottingCorpseAIWarnings();
 }
 
+//rain
+BOOLEAN LightningEndOfTurn( UINT8 ubTeam );
+//end rain
+
 void BeginTeamTurn( UINT8 ubTeam )
 {
 	DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"BeginTeamTurn");
@@ -368,6 +372,11 @@ void BeginTeamTurn( UINT8 ubTeam )
 	UINT8	ubID;
 	SOLDIERTYPE		*pSoldier;
 	
+	//rain
+	if( !LightningEndOfTurn( ubTeam ) )return;
+	//end rain
+	
+
 	while( 1 )
 	{
 		if ( ubTeam > LAST_TEAM )

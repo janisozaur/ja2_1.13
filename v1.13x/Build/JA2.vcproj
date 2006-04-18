@@ -3,6 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="ja2"
+	RootNamespace="ja2"
 	SccProjectName="&quot;$/Jagged Alliance 2/Development/Programming/Jagged Alliance 2/Build&quot;, AVAAAAAA"
 	SccLocalPath="..\..\ja2\build">
 	<Platforms>
@@ -528,7 +529,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libexpatMT.lib winmm.lib smackw32.lib mss32.lib"
-				OutputFile="C:\Games\Jagged Alliance 2 v1.13\ja2_release_wanne.exe"
+				OutputFile="D:\Games\Jagged Alliance 2 v1.13\ja2 v1.131.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
 				GenerateMapFile="TRUE"
@@ -1981,6 +1982,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\NewGameSettings.cpp">
+			</File>
+			<File
 				RelativePath="Options Screen.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -2394,6 +2398,9 @@
 			</File>
 			<File
 				RelativePath="MessageBoxScreen.h">
+			</File>
+			<File
+				RelativePath=".\NewGameSettings.h">
 			</File>
 			<File
 				RelativePath="Options Screen.h">

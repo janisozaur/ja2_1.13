@@ -3,6 +3,13 @@
 
 #include "Screens.h"
 
+//rain
+#include "NewGameSettings.h"
+//end rain
+
+
+
+
 //
 // Make sure the application has a name
 //
