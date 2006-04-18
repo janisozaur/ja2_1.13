@@ -587,6 +587,31 @@ STR16 pAssignMenuStrings[] =
 	L"Abbrechen", // cancel this menu
 };
 
+STR16 pMilitiaControlMenuStrings[] =
+{
+	L"Attack", // set militia to aggresive
+	L"Hold Position", // set militia to stationary
+	L"Retreat", // retreat militia
+	L"Come to me", // retreat militia
+	L"Get down", // retreat militia	
+	L"All: Attack", 
+	L"All: Hold Position",
+	L"All: Retreat",
+	L"All: Come to me",
+	L"All: Get down",
+	L"Cancel", // cancel this menu
+};
+
+//STR16 pTalkToAllMenuStrings[] =
+//{
+//	L"Attack", // set militia to aggresive
+//	L"Hold Position", // set militia to stationary
+//	L"Retreat", // retreat militia
+//	L"Come to me", // retreat militia
+//	L"Get down", // retreat militia		 
+//	L"Cancel", // cancel this menu
+//};
+
 STR16 pRemoveMercStrings[] ={
 	L"Söldner entfernen", // remove dead merc from current team
 	L"Abbrechen",

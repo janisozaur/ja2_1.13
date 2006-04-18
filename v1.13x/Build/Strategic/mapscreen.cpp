@@ -817,6 +817,7 @@ void CreateTrainingBox( void );
 void CreateMercRemoveAssignBox( void );
 
 void DetermineWhichAssignmentMenusCanBeShown( void );
+void DetermineWhichMilitiaControlMenusCanBeShown( void );
 
 void DetermineIfContractMenuCanBeShown( void );
 void ContractRegionBtnCallback( MOUSE_REGION * pRegion, INT32 iReason );
@@ -3610,6 +3611,8 @@ UINT32 MapScreenHandle(void)
 	// check which menus can be shown right now
 	DetermineWhichAssignmentMenusCanBeShown( );
 
+	DetermineWhichMilitiaControlMenusCanBeShown( ); //lal
+
 	// determine if contract menu can be shown
 	DetermineIfContractMenuCanBeShown( );
 
@@ -5877,7 +5880,7 @@ void EndMapScreen( BOOLEAN fDuringFade )
 	DestroyMouseRegionsForTeamList( );
   
 	MSYS_RemoveRegion( &gMapViewRegion );
-  MSYS_RemoveRegion( &gCharInfoFaceRegion);
+	MSYS_RemoveRegion( &gCharInfoFaceRegion);
 	MSYS_RemoveRegion( &gCharInfoHandRegion );
 	MSYS_RemoveRegion( &gMPanelRegion);
 	MSYS_RemoveRegion( &gMapScreenMaskRegion );
@@ -5897,7 +5900,7 @@ void EndMapScreen( BOOLEAN fDuringFade )
 	
 	HandleShutDownOfMapScreenWhileExternfaceIsTalking( );
 
-  fShowInventoryFlag = FALSE;
+	fShowInventoryFlag = FALSE;
 	CreateDestroyMapInvButton();
 
 	// no longer can we show assignments menu
@@ -5905,6 +5908,8 @@ void EndMapScreen( BOOLEAN fDuringFade )
 
 	// clear out mouse regions for pop up boxes
 	DetermineWhichAssignmentMenusCanBeShown( );
+
+	DetermineWhichMilitiaControlMenusCanBeShown( ); //lal
 
 	sSelectedMilitiaTown = 0;
 	CreateDestroyMilitiaPopUPRegions( );
@@ -5919,6 +5924,8 @@ void EndMapScreen( BOOLEAN fDuringFade )
 	ghContractBox = -1;
 
   CreateDestroyAssignmentPopUpBoxes( );
+
+  CreateDestroyMilitiaControlPopUpBoxes( ); //lal
 
 	// shutdown movement box
 	if ( fShowMapScreenMovementList )

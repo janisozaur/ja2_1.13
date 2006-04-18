@@ -5535,189 +5535,189 @@ BOOLEAN HandleTalkInit(  )
 	// Check if there is a guy here to talk to!
 	if ( gfUIFullTargetFound )
 	{
-			// Is he a valid NPC?
-			if ( IsValidTalkableNPC( (UINT8)gusUIFullTargetID, FALSE, TRUE , FALSE ) )
+		// Is he a valid NPC?
+		if ( IsValidTalkableNPC( (UINT8)gusUIFullTargetID, FALSE, TRUE , FALSE ) )
+		{
+			GetSoldier( &pTSoldier, gusUIFullTargetID );
+
+			if ( pTSoldier->ubID != pSoldier->ubID )
 			{
-				GetSoldier( &pTSoldier, gusUIFullTargetID );
+				//ATE: Check if we have good LOS
+				// is he close enough to see that gridno if he turns his head?
+				sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTSoldier->sGridNo, pTSoldier->bLevel );
 
-        if ( pTSoldier->ubID != pSoldier->ubID )
-        {
-				  //ATE: Check if we have good LOS
-				  // is he close enough to see that gridno if he turns his head?
-				  sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTSoldier->sGridNo, pTSoldier->bLevel );
-
-				  // Check LOS!
-				  if ( !SoldierTo3DLocationLineOfSightTest( pSoldier, pTSoldier->sGridNo,  pTSoldier->bLevel, 3, (UINT8) sDistVisible, TRUE ) )
-				  {
-            if ( pTSoldier->ubProfile != NO_PROFILE )
-            {
-					    ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_LOS_TO_TALK_TARGET ], pSoldier->name, pTSoldier->name );
-            }
-            else
-            {
-					    ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 45 ], pSoldier->name );
-            }
-					  return( FALSE );
-				  }
-        }
-
-	      if ( pTSoldier->bCollapsed )
-	      {
-					ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 21 ], pTSoldier->name );
-		      return( FALSE );
-	      }
-
-				// If Q on, turn off.....
-				if ( guiCurrentScreen == DEBUG_SCREEN )
-				{		
-					gfExitDebugScreen = TRUE;
-				}
-
-				// ATE: if our own guy...
-				if ( pTSoldier->bTeam == gbPlayerNum && !AM_AN_EPC( pTSoldier ) )
+				// Check LOS!
+				if ( !SoldierTo3DLocationLineOfSightTest( pSoldier, pTSoldier->sGridNo,  pTSoldier->bLevel, 3, (UINT8) sDistVisible, TRUE ) )
 				{
-          if ( pTSoldier->ubProfile == DIMITRI )
-          {
-      			ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 32 ], pTSoldier->name );
-            return( FALSE );
-          }
-
-					// Randomize quote to use....
-
-					// If buddy had a social trait...
-					if ( gMercProfiles[ pTSoldier->ubProfile ].bAttitude != ATT_NORMAL )
+					if ( pTSoldier->ubProfile != NO_PROFILE )
 					{
-						ubDiceRoll = (UINT8)Random( 3 );
+						ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_LOS_TO_TALK_TARGET ], pSoldier->name, pTSoldier->name );
 					}
 					else
 					{
-						ubDiceRoll = (UINT8)Random( 2 );
+						ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 45 ], pSoldier->name );
 					}
-
-					// If we are a PC, only use 0
-					if ( pTSoldier->ubWhatKindOfMercAmI == MERC_TYPE__PLAYER_CHARACTER )
-					{
-						ubDiceRoll = 0;
-					}
-						
-					switch( ubDiceRoll )
-					{
-						case 0:
-
-							ubQuoteNum = QUOTE_NEGATIVE_COMPANY;
-							break;
-
-						case 1:
-
-							if ( QuoteExp_PassingDislike[ pTSoldier->ubProfile ] )
-							{
-								ubQuoteNum = QUOTE_PASSING_DISLIKE;
-							}
-							else
-							{
-								ubQuoteNum = QUOTE_NEGATIVE_COMPANY;
-							}
-							break;
-
-						case 2:
-
-							ubQuoteNum = QUOTE_SOCIAL_TRAIT;
-							break;
-
-						default:
-
-							ubQuoteNum = QUOTE_NEGATIVE_COMPANY;
-							break;
-					}
-
-          if ( pTSoldier->ubProfile == IRA )
-          {
-            ubQuoteNum = QUOTE_PASSING_DISLIKE;
-          }
-
-					TacticalCharacterDialogue( pTSoldier, ubQuoteNum );
-
 					return( FALSE );
-				}
-
-				// Check distance
-				uiRange = GetRangeFromGridNoDiff( pSoldier->sGridNo, usMapPos );
-
-				// Double check path
-				if ( GetCivType( pTSoldier ) != CIV_TYPE_NA )
-				{
-					// ATE: If one is already active, just remove it!
-					if ( ShutDownQuoteBoxIfActive( ) )
-					{
-						return( FALSE );
-					}
-				}
-
-				if ( uiRange > NPC_TALK_RADIUS )
-				{
-					// First get an adjacent gridno....
-					sActionGridNo =  FindAdjacentGridEx( pSoldier, pTSoldier->sGridNo, &ubDirection, NULL, FALSE, TRUE );
-					
-					if ( sActionGridNo == -1 )
-					{
-						ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_PATH ] );
-						return( FALSE );
-					}
-					
-					if ( UIPlotPath( pSoldier, sActionGridNo, NO_COPYROUTE, FALSE, TEMPORARY, (UINT16)pSoldier->usUIMovementMode, NOT_STEALTH, FORWARD, pSoldier->bActionPoints ) == 0 )
-					{
-						ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_PATH ] );
-						return( FALSE );
-					}
-
-					// Walk up and talk to buddy....
-					gfNPCCircularDistLimit = TRUE;
-					sGoodGridNo = FindGridNoFromSweetSpotWithStructData( pSoldier, pSoldier->usUIMovementMode, pTSoldier->sGridNo, (NPC_TALK_RADIUS-1), &ubNewDirection, TRUE );
-					gfNPCCircularDistLimit = FALSE;
-
-					// First calculate APs and validate...
-					sAPCost = AP_TALK;				
-					//sAPCost += UIPlotPath( pSoldier, sGoodGridNo, NO_COPYROUTE, FALSE, TEMPORARY, (UINT16)pSoldier->usUIMovementMode, NOT_STEALTH, FORWARD, pSoldier->bActionPoints );
-
-					// Check AP cost...
-					if ( !EnoughPoints( pSoldier, sAPCost, 0, TRUE ) )
-					{
-						return( FALSE );
-					}
-
-					// Now walkup to talk....
-					pSoldier->ubPendingAction = MERC_TALK;
-					pSoldier->uiPendingActionData1 = pTSoldier->ubID;
-					pSoldier->ubPendingActionAnimCount = 0;
-
-					// WALK UP TO DEST FIRST
-					EVENT_InternalGetNewSoldierPath( pSoldier, sGoodGridNo, pSoldier->usUIMovementMode , TRUE , pSoldier->fNoAPToFinishMove );					
-
-					return( FALSE );
-				}
-				else
-				{
-					sAPCost = AP_TALK;
-
-					// Check AP cost...
-					if ( !EnoughPoints( pSoldier, sAPCost, 0, TRUE ) )
-					{
-						return( FALSE );
-					}
-
-					// OK, startup!
-					PlayerSoldierStartTalking( pSoldier, pTSoldier->ubID, FALSE );
-				}
-
-				if ( GetCivType( pTSoldier ) != CIV_TYPE_NA )
-				{
-					return( FALSE );
-				}
-				else
-				{
-					return( TRUE );
 				}
 			}
+
+			if ( pTSoldier->bCollapsed )
+			{
+				ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 21 ], pTSoldier->name );
+				return( FALSE );
+			}
+
+			// If Q on, turn off.....
+			if ( guiCurrentScreen == DEBUG_SCREEN )
+			{		
+				gfExitDebugScreen = TRUE;
+			}
+
+			// ATE: if our own guy...
+			if ( pTSoldier->bTeam == gbPlayerNum && !AM_AN_EPC( pTSoldier ) )
+			{
+				if ( pTSoldier->ubProfile == DIMITRI )
+				{
+					ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 32 ], pTSoldier->name );
+					return( FALSE );
+				}
+
+				// Randomize quote to use....
+
+				// If buddy had a social trait...
+				if ( gMercProfiles[ pTSoldier->ubProfile ].bAttitude != ATT_NORMAL )
+				{
+					ubDiceRoll = (UINT8)Random( 3 );
+				}
+				else
+				{
+					ubDiceRoll = (UINT8)Random( 2 );
+				}
+
+				// If we are a PC, only use 0
+				if ( pTSoldier->ubWhatKindOfMercAmI == MERC_TYPE__PLAYER_CHARACTER )
+				{
+					ubDiceRoll = 0;
+				}
+
+				switch( ubDiceRoll )
+				{
+				case 0:
+
+					ubQuoteNum = QUOTE_NEGATIVE_COMPANY;
+					break;
+
+				case 1:
+
+					if ( QuoteExp_PassingDislike[ pTSoldier->ubProfile ] )
+					{
+						ubQuoteNum = QUOTE_PASSING_DISLIKE;
+					}
+					else
+					{
+						ubQuoteNum = QUOTE_NEGATIVE_COMPANY;
+					}
+					break;
+
+				case 2:
+
+					ubQuoteNum = QUOTE_SOCIAL_TRAIT;
+					break;
+
+				default:
+
+					ubQuoteNum = QUOTE_NEGATIVE_COMPANY;
+					break;
+				}
+
+				if ( pTSoldier->ubProfile == IRA )
+				{
+					ubQuoteNum = QUOTE_PASSING_DISLIKE;
+				}
+
+				TacticalCharacterDialogue( pTSoldier, ubQuoteNum );
+
+				return( FALSE );
+			}
+
+			// Check distance
+			uiRange = GetRangeFromGridNoDiff( pSoldier->sGridNo, usMapPos );
+
+			// Double check path
+			if ( GetCivType( pTSoldier ) != CIV_TYPE_NA )
+			{
+				// ATE: If one is already active, just remove it!
+				if ( ShutDownQuoteBoxIfActive( ) )
+				{
+					return( FALSE );
+				}
+			}
+
+			if ( ( uiRange > NPC_TALK_RADIUS*10 ) ) //laltodo range for radio
+			{
+				// First get an adjacent gridno....
+				sActionGridNo =  FindAdjacentGridEx( pSoldier, pTSoldier->sGridNo, &ubDirection, NULL, FALSE, TRUE );
+
+				if ( sActionGridNo == -1 )
+				{
+					ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_PATH ] );
+					return( FALSE );
+				}
+
+				if ( UIPlotPath( pSoldier, sActionGridNo, NO_COPYROUTE, FALSE, TEMPORARY, (UINT16)pSoldier->usUIMovementMode, NOT_STEALTH, FORWARD, pSoldier->bActionPoints ) == 0 )
+				{
+					ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_PATH ] );
+					return( FALSE );
+				}
+
+				// Walk up and talk to buddy....
+				gfNPCCircularDistLimit = TRUE;
+				sGoodGridNo = FindGridNoFromSweetSpotWithStructData( pSoldier, pSoldier->usUIMovementMode, pTSoldier->sGridNo, (NPC_TALK_RADIUS-1), &ubNewDirection, TRUE );
+				gfNPCCircularDistLimit = FALSE;
+
+				// First calculate APs and validate...
+				sAPCost = AP_TALK;				
+				//sAPCost += UIPlotPath( pSoldier, sGoodGridNo, NO_COPYROUTE, FALSE, TEMPORARY, (UINT16)pSoldier->usUIMovementMode, NOT_STEALTH, FORWARD, pSoldier->bActionPoints );
+
+				// Check AP cost...
+				if ( !EnoughPoints( pSoldier, sAPCost, 0, TRUE ) )
+				{
+					return( FALSE );
+				}
+
+				// Now walkup to talk....
+				pSoldier->ubPendingAction = MERC_TALK;
+				pSoldier->uiPendingActionData1 = pTSoldier->ubID;
+				pSoldier->ubPendingActionAnimCount = 0;
+
+				// WALK UP TO DEST FIRST
+				EVENT_InternalGetNewSoldierPath( pSoldier, sGoodGridNo, pSoldier->usUIMovementMode , TRUE , pSoldier->fNoAPToFinishMove );					
+
+				return( FALSE );
+			}
+			else
+			{
+				sAPCost = AP_TALK;
+
+				// Check AP cost...
+				if ( !EnoughPoints( pSoldier, sAPCost, 0, TRUE ) )
+				{
+					return( FALSE );
+				}
+
+				// OK, startup!
+				PlayerSoldierStartTalking( pSoldier, pTSoldier->ubID, FALSE );
+			}
+
+			if ( GetCivType( pTSoldier ) != CIV_TYPE_NA )
+			{
+				return( FALSE );
+			}
+			else
+			{
+				return( TRUE );
+			}
+		}
 	}
 
 	return( FALSE );

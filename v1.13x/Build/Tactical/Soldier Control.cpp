@@ -10638,6 +10638,8 @@ void MercStealFromMerc( SOLDIERTYPE *pSoldier, SOLDIERTYPE *pTarget )
 		}
 }
 
+SOLDIERTYPE				*pTMilitiaSoldier;
+
 BOOLEAN PlayerSoldierStartTalking( SOLDIERTYPE *pSoldier, UINT8 ubTargetID, BOOLEAN fValidate )
 {
 	INT16							sFacingDir, sXPos, sYPos, sAPCost;
@@ -10663,7 +10665,7 @@ BOOLEAN PlayerSoldierStartTalking( SOLDIERTYPE *pSoldier, UINT8 ubTargetID, BOOL
 
 		uiRange = GetRangeFromGridNoDiff( pSoldier->sGridNo, pTSoldier->sGridNo );
 
-		if ( uiRange > ( NPC_TALK_RADIUS * 2 ) )
+		if ( uiRange > ( NPC_TALK_RADIUS * 2 ) ) 
 		{
 			// Todo here - should we follow dude?
 			return( FALSE );
@@ -10678,26 +10680,43 @@ BOOLEAN PlayerSoldierStartTalking( SOLDIERTYPE *pSoldier, UINT8 ubTargetID, BOOL
 	// Deduct points from our guy....
 	DeductPoints( pSoldier, sAPCost, 0 );
 
-	ConvertGridNoToXY( pTSoldier->sGridNo, &sXPos, &sYPos );
+	if ( !(gTacticalStatus.uiFlags & INCOMBAT) || (gTacticalStatus.uiFlags & REALTIME) )
+	{
+		ConvertGridNoToXY( pTSoldier->sGridNo, &sXPos, &sYPos );
 
-	// Get direction from mouse pos
-	sFacingDir = GetDirectionFromXY( sXPos, sYPos, pSoldier );
+		// Get direction from mouse pos
+		sFacingDir = GetDirectionFromXY( sXPos, sYPos, pSoldier );
 
-	// Set our guy facing
-	SendSoldierSetDesiredDirectionEvent( pSoldier, sFacingDir );
+		// Set our guy facing
+		SendSoldierSetDesiredDirectionEvent( pSoldier, sFacingDir );
 
-	// Set NPC facing
-	SendSoldierSetDesiredDirectionEvent( pTSoldier, gOppositeDirection[ sFacingDir ] );
-	
-	// Stop our guys...
-	EVENT_StopMerc( pSoldier, pSoldier->sGridNo, pSoldier->bDirection );
+		// Set NPC facing
+		SendSoldierSetDesiredDirectionEvent( pTSoldier, gOppositeDirection[ sFacingDir ] );
 
+		// Stop our guys...
+		EVENT_StopMerc( pSoldier, pSoldier->sGridNo, pSoldier->bDirection );
+	}
+
+	pTMilitiaSoldier = pTSoldier;
+
+	//lal 
 	// ATE; Check for normal civs...
 	if ( GetCivType( pTSoldier ) != CIV_TYPE_NA )
 	{
-		StartCivQuote( pTSoldier );
-		return( FALSE );
+		//lal
+		if ( pTSoldier->bTeam == MILITIA_TEAM )
+		{
+			PopupMilitiaControlMenu( pTSoldier );
+			return( FALSE );
+		}
+		else
+		{
+			StartCivQuote( pTSoldier );
+			return( FALSE );
+		}
 	}
+
+
 
 
 	// Are we an EPC that is being escorted?
