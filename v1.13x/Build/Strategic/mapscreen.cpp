@@ -817,7 +817,7 @@ void CreateTrainingBox( void );
 void CreateMercRemoveAssignBox( void );
 
 void DetermineWhichAssignmentMenusCanBeShown( void );
-void DetermineWhichMilitiaControlMenusCanBeShown( void );
+void DetermineWhichMilitiaControlMenusCanBeShown( void ); //lal
 
 void DetermineIfContractMenuCanBeShown( void );
 void ContractRegionBtnCallback( MOUSE_REGION * pRegion, INT32 iReason );

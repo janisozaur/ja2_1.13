@@ -5,7 +5,7 @@
 #include <windows.h>
 #include <stdio.h>
 
-#define GAME_INI_FILE ".\\Ja2CW.ini"
+#define GAME_INI_FILE ".\\Ja2_113x.ini"
 
 //#define PROMT_TO_CHECK_SETTINGS_TITLE L"Изменить настройки?" //change settings?
 //#define PROMT_TO_CHECK_SETTINGS L"В процессе запуска игры была создана новая копия конфигурационного файла Ja2CW.ini со значениями по умолчанию. Желаете ли вы прервать запуск игры и изменить настройки?"
@@ -175,7 +175,7 @@ void NSSaveSettings()
 
 	//if( fFileCreated && MessageBoxW(0, PROMT_TO_CHECK_SETTINGS, PROMT_TO_CHECK_SETTINGS_TITLE, MB_YESNO) == IDYES )
 	//{
-	//	ShellExecuteW( 0, L"open", L"Ja2CW.ini", 0, 0, SW_SHOWNORMAL);
+	//	ShellExecuteW( 0, L"open", L"Ja2_113x.ini", 0, 0, SW_SHOWNORMAL);
 	//	ExitProcess(0);
 	//}
 

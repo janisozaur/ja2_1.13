@@ -10670,9 +10670,8 @@ BOOLEAN PlayerSoldierStartTalking( SOLDIERTYPE *pSoldier, UINT8 ubTargetID, BOOL
 			// Todo here - should we follow dude?
 			return( FALSE );
 		}
-
-
 	}
+
 
 	// Get APs...
 	sAPCost = AP_TALK;
@@ -10680,7 +10679,7 @@ BOOLEAN PlayerSoldierStartTalking( SOLDIERTYPE *pSoldier, UINT8 ubTargetID, BOOL
 	// Deduct points from our guy....
 	DeductPoints( pSoldier, sAPCost, 0 );
 
-	if ( !(gTacticalStatus.uiFlags & INCOMBAT) || (gTacticalStatus.uiFlags & REALTIME) )
+	if ( !(gTacticalStatus.uiFlags & INCOMBAT) || (gTacticalStatus.uiFlags & REALTIME) ) //lal
 	{
 		ConvertGridNoToXY( pTSoldier->sGridNo, &sXPos, &sYPos );
 
@@ -10697,7 +10696,7 @@ BOOLEAN PlayerSoldierStartTalking( SOLDIERTYPE *pSoldier, UINT8 ubTargetID, BOOL
 		EVENT_StopMerc( pSoldier, pSoldier->sGridNo, pSoldier->bDirection );
 	}
 
-	pTMilitiaSoldier = pTSoldier;
+	pTMilitiaSoldier = pTSoldier; //lal
 
 	//lal 
 	// ATE; Check for normal civs...

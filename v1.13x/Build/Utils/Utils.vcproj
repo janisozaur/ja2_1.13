@@ -958,6 +958,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\_Ja25RussianText.cpp">
+			</File>
+			<File
 				RelativePath="_PolishText.cpp">
 				<FileConfiguration
 					Name="Demo Release with Debug Info|Win32">
@@ -3366,6 +3369,9 @@
 			Filter="h;hpp;hxx;hm;inl;fi;fd">
 			<File
 				RelativePath="_Ja25GermanText.h">
+			</File>
+			<File
+				RelativePath=".\_Ja25RussianText.h">
 			</File>
 			<File
 				RelativePath="Animated ProgressBar.h">

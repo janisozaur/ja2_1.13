@@ -102,6 +102,9 @@ static LPDIRECTDRAWSURFACE2   gpBackBuffer = NULL;
 static LPDIRECTDRAWSURFACE    _gpFrameBuffer = NULL;
 static LPDIRECTDRAWSURFACE2   gpFrameBuffer = NULL;
 
+static LPDIRECTDRAWSURFACE    _gpTFrameBuffer = NULL;
+static LPDIRECTDRAWSURFACE2   gpTFrameBuffer = NULL;
+
 #ifdef WINDOWED_MODE
 
 static LPDIRECTDRAWSURFACE    _gpBackBuffer = NULL;
@@ -556,6 +559,31 @@ BOOLEAN InitializeVideoManager(HINSTANCE hInstance, UINT16 usCommandShow, void *
       return FALSE;
     }
   }
+
+  //
+  //  Initialize temporary frame buffer
+  //
+
+  ZEROMEM(SurfaceDescription);
+  SurfaceDescription.dwSize         = sizeof(DDSURFACEDESC);
+  SurfaceDescription.dwFlags        = DDSD_CAPS | DDSD_WIDTH | DDSD_HEIGHT;
+  SurfaceDescription.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_SYSTEMMEMORY;
+  SurfaceDescription.dwWidth        = SCREEN_WIDTH;
+  SurfaceDescription.dwHeight       = SCREEN_HEIGHT;
+  ReturnCode = IDirectDraw2_CreateSurface ( gpDirectDrawObject, &SurfaceDescription, &_gpTFrameBuffer, NULL );
+  if (ReturnCode != DD_OK)
+  { 
+    DirectXAttempt ( ReturnCode, __LINE__, __FILE__ );
+    return FALSE;
+  }
+
+  ReturnCode = IDirectDrawSurface_QueryInterface(_gpTFrameBuffer, IID_IDirectDrawSurface2, (LPVOID *)&gpTFrameBuffer);
+  if (ReturnCode != DD_OK)
+  { 
+    DirectXAttempt ( ReturnCode, __LINE__, __FILE__ );
+    return FALSE;
+  }
+
 
   //
   // Initialize the mutex sections
@@ -1530,17 +1558,30 @@ void RefreshScreen(void *DummyVariable)
 		fShowMouse = FALSE;
 	}
 
-	if( gfNextRefreshFullScreen )
+	if( IsItAllowedToRenderRain() && gfNextRefreshFullScreen )
 	{
 		if( guiCurrentScreen == GAME_SCREEN )
 		{
+			Region.left = 0;
+			Region.top = 0;
+			Region.right = SCREEN_WIDTH;
+			Region.bottom = SCREEN_HEIGHT;
+
+
 			InvalidateScreen();
 			gfRenderScroll = FALSE;
+
+			if( !gfScrollInertia )IDirectDrawSurface2_SGPBltFast(gpTFrameBuffer, 0, 0, gpFrameBuffer, &Region, DDBLTFAST_NOCOLORKEY);
+
+			BltVideoSurface( FRAME_BUFFER, guiRainRenderSurface, 0, 0, 0, VS_BLT_FAST | VS_BLT_USECOLORKEY, NULL );
+
 			//			gfForceFullScreenRefresh = TRUE;
 			//			guiFrameBufferState == BUFFER_DIRTY;
 		}
-		gfNextRefreshFullScreen = FALSE;
 	}
+	else
+		gfNextRefreshFullScreen = FALSE;
+	
 
   //DebugMsg(TOPIC_VIDEO, DBG_LEVEL_0, "Looping in refresh");
 
@@ -1805,8 +1846,8 @@ void RefreshScreen(void *DummyVariable)
     SurfaceDescription.dwSize         = sizeof(DDSURFACEDESC);
     SurfaceDescription.dwFlags        = DDSD_CAPS | DDSD_WIDTH | DDSD_HEIGHT;
     SurfaceDescription.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_SYSTEMMEMORY;
-    SurfaceDescription.dwWidth        = usScreenWidth;
-    SurfaceDescription.dwHeight       = usScreenHeight;
+    SurfaceDescription.dwWidth        = SCREEN_WIDTH;
+    SurfaceDescription.dwHeight       = SCREEN_HEIGHT;
     ReturnCode = IDirectDraw2_CreateSurface ( gpDirectDrawObject, &SurfaceDescription, &_pTmpBuffer, NULL );
 		if ((ReturnCode != DD_OK)&&(ReturnCode != DDERR_WASSTILLDRAWING))
     { 
@@ -1825,8 +1866,8 @@ void RefreshScreen(void *DummyVariable)
 
     Region.left = 0;
     Region.top = 0;
-    Region.right = usScreenWidth;
-    Region.bottom = usScreenHeight;
+    Region.right = SCREEN_WIDTH;
+    Region.bottom = SCREEN_HEIGHT;
 
     do
     {            
@@ -1844,7 +1885,8 @@ void RefreshScreen(void *DummyVariable)
     sprintf((char *) FileName, "SCREEN%03d.TGA", guiPrintFrameBufferIndex++); 
     if ((OutputFile = fopen((const char *) FileName, "wb")) != NULL)
     {
-      fprintf(OutputFile, "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0x02, 0xe0, 0x01, 0x10, 0);
+      //fprintf(OutputFile, "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0x02, 0xe0, 0x01, 0x10, 0);
+		fprintf(OutputFile, "%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, LOBYTE(SCREEN_WIDTH), HIBYTE(SCREEN_WIDTH), LOBYTE(SCREEN_HEIGHT), HIBYTE(SCREEN_HEIGHT), 0x10, 0);
 
       //
       // Lock temp surface
@@ -2121,19 +2163,6 @@ void RefreshScreen(void *DummyVariable)
   }
 
 
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  // Rain                                                                                      //
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-
-  if( IsItAllowedToRenderRain() && gfProgramIsRunning )
-  {
-	  BltVideoSurface( BACKBUFFER, guiRainRenderSurface, 0, 0, 0, VS_BLT_FAST | VS_BLT_USECOLORKEY, NULL );
-	  gfNextRefreshFullScreen = TRUE;
-  }
-
-
-
   ///////////////////////////////////////////////////////////////////////////////////////////////
   // 
   // (1) Flip Pages
@@ -2178,17 +2207,16 @@ void RefreshScreen(void *DummyVariable)
   do
   {
 	  ReturnCode = IDirectDrawSurface_Flip(_gpPrimarySurface, NULL, gfVSync ? DDFLIP_WAIT : 0x00000008l );
-    //ReturnCode = IDirectDrawSurface_Flip(_gpPrimarySurface, NULL, DDFLIP_WAIT ); 
-//    if ((ReturnCode != DD_OK)&&(ReturnCode != DDERR_WASSTILLDRAWING))
-		if ((ReturnCode != DD_OK)&&(ReturnCode != DDERR_WASSTILLDRAWING))
-    {
-      DirectXAttempt ( ReturnCode, __LINE__, __FILE__ );
+	//ReturnCode = IDirectDrawSurface_Flip(_gpPrimarySurface, NULL, DDFLIP_WAIT ); 
+	  if ((ReturnCode != DD_OK)&&(ReturnCode != DDERR_WASSTILLDRAWING))
+	  {
+		  DirectXAttempt ( ReturnCode, __LINE__, __FILE__ );
 
-      if (ReturnCode == DDERR_SURFACELOST)
-      {
-        goto ENDOFLOOP;
-      }
-    }
+		  if (ReturnCode == DDERR_SURFACELOST)
+		  {
+			  goto ENDOFLOOP;
+		  }
+	  }
 
   } while (ReturnCode != DD_OK);
 
@@ -2364,6 +2392,24 @@ void RefreshScreen(void *DummyVariable)
 	}
 
 	guiDirtyRegionExCount = 0;
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	// Rain                                                                                      //
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	if( IsItAllowedToRenderRain() && gfProgramIsRunning )
+	{
+		Region.left = 0;
+		Region.top = 0;
+		Region.right = SCREEN_WIDTH;
+		Region.bottom = SCREEN_HEIGHT;
+
+		if( !gfScrollInertia && gfNextRefreshFullScreen )IDirectDrawSurface2_SGPBltFast(gpFrameBuffer, 0, 0, gpTFrameBuffer, &Region, DDBLTFAST_NOCOLORKEY);
+
+		gfNextRefreshFullScreen = TRUE;
+	}else
+		gfNextRefreshFullScreen = FALSE;
+
 
 
 ENDOFLOOP:

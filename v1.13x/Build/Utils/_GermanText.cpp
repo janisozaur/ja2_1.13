@@ -587,6 +587,7 @@ STR16 pAssignMenuStrings[] =
 	L"Abbrechen", // cancel this menu
 };
 
+//lal
 STR16 pMilitiaControlMenuStrings[] =
 {
 	L"Attack", // set militia to aggresive
@@ -594,11 +595,14 @@ STR16 pMilitiaControlMenuStrings[] =
 	L"Retreat", // retreat militia
 	L"Come to me", // retreat militia
 	L"Get down", // retreat militia	
+	L"Take cover",
 	L"All: Attack", 
 	L"All: Hold Position",
 	L"All: Retreat",
 	L"All: Come to me",
 	L"All: Get down",
+	L"All: Take cover",
+	L"All: Find items",
 	L"Cancel", // cancel this menu
 };
 

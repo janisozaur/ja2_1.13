@@ -5520,6 +5520,7 @@ BOOLEAN HandleTalkInit(  )
 	INT16							sDistVisible;
 	INT16							sActionGridNo;
 	UINT8							ubDirection;
+	UINT8							commandRange; //lal
 
 	// Get soldier
 	if ( !GetSoldier( &pSoldier, gusSelectedSoldier )  )
@@ -5542,22 +5543,25 @@ BOOLEAN HandleTalkInit(  )
 
 			if ( pTSoldier->ubID != pSoldier->ubID )
 			{
-				//ATE: Check if we have good LOS
-				// is he close enough to see that gridno if he turns his head?
-				sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTSoldier->sGridNo, pTSoldier->bLevel );
-
-				// Check LOS!
-				if ( !SoldierTo3DLocationLineOfSightTest( pSoldier, pTSoldier->sGridNo,  pTSoldier->bLevel, 3, (UINT8) sDistVisible, TRUE ) )
+				if ( !(( pTSoldier->bTeam == MILITIA_TEAM ) && ( CheckIfRadioIsEquipped() )) ) //lal 
 				{
-					if ( pTSoldier->ubProfile != NO_PROFILE )
+					//ATE: Check if we have good LOS
+					// is he close enough to see that gridno if he turns his head?
+					sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTSoldier->sGridNo, pTSoldier->bLevel );
+
+					// Check LOS!
+					if ( !SoldierTo3DLocationLineOfSightTest( pSoldier, pTSoldier->sGridNo,  pTSoldier->bLevel, 3, (UINT8) sDistVisible, TRUE ) )
 					{
-						ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_LOS_TO_TALK_TARGET ], pSoldier->name, pTSoldier->name );
+						if ( pTSoldier->ubProfile != NO_PROFILE )
+						{
+							ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, TacticalStr[ NO_LOS_TO_TALK_TARGET ], pSoldier->name, pTSoldier->name );
+						}
+						else
+						{
+							ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 45 ], pSoldier->name );
+						}
+						return( FALSE );
 					}
-					else
-					{
-						ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_UI_FEEDBACK, gzLateLocalizedString[ 45 ], pSoldier->name );
-					}
-					return( FALSE );
 				}
 			}
 
@@ -5653,7 +5657,18 @@ BOOLEAN HandleTalkInit(  )
 				}
 			}
 
-			if ( ( uiRange > NPC_TALK_RADIUS*10 ) ) //laltodo range for radio
+			//lal
+			if ( pTSoldier->bTeam == MILITIA_TEAM )
+			{
+				commandRange = NPC_TALK_RADIUS*3;
+			}
+			else
+			{
+				commandRange = NPC_TALK_RADIUS;
+			}
+
+
+			if ( ( uiRange > commandRange ) && ( !CheckIfRadioIsEquipped() ) ) //lal
 			{
 				// First get an adjacent gridno....
 				sActionGridNo =  FindAdjacentGridEx( pSoldier, pTSoldier->sGridNo, &ubDirection, NULL, FALSE, TRUE );

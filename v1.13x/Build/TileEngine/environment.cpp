@@ -472,7 +472,7 @@ UINT32 guiMinDLInterval = 1;
 UINT32 guiMaxDLInterval = 5;
 
 UINT32 guiProlongLightningIfSeenSomeone = 5;
-UINT32 guiChanceToDoLightningBetweenTurns = 20;
+UINT32 guiChanceToDoLightningBetweenTurns = 35;
 
 
  // 60 = 1 second
@@ -640,10 +640,22 @@ void EnvDoLightning(void)
 	}
 }
 
+UINT8 ChanceToDoLightning()
+{
+	UINT8 ubCounter = 0;
+	UINT8 i;
+	for( i = 0; i < LAST_TEAM; ++i )
+		if( gTacticalStatus.Team[ i ].bTeamActive )
+			++ubCounter;
+
+	return CHANCE_TO_DO_LIGHTNING_BETWEEN_TURNS / ubCounter;
+}
+
+
 BOOLEAN LightningEndOfTurn( UINT8 ubTeam )
 {
 	if( !(guiEnvWeather & WEATHER_FORECAST_THUNDERSHOWERS) )return TRUE;
-	if( Random(100) >= CHANCE_TO_DO_LIGHTNING_BETWEEN_TURNS ) return TRUE;
+	if( Random(100) >= ChanceToDoLightning() ) return TRUE;
 
 	if( !gfTurnBasedLightningEnd )
 	{

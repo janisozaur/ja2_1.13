@@ -138,7 +138,7 @@ BOOLEAN IsItAllowedToRenderRain()
 {
 	if( !gfAllowRain )return FALSE;
 
-	if( !( guiEnvWeather & WEATHER_FORECAST_THUNDERSHOWERS | WEATHER_FORECAST_SHOWERS ) )return FALSE;
+	if( !( guiEnvWeather & (WEATHER_FORECAST_THUNDERSHOWERS | WEATHER_FORECAST_SHOWERS) ) )return FALSE;
 
 	if( guiCurrentScreen != GAME_SCREEN && guiCurrentScreen != SHOPKEEPER_SCREEN ) return FALSE;
 
@@ -398,6 +398,29 @@ void RenderRainOnSurface()
 	UnLockVideoSurface( guiRainRenderSurface );
 }
 
+
+void UndoRainOnSurface()
+{
+	UINT8 *pDestBuf;
+	UINT32 uiDestPitchBYTES;
+	UINT32 uiIndex;
+
+	pDestBuf = LockVideoSurface( guiRainRenderSurface, &uiDestPitchBYTES );
+	SetClippingRegionAndImageWidth( uiDestPitchBYTES, 0, gsVIEWPORT_WINDOW_START_Y, SCREEN_WIDTH, gsVIEWPORT_WINDOW_END_Y - gsVIEWPORT_WINDOW_START_Y );
+
+	for( uiIndex = 0; uiIndex < guiCurrMaxAmountOfRainDrops; ++uiIndex )
+	{
+		TRainDrop *pCurr = &pRainDrops[ uiIndex ];
+
+		if( !pCurr->fAlive )continue;
+		
+		LineDraw( TRUE, pCurr->fpX, pCurr->fpY, pCurr->fpX + pCurr->fpEndRelX, pCurr->fpY + pCurr->fpEndRelY,  0, pDestBuf );
+	}
+
+	UnLockVideoSurface( guiRainRenderSurface );
+}
+
+
 void GenerateRainMaximums()
 {
 	if( gbCurrentRainIntensity == 1 )
@@ -541,16 +564,19 @@ void RenderRain()
 		
 		CreateRainDrops();
 		RandomizeRainDropsPosition();
+		BlankRainRenderSurface();
 	}
 
 	guiCurrAmountOfDeadRainDrops = 0;
+	
+	UndoRainOnSurface();
 
 	UpdateRainDropsProperities();
 	UpdateRainDrops();
 	KillOutOfRegionRainDrops();
 	CreateRainDrops();
 
-	BlankRainRenderSurface();
+	//BlankRainRenderSurface();
 	RenderRainOnSurface();
 
 	RainClipVideoOverlay();

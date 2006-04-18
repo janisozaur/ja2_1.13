@@ -226,7 +226,7 @@ UINT8			gubCheatLevel		= STARTING_CHEAT_LEVEL;
 
 
 extern void DetermineWhichAssignmentMenusCanBeShown( void );
-extern void DetermineWhichMilitiaControlMenusCanBeShown( void );
+extern void DetermineWhichMilitiaControlMenusCanBeShown( void ); //lal
 
 void	GetTBMouseButtonInput( UINT32 *puiNewEvent )
 {
@@ -3282,6 +3282,7 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 					}
 					//else if( gusSelectedSoldier != NO_SOLDIER )
 					break;
+
 				case 'z':
 					if( fCtrl )
 					{
@@ -3344,7 +3345,7 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 						// nothing in hand and either not in SM panel, or the matching button is enabled if we are in SM panel
 						if ( ( gpItemPointer == NULL ) )
 						{
-              HandleStealthChangeFromUIKeys( );
+							HandleStealthChangeFromUIKeys( );
 						}
 					}
 					break;
