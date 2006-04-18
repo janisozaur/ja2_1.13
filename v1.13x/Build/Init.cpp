@@ -102,6 +102,14 @@ BOOLEAN LoadExternalGameplayData(STR directoryName)
 	if(!ReadInAmmoStats(fileName))
 		return FALSE;
 
+    // Lesh: added this, begin
+	strcpy(fileName, directoryName);
+	strcat(fileName, BURSTSOUNDSFILENAME);
+	DebugMsg (TOPIC_JA2,DBG_LEVEL_3,String("LoadExternalGameplayData, fileName = %s", fileName));
+	if(!ReadInBurstSoundArray(fileName))
+		return FALSE;
+    // Lesh: end
+
 	strcpy(fileName, directoryName);
 	strcat(fileName, ITEMSFILENAME);
 	DebugMsg (TOPIC_JA2,DBG_LEVEL_3,String("LoadExternalGameplayData, fileName = %s", fileName));

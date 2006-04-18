@@ -51,7 +51,7 @@
 
 // Initialization parameters
 #define AUDIO_BUFFER_LEN    100
-#define STREAM_BUFFER_LEN   200
+#define STREAM_BUFFER_LEN   100
 
 // Lesh modifications
 // Sound debug
@@ -367,7 +367,7 @@ UINT32	SoundPlayStreamedFile( STR pFilename, SOUNDPARMS *pParms )
 //*******************************************************************************
 UINT32 SoundPlayRandom(STR pFilename, RANDOMPARMS *pParms)
 {
-	UINT32 uiSample, uiTicks;
+	UINT32 uiSample;
 
 	if(fSoundSystemInit)
 	{
@@ -425,7 +425,6 @@ UINT32 SoundPlayRandom(STR pFilename, RANDOMPARMS *pParms)
 			pSampleList[uiSample].uiInstances=0;
 
 			// Time stamp
-			uiTicks=GetTickCount();
 			pSampleList[uiSample].uiTimeNext=GetTickCount()+pSampleList[uiSample].uiTimeMin+Random(pSampleList[uiSample].uiTimeMax-pSampleList[uiSample].uiTimeMin);
 			return(uiSample);
 		}
@@ -1444,7 +1443,7 @@ UINT32 uiSoundID;
     FSOUND_Stream_SetBufferSize(STREAM_BUFFER_LEN);
 
     // Creating stream
-	pSoundList[uiChannel].hStream=FSOUND_Stream_Open((char *)pSampleList[uiSample].pData, FSOUND_LOADMEMORY|FSOUND_LOOP_NORMAL|FSOUND_2D, 0, pSampleList[uiSample].uiSize);
+    pSoundList[uiChannel].hStream=FSOUND_Stream_Open((char *)pSampleList[uiSample].pData, FSOUND_LOADMEMORY|FSOUND_LOOP_NORMAL|FSOUND_2D, 0, pSampleList[uiSample].uiSize);
 	if(pSoundList[uiChannel].hStream==NULL)
 	{
         SoundLog((CHAR8 *)String(" ERROR in SoundStartSample(): %s", FMOD_ErrorString(FSOUND_GetError()) ));

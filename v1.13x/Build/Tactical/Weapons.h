@@ -302,7 +302,7 @@ extern WEAPONTYPE Weapon[ MAXITEMS ];
 extern ARMOURTYPE Armour[MAXITEMS+1];
 extern MAGTYPE Magazine[MAXITEMS+1];
 extern EXPLOSIVETYPE Explosive[MAXITEMS+1];
-extern INT8 gzBurstSndStrings[MAXITEMS][30];
+extern INT8 gzBurstSndStrings[MAXITEMS][128];   // Lesh: changed this
 extern AMMOTYPE AmmoTypes[MAXITEMS];
 
 

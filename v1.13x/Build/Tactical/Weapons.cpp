@@ -283,7 +283,7 @@ EXPLOSIVETYPE Explosive[MAXITEMS+1];// =
 //};
 
 
-INT8 gzBurstSndStrings[MAXITEMS][30];// =
+INT8 gzBurstSndStrings[MAXITEMS][128];// =
 //{
 //	"",													// NOAMMO
 //	"",													// 38
@@ -1465,7 +1465,8 @@ BOOLEAN UseGun( SOLDIERTYPE *pSoldier , INT16 sTargetGridNo )
 				else
 				{
 					// Pick sound file baed on how many bullets we are going to fire...
-					sprintf( (char *)zBurstString, "SOUNDS\\WEAPONS\\%s%d.wav", gzBurstSndStrings[ Weapon[ usItemNum ].ubCalibre ], pSoldier->bBulletsLeft );
+                    // Lesh: changed next line
+					sprintf( (char *)zBurstString, (const char*)gzBurstSndStrings[ Weapon[ usItemNum ].sBurstSound ], pSoldier->bBulletsLeft );
 
 					INT8 volume = HIGHVOLUME;
 					if ( noisefactor < 100 ) volume = (volume * noisefactor) / 100;

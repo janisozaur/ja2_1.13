@@ -5838,6 +5838,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\XML_BurstSounds.cpp">
+			</File>
+			<File
 				RelativePath="XML_BurstSoundStrings.cpp">
 				<FileConfiguration
 					Name="Debug Demo|Win32">
