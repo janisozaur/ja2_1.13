@@ -3208,6 +3208,9 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\XML_Music.cpp">
+			</File>
+			<File
 				RelativePath="XML_Strings.cpp">
 				<FileConfiguration
 					Name="Demo Release with Debug Info|Win32">

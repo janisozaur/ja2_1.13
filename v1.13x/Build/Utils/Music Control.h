@@ -1,6 +1,8 @@
 #ifndef _MUSIC_CONTROL_H_
 #define _MUSIC_CONTROL_H_
 
+//#define MAX_TRACKS			20  //lal
+
 enum MusicList {
 	MARIMBAD2_MUSIC,
 	MENUMIX_MUSIC,
