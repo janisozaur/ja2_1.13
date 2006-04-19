@@ -1,0 +1,470 @@
+======================================================================
+  Build 11-08-05
+======================================================================
+
+- New data directory structure.  Default data (copliant with v. 1.12) is located
+in the Data folder, while data specific to mod 1.13 is located in the Data-1.13
+folder.  Users can make their own custom data folders and switch between them.
+See install guide for more details.
+
+- JA2 Editor (Released Seperately and still using the 10-07 code base)
+
+- Hi-Res Version (Released as an exe patch)
+
+- Added choosabe/random personalities and attitudes to IMP generation - see
+Data-1.13\JA2_Options.ini. (For now, if you choose your attitude and
+personality, it will be the same for EVERY IMP you create. The only way around
+is to change the file, start the game, create an IMP, save and exit. Change the
+file, reload the game, create a second IMP, save and exit, etc... -- Kaiden)
+
+- MERC mercs can be made available on day 1 and/or make all of them available at
+once (see Data-1.13\JA2_Options.ini).
+
+- Explosive skill increase for setting and disarming mines and traps is
+restored.  However, neither action succedes automatically as before: a skill
+check is performed as with other explosives (it is, however, easier to disarm
+your own mine/trap).
+
+- UB tilesets add-on, which enables the use of maps using JA2 UB tilesets in
+JA2.
+
+Bug fixes:
+
+- Busy mercs no longer assigned to squads when no mercs free in sector, except
+when an air strike occurs.  Can remove mercs from all assigned squads (to fix
+this bug when it happened in an older version) by pressing ctrl+alt+s.
+
+- Various airstrike-related fixes.
+
+- "Ghost Squads" have been fixed.
+
+- Snipers can no longer fire without a spotter (AI fix).
+
+- Fixed a bug that caused wisdom to improve too fast when picking locks.
+
+
+======================================================================
+  Builds prior to 11-08-05
+======================================================================
+
+This project builds upon the Whitehat CVS project ported to C++ by DeFrog, and
+includes all of its new features and fixes, including variable length autofire
+and chance-to-hit indicator.
+
+
+AI changes:
+-----------
+
+- Enemies can now snipe you if they have a sniper scope, even if you're out
+of visual range, but still visible to another enemy (spotter)
+
+- Enemies can now climb on roofs. Sometimes they will stay up there and
+snipe you.
+
+- Enemies will now flank your position
+
+- Enemies no longer get up and charge straight at you after dropping prone
+
+- Enemies take cover more often
+
+- Enemes can use suppression fire to try send you to the ground and make you
+lose APs (but not out of visual range)
+
+- AI tweaks to reduce the number of enemies on the roofs, and make snipers
+only shoot when they might actually hit you
+
+- Enemies should be less likely to come looking for you than in previous
+versions. This should reduce the huge, immediate carnage upon entering a
+sector, and provide more smaller battles instead.
+
+- Enemies can use the new GL bursts
+
+
+Data externalized  into XML files:
+---------------------------------
+
+- Weapons
+- Items
+- Explosives
+- Armours
+- Sounds
+- Merges
+- Magazines
+- Launchables
+- Ammo Strings / Calibers
+- Compatible Face Items
+- Enemy Gun Choices
+- Attachments
+- Attachment Combo Merges
+- Attachment Info
+- Incompatible Attachments
+- Shopkeeper Inventories
+- Enemy Item Choices
+- IMP Item Choices
+- Ammo Types
+
+(XML files with original JA2 items & stats included)
+
+
+New item and weapon attributes:
+-------------------------------
+(Editable in Items.xml and Weapons.xml)
+
+- thermal optics
+- tunnel vision
+- weapon stat bonuses
+- vision and hearing range bonuses
+- Default attachments - created and added when item is created
+- Launchables that decrease in status, instead of being removed, when
+launcher's mag size > 1
+- Burst & spread fire for grenade launchers
+- lockBustingPower stat for "knock-knock" ammo types
+- BurstAPs stat replaces bBaseAutofireCost
+- CamoBonus and BestLaserRange stats
+- percent volume reduction
+- plus many more
+
+
+Other item-related changes:
+---------------------------
+
+- Platinum Watch + Copper Wire = Detonator - like in UB (configurable)
+- Canteens can be merged (configurable)
+- Silencers and flash suppressors hide muzzle flashes (configurable)
+- Solid slugs in shotguns add 6.5 tiles to gun range (bumps 'em up to 20
+tiles, same as SMGs) (configurable)
+- Duckbill adds 4 tiles to buckshot range (configurable)
+- Enemies always use sniper scopes with sniper rifles
+- Mercs can wear gas masks and goggles at the same time (configurable)
+- Possibility of up to 2 attachments on an enemy weapon
+- Silencers (attached and built-in) suppress a percentage of gunshot noise
+(configurable)
+- When prone, bipods (attached and built-in) give ToHitBonus and/or
+BurstToHitBonus, as specified in Items.xml
+
+
+Other new and improved features:
+--------------------------------
+
+- New difficulty level: INSANE
+
+More enemies, more frequent and aggressive attacks on towns, more elites,
+higher level enemies, more frequent bursts from enemies, less starting cash
+
+- Insane has 50% more elites than expert
+- Expert has 25% more elites than normal, and 20% larger garrisons, with not
+just yellow shirts
+
+We were nice and kept the elites out of Omerta
+
+- 5000 item slots!  New items, including weapons, ammo, and armor, can be added
+in Items.xml.
+
+- Bobby Ray's sells more stuff, both quantity and variety
+
+New option at start: Bobby Ray Selection
+
+BR's now sells ALL the weapons and ammo in the game, along with detonators,
+TNT, etc. We also bumped grenades & explosives back a bit so you'll see them
+earlier.
+
+The following options are available:
+
+Normal - as original
+Great - 2x as much inventory as normal and sells gear a bit earlier. If you
+look in the used section, you might find some slightly better stuff there,
+if you're up to fixing it.
+Excellent - Great, plus has 4x as much inventory as normal and sells gear a
+lot earlier
+Awesome - Great, plus has 10x as much inventory as normal and sells all gear
+from the beginning
+
+- Bobby Ray and Tony both sell new weapons and ammo; B.R also sells explosives
+(configurable)
+
+- Scrapped the platinum mode and moved the Realistic/Sci-Fi choice down to the
+Iron Man / Regular Saves part of the screen. Iron Man is no longer
+available.
+
+- New option in preferences: Enemy equipment drops - Normal and Everything
+(shortcut key = shift+D)
+
+Obviously, if you select everything, enemies will always drop their weapons
+and ammo, along with some other gear. This replaces the tons of guns option,
+which is now on by default.
+
+- Enemies can and will use new weapons
+
+So don't be surprised if you get hit by a .50 Cal in the chest.
+
+Enemies can use G11 and P90, and the other good guns (but only rarely)
+
+(Configurable in EnemyGunChoices.xml)
+(Enemy gear configurable in EnemyItemChoices.xml)
+
+- Brothel re-enabled
+
+But I couldn't get the payment thing to work properly (I'd pay and she'd let
+me in and then they'd attack me  but I didn't really try _that_ hard), so
+just speak friendly to the Madame and she'll let you in, and you can get the
+winking smiley (and sound fx) as per pre-gold versions.
+
+- Zero stats are trainable (configurable)
+
+- All stats are trainable up to 100
+
+- No loyalty penalty for inactivity
+
+- Prof1.dat - Prof4.dat
+
+Extra prof.dat files for Easy(1) through Insane(4) difficulty. (currently
+all the same)
+
+- The extended ear shows the enemy location in all modes, not just Platinum.
+
+- autofire shots slow down a bit when the firing enemy is off-screen.
+
+- Fallback animation added. Now enemies can fall backwards when they die.
+
+- Multiple Interrupts. So now if you pass on your first chance, you can
+have another.
+
+- Audible warnings using a previously unused merc quote when enemy tanks
+or rocket launchers are present
+
+- Maximum Tilesets is now 255, with no additional code changes required to
+add new tilesets. (UB Tileset add-on Pack Available for Download)
+
+- GL Burst cursor-type toggle option in preferences screen (also shift-G)
+
+- Laser scopes now operate most effectively at a certain range, decreasing
+their bonus beyond that and don't operate as well in bright light.
+
+- Item bonuses scale better with item status
+
+- time-of-day-dependent vision bonuses scale better with time of day
+
+- Air Strikes
+
+2 types: random when too many mercs are located in one sector, and
+radioed-in by enemies during combat
+
+(can be toggled on/off when starting a new game)
+
+- UB style reveal all enemy gear when sector cleared
+
+
+Interface Changes:
+------------------
+
+- Control + LMB on map inventory screen to permanently delete items w/out
+confirming
+
+- Alternate + LMB on map inventory screen to sell items to the locals for
+25% of their value w/out confirming (configurable)
+
+- Ctrl-D turns ON/OFF the Enemy's Drop All option
+
+
+JA2_Options.ini File
+--------------------
+
+- Basic settings externalized, including starting cash, enemy difficulty and
+numbers, militia numbers and cost of training.
+
+- Turn random IMP Personalities and Attitudes ON/OFF or pick and choose your
+own attitude and personality.
+
+- Make the MERC Website available at the beginning of the game.
+
+- Option to allow all Mercs from MERC available as soon as the website is
+available.
+
+
+IMP changes:
+------------
+
+- Multiple IMPs & 90210 code re-enabled
+
+- UB Style IMP generation screens
+
+- IMP items configurable in xml; includes options for random items and items
+for any stat/specialty.
+
+- IMP clothing colours vary by portrait
+
+- It is now possible to drop leadership to Zero.
+
+- Adjusted the IMP male body selection so that it allows you to have a large
+body, regardless of portrait, and won't replace your martial arts skills
+w/HTH, but rather just give you a smaller body.
+
+
+Rebalanced stat gains:
+----------------------
+
+The main idea here is that skills that affect the outcome of merc actions should
+be the same skills that are improved.
+
+- More dex. and wis. for healing
+
+- Wisdom is awarded for training militia, training other mercs, practising
+skills, detecting land mines, making combos and special attachments and
+attaching detonators, and picking locks.  Most of the increases depend on the
+difficulty of the task.
+
+- Mercs training other mercs gain leadership
+
+- In hand-to-hand attacks stats increase in proportion to their use.  Punching
+and knifing: 3*dex + 1*agi + 1*str, stealing: 1*dex + 1*agi + 3*str.
+
+- Grenade throwing gives str., dex. and mrk.
+
+- Exertion (spending energy through moving and other activities) adds some
+health and strength.
+
+
+Weapons and ammo from Unfinished Business
+-----------------------------------------
+
+We added the following weapons (in addition to the regular JA2 guns):
+
+- Barrett .50 Cal Sniper Rifle
+- H&K PSG1 Sniper Rifle
+- VAL Silent Sniper Rifle
+- Calico M950 pistol
+- Calico M960A SMG
+- Calico M900 Rifle
+- Enfield L85A1 LMG
+- TAR 21 LMG
+- Micro Uzi
+
+And the following Ammo:
+
+- 9mm Heavy
+- .50 Cal
+- 9mm Large (50)
+- 9mm Large AP (50)
+- 9mm Large HP (50)
+
+All stats are the same as in UB, except for the Calico M950, to which I
+added burst-fire. (A pistol that big, with a 50-round magazine without burst
+fire just seemed a waste to me)
+
+
+Characters from Unfinished Business
+-----------------------------------
+
+Mercs from UB have been added to MERC:
+
+- Gaston
+- Stogie
+- Tex
+- Biggins
+
+Relevant quotes added for Speck to say. These guys are usable with the
+creatures and will say some new/reused quotes
+
+
+New weapons:
+------------
+
+We did away with the weapon limit of 69, and added the following:
+
+- MP-5A2
+- MP-5SD3
+- MP-5N
+- UMP-45
+- Five seveN pistol
+- P7M8 pistol
+- G36K
+- G36C
+- G36E
+- MSG-90A1
+- Bennelli M4 Super 90 shotgun
+- AK-103
+- RPG-7
+- HK MP-7 PDW
+- Commando Mortar (in addition to regular one)
+- OICW, with integrated grenade launcher and 6-shot 20mm HE mags (GL
+supports 2-shot bursts)
+- Milkor MGL Mk.1 40mm grenade launcher (with 3-shot bursts possible)
+- Tex's Hartford 6 shooters
+
+
+New ammo:
+---------
+
+- 200 rd 5.56mm belt for minimi
+- 100 rd 7.62mm belt for hk21
+- 75 rd 5.45mm drum for RPK
+- 20 rd 5.7mm mags for Five seveN (We need to clean these images up at some
+point)
+- RPG ammo, including HE, AP and Fragmentation
+- 100 rd Beta C-Mags (9mm and 5.56mm)
+- 40 rd 4.6mm mag for MP-7
+- mustard gas mortar shell
+- 6 rd 20mm HE clip for OICW
+- 6 rd cylinders (frag, smoke, stun) for MGL Mk.1
+
+
+New Attachments:
+----------------
+
+- Flash suppressor
+- Reflex scope
+- Reflex sight
+- C-Mag adapters (9mm and 5.56mm)
+
+
+Weapon changes:
+---------------
+
+- Added autofire to rifles, SMGs and LMGs (including UB weapons)
+- G11 and SKS can attach Talon
+- Minimi holds 200 rounds
+- HK21 holds 100 rounds
+- RPK holds 75 rounds
+- C-7 has 3 round burst instead of 5
+- Colt Commando renamed to M4A1
+- L85A1 renamed to L85A2
+- Pistols should all cost about 1 AP less to shoot
+- MP53 renamed to HK 53, since it uses 5.56mm ammo, it also uses slightly
+less APs
+- Sniper rifle damage upped by 10 pts each
+
+
+Bugs fixed in the CVS code:
+---------------------------
+
+- The Autofire/Burst bug, where you couldn't do burst fire unless the
+weapon also had autofire.
+
+- Autofire now has same penalty as burst after the first bullet
+
+- The canteen/camouflage bug, where you couldn't apply items to the merc's
+body.
+
+- The 0 AP grenade bug, where throwing grenades didn't cost any APs.
+
+- The 0 Min. AP cost for AI throwing grenades bug that resulted in a CTD.
+
+- Incorrectly calculated AP cost for shooting, throwing etc. (minor difference)
+
+- more...
+
+
+Other bug fixes:
+----------------
+
+- Breath overflow bug.
+
+- When throwing knives, you will now stop if you see a new enemy.
+
+- Several LOS fixes causing a CTD in the game.
+
+- The LOS indicator now works correctly at night.
+
+- Vision bonuses no longer apply to worn items in-hand
+
+- more...
