@@ -1667,6 +1667,7 @@ FLOAT CalculateObjectTrajectory( INT16 sTargetZ, OBJECTTYPE *pItem, vector_3 *vP
 	REAL_OBJECT *pObject;
 	FLOAT	dDiffX, dDiffY;
 	INT16	sGridNo;
+	//int cnt=0;
 
 	if ( psFinalGridNo )
 	{
@@ -1692,10 +1693,13 @@ FLOAT CalculateObjectTrajectory( INT16 sTargetZ, OBJECTTYPE *pItem, vector_3 *vP
 	pObject->fTestPositionNotSet = TRUE;
 	pObject->fVisible		 = FALSE;
 
+	// WANNE 2
 	// Alrighty, move this beast until it dies....
-	while( pObject->fAlive )
+	while( pObject->fAlive)
 	{
-		DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"CalculateObjectTrajectory: calling simulateobject - this object never fucking dies!!!!");
+		//cnt = cnt + 1;
+		DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"CalculateObjectTrajectory: calling SIMULATEobject - this object never fucking dies!!!!");
+		//DebugMsg (TOPIC_JA2,DBG_LEVEL_3, String( "Counter: %d", cnt));
 		SimulateObject( pObject, (float)DELTA_T );
 	}
 

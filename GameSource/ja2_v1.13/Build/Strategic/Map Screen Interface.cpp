@@ -1,3 +1,4 @@
+// WANNE 2 <changed some lines>
 #ifdef PRECOMPILEDHEADERS
 	#include "Strategic All.h"
 #else
@@ -40,8 +41,8 @@
 #endif
 
 // inventory pool position on screen
-#define MAP_INVEN_POOL_X 300
-#define MAP_INVEN_POOL_Y 300
+#define MAP_INVEN_POOL_X				300
+#define MAP_INVEN_POOL_Y				300
 
 // the number of help region messages
 #define NUMBER_OF_MAPSCREEN_HELP_MESSAGES 5
@@ -49,7 +50,8 @@
 // number of LINKED LISTS for sets of leave items (each slot holds an unlimited # of items)
 #define NUM_LEAVE_LIST_SLOTS 20
 
-#define SELECTED_CHAR_ARROW_X 8
+// WANNE 2 <change 2>
+#define SELECTED_CHAR_ARROW_X			1	//8
 
 #define SIZE_OF_UPDATE_BOX 20
 
@@ -89,6 +91,8 @@ enum{
 	OTHER_REGION,
 };
 
+// WANNE 2
+UINT16 usVehicleY = 0;
 
 // waiting list for update box
 INT32 iUpdateBoxWaitingList[ MAX_CHARACTER_COUNT ];
@@ -1141,7 +1145,8 @@ INT32 DoMapMessageBoxWithRect( UINT8 ubStyle, INT16 *zString, UINT32 uiExitScree
 
 INT32 DoMapMessageBox( UINT8 ubStyle,  INT16 * zString, UINT32 uiExitScreen, UINT16 usFlags, MSGBOX_CALLBACK ReturnCallback )
 {
-  SGPRect CenteringRect= {0, 0, 640, INV_INTERFACE_START_Y };
+	// WANNE 2
+  SGPRect CenteringRect= {0, 0, SCREEN_WIDTH, INV_INTERFACE_START_Y };
 
 	// reset the highlighted line
 	giHighLine = -1;
@@ -1272,6 +1277,8 @@ void HandleDisplayOfSelectedMercArrows( void )
 	INT16 sYPosition = 0;
 	HVOBJECT hHandle;
 	UINT8 ubCount = 0;
+	INT16 usVehicleCount = 0;
+
 	// blit an arrow by the name of each merc in a selected list
 	if( bSelectedInfoChar == -1 )
 	{
@@ -1294,7 +1301,9 @@ void HandleDisplayOfSelectedMercArrows( void )
 	
 	if( bSelectedInfoChar >= FIRST_VEHICLE )
 	{
-		sYPosition += 6;
+		// WANNE 2 <fixed>
+		usVehicleCount = bSelectedInfoChar - FIRST_VEHICLE;
+		sYPosition = usVehicleY+( usVehicleCount * ( Y_SIZE + 2) ) - 1;;
 	}
 
 
@@ -1311,9 +1320,12 @@ void HandleDisplayOfSelectedMercArrows( void )
 			if( ( IsEntryInSelectedListSet( ubCount ) == TRUE ) || ( ( bSelectedDestChar != - 1 ) ? ( ( Menptr[ gCharactersList[ ubCount ].usSolID ].ubGroupID != 0 ) ? ( Menptr[ gCharactersList[ bSelectedDestChar ].usSolID ].ubGroupID == Menptr[ gCharactersList[ ubCount ].usSolID ].ubGroupID ) : FALSE ) : FALSE ) )
 			{
 				sYPosition = Y_START+( ubCount * ( Y_SIZE + 2) ) - 1;
+				
 				if( ubCount >= FIRST_VEHICLE )
 				{
-					sYPosition += 6;
+					// WANNE 2 <fixed>
+					usVehicleCount = ubCount - FIRST_VEHICLE;
+					sYPosition = usVehicleY+( usVehicleCount * ( Y_SIZE + 2) ) - 1;;
 				}
 
 				GetVideoObject( &hHandle, guiSelectedCharArrow );
@@ -4758,16 +4770,11 @@ void DisplaySoldierUpdateBox( )
 
 	iUpdatePanelHeight = ( iNumberHigh + 1 ) * TACT_HEIGHT_OF_UPDATE_PANEL_BLOCKS;
 
-	// get the x,y offsets on the screen of the panel
-	iX = 290 + ( 336 - iUpdatePanelWidth ) / 2;
-
-//	iY = 28 + ( 288 - iUpdatePanelHeight ) / 2;
-
-	// Have the bottom of the box ALWAYS a set distance from the bottom of the map ( so user doesnt have to move mouse far )
-	iY = 280 - iUpdatePanelHeight;
+	// WANNE 2
+	iX = (MAP_BORDER_X + ((SCREEN_WIDTH - MAP_BORDER_X) / 2)) - (iUpdatePanelWidth / 2);
+	iY = (MAP_BORDER_Y + ((SCREEN_HEIGHT - 121) / 2)) - (iUpdatePanelHeight / 2);
 
 	GetVideoObject( &hBackGroundHandle, guiUpdatePanelTactical );
-
 
 	//Display the 2 TOP corner pieces
 	BltVideoObject( guiSAVEBUFFER, hBackGroundHandle, 0, iX-4, iY - 4 , VO_BLT_SRCTRANSPARENCY,NULL );
@@ -4864,6 +4871,7 @@ void DisplaySoldierUpdateBox( )
 	}
 
 
+	// WANNE 2
 	//Display the reason for the update box
 	if( fFourWideMode ) 
 	{
@@ -4887,6 +4895,7 @@ void DisplaySoldierUpdateBox( )
 }
 
 
+// WANNE 2
 void CreateDestroyUpdatePanelButtons(INT32 iX, INT32 iY, BOOLEAN fFourWideMode )
 {
 	static BOOLEAN fCreated = FALSE;
@@ -6435,7 +6444,6 @@ void HandleBlitOfSectorLocatorIcon( INT16 sSectorX, INT16 sSectorY, INT16 sSecto
 
 	// invalidate region on frame buffer
 	InvalidateRegion( sScreenX, sScreenY - 1, sScreenX + MAP_GRID_X , sScreenY + MAP_GRID_Y );
-
 }
 
 
