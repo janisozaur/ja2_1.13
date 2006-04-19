@@ -1,0 +1,75 @@
+-----------------------------------------------
+HOW TO MERGE YOUR CHANGES IN THE LATEST SOURCE
+-----------------------------------------------
+
+- Download the latest Data, Source (both rar-files) and Changes.txt from the folder "JA2 v1.13 Latest Source" (lool at the date of the folder).
+- Extract both of the rar files and merge your source code and data.
+	- You can use the tool "Compare It" for merging, which is located on the ftp.
+- Add your changes in the Changes.txt (also add a header before the changes).
+- Rar the Source and the Data.
+- Create a new sub-folder in the "JA2 v1.13 Latest Source" on the ftp named with the current date (YYYY_MM_DD).
+- Upload the Data, Source (both of them are rar-files) in the newly created folder.
+- Upload the Changes.txt in the "JA v1.13 Latest Source" folder.
+- That's it ;-)
+
+
+*********************************************************
+*	2006/03/01					*
+*	RoWa21						*
+*	Developed in VS 2003				*
+*********************************************************
+
+- Updated the High-Resolution version (1024x768, 800x600, 640x480)
+	- Resolution can be configured in the JA2.ini file.
+
+
+
+*********************************************************
+*	2006/03/16					*
+*	RoWa21						*
+*	Developed in VS 2003				*
+*********************************************************
+
+- Changed missing screens to the High-Resolution
+	- Tactical Screen
+	- Shopkeeper Interface, 
+	- Credits Screen,
+	- AutoResolve Screen
+	- ...
+
+- Some bugfixing with the screens
+	- Centered message boxes
+	- ...
+
+- Merged lalienxx's features (BUT NO BURST AND NO MP3/OGG SUPPORT!)
+	- Rain and lightning visual and sound effects
+	- Visibility radius decrease when rainig
+	- Weapon relyability decrease when rainig
+	- Possibility to spot the enemy at night with lightning
+	- New settings in the ja2.ini file for the rain
+	- Aiming without shooting with "L" key
+		- Move the cursor over an enemy and press the "L" key.
+
+- Added judges bugfixing
+	- Swapped internal shopkeeper character numbering to match the Prof.dat in 1.13 (Gabby/Smithy)
+	- Added status of the items to item 'tooltip'
+		- If it is an ammo, the number of available rounds appear
+	- A stack of items now always shows the minimum repair status
+		- No more carrying a stack of grenades into battle only to find most are duds
+	- Made tactical map loading code more robust against maps with bogus buildings 
+	- Made tactical map loading code more robust against maps with characters with bogus locations or schedules 
+
+- Changed the location of the savegame structure
+	- Each mode contains its own savegame folder in its own data-folder
+
+- Some general bugfixing
+	- See Bugfixing.xls on the ftp
+	
+
+*********************************************************
+*	2006/04/16					*
+*	RoWa21						*
+*	Developed in VS 2003				*
+*********************************************************
+
+- Updated the language files in the utils project from lalienxx 
