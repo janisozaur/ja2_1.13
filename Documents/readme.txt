@@ -6,6 +6,8 @@ We started with the C++ CVS code that DeFrog so wisely ported over to
 C++.NET. We've located and fixed some bugs in the original and CVS code (as well
 as our own), and added a host of new features and improvements, including:
 
+- Configurable High Resolution Graphics (1024x768, 800x600, 640x480)
+
 - Smarter, more cunning AI that climbs on roofs and snipes using spotters
 
 - Externalised, editable data for weapons, items, and more
