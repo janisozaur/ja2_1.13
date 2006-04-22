@@ -4,9 +4,9 @@ HOW TO MERGE YOUR CHANGES IN THE LATEST SOURCE
 
 - Download the latest Data, Source (both rar-files) and Changes.txt from the folder "JA2 v1.13 Latest Source" (lool at the date of the folder).
 - Extract both of the rar files and merge your source code and data.
-	- You can use the tool "Compare It" for merging, which is located on the ftp.
+	- You can use "Beyond Compare" or "Compare It" for merging, which are both located on the ftp.
 - Add your changes in the Changes.txt (also add a header before the changes).
-- Rar the Source and the Data.
+- Zip/Rar the Source and the Data.
 - Create a new sub-folder in the "JA2 v1.13 Latest Source" on the ftp named with the current date (YYYY_MM_DD).
 - Upload the Data, Source (both of them are rar-files) in the newly created folder.
 - Upload the Changes.txt in the "JA v1.13 Latest Source" folder.
@@ -73,3 +73,29 @@ HOW TO MERGE YOUR CHANGES IN THE LATEST SOURCE
 *********************************************************
 
 - Updated the language files in the utils project from lalienxx 
+
+*********************************************************
+*	2006/04/19					*
+*	Madd_Mugsy					*
+*	Developed in VS 2003				*
+*********************************************************
+
+- Restored the "accurate" and "inaccurate" strings that Rowa21 overwrote ;) 
+- IMP.dat file changed to save a different file for each IMP
+- Different existing IMPs can be loaded by typing their names in the IMP webpage
+- Reverted changes to font.cpp due to Ivan's text not being displayed properly
+
+*********************************************************
+*	2006/04/20					*
+*	Little Alien					*
+*	Developed in VS 2003				*
+*********************************************************
+
+- added fonts to display russian letters for Ivan
+- added 007.edt (Ivan) with proper encoding
+- some letters are displayed wrong when english exe is used on german version (this is normal, german and russian fonts use same ASCII codes for different characters)
+
+
+
+
+
