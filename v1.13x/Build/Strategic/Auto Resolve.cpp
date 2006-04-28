@@ -1,3 +1,5 @@
+// WANNE 2 <changed some lines>
+// MAXIMUM NUMBER OF ENEMIES: 32
 #ifdef PRECOMPILEDHEADERS
 	#include "Strategic All.h"
 	#include "GameSettings.h"
@@ -59,6 +61,12 @@
 //#include "vtuneapi.h"
 
 //#define INVULNERABILITY
+
+#define MAX_AR_TEAM_SIZE 256
+
+INT32 giMaxEnemiesToRender = 40;
+INT32 giMaxMilitiaToRender = 20;//Changes depending on merc amount
+
 
 extern BOOLEAN AutoReload( SOLDIERTYPE *pSoldier );
 extern HVSURFACE ghFrameBuffer;
@@ -506,7 +514,7 @@ void DoTransitionFromPreBattleInterfaceToAutoResolve()
 	sEndTop = SrcRect.iTop + gpAR->sHeight / 2;
 
 	//save the prebattle/mapscreen interface background
-	BlitBufferToBuffer( FRAME_BUFFER, guiEXTRABUFFER, 0, 0, 640, 480 );
+	BlitBufferToBuffer( FRAME_BUFFER, guiEXTRABUFFER, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
 
 	//render the autoresolve panel
 	RenderAutoResolve();
@@ -575,13 +583,13 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve1");
 	Assert( gpMercs );
 	memset( gpMercs, 0, sizeof( SOLDIERCELL ) * 20 );
 	//Militia -- MAX_ALLOWABLE_MILITIA_PER_SECTOR max
-	gpCivs = (SOLDIERCELL*)MemAlloc( sizeof( SOLDIERCELL) * gGameExternalOptions.iMaxMilitiaPerSector );
+	gpCivs = (SOLDIERCELL*)MemAlloc( sizeof( SOLDIERCELL) * MAX_AR_TEAM_SIZE  );
 	Assert( gpCivs );
-	memset( gpCivs, 0, sizeof( SOLDIERCELL ) * gGameExternalOptions.iMaxMilitiaPerSector );
+	memset( gpCivs, 0, sizeof( SOLDIERCELL ) * MAX_AR_TEAM_SIZE  );
 	//Enemies -- 32 max
-	gpEnemies = (SOLDIERCELL*)MemAlloc( sizeof( SOLDIERCELL) * 32 );
+	gpEnemies = (SOLDIERCELL*)MemAlloc( sizeof( SOLDIERCELL) * MAX_AR_TEAM_SIZE  );
 	Assert( gpEnemies );
-	memset( gpEnemies, 0, sizeof( SOLDIERCELL ) * 32 );
+	memset( gpEnemies, 0, sizeof( SOLDIERCELL ) * MAX_AR_TEAM_SIZE  );
 
 	//Set up autoresolve 
 	gpAR->fEnteringAutoResolve = TRUE;
@@ -644,12 +652,16 @@ UINT32 AutoResolveScreenHandle()
 		//Take the framebuffer, shade it, and save it to the SAVEBUFFER.
 		ClipRect.iLeft = 0;
 		ClipRect.iTop = 0;
-		ClipRect.iRight = 640;
-		ClipRect.iBottom = 480;
+		/*ClipRect.iRight = 640;
+		ClipRect.iBottom = 480;*/
+		ClipRect.iRight = SCREEN_WIDTH;
+		ClipRect.iBottom = SCREEN_HEIGHT;
+
 		pDestBuf = LockVideoSurface( FRAME_BUFFER, &uiDestPitchBYTES );
 		Blt16BPPBufferShadowRect( (UINT16*)pDestBuf, uiDestPitchBYTES, &ClipRect );
 		UnLockVideoSurface( FRAME_BUFFER );
-		BlitBufferToBuffer( FRAME_BUFFER, guiSAVEBUFFER, 0, 0, 640, 480 );
+		//BlitBufferToBuffer( FRAME_BUFFER, guiSAVEBUFFER, 0, 0, 640, 480 );
+		BlitBufferToBuffer( FRAME_BUFFER, guiSAVEBUFFER, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
 		KillPreBattleInterface();
 		CalculateAutoResolveInfo();
 		CalculateSoldierCells( FALSE );
@@ -658,7 +670,9 @@ UINT32 AutoResolveScreenHandle()
 		DetermineTeamLeader( FALSE ); //enemy team
 		CalculateAttackValues();
 		if( gfExtraBuffer )
+		{
 			DoTransitionFromPreBattleInterfaceToAutoResolve();
+		}
 		else
 			gpAR->fExpanding = TRUE;
 		gpAR->fRenderAutoResolve = TRUE;
@@ -814,7 +828,9 @@ void CalculateSoldierCells( BOOLEAN fReset )
 	gpAR->ubAliveCivs = gpAR->ubCivs;
 	gpAR->ubAliveEnemies = gpAR->ubEnemies;
 
-	iMaxTeamSize = max( gpAR->ubMercs + gpAR->ubCivs, gpAR->ubEnemies );
+	//iMaxTeamSize = max( gpAR->ubMercs + gpAR->ubCivs, gpAR->ubEnemies );
+	iMaxTeamSize = max( min( 40,  gpAR->ubMercs + gpAR->ubCivs ), min( 40,  gpAR->ubEnemies ) );
+
 	
 	if( iMaxTeamSize > 12 )
 	{
@@ -826,13 +842,15 @@ void CalculateSoldierCells( BOOLEAN fReset )
 	}
 	gpAR->uiTimeSlice = gpAR->uiTimeSlice * gpAR->ubTimeModifierPercentage / 100;
 	
-	iTop = 240 - gpAR->sHeight/2;
-	if( iTop > 120 )
+	// WANNE 2
+	iTop = iScreenHeightOffset + (240 - gpAR->sHeight/2);
+	if( iTop > (iScreenHeightOffset + 120) )
 		iTop -= 40;
 
 	if( gpAR->ubMercs )
 	{
-		iStartY = iTop + (gpAR->sHeight - ((gpAR->ubMercRows+gpAR->ubCivRows)*47+7))/2 + 6;
+		iStartY = iTop + (gpAR->sHeight - (min(10,gpAR->ubMercRows+gpAR->ubCivRows)*47+7))/2 + 6;
+		//iStartY = iTop + (gpAR->sHeight - ((gpAR->ubMercRows+gpAR->ubCivRows)*47+7))/2 + 6;
 		y = gpAR->ubMercRows;
 		x = gpAR->ubMercCols;
 		i = gpAR->ubMercs;
@@ -843,6 +861,7 @@ void CalculateSoldierCells( BOOLEAN fReset )
 			if( y >= gapStartRow )
 				index -= y - gapStartRow + 1;
 			Assert( index >= 0 && index < gpAR->ubMercs );
+
 			gpMercs[ index ].xp = gpAR->sCenterStartX + 3 - 55*(x+1);
 			gpMercs[ index ].yp = iStartY + y*47;			
 			gpMercs[ index ].uiFlags = CELL_MERC;
@@ -871,17 +890,16 @@ void CalculateSoldierCells( BOOLEAN fReset )
 	}
 	if( gpAR->ubCivs )
 	{
-		iStartY = iTop + (gpAR->sHeight - ((gpAR->ubMercRows+gpAR->ubCivRows)*47+7))/2 + gpAR->ubMercRows*47 + 5;
+		iStartY = iTop + (gpAR->sHeight - (min(10,gpAR->ubMercRows+gpAR->ubCivRows)*47+7))/2 + gpAR->ubMercRows*47 + 5;
 		y = gpAR->ubCivRows;
 		x = gpAR->ubCivCols;
 		i = gpAR->ubCivs;
-		gapStartRow = gpAR->ubCivRows - gpAR->ubCivRows * gpAR->ubCivCols + gpAR->ubCivs;
-		for( x = 0; x < gpAR->ubCivCols; x++ ) for( y = 0; i && y < gpAR->ubCivRows; y++, i-- ) 
+
+		for( index = 0; index < gpAR->ubCivs ; ++index )
 		{
-			index = y * gpAR->ubCivCols + gpAR->ubCivCols - x - 1;
-			if( y >= gapStartRow )
-				index -= y - gapStartRow + 1;
-			Assert( index >= 0 && index < gpAR->ubCivs );
+			x = gpAR->ubCivCols - 1  - index % gpAR->ubCivCols;
+			y = index / gpAR->ubCivCols;
+
 			gpCivs[ index ].xp = gpAR->sCenterStartX + 3 - 55*(x+1);
 			gpCivs[ index ].yp = iStartY + y*47;
 			gpCivs[ index ].uiFlags |= CELL_MILITIA;
@@ -889,19 +907,19 @@ void CalculateSoldierCells( BOOLEAN fReset )
 	}
 	if( gpAR->ubEnemies )
 	{
-		iStartY = iTop + (gpAR->sHeight - (gpAR->ubEnemyRows*47+7))/2 + 5;
+		iStartY = iTop + (gpAR->sHeight - (min(10,gpAR->ubEnemyRows)*47+7))/2 + 5;
 		y = gpAR->ubEnemyRows;
 		x = gpAR->ubEnemyCols;
 		i = gpAR->ubEnemies;
-		gapStartRow = gpAR->ubEnemyRows - gpAR->ubEnemyRows * gpAR->ubEnemyCols + gpAR->ubEnemies;
-		for( x = 0; x < gpAR->ubEnemyCols; x++ ) for( y = 0; i && y < gpAR->ubEnemyRows; y++, i-- ) 
+
+		for( index = 0; index < gpAR->ubEnemies ; ++index )
 		{
-			index = y * gpAR->ubEnemyCols + x;
-			if( y > gapStartRow )
-				index -= y - gapStartRow;
-			Assert( index >= 0 && index < gpAR->ubEnemies );
+			x = index % gpAR->ubEnemyCols;
+			y = index / gpAR->ubEnemyCols;
+
 			gpEnemies[ index ].xp = (UINT16)(gpAR->sCenterStartX + 141 + 55*x);
 			gpEnemies[ index ].yp = iStartY + y*47;
+
 			if( gubEnemyEncounterCode != CREATURE_ATTACK_CODE )
 			{
 				if( index < gpAR->ubElites )
@@ -926,9 +944,49 @@ void CalculateSoldierCells( BOOLEAN fReset )
 	}
 }
 
+
+INT32 DetermineCellID( SOLDIERCELL *pCell )
+{
+	INT32 iIndex;
+
+	if( pCell->pSoldier->bTeam == ENEMY_TEAM )
+	{
+		for( iIndex = 0 ; iIndex < gpAR->ubEnemies ; iIndex++ )
+			if(	&gpEnemies[ iIndex ] == pCell )
+				return iIndex;
+	}else if( pCell->pSoldier->bTeam == MILITIA_TEAM )
+	{
+		for( iIndex = 0 ; iIndex < gpAR->ubCivs ; iIndex++ )
+			if(	&gpCivs[ iIndex ] == pCell )
+				return iIndex;
+	}
+	
+	return 0;
+}
+
+BOOLEAN IsItAllowedToRender( SOLDIERCELL *pCell )
+{
+	INT32 iID = DetermineCellID( pCell );
+
+	switch( pCell->pSoldier->bTeam )
+	{
+	case ENEMY_TEAM:
+		if( iID >= giMaxEnemiesToRender ) return FALSE;
+		break;
+	case MILITIA_TEAM:
+		if( iID >= giMaxMilitiaToRender ) return FALSE;
+		break;
+	}
+	return TRUE;
+}
+
+
 void RenderSoldierCell( SOLDIERCELL *pCell )
 {
 	UINT8 x;
+
+	if( !IsItAllowedToRender( pCell ) ) return;
+
 	if( pCell->uiFlags & CELL_MERC )
 	{
 		ColorFillVideoSurfaceArea( FRAME_BUFFER, pCell->xp+36, pCell->yp+2, pCell->xp+44,	pCell->yp+30, 0 );
@@ -1047,15 +1105,16 @@ void BuildInterfaceBuffer()
 	INT32						x,y;
 
 	//Setup the blitting clip regions, so we don't draw outside of the region (for excess panelling)
-	gpAR->Rect.iLeft		= 320 - gpAR->sWidth/2;
+	// WANNE 2
+	gpAR->Rect.iLeft		= iScreenWidthOffset + (320 - gpAR->sWidth/2);
 	gpAR->Rect.iRight		= gpAR->Rect.iLeft + gpAR->sWidth;
-	gpAR->Rect.iTop			= 240 - gpAR->sHeight/2;
-	if( gpAR->Rect.iTop > 120 )
+	gpAR->Rect.iTop			= iScreenHeightOffset + (240 - gpAR->sHeight/2);
+	if( gpAR->Rect.iTop > (iScreenHeightOffset + 120) )
 		gpAR->Rect.iTop -= 40;
 	gpAR->Rect.iBottom	= gpAR->Rect.iTop + gpAR->sHeight;
 
 	DestRect.iLeft			= 0;
-	DestRect.iTop				= 0;
+	DestRect.iTop			= 0;
 	DestRect.iRight			= gpAR->sWidth;
 	DestRect.iBottom		= gpAR->sHeight;
 
@@ -1200,7 +1259,7 @@ void ExpandWindow()
 
 	//The new rect now determines the state of the current rectangle.
 	pDestBuf = LockVideoSurface( FRAME_BUFFER, &uiDestPitchBYTES );
-	SetClippingRegionAndImageWidth( uiDestPitchBYTES, 0, 0, 640, 480 );
+	SetClippingRegionAndImageWidth( uiDestPitchBYTES, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
 	RectangleDraw( TRUE, gpAR->ExRect.iLeft, gpAR->ExRect.iTop, gpAR->ExRect.iRight, gpAR->ExRect.iBottom, Get16BPPColor( FROMRGB( 200, 200, 100 ) ), pDestBuf );
 	UnLockVideoSurface( FRAME_BUFFER );
 	//left
@@ -1623,7 +1682,8 @@ void RenderAutoResolve()
 
 	if( gpAR->fPendingSurrender )
 	{
-		DisplayWrappedString( (UINT16)(gpAR->sCenterStartX+16), (UINT16)(230+gpAR->bVerticalOffset), 108, 2,
+		// WANNE 2
+		DisplayWrappedString( (UINT16)(gpAR->sCenterStartX+16), (UINT16)(iScreenHeightOffset + 230+gpAR->bVerticalOffset), 108, 2,
 			(UINT8)FONT10ARIAL, FONT_YELLOW, gpStrategicString[ STR_ENEMY_SURRENDER_OFFER ], FONT_BLACK, FALSE, LEFT_JUSTIFIED );
 	}
 	
@@ -1727,7 +1787,7 @@ void RenderAutoResolve()
 					}
 					else
 					{
-						DisplayWrappedString( (UINT16)(gpAR->sCenterStartX+16), 310, 108, 2,
+						DisplayWrappedString( (UINT16)(gpAR->sCenterStartX+16), iScreenHeightOffset + 310, 108, 2,
 							FONT10ARIAL, FONT_YELLOW, gpStrategicString[ STR_ENEMY_CAPTURED ], FONT_BLACK, FALSE, LEFT_JUSTIFIED );
 						swprintf( str, gpStrategicString[ STR_AR_OVER_CAPTURED ] );
 					}
@@ -1743,12 +1803,13 @@ void RenderAutoResolve()
 					break;
 			}
 			//Render the results of the battle.
+			// WANNE 2
 			SetFont( BLOCKFONT2 );
 			xp = gpAR->sCenterStartX + 12;
-			yp = 218 + gpAR->bVerticalOffset;
+			yp = iScreenHeightOffset + 218 + gpAR->bVerticalOffset;
 			BltVideoObjectFromIndex( FRAME_BUFFER, gpAR->iIndent, 0, xp, yp, VO_BLT_SRCTRANSPARENCY, NULL );
 			xp = gpAR->sCenterStartX + 70 - StringPixLength( str, BLOCKFONT2 )/2;
-			yp = 227 + gpAR->bVerticalOffset;
+			yp = iScreenHeightOffset + 227 + gpAR->bVerticalOffset;
 			mprintf( xp, yp, str );
 
 			//Render the total battle time elapsed.
@@ -1758,7 +1819,8 @@ void RenderAutoResolve()
 				gpAR->uiTotalElapsedBattleTimeInMilliseconds/60000,
 				(gpAR->uiTotalElapsedBattleTimeInMilliseconds%60000)/1000 );
 			xp = gpAR->sCenterStartX + 70 - StringPixLength( str, FONT10ARIAL )/2;
-			yp = 290 + gpAR->bVerticalOffset;
+			// WANNE 2
+			yp = iScreenHeightOffset + 290 + gpAR->bVerticalOffset;
 			SetFontForeground( FONT_YELLOW );
 			mprintf( xp, yp, str );
 	}
@@ -1774,7 +1836,7 @@ void CreateAutoResolveInterface()
 	HVOBJECT hVObject;
 	UINT8 ubGreenMilitia, ubRegMilitia, ubEliteMilitia;
 	//Setup new autoresolve blanket interface.
-	MSYS_DefineRegion( &gpAR->AutoResolveRegion, 0, 0, 640, 480, MSYS_PRIORITY_HIGH-1, 0,
+	MSYS_DefineRegion( &gpAR->AutoResolveRegion, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, MSYS_PRIORITY_HIGH-1, 0,
 		MSYS_NO_CALLBACK, MSYS_NO_CALLBACK );
 	gpAR->fRenderAutoResolve = TRUE;
 	gpAR->fExitAutoResolve = FALSE;
@@ -2018,28 +2080,30 @@ void CreateAutoResolveInterface()
 	//Build the interface buffer, and blit the "shaded" background.  This info won't
 	//change from now on, but will be used to restore text.
 	BuildInterfaceBuffer();
-	BlitBufferToBuffer( guiSAVEBUFFER, FRAME_BUFFER, 0, 0, 640, 480 );
+	BlitBufferToBuffer( guiSAVEBUFFER, FRAME_BUFFER, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
 
 	//If we are bumping up the interface, then also use that piece of info to
 	//move the buttons up by the same amount.
-	gpAR->bVerticalOffset = 240 - gpAR->sHeight/2 > 120 ? -40 : 0;
+
+	gpAR->bVerticalOffset = (240 - gpAR->sHeight/2) > 120 ? -40 : 0;
 	
+	// WANNE 2
 	//Create the buttons -- subject to relocation
 	gpAR->iButton[ PLAY_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ PLAY_BUTTON ] , (INT16)(gpAR->sCenterStartX+11), (INT16)(240+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ PLAY_BUTTON ] , (INT16)(gpAR->sCenterStartX+11), (INT16)(iScreenHeightOffset + 240+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, PlayButtonCallback );
 	gpAR->iButton[ FAST_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ FAST_BUTTON ] , (INT16)(gpAR->sCenterStartX+51), (INT16)(240+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ FAST_BUTTON ] , (INT16)(gpAR->sCenterStartX+51), (INT16)(iScreenHeightOffset + 240+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, FastButtonCallback );
 	gpAR->iButton[ FINISH_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ FINISH_BUTTON ] , (INT16)(gpAR->sCenterStartX+91), (INT16)(240+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ FINISH_BUTTON ] , (INT16)(gpAR->sCenterStartX+91), (INT16)(iScreenHeightOffset + 240+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, FinishButtonCallback );
 	gpAR->iButton[ PAUSE_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ PAUSE_BUTTON ] , (INT16)(gpAR->sCenterStartX+11), (INT16)(274+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ PAUSE_BUTTON ] , (INT16)(gpAR->sCenterStartX+11), (INT16)(iScreenHeightOffset + 274+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, PauseButtonCallback );
 	
 	gpAR->iButton[ RETREAT_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ RETREAT_BUTTON ], (INT16)(gpAR->sCenterStartX+51), (INT16)(274+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ RETREAT_BUTTON ], (INT16)(gpAR->sCenterStartX+51), (INT16)(iScreenHeightOffset + 274+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, RetreatButtonCallback );
 	if( !gpAR->ubMercs )
 	{
@@ -2048,23 +2112,23 @@ void CreateAutoResolveInterface()
 	SpecifyGeneralButtonTextAttributes( gpAR->iButton[ RETREAT_BUTTON ], gpStrategicString[STR_AR_RETREAT_BUTTON], BLOCKFONT2, 169, FONT_NEARBLACK );
 
 	gpAR->iButton[ BANDAGE_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ BANDAGE_BUTTON ] , (INT16)(gpAR->sCenterStartX+11), (INT16)(245+gpAR->bVerticalOffset), BUTTON_NO_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ BANDAGE_BUTTON ] , (INT16)(gpAR->sCenterStartX+11), (INT16)(iScreenHeightOffset + 245+gpAR->bVerticalOffset), BUTTON_NO_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, BandageButtonCallback );
 
 	gpAR->iButton[ DONEWIN_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ DONEWIN_BUTTON ], (INT16)(gpAR->sCenterStartX+51), (INT16)(245+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ DONEWIN_BUTTON ], (INT16)(gpAR->sCenterStartX+51), (INT16)(iScreenHeightOffset + 245+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, DoneButtonCallback );
 	SpecifyGeneralButtonTextAttributes( gpAR->iButton[ DONEWIN_BUTTON ], gpStrategicString[STR_AR_DONE_BUTTON], BLOCKFONT2, 169, FONT_NEARBLACK );
 
 	gpAR->iButton[ DONELOSE_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ DONELOSE_BUTTON ], (INT16)(gpAR->sCenterStartX+25), (INT16)(245+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ DONELOSE_BUTTON ], (INT16)(gpAR->sCenterStartX+25), (INT16)(iScreenHeightOffset + 245+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, DoneButtonCallback );
 	SpecifyGeneralButtonTextAttributes( gpAR->iButton[ DONELOSE_BUTTON ], gpStrategicString[STR_AR_DONE_BUTTON], BLOCKFONT2, 169, FONT_NEARBLACK );
 	gpAR->iButton[ YES_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ YES_BUTTON ], (INT16)(gpAR->sCenterStartX+21), (INT16)(257+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ YES_BUTTON ], (INT16)(gpAR->sCenterStartX+21), (INT16)(iScreenHeightOffset + 257+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, AcceptSurrenderCallback );
 	gpAR->iButton[ NO_BUTTON ] = 
-		QuickCreateButton( gpAR->iButtonImage[ NO_BUTTON ], (INT16)(gpAR->sCenterStartX+81), (INT16)(257+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
+		QuickCreateButton( gpAR->iButtonImage[ NO_BUTTON ], (INT16)(gpAR->sCenterStartX+81), (INT16)(iScreenHeightOffset + 257+gpAR->bVerticalOffset), BUTTON_TOGGLE, MSYS_PRIORITY_HIGH,
 		DEFAULT_MOVE_CALLBACK, RejectSurrenderCallback );
 	HideButton( gpAR->iButton[ YES_BUTTON ] );
 	HideButton( gpAR->iButton[ NO_BUTTON ] );
@@ -2183,7 +2247,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve2");
 	gbGreenToRegPromotions = 0;
 	gbRegToElitePromotions = 0;
 	gbMilitiaPromotions = 0;
-	for( i = 0; i < gGameExternalOptions.iMaxMilitiaPerSector; i++ )
+	for( i = 0; i < MAX_AR_TEAM_SIZE; i++ )
 	{
 		if( gpCivs[ i ].pSoldier )
 		{
@@ -2238,7 +2302,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve2");
 	}
 
 	//Record and process all enemy deaths
-	for( i = 0; i < 32; i++ )
+	for( i = 0; i < MAX_AR_TEAM_SIZE; i++ )
 	{
 		if( gpEnemies[ i ].pSoldier )
 		{
@@ -2267,7 +2331,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve2");
 		}
 	}
 	//Physically delete the soldiers now.
-	for( i = 0; i < 32; i++ )
+	for( i = 0; i < MAX_AR_TEAM_SIZE; i++ )
 	{
 		if( gpEnemies[ i ].pSoldier )
 		{
@@ -2589,7 +2653,7 @@ void CalculateAutoResolveInfo()
 	{
 		GetNumberOfEnemiesInSector( gpAR->ubSectorX, gpAR->ubSectorY, 
 																&gpAR->ubAdmins, &gpAR->ubTroops, &gpAR->ubElites );
-		gpAR->ubEnemies = (UINT8)min( gpAR->ubAdmins + gpAR->ubTroops + gpAR->ubElites, 32 );
+		gpAR->ubEnemies = (UINT8)min( gpAR->ubAdmins + gpAR->ubTroops + gpAR->ubElites, MAX_AR_TEAM_SIZE  );
 	}
 	else
 	{
@@ -2605,7 +2669,7 @@ void CalculateAutoResolveInfo()
 																				&gpAR->ubYMCreatures, &gpAR->ubYFCreatures,
 																				&gpAR->ubAMCreatures, &gpAR->ubAFCreatures );
 		}
-		gpAR->ubEnemies = (UINT8)min( gpAR->ubYMCreatures + gpAR->ubYFCreatures + gpAR->ubAMCreatures + gpAR->ubAFCreatures, 32 );
+		gpAR->ubEnemies = (UINT8)min( gpAR->ubYMCreatures + gpAR->ubYFCreatures + gpAR->ubAMCreatures + gpAR->ubAFCreatures, MAX_AR_TEAM_SIZE );
 	}
 	gfTransferTacticalOppositionToAutoResolve = FALSE;
 	gpAR->ubCivs = CountAllMilitiaInSector( gpAR->ubSectorX, gpAR->ubSectorY );
@@ -2645,7 +2709,9 @@ void CalculateAutoResolveInfo()
 	}
 	gpAR->iNumMercFaces = gpAR->ubMercs;
 	gpAR->iActualMercFaces = gpAR->ubMercs; 
-
+	
+	giMaxMilitiaToRender = 50 - ( (gpAR->ubMercs + 4) / 5 ) * 5;
+	
 	CalculateRowsAndColumns();
 }
 
@@ -2833,20 +2899,24 @@ void CalculateRowsAndColumns()
 		}
 		if( gpAR->ubCivCols < 5 )
 		{ //match it up with the mercs
-			gpAR->ubCivCols = gpAR->ubMercCols;
+			gpAR->ubCivCols++; // = gpAR->ubMercCols;
 			gpAR->ubCivRows = (gpAR->ubCivs+gpAR->ubCivCols-1)/gpAR->ubCivCols;
 		}
 	}
 
 	if( gpAR->ubMercCols + gpAR->ubEnemyCols == 9 )
-		gpAR->sWidth = 640;
+		gpAR->sWidth = SCREEN_WIDTH;
 	else
 		gpAR->sWidth = 146 + 55 * (max( max( gpAR->ubMercCols, gpAR->ubCivCols ), 2 ) + max( gpAR->ubEnemyCols, 2 ));
 
-	gpAR->sCenterStartX = 323 - gpAR->sWidth/2 + max( max( gpAR->ubMercCols, 2), max( gpAR->ubCivCols, 2 ) ) *55;
+	// WANNE 2
+	//gpAR->sCenterStartX = 323 - gpAR->sWidth/2 + max( max( gpAR->ubMercCols, 2), max( gpAR->ubCivCols, 2 ) ) *55;
+	gpAR->sCenterStartX = iScreenWidthOffset + (323 - gpAR->sWidth/2 + max( max( gpAR->ubMercCols, 2), max( gpAR->ubCivCols, 2 ) ) *55);
+	
 
 	//Anywhere from 48*3 to 48*10
-	gpAR->sHeight = 48 * max( 3, max( gpAR->ubMercRows + gpAR->ubCivRows, gpAR->ubEnemyRows ) );
+	//gpAR->sHeight = 48 * max( 3, max( gpAR->ubMercRows + gpAR->ubCivRows, gpAR->ubEnemyRows ) );
+	gpAR->sHeight = 48 * max( 3, max( min( 10, gpAR->ubMercRows + gpAR->ubCivRows ), min( 10, gpAR->ubEnemyRows ) ) );
 	//Make it an even multiple of 40 (rounding up).
 	gpAR->sHeight += 39;
 	gpAR->sHeight /= 40;
@@ -2983,7 +3053,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve3");
 				case '}':
 					if( CHEATER_CHEAT_LEVEL() )
 					{
-						gpAR->ubMercs = gGameExternalOptions.iMaxEnemyGroupSize;
+						gpAR->ubMercs = MAX_AR_TEAM_SIZE;
 						fResetAutoResolve = TRUE;
 					}
 					break;
@@ -3000,7 +3070,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve3");
 				case ']':
 					if( CHEATER_CHEAT_LEVEL() )
 					{
-						if( gpAR->ubMercs < gGameExternalOptions.iMaxEnemyGroupSize )
+						if( gpAR->ubMercs < MAX_AR_TEAM_SIZE )
 						{
 							gpAR->ubMercs++;
 							fResetAutoResolve = TRUE;
@@ -3017,7 +3087,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve3");
 				case '"':
 					if( CHEATER_CHEAT_LEVEL() )
 					{
-						gpAR->ubCivs = gGameExternalOptions.iMaxMilitiaPerSector;
+						gpAR->ubCivs = MAX_AR_TEAM_SIZE;
 						fResetAutoResolve = TRUE;
 					}
 					break;
@@ -3034,7 +3104,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve3");
 				case 39: // ' quote
 					if( CHEATER_CHEAT_LEVEL() )
 					{
-						if( gpAR->ubCivs < gGameExternalOptions.iMaxMilitiaPerSector )
+						if( gpAR->ubCivs < MAX_AR_TEAM_SIZE )
 						{
 							gpAR->ubCivs++;
 							fResetAutoResolve = TRUE;
@@ -3088,7 +3158,7 @@ DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"Autoresolve3");
 					if( CHEATER_CHEAT_LEVEL() )
 					{
 						gpAR->ubMercs = 20;
-						gpAR->ubCivs = gGameExternalOptions.iMaxMilitiaPerSector;
+						gpAR->ubCivs = MAX_AR_TEAM_SIZE;
 						gpAR->ubEnemies = 32;
 						fResetAutoResolve = TRUE;
 					}
@@ -3838,7 +3908,7 @@ void AttackTarget( SOLDIERCELL *pAttacker, SOLDIERCELL *pTarget )
 		if( pAttacker->bWeaponSlot != HANDPOS )
 		{ //switch items
 			memcpy( &tempItem, &pAttacker->pSoldier->inv[ HANDPOS ], sizeof( OBJECTTYPE ) );
-			memcpy( &pAttacker->pSoldier->inv[ HANDPOS ], &pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ], sizeof( OBJECTTYPE ) );
+			memcpy( &pAttacker->pSoldier->inv[ HANDPOS ], &pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ], sizeof( OBJECTTYPE ) ); //CTD
 			iImpact = HTHImpact( pAttacker->pSoldier, pTarget->pSoldier, ubAccuracy, (BOOLEAN)(fKnife | fClaw) );
 			memcpy( &pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ], &pAttacker->pSoldier->inv[ HANDPOS ], sizeof( OBJECTTYPE ) );
 			memcpy( &pAttacker->pSoldier->inv[ HANDPOS ], &tempItem, sizeof( OBJECTTYPE ) );

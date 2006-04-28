@@ -670,15 +670,16 @@ BOOLEAN	PhysicsHandleCollisions( REAL_OBJECT *pObject, INT32 *piCollisionID, rea
 			}
 		}
 
+
 		// Check for -ve velocity still...
-		/*if ( pObject->Velocity.z <= EPSILONV && pObject->Velocity.z >= -EPSILONV && 
-				 pObject->Velocity.y <= EPSILONV && pObject->Velocity.y >= -EPSILONV && 
-				 pObject->Velocity.x <= EPSILONV && pObject->Velocity.x >= -EPSILONV ) 
-		{
-			PhysicsDeleteObject( pObject );
-			pObject->fAlive = FALSE;
-			return( FALSE );
-		}*/
+		//if ( pObject->Velocity.z <= EPSILONV && pObject->Velocity.z >= -EPSILONV && 
+		//		 pObject->Velocity.y <= EPSILONV && pObject->Velocity.y >= -EPSILONV && 
+		//		 pObject->Velocity.x <= EPSILONV && pObject->Velocity.x >= -EPSILONV ) 
+		//{
+			//PhysicsDeleteObject( pObject );
+		//	pObject->fAlive = FALSE;
+		//	return( FALSE );
+		//}
 	}
 
 	return( TRUE );
@@ -1666,7 +1667,6 @@ FLOAT CalculateObjectTrajectory( INT16 sTargetZ, OBJECTTYPE *pItem, vector_3 *vP
 	REAL_OBJECT *pObject;
 	FLOAT	dDiffX, dDiffY;
 	INT16	sGridNo;
-	//int cnt=0;
 
 	if ( psFinalGridNo )
 	{
@@ -1692,11 +1692,9 @@ FLOAT CalculateObjectTrajectory( INT16 sTargetZ, OBJECTTYPE *pItem, vector_3 *vP
 	pObject->fTestPositionNotSet = TRUE;
 	pObject->fVisible		 = FALSE;
 
-	// WANNE 2
 	// Alrighty, move this beast until it dies....
 	while( pObject->fAlive )
 	{
-		//cnt = cnt + 1;
 		DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"CalculateObjectTrajectory: calling simulateobject - this object never fucking dies!!!!");
 		SimulateObject( pObject, (float)DELTA_T );
 	}

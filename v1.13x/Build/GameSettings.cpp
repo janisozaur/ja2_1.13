@@ -327,6 +327,11 @@ void LoadGameExternalOptions()
 	gGameExternalOptions.iCustomPersonality = iniReader.ReadInteger("Options","CUSTOM_PERSONALITY",6);
 	gGameExternalOptions.iCustomAttitude = iniReader.ReadInteger("Options","CUSTOM_ATTITUDE",0);
 
+	gGameExternalOptions.iEasyAPBonus = iniReader.ReadInteger("Options","NOVICE_AP_BONUS",0);
+	gGameExternalOptions.iExperiencedAPBonus = iniReader.ReadInteger("Options","EXPERIENCED_AP_BONUS",0);
+	gGameExternalOptions.iExpertAPBonus = iniReader.ReadInteger("Options","EXPERT_AP_BONUS",0);
+	gGameExternalOptions.iInsaneAPBonus = iniReader.ReadInteger("Options","INSANE_AP_BONUS",0);
+
 }
 
 
@@ -649,8 +654,8 @@ void DisplayGameSettings( )
 	//ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, L"%s: %s", gzGIOScreenText[ GIO_BR_QUALITY_TEXT ], gzGIOScreenText[ GIO_BR_GOOD_TEXT ] );
 //	ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, L"%s: %s", gzGIOScreenText[ GIO_GAME_SAVE_STYLE_TEXT ], gzGIOScreenText[ GIO_SAVE_ANYWHERE_TEXT + gGameOptions.fIronManMode ] );
 
-	// Air Strikes Option
-	if( gGameOptions.fAirStrikes )
+	// Tons of Guns Option
+	if( gGameOptions.fGunNut )
 		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, L"%s: %s", gzGIOScreenText[ GIO_GUN_OPTIONS_TEXT ], gzGIOScreenText[ GIO_GUN_NUT_TEXT ] );
 	else
 		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, L"%s: %s", gzGIOScreenText[ GIO_GUN_OPTIONS_TEXT ], gzGIOScreenText[ GIO_REDUCED_GUNS_TEXT ] );

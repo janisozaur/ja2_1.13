@@ -1454,7 +1454,7 @@ void DrawMouseText( )
 				{
 					SetFontBackground( FONT_MCOLOR_BLACK );
 					SetFontForeground( FONT_MCOLOR_WHITE );
-					SetFontShadow( DEFAULT_SHADOW );
+					SetFontShadow( DEFAULT_SHADOW );				
 
 					//aim
 					if ( gubShowActionPointsInRed )

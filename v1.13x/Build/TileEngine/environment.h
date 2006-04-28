@@ -60,9 +60,9 @@ void	EnvBeginRainStorm( UINT8 ubIntensity );
 void	EnvEndRainStorm( );
 
 
-extern UINT8		gubEnvLightValue;
+extern UINT8			gubEnvLightValue;
 extern BOOLEAN		gfDoLighting;
-extern UINT32		guiEnvWeather;
+extern UINT32			guiEnvWeather;
 
 void TurnOnNightLights();
 void TurnOffNightLights();

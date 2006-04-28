@@ -886,7 +886,7 @@ void HandleShadingOfLinesForMilitiaControlMenu( void )
 
 	if ( GetSoldier( &pSoldier, gusSelectedSoldier )  )
 	{
-		sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTMilitiaSoldier->sGridNo, pTMilitiaSoldier->bLevel );
+		sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTMilitiaSoldier->sGridNo, pTMilitiaSoldier->bLevel, pSoldier );
 
 		// Check LOS!
 		if ( SoldierTo3DLocationLineOfSightTest( pSoldier, pTMilitiaSoldier->sGridNo,  pTMilitiaSoldier->bLevel, 3, (UINT8) sDistVisible, TRUE ) )

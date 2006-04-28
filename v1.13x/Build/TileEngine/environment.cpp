@@ -210,7 +210,7 @@ void EnvironmentController( BOOLEAN fCheckForLights )
 			{
 				if ( guiRainLoop == NO_SAMPLE )
 				{
-					guiRainLoop	= PlayJA2Ambient( RAIN_1, LOWVOLUME, 0 );
+					guiRainLoop	= PlayJA2Ambient( RAIN_1, BTNVOLUME, 0 );
 				}
 
 				// Do lightning if we want...
@@ -440,8 +440,8 @@ void ForecastDayEvents( )
 					ubStormIntensity = 1;
 				}
 		
-				//ATE: Disable RAIN!
-				//AddSameDayRangedStrategicEvent( EVENT_RAINSTORM, uiStartTime, uiEndTime - uiStartTime, ubStormIntensity );
+   // ATE: Disable RAIN!
+	//			AddSameDayRangedStrategicEvent( EVENT_RAINSTORM, uiStartTime, uiEndTime - uiStartTime, ubStormIntensity );
 
 				//AddSameDayStrategicEvent( EVENT_BEGINRAINSTORM, uiStartTime, ubStormIntensity );
 				//AddSameDayStrategicEvent( EVENT_ENDRAINSTORM,		uiEndTime, 0 );
@@ -472,7 +472,7 @@ UINT32 guiMinDLInterval = 1;
 UINT32 guiMaxDLInterval = 5;
 
 UINT32 guiProlongLightningIfSeenSomeone = 5;
-UINT32 guiChanceToDoLightningBetweenTurns = 35;
+UINT32 guiChanceToDoLightningBetweenTurns = 20;
 
 
  // 60 = 1 second
@@ -640,22 +640,10 @@ void EnvDoLightning(void)
 	}
 }
 
-UINT8 ChanceToDoLightning()
-{
-	UINT8 ubCounter = 0;
-	UINT8 i;
-	for( i = 0; i < LAST_TEAM; ++i )
-		if( gTacticalStatus.Team[ i ].bTeamActive )
-			++ubCounter;
-
-	return CHANCE_TO_DO_LIGHTNING_BETWEEN_TURNS / ubCounter;
-}
-
-
 BOOLEAN LightningEndOfTurn( UINT8 ubTeam )
 {
 	if( !(guiEnvWeather & WEATHER_FORECAST_THUNDERSHOWERS) )return TRUE;
-	if( Random(100) >= ChanceToDoLightning() ) return TRUE;
+	if( Random(100) >= CHANCE_TO_DO_LIGHTNING_BETWEEN_TURNS ) return TRUE;
 
 	if( !gfTurnBasedLightningEnd )
 	{

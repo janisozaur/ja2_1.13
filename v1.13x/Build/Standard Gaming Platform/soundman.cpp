@@ -368,7 +368,7 @@ UINT32	SoundPlayStreamedFile( STR pFilename, SOUNDPARMS *pParms )
 UINT32 SoundPlayRandom(STR pFilename, RANDOMPARMS *pParms)
 {
 	UINT32 uiSample;
-
+	
 	if(fSoundSystemInit)
 	{
 		if((uiSample=SoundLoadSample(pFilename))!=NO_SAMPLE)
@@ -426,6 +426,7 @@ UINT32 SoundPlayRandom(STR pFilename, RANDOMPARMS *pParms)
 
 			// Time stamp
 			pSampleList[uiSample].uiTimeNext=GetTickCount()+pSampleList[uiSample].uiTimeMin+Random(pSampleList[uiSample].uiTimeMax-pSampleList[uiSample].uiTimeMin);
+			
 			return(uiSample);
 		}
         else
@@ -804,6 +805,7 @@ SOUNDPARMS spParms;
 		{
 			pSampleList[uiSample].uiTimeNext=GetTickCount()+pSampleList[uiSample].uiTimeMin+Random(pSampleList[uiSample].uiTimeMax-pSampleList[uiSample].uiTimeMin);
 			pSampleList[uiSample].uiInstances++;
+			
 			return(TRUE);
 		}
         else

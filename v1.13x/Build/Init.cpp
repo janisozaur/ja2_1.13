@@ -53,6 +53,7 @@
 	#include "Init.h"
 	#include "jascreens.h"
 	#include "XML.h"
+	#include "SaveLoadGame.h"
 #endif
 
 extern BOOLEAN GetCDromDriveLetter( STR8	pString );
@@ -153,6 +154,9 @@ BOOLEAN LoadExternalGameplayData(STR directoryName)
 	strcat(fileName, MERGESFILENAME);
 	if(!ReadInMergeStats(fileName))
 		return FALSE;
+
+	//if(!WriteMergeStats())
+	//	return FALSE;
 
 	strcpy(fileName, directoryName);
 	strcat(fileName, ATTACHMENTCOMBOMERGESFILENAME);
@@ -367,6 +371,12 @@ UINT32 InitializeJA2(void)
 	MusicSetVolume( gGameSettings.ubMusicVolumeSetting );
 
 	DetermineRGBDistributionSettings();
+
+	// Snap: Init save game directory
+	if ( !InitSaveDir() )
+	{
+		return( ERROR_SCREEN );
+	}
 
 #ifdef JA2BETAVERSION
 	#ifdef JA2EDITOR

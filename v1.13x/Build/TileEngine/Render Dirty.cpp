@@ -22,9 +22,9 @@
 #include "Message.h"
 #endif
 
-#define		DIRTY_QUEUES		200
-#define		BACKGROUND_BUFFERS	1000 //lal bugfix
-#define		VIDEO_OVERLAYS		100
+#define		DIRTY_QUEUES			200
+#define		BACKGROUND_BUFFERS		1000 //was 500
+#define		VIDEO_OVERLAYS			100
 
 
 BACKGROUND_SAVE	gBackSaves[BACKGROUND_BUFFERS];

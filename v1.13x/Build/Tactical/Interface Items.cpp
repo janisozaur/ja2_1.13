@@ -183,22 +183,24 @@
 
 #define		ITEM_FONT								TINYFONT1
 
-#define EXCEPTIONAL_DAMAGE					30
+#define EXCEPTIONAL_DAMAGE					40
 #define EXCEPTIONAL_WEIGHT					20
-#define EXCEPTIONAL_RANGE						300
-#define EXCEPTIONAL_MAGAZINE				30
-#define EXCEPTIONAL_AP_COST					7
+#define EXCEPTIONAL_RANGE					400
+#define EXCEPTIONAL_MAGAZINE				50
+#define EXCEPTIONAL_AP_COST					5
 #define EXCEPTIONAL_BURST_SIZE			5
 #define EXCEPTIONAL_RELIABILITY			2
 #define EXCEPTIONAL_REPAIR_EASE			2
+#define EXCEPTIONAL_ACCURACY			4
 
 #define BAD_DAMAGE									23
 #define BAD_WEIGHT									45
-#define BAD_RANGE										150
+#define BAD_RANGE									150
 #define BAD_MAGAZINE								10
-#define BAD_AP_COST									11
+#define BAD_AP_COST									9
 #define BAD_RELIABILITY							-2
 #define BAD_REPAIR_EASE							-2	
+#define BAD_ACCURACY							-1	
 
 #define KEYRING_X 487
 #define KEYRING_Y (105 + INV_INTERFACE_START_Y)
@@ -602,6 +604,15 @@ void GenerateProsString( UINT16 * zItemPros, OBJECTTYPE * pObject, UINT32 uiPixL
 		ubWeight += Item[ pObject->usGunAmmoItem ].ubWeight;
 	}
 
+	if (Weapon[usItem].bAccuracy >= EXCEPTIONAL_ACCURACY )
+	{
+		zTemp = Message[STR_ACCURATE];
+		if ( ! AttemptToAddSubstring( zItemPros, zTemp, &uiStringLength, uiPixLimit ) )
+		{
+			return;			
+		}
+	}
+
 	if (Item[usItem].ubWeight <= EXCEPTIONAL_WEIGHT)
 	{
 		zTemp = Message[STR_LIGHT];
@@ -710,6 +721,15 @@ void GenerateConsString( UINT16 * zItemCons, OBJECTTYPE * pObject, UINT32 uiPixL
 	UINT16			usItem = pObject->usItem;
 
 	zItemCons[0] = 0;
+
+	if (Weapon[usItem].bAccuracy <= BAD_ACCURACY)
+	{
+		zTemp = Message[STR_INACCURATE];
+		if ( ! AttemptToAddSubstring( zItemCons, zTemp, &uiStringLength, uiPixLimit ) )
+		{
+			return;			
+		}
+	}
 
 	// calculate the weight of the item plus ammunition but not including any attachments
 	ubWeight = Item[ usItem ].ubWeight;
@@ -2242,6 +2262,11 @@ void CycleItemDescriptionItem( )
 	{
 		usOldItem--;
 
+		while ( usOldItem > 0 && ( Item[usOldItem].usItemClass == IC_NONE || Item[usOldItem].usItemClass == 0 ))
+		{
+			usOldItem--;
+		}
+
 		if ( usOldItem < 0 )
 		{
 			usOldItem = MAXITEMS-1;
@@ -2254,6 +2279,11 @@ void CycleItemDescriptionItem( )
 		if ( usOldItem > MAXITEMS )
 		{
 			usOldItem = 0;
+		}
+
+		while (usOldItem < MAXITEMS && (Item[usOldItem].usItemClass == IC_NONE || Item[usOldItem].usItemClass == 0 ))
+		{
+			usOldItem++;
 		}
 	}
 
@@ -2797,7 +2827,6 @@ void ItemDescAmmoCallback(GUI_BUTTON *btn,INT32 reason)
 				swprintf( (wchar_t *)pStr, L"0" );
 				SpecifyButtonText( giItemDescAmmoButton, (UINT16 *)pStr );
 
-
 				fItemDescDelete = TRUE;
 			}
 
@@ -3099,6 +3128,13 @@ void RenderItemDescriptionBox( )
 					BltVideoObjectFromIndex( guiSAVEBUFFER, guiBullet, 0, MAP_BULLET_BURST_X + cnt * (BULLET_WIDTH/2 + 1), MAP_BULLET_BURST_Y, VO_BLT_SRCTRANSPARENCY, NULL );
 				}
 			}
+			else if (GetAutofireShotsPerFiveAPs(gpItemDescObject) > 0 )
+			{
+				for ( cnt = 0; cnt < 10; cnt++ )
+				{
+					BltVideoObjectFromIndex( guiSAVEBUFFER, guiBullet, 0, MAP_BULLET_BURST_X + cnt * (BULLET_WIDTH/2 + 1), MAP_BULLET_BURST_Y, VO_BLT_SRCTRANSPARENCY, NULL );
+				}
+			}
 
 		}
 
@@ -3223,7 +3259,7 @@ void RenderItemDescriptionBox( )
 			mprintf( gMapWeaponStats[ 1 ].sX + gsInvDescX, gMapWeaponStats[ 1 ].sY + gsInvDescY, L"%s", gWeaponStatsDesc[ 1 ] );
 
 
-			if (GetShotsPerBurst(gpItemDescObject) > 0)
+			if (GetShotsPerBurst(gpItemDescObject) > 0 || GetAutofireShotsPerFiveAPs(gpItemDescObject)>0)
 			{
 				mprintf( gMapWeaponStats[ 8 ].sX + gsInvDescX, gMapWeaponStats[ 8 ].sY + gsInvDescY, L"%s", gWeaponStatsDesc[ 8 ] );
 			}
@@ -3319,7 +3355,15 @@ void RenderItemDescriptionBox( )
 			  FindFontRightCoordinates( (INT16)(gMapWeaponStats[ 6 ].sX + gsInvDescX + gMapWeaponStats[ 6 ].sValDx), (INT16)(gMapWeaponStats[ 6 ].sY + gsInvDescY ), ITEM_STATS_WIDTH ,ITEM_STATS_HEIGHT ,pStr, BLOCKFONT2, &usX, &usY);
 			  mprintf( usX, usY, pStr );
 			 }
+			 else if (GetAutofireShotsPerFiveAPs(gpItemDescObject) > 0)
+			 {
 
+					SetFontForeground( 5 );
+
+					swprintf( (wchar_t *)pStr, L"%2d", ubAttackAPs + CalcAPsToAutofire( DEFAULT_APS, gpItemDescObject, 3 ) );
+					FindFontRightCoordinates( (INT16)(gMapWeaponStats[ 6 ].sX + gsInvDescX + gMapWeaponStats[ 6 ].sValDx), (INT16)(gMapWeaponStats[ 6 ].sY + gsInvDescY ), ITEM_STATS_WIDTH ,ITEM_STATS_HEIGHT ,pStr, BLOCKFONT2, &usX, &usY);
+					mprintf( usX, usY, pStr );
+			 }
 		}
 		else if ( gpItemDescObject->usItem == MONEY )
 		{
@@ -3558,6 +3602,13 @@ void RenderItemDescriptionBox( )
 					BltVideoObjectFromIndex( guiSAVEBUFFER, guiBullet, 0, BULLET_BURST_X + cnt * (BULLET_WIDTH/2 + 1), BULLET_BURST_Y, VO_BLT_SRCTRANSPARENCY, NULL );					
 				}
 			}
+			else if ( GetAutofireShotsPerFiveAPs(gpItemDescObject) > 0 )
+			{
+				for ( cnt = 0; cnt < 10; cnt++ )
+				{
+					BltVideoObjectFromIndex( guiSAVEBUFFER, guiBullet, 0, BULLET_BURST_X + cnt * (BULLET_WIDTH/2 + 1), BULLET_BURST_Y, VO_BLT_SRCTRANSPARENCY, NULL );					
+				}
+			}
 
 		}
 
@@ -3673,7 +3724,7 @@ void RenderItemDescriptionBox( )
 			}
 			mprintf( gWeaponStats[ 1 ].sX + gsInvDescX, gWeaponStats[ 1 ].sY + gsInvDescY, L"%s", gWeaponStatsDesc[ 1 ] );
 
-			if (GetShotsPerBurst(gpItemDescObject) > 0)
+			if (GetShotsPerBurst(gpItemDescObject) > 0 || GetAutofireShotsPerFiveAPs(gpItemDescObject))
 			{
 				mprintf( gWeaponStats[ 8 ].sX + gsInvDescX, gWeaponStats[ 8 ].sY + gsInvDescY, L"%s", gWeaponStatsDesc[ 8 ] );
 			}
@@ -3758,6 +3809,13 @@ void RenderItemDescriptionBox( )
 					SetFontForeground( 5 );
 				}
 
+				swprintf( (wchar_t *)pStr, L"%2d", ubAttackAPs + CalcAPsToBurst( DEFAULT_APS, gpItemDescObject ) );
+				FindFontRightCoordinates( (INT16)(gWeaponStats[ 6 ].sX + gsInvDescX + gWeaponStats[ 6 ].sValDx), (INT16)(gWeaponStats[ 6 ].sY + gsInvDescY ), ITEM_STATS_WIDTH, ITEM_STATS_HEIGHT, pStr, BLOCKFONT2, &usX, &usY );
+				mprintf( usX, usY, pStr );
+			}
+			else if (GetAutofireShotsPerFiveAPs(gpItemDescObject)> 0)
+			{
+				SetFontForeground( 5 );
 				swprintf( (wchar_t *)pStr, L"%2d", ubAttackAPs + CalcAPsToBurst( DEFAULT_APS, gpItemDescObject ) );
 				FindFontRightCoordinates( (INT16)(gWeaponStats[ 6 ].sX + gsInvDescX + gWeaponStats[ 6 ].sValDx), (INT16)(gWeaponStats[ 6 ].sY + gsInvDescY ), ITEM_STATS_WIDTH, ITEM_STATS_HEIGHT, pStr, BLOCKFONT2, &usX, &usY );
 				mprintf( usX, usY, pStr );
@@ -4913,7 +4971,7 @@ BOOLEAN HandleItemPointerClick( UINT16 usMapPos )
 						return( FALSE );
 					}
 
-					sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, gpItemPointerSoldier->sGridNo, gpItemPointerSoldier->bLevel );
+					sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, gpItemPointerSoldier->sGridNo, gpItemPointerSoldier->bLevel, gpItemPointerSoldier );
 
 					// Check LOS....
 					if ( !SoldierTo3DLocationLineOfSightTest( pSoldier, gpItemPointerSoldier->sGridNo,  gpItemPointerSoldier->bLevel, 3, (UINT8) sDistVisible, TRUE ) )
@@ -7221,14 +7279,32 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 	}
 	else if ( usItem != NOTHING )
 	{
-		if ( !gGameOptions.fGunNut && Item[ usItem ].usItemClass == IC_GUN && !Item[usItem].rocketlauncher && !Item[usItem].rocketrifle )
+		// Retrieve the status of the items
+		// Find the minimum status value - not just the first one
+		INT16 sValue = pObject->bStatus[ 0 ];
+		INT16 i;
+		for(i = 1; i < pObject->ubNumberOfObjects; i++)
 		{
-			swprintf( (wchar_t *)pStr, L"%s (%s)", ItemNames[ usItem ], AmmoCaliber[ Weapon[ usItem ].ubCalibre ] );
+			if(pObject->bStatus[ i ] < sValue)
+			{
+				sValue = pObject->bStatus[ i ];
+			}
 		}
-		else
-		{
-			swprintf( (wchar_t *)pStr, L"%s", ItemNames[ usItem ] );
-		}
+
+    if ( Item[ usItem ].usItemClass == IC_GUN && !Item[usItem].rocketlauncher && !Item[usItem].rocketrifle )
+    {
+        swprintf( (wchar_t *)pStr, L"%s (%s) [%d%%]", ItemNames[ usItem ], AmmoCaliber[ Weapon[ usItem ].ubCalibre ], sValue );
+    }
+    // The next is for ammunition which gets the measurement 'rnds'
+    else if (Item[ usItem ].usItemClass == IC_AMMO)
+    {
+        swprintf( (wchar_t *)pStr, L"%s [%d rnds]", ItemNames[ usItem ], sValue );
+    }
+    // The final, and typical case, is that of an item with a percent status
+    else
+    {
+        swprintf( (wchar_t *)pStr, L"%s [%d%%]", ItemNames[ usItem ], sValue );
+    }
 
 		if ( ( Item[pObject->usItem].fingerprintid ) && pObject->ubImprintID < NO_PROFILE )
 		{
@@ -7531,9 +7607,10 @@ BOOLEAN InitializeStealItemPickupMenu( SOLDIERTYPE *pSoldier, SOLDIERTYPE *pOppo
 		}
 
 		// CHECK FOR LEFT/RIGHT
-		if ( ( sX + gItemPickupMenu.sWidth ) > 640 )
+		// WANNE 2
+		if ( ( sX + gItemPickupMenu.sWidth ) > SCREEN_WIDTH )
 		{
-			sX = 640 - gItemPickupMenu.sWidth - ITEMPICK_START_X_OFFSET;
+			sX = SCREEN_WIDTH - gItemPickupMenu.sWidth - ITEMPICK_START_X_OFFSET;
 		}
 		else
 		{
@@ -7552,9 +7629,10 @@ BOOLEAN InitializeStealItemPickupMenu( SOLDIERTYPE *pSoldier, SOLDIERTYPE *pOppo
 		}
 
 		// Check for bottom
-		if ( ( sY + gItemPickupMenu.sHeight ) > 340 )
+		// WANNE 2
+		if ( ( sY + gItemPickupMenu.sHeight ) > (SCREEN_HEIGHT - INV_INTERFACE_HEIGHT) )
 		{
-			sY = 340 - gItemPickupMenu.sHeight;
+			sY = (SCREEN_HEIGHT - INV_INTERFACE_HEIGHT) - gItemPickupMenu.sHeight;
 		}
 
 	}
@@ -7580,8 +7658,14 @@ BOOLEAN InitializeStealItemPickupMenu( SOLDIERTYPE *pSoldier, SOLDIERTYPE *pOppo
 
 
 	// Build a mouse region here that is over any others.....
-	MSYS_DefineRegion( &(gItemPickupMenu.BackRegion ), (INT16)( 532 ), (INT16)( 367 ), (INT16)( 640 ),(INT16)( 480 ), MSYS_PRIORITY_HIGHEST,
+	/*MSYS_DefineRegion( &(gItemPickupMenu.BackRegion ), (INT16)( 532 ), (INT16)( 367 ), (INT16)( 640 ),(INT16)( 480 ), MSYS_PRIORITY_HIGHEST,
+						 CURSOR_NORMAL, MSYS_NO_CALLBACK, MSYS_NO_CALLBACK ); */
+
+	// WANNE 2
+	// Build a mouse region here that is over any others.....
+	MSYS_DefineRegion( &(gItemPickupMenu.BackRegion ), (INT16)( iScreenWidthOffset + 532 ), (INT16)( iScreenHeightOffset + 367 ), (INT16)( SCREEN_WIDTH ),(INT16)( SCREEN_HEIGHT ), MSYS_PRIORITY_HIGHEST,
 						 CURSOR_NORMAL, MSYS_NO_CALLBACK, MSYS_NO_CALLBACK ); 
+
 	// Add region
 	MSYS_AddRegion( &(gItemPickupMenu.BackRegion ) );
 

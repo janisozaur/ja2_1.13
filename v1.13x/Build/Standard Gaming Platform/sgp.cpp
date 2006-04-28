@@ -707,7 +707,7 @@ int PASCAL HandledWinMain(HINSTANCE hInstance,  HINSTANCE hPrevInstance, LPSTR p
 
 	//rain
 	NSLoadSettings();
-	NSSaveSettings();
+	//NSSaveSettings();
 	//InitResolution();
 
 	//EmergencyExitButtonInit();

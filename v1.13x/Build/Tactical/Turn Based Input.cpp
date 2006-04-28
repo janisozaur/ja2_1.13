@@ -1,3 +1,4 @@
+// WANNE 2 <changed some lines>
 #ifdef PRECOMPILEDHEADERS
 	#include "Tactical All.h"
 	#include "Language Defines.h"
@@ -2710,8 +2711,10 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 					break;
 
 				case INSERT:
-
-						GoIntoOverheadMap();
+					
+						// WANNE 2: commented this out, because the interface panel is not correctly redrawn!
+						// I do not know the bug ;(
+						//GoIntoOverheadMap();
 						break;
 
 				case END:
@@ -3282,7 +3285,6 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 					}
 					//else if( gusSelectedSoldier != NO_SOLDIER )
 					break;
-
 				case 'z':
 					if( fCtrl )
 					{
@@ -3345,7 +3347,7 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 						// nothing in hand and either not in SM panel, or the matching button is enabled if we are in SM panel
 						if ( ( gpItemPointer == NULL ) )
 						{
-							HandleStealthChangeFromUIKeys( );
+              HandleStealthChangeFromUIKeys( );
 						}
 					}
 					break;

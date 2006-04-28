@@ -1,3 +1,4 @@
+// WANNE 2 <changed some lines>
 #ifdef PRECOMPILEDHEADERS
 	#include "Tactical All.h"
 #else
@@ -44,6 +45,18 @@
 #endif
 
 #include "Rain.h"
+
+// WANNE 2
+// Shop Keeper Interface
+#define SKI_X_OFFSET						(((SCREEN_WIDTH - 536) / 2))
+#define SKI_Y_OFFSET						((((SCREEN_HEIGHT - 140) - 340) / 2))
+
+// WANNE 2
+// Overhead Map
+#define OM_X_OFFSET							0
+#define OM_Y_OFFSET							0
+
+
 
 
 #define RAIN_UPDATE_RATE 60
@@ -222,8 +235,8 @@ void CreateRainDrops()
 	BOOLEAN fLoopIsDone;
 	UINT32 uiIndRand;
 
-	fpCos = cos( DEGREE(fpCurrDropAngleOfFalling) );
-	fpSin = sin( DEGREE(fpCurrDropAngleOfFalling) );
+	fpCos = (FLOAT)(cos( DEGREE(fpCurrDropAngleOfFalling) ));
+	fpSin = (FLOAT)(sin( DEGREE(fpCurrDropAngleOfFalling) ));
 
 	if( fpCos )
 		fpAbsTg = fabs( fpSin / fpCos ); // take only absolute valuse
@@ -275,20 +288,20 @@ void CreateRainDrops()
 
 			if( uiIndex >= fpNumDropsToXBorder )
 			{
-				pCurr->fpX = gRainRegion.left + Random( gRainRegion.right - gRainRegion.left );
-				pCurr->fpY = gRainRegion.bottom - 1;
+				pCurr->fpX = (FLOAT)(gRainRegion.left + Random( gRainRegion.right - gRainRegion.left ));
+				pCurr->fpY = (FLOAT)(gRainRegion.bottom - 1);
 			}
 			else if( fpCos > 0 )
 			{
-				pCurr->fpX = gRainRegion.right - 1;
-				pCurr->fpY = gRainRegion.top + Random( gRainRegion.bottom - gRainRegion.top );
+				pCurr->fpX = (FLOAT)(gRainRegion.right - 1);
+				pCurr->fpY = (FLOAT)(gRainRegion.top + Random( gRainRegion.bottom - gRainRegion.top ));
 			}else{
 				pCurr->fpX = 0;
-				pCurr->fpY = gRainRegion.top + Random( gRainRegion.bottom - gRainRegion.top );
+				pCurr->fpY = (FLOAT)(gRainRegion.top + Random( gRainRegion.bottom - gRainRegion.top ));
 			}
 		}else{
-			pCurr->fpX = gRainRegion.left + Random( gRainRegion.right - gRainRegion.left );
-			pCurr->fpY = gRainRegion.top + Random( gRainRegion.bottom - gRainRegion.top );
+			pCurr->fpX = (FLOAT)(gRainRegion.left + Random( gRainRegion.right - gRainRegion.left ));
+			pCurr->fpY = (FLOAT)(gRainRegion.top + Random( gRainRegion.bottom - gRainRegion.top ));
 		}
 
 		pCurr->uiAmountOfTicksToLive = 0;
@@ -392,34 +405,11 @@ void RenderRainOnSurface()
 
 		if( !pCurr->fAlive )continue;
 		
-		LineDraw( TRUE, pCurr->fpX, pCurr->fpY, pCurr->fpX + pCurr->fpEndRelX, pCurr->fpY + pCurr->fpEndRelY,  sDropsColor, pDestBuf );
+		LineDraw( TRUE, (int)pCurr->fpX, (int)pCurr->fpY, (int)pCurr->fpX + (int)pCurr->fpEndRelX, (int)(pCurr->fpY + pCurr->fpEndRelY),  sDropsColor, pDestBuf );
 	}
 
 	UnLockVideoSurface( guiRainRenderSurface );
 }
-
-
-void UndoRainOnSurface()
-{
-	UINT8 *pDestBuf;
-	UINT32 uiDestPitchBYTES;
-	UINT32 uiIndex;
-
-	pDestBuf = LockVideoSurface( guiRainRenderSurface, &uiDestPitchBYTES );
-	SetClippingRegionAndImageWidth( uiDestPitchBYTES, 0, gsVIEWPORT_WINDOW_START_Y, SCREEN_WIDTH, gsVIEWPORT_WINDOW_END_Y - gsVIEWPORT_WINDOW_START_Y );
-
-	for( uiIndex = 0; uiIndex < guiCurrMaxAmountOfRainDrops; ++uiIndex )
-	{
-		TRainDrop *pCurr = &pRainDrops[ uiIndex ];
-
-		if( !pCurr->fAlive )continue;
-		
-		LineDraw( TRUE, pCurr->fpX, pCurr->fpY, pCurr->fpX + pCurr->fpEndRelX, pCurr->fpY + pCurr->fpEndRelY,  0, pDestBuf );
-	}
-
-	UnLockVideoSurface( guiRainRenderSurface );
-}
-
 
 void GenerateRainMaximums()
 {
@@ -437,35 +427,35 @@ void GenerateRainMaximums()
 		fpMaxDropAngleOfFalling = 160;
 	}
 
-	fpCurrDropAngleOfFalling = fpMinDropAngleOfFalling + Random( fpMaxDropAngleOfFalling - fpMinDropAngleOfFalling );
+	fpCurrDropAngleOfFalling = fpMinDropAngleOfFalling + Random( (UINT32)(fpMaxDropAngleOfFalling - fpMinDropAngleOfFalling) );
 	
 	fpMinDropLength = MIN_DROP_LENGTH + ADD_DROP_LENGTH_IF_STORM * ( gbCurrentRainIntensity - 1 );
 	fpMaxDropLength = fpMinDropLength + DROP_LENGTH_RANGE;
 
-	fpCurrDropLength = fpMinDropLength + Random( fpMaxDropLength - fpMinDropLength );
+	fpCurrDropLength = fpMinDropLength + Random( (UINT32)(fpMaxDropLength - fpMinDropLength) );
 
 	fpMinDropSpeed = BASE_DROP_SPEED * gbCurrentRainIntensity;
 	fpMaxDropSpeed = fpMinDropSpeed + DROP_SPEED_RANGE;
 
-	fpCurrDropSpeed = fpMinDropSpeed + Random( fpMaxDropSpeed - fpMinDropSpeed );
+	fpCurrDropSpeed = fpMinDropSpeed + Random( (UINT32)(fpMaxDropSpeed - fpMinDropSpeed) );
 
 }
 
 void UpdateRainDropsProperities()
 {
-	fpCurrDropAngleOfFalling += Random( 1000 * DROP_ANGLE_CHANGE_RATE * gbCurrentRainIntensity * 2 ) / 1000.0f - DROP_ANGLE_CHANGE_RATE * gbCurrentRainIntensity;
+	fpCurrDropAngleOfFalling += Random( (UINT32)(1000 * DROP_ANGLE_CHANGE_RATE * gbCurrentRainIntensity * 2 )) / 1000.0f - DROP_ANGLE_CHANGE_RATE * gbCurrentRainIntensity;
 
 	fpCurrDropAngleOfFalling = max( fpMinDropAngleOfFalling, fpCurrDropAngleOfFalling );
 	fpCurrDropAngleOfFalling = min( fpMaxDropAngleOfFalling, fpCurrDropAngleOfFalling );
 
 
-	fpCurrDropLength += Random( 1000 * DROP_LENGTH_CHANGE_RATE * 2 ) / 1000.0f - DROP_LENGTH_CHANGE_RATE;
+	fpCurrDropLength += Random( (UINT32)(1000 * DROP_LENGTH_CHANGE_RATE * 2 )) / 1000.0f - DROP_LENGTH_CHANGE_RATE;
 
 	fpCurrDropLength = max( fpMinDropLength, fpCurrDropLength );
 	fpCurrDropLength = min( fpMaxDropLength, fpCurrDropLength );
 
 
-	fpCurrDropSpeed += Random( 1000 * DROP_SPEED_CHANGE_RATE * 2 ) / 1000.0f - DROP_SPEED_CHANGE_RATE;
+	fpCurrDropSpeed += Random( (UINT32)(1000 * DROP_SPEED_CHANGE_RATE * 2 )) / 1000.0f - DROP_SPEED_CHANGE_RATE;
 
 	fpCurrDropSpeed = max( fpMinDropSpeed, fpCurrDropSpeed );
 	fpCurrDropSpeed = min( fpMaxDropSpeed, fpCurrDropSpeed );
@@ -528,13 +518,14 @@ void RenderRain()
 
 	if( guiCurrentScreen == SHOPKEEPER_SCREEN )
 	{
-		ColorFillVideoSurfaceArea( guiRainRenderSurface, 0, 0, 535, 340, Get16BPPColor( FROMRGB( 0, 0, 0 ) ) );
+		ColorFillVideoSurfaceArea( guiRainRenderSurface, SKI_X_OFFSET, SKI_Y_OFFSET, 535, 340, Get16BPPColor( FROMRGB( 0, 0, 0 ) ) );
 		return;
 	}
 
 	if( InOverheadMap() )
 	{
-		ColorFillVideoSurfaceArea( guiRainRenderSurface, 0, 0, 640, 360, Get16BPPColor( FROMRGB( 0, 0, 0 ) ) );
+		// WANNE 2
+		ColorFillVideoSurfaceArea( guiRainRenderSurface, OM_X_OFFSET, OM_Y_OFFSET, SCREEN_WIDTH, SCREEN_HEIGHT - 120, Get16BPPColor( FROMRGB( 0, 0, 0 ) ) );
 		return;
 	}
 
@@ -564,19 +555,16 @@ void RenderRain()
 		
 		CreateRainDrops();
 		RandomizeRainDropsPosition();
-		BlankRainRenderSurface();
 	}
 
 	guiCurrAmountOfDeadRainDrops = 0;
-	
-	UndoRainOnSurface();
 
 	UpdateRainDropsProperities();
 	UpdateRainDrops();
 	KillOutOfRegionRainDrops();
 	CreateRainDrops();
 
-	//BlankRainRenderSurface();
+	BlankRainRenderSurface();
 	RenderRainOnSurface();
 
 	RainClipVideoOverlay();

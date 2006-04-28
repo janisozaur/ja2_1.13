@@ -740,7 +740,7 @@ INT32 iDx, iDy;
 		Returns the light level at a particular level without fake lights
 
 ***************************************************************************************/
-UINT8 LightTrueLevel( INT16 sGridNo, INT8 bLevel )
+UINT8 LightTrueLevel( INT16 sGridNo, INT16 bLevel )
 {
 	LEVELNODE * pNode;
 	INT32 iSum;
@@ -2316,8 +2316,9 @@ BOOLEAN LightRevealWall(INT16 sX, INT16 sY, INT16 sSrcX, INT16 sSrcY)
 	}
 
 	pStruct=gpWorldLevelData[uiTile].pStructHead;
-	//while(pStruct!=NULL) // lal to be fixed
-	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES)
+	
+	//while(pStruct!=NULL)
+	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES) //lal bugfix
 	{
 		TileElem = &(gTileDatabase[pStruct->usIndex]);
 		switch(TileElem->usWallOrientation)
@@ -2338,8 +2339,9 @@ BOOLEAN LightRevealWall(INT16 sX, INT16 sY, INT16 sSrcX, INT16 sSrcY)
 	}
 	
 	pStruct=gpWorldLevelData[uiTile].pStructHead;
-	//while(pStruct!=NULL) // lal to be fixed
-	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES)
+	
+	//while(pStruct!=NULL)
+	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES) //lal bugfix
 	{
 		TileElem = &(gTileDatabase[pStruct->usIndex]);
 		switch(TileElem->usWallOrientation)
@@ -2396,7 +2398,7 @@ TILE_ELEMENT *TileElem;
 	pStruct=gpWorldLevelData[uiTile].pStructHead;
 	
 	//while(pStruct!=NULL)
-	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES) // bugfix lal
+	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES) // lal bugfix
 	{
 		TileElem = &(gTileDatabase[pStruct->usIndex]);
 		switch(TileElem->usWallOrientation)
@@ -2417,8 +2419,9 @@ TILE_ELEMENT *TileElem;
 	}
 
 	pStruct=gpWorldLevelData[uiTile].pStructHead;
+
 	//while(pStruct!=NULL)
-	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES) //bugfix lal
+	while(pStruct!=NULL && pStruct->usIndex<NUMBEROFTILES) //lal bugfix 
 	{
 		TileElem = &(gTileDatabase[pStruct->usIndex]);
 		switch(TileElem->usWallOrientation)

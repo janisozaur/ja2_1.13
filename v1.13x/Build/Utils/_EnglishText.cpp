@@ -1,3 +1,4 @@
+// WANNE 2 <changed some lines>
 #ifdef PRECOMPILEDHEADERS
 	#include "Utils All.h"
 #else
@@ -296,6 +297,8 @@ UINT16 Message[][STRING_LENGTH] =
 	L"Bloodcats' turn",
 	L"full auto",
 	L"no full auto",
+	L"accurate",
+	L"inaccurate",
 };
 
 
@@ -1933,7 +1936,7 @@ STR16 pMapErrorString[] =
 	L"needs an escort to move. Place her on a squad with one.", // for a female
 	L"Merc hasn't yet arrived in Arulco!",
 	L"Looks like there's some contract negotiations to settle first.",
-	L"",
+	L"Cannot give a movement order. Air raid is going on.",		// WANNE 2
 //11-15
 	L"Movement orders? There's a battle going on!",
 	L"You have been ambushed by bloodcats in sector %s!",
@@ -3281,8 +3284,8 @@ STR16			zSaveLoadText[] =
 
 	L"Saving...",			//When saving a game, a message box with this string appears on the screen
 
-	L"No Air Strikes",
-	L"Air Strikes",
+	L"Tons of Guns",
+	L"10 Tons of Guns",
 	L"Realistic style",
 	L"Sci Fi style",
 
@@ -3329,6 +3332,8 @@ STR16		zMarksMapScreenText[] =
 	L"%s is full of militia.",
 	L"Merc has a finite contract.", 
   L"Merc's contract is not insured",
+	// WANNE 2
+	L"Map Overview",		// 24
 };
 
 
@@ -3467,9 +3472,9 @@ STR16	gzGIOScreenText[] =
 	L"Realistic",
 	L"Sci Fi",
 	L"Platinum",
-	L"Air Strikes",
-	L"On",
-	L"Off",
+	L"Items",
+	L"10 Tons of Guns",
+	L"Tons of Guns",
 	L"Difficulty Level",
 	L"Novice",
 	L"Experienced",

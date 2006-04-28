@@ -122,5 +122,4 @@ extern BOOLEAN WriteAmmoTypeStats();
 extern BOOLEAN ReadInBurstSoundArray(STR fileName);
 extern BOOLEAN WriteBurstSoundArray();
 // Lesh: over
-
 #endif

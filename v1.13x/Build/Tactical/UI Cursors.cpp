@@ -28,8 +28,6 @@
 	#include "spread burst.h"
 #endif
 
-extern UINT8 gubShowActionPointsInRed;
-
 // FUNCTIONS FOR ITEM CURSOR HANDLING
 UINT8 HandleActivatedTargetCursor( SOLDIERTYPE *pSoldier, UINT16 usMapPos, BOOLEAN fShowAPs, BOOLEAN fRecalc, UINT32 uiCursorFlags );
 UINT8 HandleNonActivatedTargetCursor( SOLDIERTYPE *pSoldier, UINT16 usMapPos, BOOLEAN fShowAPs, BOOLEAN fRecalc, UINT32 uiCursorFlags );
@@ -531,11 +529,6 @@ UINT8 HandleActivatedTargetCursor( SOLDIERTYPE *pSoldier, UINT16 usMapPos, BOOLE
 			else
 			{
 				usCursor = ACTION_TARGETCONFIRMBURST_UICURSOR;
-
-				//aim
-				gsCurrentActionPoints = gsCurrentActionPoints + pSoldier->bShownAimTime / 2;
-				gubShowActionPointsInRed = 1 + pSoldier->bShownAimTime / 2;
-				//aim
 
 				if(pSoldier->bDoAutofire == 0)
 				{

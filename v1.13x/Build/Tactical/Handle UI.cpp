@@ -4488,7 +4488,7 @@ UINT8 gubShowActionPointsInRed = 0;
 UINT32 UIHandleLCOnTerrain( UI_EVENT *pUIEvent )
 {
 	SOLDIERTYPE				*pSoldier;
-	INT16					sFacingDir, sXPos, sYPos;
+	INT16							sFacingDir, sXPos, sYPos;
 	UINT16					usAnimState;
 
 	guiNewUICursor = LOOK_UICURSOR;				
@@ -4528,7 +4528,7 @@ UINT32 UIHandleLCOnTerrain( UI_EVENT *pUIEvent )
 
 		if( usAnimState != INVALID_ANIMATION )
 		{
-			gsCurrentActionPoints = GetAPsToReadyWeapon( pSoldier, usAnimState ) + AP_TO_AIM_TILE_IF_GETTING_READY;
+			gsCurrentActionPoints = GetAPsToReadyWeapon( pSoldier, usAnimState );// Madd: removed the next part since it was deducting 2 extra aps that would not be deducted when readying the old way //+ AP_TO_AIM_TILE_IF_GETTING_READY;
 		}
 		else if( pSoldier->sLastTarget != sXPos + (MAXCOL * sYPos ) )
 			gsCurrentActionPoints = AP_TO_AIM_TILE_IF_ALREADY_READY;
@@ -4590,11 +4590,11 @@ BOOLEAN MakeSoldierTurn( SOLDIERTYPE *pSoldier, INT16 sXPos, INT16 sYPos )
 
 		pSoldier->bTurningFromUI = TRUE;
 
-		// ATE: Hard-code here previous event to ui busy event...
-		guiOldEvent = LA_BEGINUIOURTURNLOCK;
+	  // ATE: Hard-code here previous event to ui busy event...
+	  guiOldEvent = LA_BEGINUIOURTURNLOCK;
 
-		return( TRUE );
-	}
+    return( TRUE );
+  }
 	else
 	{
 		usAnimState = PickSoldierReadyAnimation( pSoldier, FALSE );
@@ -4604,7 +4604,7 @@ BOOLEAN MakeSoldierTurn( SOLDIERTYPE *pSoldier, INT16 sXPos, INT16 sYPos )
 		if( usAnimState != INVALID_ANIMATION )
 		{
 			sAPCostToReady = GetAPsToReadyWeapon( pSoldier, usAnimState );
-			sAPCost = sAPCostToReady + AP_TO_AIM_TILE_IF_GETTING_READY;
+			sAPCost = sAPCostToReady; // Madd: removed this part since it was costing too many aps to ready weapon -- see other comment //+ AP_TO_AIM_TILE_IF_GETTING_READY;
 		}
 		else if( pSoldier->sLastTarget != sXPos + (MAXCOL * sYPos ) )
 			sAPCost = AP_TO_AIM_TILE_IF_ALREADY_READY;
@@ -4615,7 +4615,7 @@ BOOLEAN MakeSoldierTurn( SOLDIERTYPE *pSoldier, INT16 sXPos, INT16 sYPos )
 		// Check AP cost...
 		if ( !EnoughPoints( pSoldier, sAPCost, 0, TRUE ) )
 		{
-			return( FALSE );
+  return( FALSE );
 		}
 
 		if( usAnimState != INVALID_ANIMATION )
@@ -4729,7 +4729,7 @@ UINT32 UIHandleTOnTerrain( UI_EVENT *pUIEvent )
 
 	//ATE: Check if we have good LOS
 	// is he close enough to see that gridno if he turns his head?
-	sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, sTargetGridNo, pSoldier->bLevel );
+	sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, sTargetGridNo, pSoldier->bLevel, pSoldier );
 
 
 	if ( uiRange <= NPC_TALK_RADIUS )
@@ -5547,7 +5547,7 @@ BOOLEAN HandleTalkInit(  )
 				{
 					//ATE: Check if we have good LOS
 					// is he close enough to see that gridno if he turns his head?
-					sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTSoldier->sGridNo, pTSoldier->bLevel );
+				  sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pTSoldier->sGridNo, pTSoldier->bLevel, pTSoldier );
 
 					// Check LOS!
 					if ( !SoldierTo3DLocationLineOfSightTest( pSoldier, pTSoldier->sGridNo,  pTSoldier->bLevel, 3, (UINT8) sDistVisible, TRUE ) )
@@ -6225,7 +6225,7 @@ BOOLEAN ValidQuickExchangePosition( )
 				  if ( PythSpacesAway( pSoldier->sGridNo, pOverSoldier->sGridNo ) == 1 )
 				  {
 					  // Check if we have LOS to them....
-					  sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pOverSoldier->sGridNo, pOverSoldier->bLevel );
+					  sDistVisible = DistanceVisible( pSoldier, DIRECTION_IRRELEVANT, DIRECTION_IRRELEVANT, pOverSoldier->sGridNo, pOverSoldier->bLevel, pOverSoldier );
 
 					  if ( SoldierTo3DLocationLineOfSightTest( pSoldier, pOverSoldier->sGridNo,  pOverSoldier->bLevel, (UINT8)3, (UINT8) sDistVisible, TRUE ) )
 					  {

@@ -1023,7 +1023,7 @@ void	QueryRTRightButton( UINT32 *puiNewEvent )
 								case LOOKCURSOR_MODE:
 								case TALKCURSOR_MODE:
 								case MOVE_MODE:
-									//ScreenMsg( FONT_WHITE, MSG_INTERFACE, L"Realtimeinput0" );
+									
 									if ( GetSoldier( &pSoldier, gusSelectedSoldier ) )
 									{
 										if ( ( guiUIFullTargetFlags & OWNED_MERC ) && ( guiUIFullTargetFlags & VISIBLE_MERC ) && !( guiUIFullTargetFlags & DEAD_MERC )&&!( pSoldier ?  pSoldier->uiStatusFlags & SOLDIER_VEHICLE : 0 ) )
@@ -1062,7 +1062,7 @@ void	QueryRTRightButton( UINT32 *puiNewEvent )
 							}
 						}
 					}
-
+				
 			}
 
 		}

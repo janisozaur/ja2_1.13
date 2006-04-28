@@ -5,37 +5,15 @@
 #include <windows.h>
 #include <stdio.h>
 
-#define GAME_INI_FILE ".\\Ja2_113x.ini"
-
-//#define PROMT_TO_CHECK_SETTINGS_TITLE L"Изменить настройки?" //change settings?
-//#define PROMT_TO_CHECK_SETTINGS L"В процессе запуска игры была создана новая копия конфигурационного файла Ja2CW.ini со значениями по умолчанию. Желаете ли вы прервать запуск игры и изменить настройки?"
-//new copy of config file Ja2CW.ini was created. do you want to change settings?
-
-//UINT8 gubDeadLockDelay = 15;
-
-//extern UINT16 SCREEN_WIDTH;
-//extern UINT16 SCREEN_HEIGHT;
+#define GAME_INI_FILE "\\Ja2.ini"
 
 BOOLEAN gfStretch = FALSE;
 BOOLEAN gfStretchWinGDI = FALSE;
 BOOLEAN gfVSync = FALSE;
 
-BOOLEAN gfAllowRain = TRUE;
-
+BOOLEAN gfAllowRain = FALSE;
 
 UINT16 gusRainChancePerDay = 100, gusRainMinLength = 60, gusRainMaxLength = 180;
-
-//BOOLEAN gfUseABResources = FALSE;
-
-//UINT32  guiMaxTossSearchDist = 2;
-
-//BOOLEAN gfShowItemShadow = TRUE;
-
-extern UINT8 gubPlayerTurnSpeedUpFactor;
-extern UINT8 gubEnemyTurnSpeedUpFactor;
-extern UINT8 gubCreatureTurnSpeedUpFactor;
-extern UINT8 gubMilitiaTurnSpeedUpFactor;
-extern UINT8 gubCivTurnSpeedUpFactor;
 
 extern UINT32 guiMinLightningInterval;
 extern UINT32 guiMaxLightningInterval;
@@ -46,19 +24,6 @@ extern UINT32 guiChanceToDoLightningBetweenTurns;
 
 extern UINT32 guiMaxRainDrops;
 
-//UINT32 guiMaxStrategicTeamSize = 48;
-
-//BOOLEAN gfEnableEmergencyButton_SkipStrategicEvents = FALSE;
-
-//extern FLOAT gdMajorMapVersion;
-
-//#define MAJOR_MAP_VERSION		( gfUseABResources ? 6.00 : 5.00 )
-
-//void NSInitGlobals()
-//{
-//	gdMajorMapVersion = (FLOAT)MAJOR_MAP_VERSION;
-//}
-
 typedef struct
 {
 	CHAR8* strParamName;
@@ -67,15 +32,8 @@ typedef struct
 	UINT8 ubVarType;
 }TSetting;
 
-//#define SET_SYSTEM "JA2 System Settings"
-#define SET_RESOLUTION "JA2 Screen Resolution Settings"
 #define SET_RAIN "JA2 Rain Settings"
 #define SET_THUNDER "JA2 Thunder Settings"
-#define SET_TURN_SPEED "JA2 Turnbased Animation Speed Settings"
-//#define SET_STRATEGIC "JA2 Strategic Settings"
-//#define SET_SPECIAL "JA2 Special Settings"
-//#define SET_TACTICAL_AI "JA2 Tactical AI Settings"
-//#define SET_GRAPHIC "JA2 Graphic Settings"
 
 enum
 {
@@ -89,39 +47,21 @@ enum
 };
 
 TSetting gpSettings[] = {
-	//{"fUse_AB_Buka_ResourceFormat", SET_SYSTEM, &gfUseABResources, VT_BOOLEAN},
+	
+	// Rain settings
+	{"ALLOW_RAIN", SET_RAIN, &gfAllowRain, VT_BOOLEAN},
+	{"RAIN_CHANCE_PER_DAY", SET_RAIN, &gusRainChancePerDay, VT_UINT16},
+	{"RAIN_MIN_LENGTH_IN_MINUTES", SET_RAIN, &gusRainMinLength, VT_UINT16},
+	{"RAIN_MAX_LENGTH_IN_MINUTES", SET_RAIN, &gusRainMaxLength, VT_UINT16},
+	{"MAX_RAIN_DROPS", SET_RAIN, &guiMaxRainDrops, VT_UINT32},
 
-	//{"iScreenResolutionX", SET_RESOLUTION, &SCREEN_WIDTH, VT_UINT16},
-	//{"iScreenResolutionY", SET_RESOLUTION, &SCREEN_HEIGHT, VT_UINT16},
-	//{"fStretchScreen", SET_RESOLUTION, &gfStretch, VT_BOOLEAN},
-	{"fVSync", SET_RESOLUTION, &gfVSync, VT_BOOLEAN},
-
-	//{"fShowItemShadow", SET_GRAPHIC, &gfShowItemShadow, VT_BOOLEAN},
-
-	{"iPlayerTurnSpeedUpFactor", SET_TURN_SPEED, (LPVOID)&gubPlayerTurnSpeedUpFactor, VT_UINT8},
-	{"iEnemyTurnSpeedUpFactor", SET_TURN_SPEED, (LPVOID)&gubEnemyTurnSpeedUpFactor, VT_UINT8},
-	{"iCreatureTurnSpeedUpFactor", SET_TURN_SPEED, (LPVOID)&gubCreatureTurnSpeedUpFactor, VT_UINT8},
-	{"iMilitiaTurnSpeedUpFactor", SET_TURN_SPEED, (LPVOID)&gubMilitiaTurnSpeedUpFactor, VT_UINT8},
-	{"iCivTurnSpeedUpFactor", SET_TURN_SPEED, (LPVOID)&gubCivTurnSpeedUpFactor, VT_UINT8},
-
-	{"fAllowRain", SET_RAIN, &gfAllowRain, VT_BOOLEAN},
-	{"iRainChancePerDay", SET_RAIN, &gusRainChancePerDay, VT_UINT16},
-	{"iRainMinLengthInMinutes", SET_RAIN, &gusRainMinLength, VT_UINT16},
-	{"iRainMaxLengthInMinutes", SET_RAIN, &gusRainMaxLength, VT_UINT16},
-	{"iMaxRainDrops", SET_RAIN, &guiMaxRainDrops, VT_UINT32},
-
-	{"iMinIntervalBetweenLightningsInRealtimeInSeconds", SET_THUNDER, &guiMinLightningInterval, VT_UINT32},
-	{"iMaxIntervalBetweenLightningsInRealtimeInSeconds", SET_THUNDER, &guiMaxLightningInterval, VT_UINT32},
-	{"iMinIntervalBetweenLightningAndThunderclapInSeconds", SET_THUNDER, &guiMinDLInterval, VT_UINT32},
-	{"iMaxIntervalBetweenLightningAndThunderclapInSeconds", SET_THUNDER, &guiMaxDLInterval, VT_UINT32},
-	{"iProlongDelayIfSeenSomeoneDuringLightningInTurnbasedInSeconds", SET_THUNDER, &guiProlongLightningIfSeenSomeone, VT_UINT32},
-	{"iChanceToDoLightningBetweenTurns", SET_THUNDER, &guiChanceToDoLightningBetweenTurns, VT_UINT32},
-
-//	{"iMaxStrategicTeamSize", SET_STRATEGIC, &guiMaxStrategicTeamSize, VT_UINT32},
-
-//	{"iMaxTossSearchDist", SET_TACTICAL_AI, &guiMaxTossSearchDist, VT_UINT32},
-
-//	{"fEnableEmergencyButton_NumLock_ToSkipStrategicEvents", SET_SPECIAL, &gfEnableEmergencyButton_SkipStrategicEvents, VT_BOOLEAN},
+	// Thunder settings
+	{"MIN_INTERVAL_BETWEEN_LIGHTNINGS_IN_REAL_TIME_SECONDS", SET_THUNDER, &guiMinLightningInterval, VT_UINT32},
+	{"MAX_INTERVAL_BETWEEN_LIGHTNINGS_IN_REAL_TIME_SECONDS", SET_THUNDER, &guiMaxLightningInterval, VT_UINT32},
+	{"MIN_INTERVAL_BETWEEN_LIGHTNING_AND_THUNDERCLAPS_IN_SECONDS", SET_THUNDER, &guiMinDLInterval, VT_UINT32},
+	{"MAX_INTERVAL_BETWEEN_LIGHTNING_AND_THUNDERCLAPS_IN_SECONDS", SET_THUNDER, &guiMaxDLInterval, VT_UINT32},
+	{"PROLOGNE_DELAY_IF_SEEN_SOMEONE_DURING_LIGHTNING_IN_TURNBASED_IN_SECONDS", SET_THUNDER, &guiProlongLightningIfSeenSomeone, VT_UINT32},
+	{"CHANCE_TO_DO_LIGHTNING_BETWEEN_TURNS", SET_THUNDER, &guiChanceToDoLightningBetweenTurns, VT_UINT32},
 
 	{0,0,0,VT_UINT8}
 };
@@ -133,9 +73,6 @@ void NSSaveSettings()
 	TSetting* pCurr = gpSettings;
 	INT32 iBuf;
 	BOOLEAN fFileCreated = !FileExists( GAME_INI_FILE );
-
-	//if( fFileCreated && FileExists( "Data\\russian.slf" ) )
-	//	gfUseABResources = TRUE;
 
 	FileDelete( GAME_INI_FILE );
 
@@ -172,13 +109,6 @@ void NSSaveSettings()
 
 		++pCurr;
 	}
-
-	//if( fFileCreated && MessageBoxW(0, PROMT_TO_CHECK_SETTINGS, PROMT_TO_CHECK_SETTINGS_TITLE, MB_YESNO) == IDYES )
-	//{
-	//	ShellExecuteW( 0, L"open", L"Ja2_113x.ini", 0, 0, SW_SHOWNORMAL);
-	//	ExitProcess(0);
-	//}
-
 }
 
 void NSLoadSettings()
@@ -187,10 +117,16 @@ void NSLoadSettings()
 	UINT32	uiRetVal=0;
 	TSetting* pCurr = gpSettings;
 	INT32 iBuf;
+	STRING512		INIFile;		// Path to the ini file
+
+	// Get Executable Directory
+	GetExecutableDirectory( INIFile );
+
+	strcat(INIFile, "\\Ja2.ini");
 
 	while( pCurr->pVar )
 	{
-		uiRetVal = GetPrivateProfileString( pCurr->strSectionName, pCurr->strParamName, "", zStr, 256, GAME_INI_FILE );
+		uiRetVal = GetPrivateProfileString( pCurr->strSectionName, pCurr->strParamName, "", zStr, 256, INIFile );
 		if( uiRetVal && strlen( zStr ) )
 		{
 			sscanf( zStr, "%d", &iBuf );
@@ -221,6 +157,4 @@ void NSLoadSettings()
 		}
 		pCurr++;
 	}
-
-	//NSInitGlobals();
 }

@@ -1,3 +1,4 @@
+// WANNE 2 <changed some lines>
 #ifdef PRECOMPILEDHEADERS
 	#include "Laptop All.h"
 	#include "HelpScreen.h"
@@ -352,7 +353,10 @@ static BOOLEAN fNewWWW=TRUE;
 extern	UINT32										guiRainLoop;
 
 
+// WANNE 2
 INT32	giRainDelayInternetSite=-1;
+
+
 
 // have we visitied this site already?
 //BOOLEAN fVisitedBookmarkAlready[20];
@@ -849,15 +853,16 @@ INT32 EnterLaptop()
 	// Stop ambients...
 	StopAmbients( );
 
-	//if its raining, start the rain showers
-	if( IsItRaining() )
-	{
-		//Enable the rain delay warning
-		giRainDelayInternetSite = -1;
+	// WANNE 2: disabled rain sound when laptop is displayed
+	////if its raining, start the rain showers
+	//if( IsItRaining() )
+	//{
+	//	//Enable the rain delay warning
+	//	giRainDelayInternetSite = -1;
 
-		//lower the volume 
-		guiRainLoop	= PlayJA2Ambient( RAIN_1, LOWVOLUME, 0 );
-	}
+	//	//lower the volume 
+	//	guiRainLoop	= PlayJA2Ambient( RAIN_1, LOWVOLUME, 0 );
+	//}
 
 	
 	//open the laptop library
@@ -1012,12 +1017,13 @@ void ExitLaptop()
 	// Start ambients...
 	BuildDayAmbientSounds( );
 
+	// WANNE 2: disabled rain sound when laptop is displayed
 	//if its raining, start the rain showers
-	if( IsItRaining() )
-	{
-		//Raise the volume to where it was
-		guiRainLoop	= PlayJA2Ambient( RAIN_1, MIDVOLUME, 0 );
-	}
+	//if( IsItRaining() )
+	//{
+	//	//Raise the volume to where it was
+	//	guiRainLoop	= PlayJA2Ambient( RAIN_1, MIDVOLUME, 0 );
+	//}
 
 	// release cursor
 	FreeMouseCursor( );
@@ -1783,6 +1789,7 @@ void HandleLapTopHandles()
 
 extern BOOLEAN gfPrintFrameBuffer;
 
+// WANNE 2 <change laptop zooming>
 UINT32 LaptopScreenHandle()
 {
 	//User just changed modes.  This is determined by the button callbacks 
@@ -1803,13 +1810,16 @@ UINT32 LaptopScreenHandle()
 	}
 
 	if( gfStartMapScreenToLaptopTransition )
-	{ //Everything is set up to start the transition animation.
-		SGPRect SrcRect1, SrcRect2, DstRect;
-		INT32 iPercentage, iScalePercentage, iFactor;
-		UINT32 uiStartTime, uiTimeRange, uiCurrTime;
-		INT32 iX, iY, iWidth, iHeight;
+	{ 
+		// WANNE 2: I disabled the animation of the laptop, because the screen redrawing does not work correct!
+		// Madd: It'd be nice if someone who knows more about graphics than I do could re-enable this, at least for 640x480
+		//Everything is set up to start the transition animation.
+		//SGPRect SrcRect2, DstRect;
+		//INT32 iPercentage, iScalePercentage, iFactor;
+		//UINT32 uiStartTime, uiTimeRange, uiCurrTime;
+		//INT32 iX, iY, iWidth, iHeight;
 
-		INT32 iRealPercentage;
+		//INT32 iRealPercentage;
 
 		SetCurrentCursorFromDatabase( VIDEO_NO_CURSOR );
 		//Step 1:  Build the laptop image into the save buffer.
@@ -1824,62 +1834,64 @@ UINT32 LaptopScreenHandle()
 		PrintNumberOnTeam( );
 		ShowLights();
 
-		//Step 2:  The mapscreen image is in the EXTRABUFFER, and laptop is in the SAVEBUFFER
-		//         Start transitioning the screen.
-		DstRect.iLeft =	iScreenWidthOffset;						//0
-		DstRect.iTop =	iScreenHeightOffset;						//0
-		DstRect.iRight = iScreenWidthOffset + 640;				//640
-		DstRect.iBottom = iScreenHeightOffset + 480;				//480
-		uiTimeRange = 1000;
-		iPercentage = iRealPercentage = 0;
-		uiStartTime = GetJA2Clock();
+		//// WANNE 2 <change>
+		////Step 2:  The mapscreen image is in the EXTRABUFFER, and laptop is in the SAVEBUFFER
+		////         Start transitioning the screen.
+		//DstRect.iLeft =	iScreenWidthOffset;						//0
+		//DstRect.iTop =	iScreenHeightOffset;						//0
+		//DstRect.iRight = iScreenWidthOffset + 640;				//640
+		//DstRect.iBottom = iScreenHeightOffset + 480;				//480
+		//uiTimeRange = 1000;
+		//iPercentage = iRealPercentage = 0;
+		//uiStartTime = GetJA2Clock();
 
-		BlitBufferToBuffer( FRAME_BUFFER, guiSAVEBUFFER, iScreenWidthOffset, iScreenHeightOffset,
-			640, 480 );
-		BlitBufferToBuffer( guiEXTRABUFFER, FRAME_BUFFER, iScreenWidthOffset, iScreenHeightOffset, 640, 480 );
+		//BlitBufferToBuffer( FRAME_BUFFER, guiSAVEBUFFER, iScreenWidthOffset, iScreenHeightOffset,
+		//	640, 480 );
+		//BlitBufferToBuffer( guiEXTRABUFFER, FRAME_BUFFER, iScreenWidthOffset, iScreenHeightOffset, 640, 480 );
 
-		PlayJA2SampleFromFile( "SOUNDS\\Laptop power up (8-11).wav", RATE_11025, HIGHVOLUME, 1, MIDDLEPAN );
-		while( iRealPercentage < 100  )
-		{
-			uiCurrTime = GetJA2Clock();
-			iPercentage = (uiCurrTime-uiStartTime) * 100 / uiTimeRange;
-			iPercentage = min( iPercentage, 100 );
+		//PlayJA2SampleFromFile( "SOUNDS\\Laptop power up (8-11).wav", RATE_11025, HIGHVOLUME, 1, MIDDLEPAN );
+		//
+		//// WANNE 2 with laptop zooming
+		//while( iRealPercentage < 100  )
+		//{
+		//	uiCurrTime = GetJA2Clock();
+		//	iPercentage = (uiCurrTime-uiStartTime) * 100 / uiTimeRange;
+		//	iPercentage = min( iPercentage, 100 );
 
-			iRealPercentage = iPercentage;
+		//	iRealPercentage = iPercentage;
 
-			//Factor the percentage so that it is modified by a gravity falling acceleration effect.
-			iFactor = (iPercentage - 50) * 2;
-			if( iPercentage < 50 )
-				iPercentage = (UINT32)(iPercentage + iPercentage * iFactor * 0.01 + 0.5);
-			else
-				iPercentage = (UINT32)(iPercentage + (100-iPercentage) * iFactor * 0.01 + 0.5);
+		//	//Factor the percentage so that it is modified by a gravity falling acceleration effect.
+		//	iFactor = (iPercentage - 50) * 2;
+		//	if( iPercentage < 50 )
+		//		iPercentage = (UINT32)(iPercentage + iPercentage * iFactor * 0.01 + 0.5);
+		//	else
+		//		iPercentage = (UINT32)(iPercentage + (100-iPercentage) * iFactor * 0.01 + 0.5);
 
-			//Mapscreen source rect
-			SrcRect1.iLeft = iScreenWidthOffset + 464 * iPercentage / 100;
-			SrcRect1.iRight = iScreenWidthOffset + 640 - 163 * iPercentage / 100;
-			SrcRect1.iTop = iScreenHeightOffset + 417 * iPercentage / 100;
-			SrcRect1.iBottom = iScreenHeightOffset + 480 - 55 * iPercentage / 100;
-			//Laptop source rect
-			if( iPercentage < 99 )
-				iScalePercentage = 10000 / (100-iPercentage);
-			else
-				iScalePercentage = 5333;
-			iWidth = 12 * iScalePercentage / 100;
-			iHeight = 9 * iScalePercentage / 100;
+		//	//Laptop source rect
+		//	if( iPercentage < 99 )
+		//		iScalePercentage = 10000 / (100-iPercentage);
+		//	else
+		//		iScalePercentage = 5333;
+		//	iWidth = 12 * iScalePercentage / 100;
+		//	iHeight = 9 * iScalePercentage / 100;
 
-			iX = iScreenWidthOffset + 472 - (472-320) * iScalePercentage / 5333;
-			iY = iScreenHeightOffset + 424 - (424-240) * iScalePercentage / 5333;
+		//	iX = iScreenWidthOffset + 472 - (472-320) * iScalePercentage / 5333;
+		//	iY = iScreenHeightOffset + 424 - (424-240) * iScalePercentage / 5333;
 
-			SrcRect2.iLeft = iX - iWidth / 2;
-			SrcRect2.iRight = SrcRect2.iLeft + iWidth;
-			SrcRect2.iTop = iY - iHeight / 2;
-			SrcRect2.iBottom = SrcRect2.iTop + iHeight;
-			
-			BltStretchVideoSurface( FRAME_BUFFER, guiSAVEBUFFER, 0, iScreenWidthOffset, iScreenHeightOffset, &DstRect, &SrcRect2 );
+		//	SrcRect2.iLeft = iX - iWidth / 2;
+		//	SrcRect2.iRight = SrcRect2.iLeft + iWidth;
+		//	SrcRect2.iTop = iY - iHeight / 2;
+		//	SrcRect2.iBottom = SrcRect2.iTop + iHeight;
+		//	
+		//	BltStretchVideoSurface(FRAME_BUFFER, guiSAVEBUFFER, 0, 0, 0, &DstRect, &SrcRect2 );
 
-			InvalidateScreen();
-			RefreshScreen( NULL );
-		}
+		//	 //WANNE 2
+		//	InvalidateScreen();
+		//	
+		//	 //WANNE 2
+		//	RefreshScreen( NULL );
+		//}
+
 		fReDrawScreenFlag = TRUE;
 	}
 	
@@ -1941,12 +1953,14 @@ UINT32 LaptopScreenHandle()
 			}
 		}
   }
+
 	if( fPausedReDrawScreenFlag )
 	{
 		fReDrawScreenFlag = TRUE;
 		fPausedReDrawScreenFlag = FALSE;
 	}
 	
+	// WANNE 2 <redraw>
   if( fReDrawScreenFlag )
 	{
    RenderLapTopImage();
@@ -2075,6 +2089,7 @@ UINT32 LaptopScreenHandle()
 	// render frame rate
 	DisplayFrameRate( );
 	
+	// WANNE 2 <redraw>
 	// invalidate screen if redrawn
 	if( fReDrawScreenFlag == TRUE )
 	{
@@ -2430,11 +2445,14 @@ BOOLEAN LeaveLapTopScreen( void )
 
 		if( !gfDontStartTransitionFromLaptop )
 		{
-			SGPRect SrcRect1, SrcRect2, DstRect;
-			INT32 iPercentage, iScalePercentage, iFactor;
-			UINT32 uiStartTime, uiTimeRange, uiCurrTime;
-			INT32 iX, iY, iWidth, iHeight;
-			INT32 iRealPercentage;
+		// WANNE 2: I disabled the laptop animation, because the screen redrawing does not work correctly!
+		// Madd: It'd be nice if someone who knows more about graphics than I do could re-enable this, at least for 640x480
+
+			//SGPRect SrcRect1, SrcRect2, DstRect;
+			//INT32 iPercentage, iScalePercentage, iFactor;
+			//UINT32 uiStartTime, uiTimeRange, uiCurrTime;
+			//INT32 iX, iY, iWidth, iHeight;
+			//INT32 iRealPercentage;
 
 			gfDontStartTransitionFromLaptop = TRUE;
 			SetCurrentCursorFromDatabase( VIDEO_NO_CURSOR );
@@ -2449,65 +2467,67 @@ BOOLEAN LeaveLapTopScreen( void )
 			PrintNumberOnTeam( );
 			ShowLights();
 
-			//Step 2:  The mapscreen image is in the EXTRABUFFER, and laptop is in the SAVEBUFFER
-			//         Start transitioning the screen.
-			DstRect.iLeft = iScreenWidthOffset + 0;			// 0
-			DstRect.iTop = iScreenHeightOffset + 0;			// 0
-			DstRect.iRight = iScreenWidthOffset + 640;		// 640
-			DstRect.iBottom = iScreenHeightOffset + 480;		// 480
-			uiTimeRange = 1000;
-			iPercentage = iRealPercentage = 100;
-			uiStartTime = GetJA2Clock();
+			////Step 2:  The mapscreen image is in the EXTRABUFFER, and laptop is in the SAVEBUFFER
+			////         Start transitioning the screen.
+			//DstRect.iLeft = iScreenWidthOffset + 0;			// 0
+			//DstRect.iTop = iScreenHeightOffset + 0;			// 0
+			//DstRect.iRight = iScreenWidthOffset + 640;		// 640
+			//DstRect.iBottom = iScreenHeightOffset + 480;		// 480
+			//uiTimeRange = 1000;
+			//iPercentage = iRealPercentage = 100;
+			//uiStartTime = GetJA2Clock();
 
-			BlitBufferToBuffer( FRAME_BUFFER, guiSAVEBUFFER, iScreenWidthOffset, iScreenHeightOffset,
-				640, 480 );
+			//BlitBufferToBuffer( FRAME_BUFFER, guiSAVEBUFFER, iScreenWidthOffset, iScreenHeightOffset,
+			//	640, 480 );
 
-			PlayJA2SampleFromFile( "SOUNDS\\Laptop power down (8-11).wav", RATE_11025, HIGHVOLUME, 1, MIDDLEPAN );
-			while( iRealPercentage > 0  )
-			{
-				BlitBufferToBuffer( guiEXTRABUFFER, FRAME_BUFFER, iScreenWidthOffset, iScreenHeightOffset, 640, 480 );
+			//PlayJA2SampleFromFile( "SOUNDS\\Laptop power down (8-11).wav", RATE_11025, HIGHVOLUME, 1, MIDDLEPAN );
 
-				uiCurrTime = GetJA2Clock();
-				iPercentage = (uiCurrTime-uiStartTime) * 100 / uiTimeRange;
-				iPercentage = min( iPercentage, 100 );
-				iPercentage = 100 - iPercentage;
+			//// WANNE 2
+			//while( iRealPercentage > 0  )
+			//{
+			//	BlitBufferToBuffer( guiEXTRABUFFER, FRAME_BUFFER, iScreenWidthOffset, iScreenHeightOffset, 640, 480 );
 
-				iRealPercentage = iPercentage;
+			//	uiCurrTime = GetJA2Clock();
+			//	iPercentage = (uiCurrTime-uiStartTime) * 100 / uiTimeRange;
+			//	iPercentage = min( iPercentage, 100 );
+			//	iPercentage = 100 - iPercentage;
 
-				//Factor the percentage so that it is modified by a gravity falling acceleration effect.
-				iFactor = (iPercentage - 50) * 2;
-				if( iPercentage < 50 )
-					iPercentage = (UINT32)(iPercentage + iPercentage * iFactor * 0.01 + 0.5);
-				else
-					iPercentage = (UINT32)(iPercentage + (100-iPercentage) * iFactor * 0.01 + 0.5);
+			//	iRealPercentage = iPercentage;
 
-				//Mapscreen source rect
-				SrcRect1.iLeft = iScreenWidthOffset + 464 * iPercentage / 100;
-				SrcRect1.iRight = iScreenWidthOffset + 640 - 163 * iPercentage / 100;
-				SrcRect1.iTop = iScreenHeightOffset + 417 * iPercentage / 100;
-				SrcRect1.iBottom = iScreenHeightOffset + 480 - 55 * iPercentage / 100;
-				//Laptop source rect
-				if( iPercentage < 99 )
-					iScalePercentage = 10000 / (100-iPercentage);
-				else
-					iScalePercentage = 5333;
-				iWidth = 12 * iScalePercentage / 100;
-				iHeight = 9 * iScalePercentage / 100;
-				iX = iScreenWidthOffset + 472 - (472-320) * iScalePercentage / 5333;
-				iY = iScreenHeightOffset + 424 - (424-240) * iScalePercentage / 5333;
+			//	//Factor the percentage so that it is modified by a gravity falling acceleration effect.
+			//	iFactor = (iPercentage - 50) * 2;
+			//	if( iPercentage < 50 )
+			//		iPercentage = (UINT32)(iPercentage + iPercentage * iFactor * 0.01 + 0.5);
+			//	else
+			//		iPercentage = (UINT32)(iPercentage + (100-iPercentage) * iFactor * 0.01 + 0.5);
 
-				SrcRect2.iLeft = iX - iWidth / 2;
-				SrcRect2.iRight = SrcRect2.iLeft + iWidth;
-				SrcRect2.iTop = iY - iHeight / 2;
-				SrcRect2.iBottom = SrcRect2.iTop + iHeight;
+			//	//Mapscreen source rect
+			//	SrcRect1.iLeft = iScreenWidthOffset + 464 * iPercentage / 100;
+			//	SrcRect1.iRight = iScreenWidthOffset + 640 - 163 * iPercentage / 100;
+			//	SrcRect1.iTop = iScreenHeightOffset + 417 * iPercentage / 100;
+			//	SrcRect1.iBottom = iScreenHeightOffset + 480 - 55 * iPercentage / 100;
+			//	//Laptop source rect
+			//	if( iPercentage < 99 )
+			//		iScalePercentage = 10000 / (100-iPercentage);
+			//	else
+			//		iScalePercentage = 5333;
+			//	iWidth = 12 * iScalePercentage / 100;
+			//	iHeight = 9 * iScalePercentage / 100;
+			//	iX = iScreenWidthOffset + 472 - (472-320) * iScalePercentage / 5333;
+			//	iY = iScreenHeightOffset + 424 - (424-240) * iScalePercentage / 5333;
 
-				BltStretchVideoSurface( FRAME_BUFFER, guiSAVEBUFFER, 0, iScreenWidthOffset, iScreenHeightOffset, &DstRect, &SrcRect2 );
+			//	SrcRect2.iLeft = iX - iWidth / 2;
+			//	SrcRect2.iRight = SrcRect2.iLeft + iWidth;
+			//	SrcRect2.iTop = iY - iHeight / 2;
+			//	SrcRect2.iBottom = SrcRect2.iTop + iHeight;
 
-				InvalidateScreen();
-				//gfPrintFrameBuffer = TRUE;
-				RefreshScreen( NULL );
-			}
-		}
+			//	BltStretchVideoSurface( FRAME_BUFFER, guiSAVEBUFFER, 0, 0, 0, &DstRect, &SrcRect2 );
+
+			//	InvalidateScreen();
+			//	//gfPrintFrameBuffer = TRUE;
+			//	RefreshScreen( NULL );
+			//}
+		} 
 	}
 	return( TRUE );
 
@@ -3542,18 +3562,19 @@ void BookmarkCallBack(MOUSE_REGION * pRegion, INT32 iReason )
 void GoToWebPage(INT32 iPageId )
 { 
 
-	//if it is raining, popup a warning first saying connection time may be slow
-	if( IsItRaining() )
-	{
-		if( giRainDelayInternetSite == -1 )
-		{
-			DoLapTopMessageBox( MSG_BOX_LAPTOP_DEFAULT, pErrorStrings[4], LAPTOP_SCREEN, MSG_BOX_FLAG_OK, InternetRainDelayMessageBoxCallBack );
-			giRainDelayInternetSite = iPageId;
-			return;
-		}
-	}
-	else
-		giRainDelayInternetSite = -1;
+	// WANNE 2: disabled rain sound when laptop is displayed
+	////if it is raining, popup a warning first saying connection time may be slow
+	//if( IsItRaining() )
+	//{
+	//	if( giRainDelayInternetSite == -1 )
+	//	{
+	//		DoLapTopMessageBox( MSG_BOX_LAPTOP_DEFAULT, pErrorStrings[4], LAPTOP_SCREEN, MSG_BOX_FLAG_OK, InternetRainDelayMessageBoxCallBack );
+	//		giRainDelayInternetSite = iPageId;
+	//		return;
+	//	}
+	//}
+	//else
+	//	giRainDelayInternetSite = -1;
 
 	switch(iPageId)
 	{
@@ -6333,10 +6354,11 @@ BOOLEAN IsItRaining()
 
 void		InternetRainDelayMessageBoxCallBack( UINT8 bExitValue )
 {
-	GoToWebPage(	giRainDelayInternetSite );
+	// WANNE 2
+	//GoToWebPage(	giRainDelayInternetSite );
 
 	//Set to -2 so we dont due the message for this occurence of laptop
-	giRainDelayInternetSite = -2;
+	//giRainDelayInternetSite = -2;
 }
 
 
