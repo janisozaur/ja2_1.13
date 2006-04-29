@@ -81,21 +81,92 @@ HOW TO MERGE YOUR CHANGES IN THE LATEST SOURCE
 *********************************************************
 
 - Restored the "accurate" and "inaccurate" strings that Rowa21 overwrote ;) 
+- Added code to use the Accuracy tag in Weapons.xml
 - IMP.dat file changed to save a different file for each IMP
 - Different existing IMPs can be loaded by typing their names in the IMP webpage
 - Reverted changes to font.cpp due to Ivan's text not being displayed properly
+- Added an AutoPenalty stat to Weapons.xml to complement BurstPenalty
+- Added a NoSemiAuto stat to Weapons.xml to enable weapons that are Full-Auto only, code also added for AI to not use NoSemiAuto weapons in semi-auto mode
+- Added an APBonus stat to Items.xml to enable items to give you an APBonus/Penalty (ie: heavy armour)
+- Added code to enable the AimBonus and ToHitBonus stats to be read in from worn gear
+- Added Lesh's burst sound externalization code, added SilencedBurstSound tag to weapons.xml
+- Changed required camouflage amount to show merc as camo'd to 50%, due to some new items affecting the camouflage %
+- Added two new Merge options: Use_Item (6) and Use_Item_Hard (7), which enable the use of a single item on another single item.  The hard one performs a mechanics check.  Use_Item_Hard can be used for caliber conversion kits, etc. (But I need to add code to dump the old ammo still).  
+-   Use_Item can be used for things like opening your bullets up w/a knife to empty out some of the powder, for cold-loaded ammo.  To Do: enable deterioration of the using item, figure out a way to enable multiple resultant items.
+- Commented out all the Air Strike code.
+- Changed the air strike options to be: "tons of guns" and "10 tons of guns"
+- Used the BigGunList stat in Items.xml to determine whether items can show up depending on the selection from #9
+- Completely redid all the existing weapons' stats (and a couple images).
+- Changed some weapons' calibers, such as the SVD dragunov to 7.62x54r and the Type-85 to 7.62x25mm.  Eliminated some types of ammo that do not exist (at least according to my source - so correct me if this is wrong and I'll add them back in): HP ammo in 7.62x39mm, 5.45mm, and 5.7mm.
+- Moved most of the old 1.13 specific weapons around in Items.xml to new spots.  The items.xml file now goes to over 1000 (w/some "nothing" entries for organization)
+- Kept all the UB weapons, and some new weapons/items inside the old 350 item limit, so they can be assigned using ProEdit.  To Do: Alter the binary files so pro-edit can see the right item names.
+- Throwing knife code changed, so that we can have more than one type of throwing knife.  For now, this means that tossing your knife into the dirt won't un-bloody it.  To Do: fix this later.
+- New weapon sounds (swiped from various mods) TODO: Incorporate Corpse's new weapon sounds
+- Reinstated 5% to-hit bonus for using a pistol w/two hands (nothing in offhand) and 5% to-hit penalty for using an SMG w/one hand (this one might've already been in, I forget) that the devs commented out
+- On top of those items added to 1.13 already, I've added/am in the process of adding:
+
+200+ new guns,
+30+ new grenades,
+9+ new grenade launchers,
+4 new rocket launchers,
+8 new knives,
+a new throwing knife,
+2 new armour attachments,
+50+ new armours,
+10+ new misc. items,
+6+ new weapon attachments,
+15+ new ammo calibers & 12+ new types of ammo (including cold-loaded variants)
+
+- resulting in 240+ new ammo items, and I'm probably missing stuff
+- Not all the images are in yet - will add as I get them done.
+
+
 
 *********************************************************
 *	2006/04/20					*
 *	Little Alien					*
 *	Developed in VS 2003				*
 *********************************************************
-
+Data:
 - added fonts to display russian letters for Ivan
-- added 007.edt (Ivan) with proper encoding
+- added 007.edt (Ivan) with proper encoding (use it only on english version, in german version everything is translated in german)
 - some letters are displayed wrong when english exe is used on german version (this is normal, german and russian fonts use same ASCII codes for different characters)
 
+Source: 
+
+Bugfix: Auto Resolve CTD
+No crash anymore but there is no background image when you select mercs to retreat and there more than 36 militia in sector on 640x480
+Also cheating is removed (count of enemys that fight was not more than 32, now 256) .
+
+Workaround for CTD/Freeze when viewing cover/LOS
+
+Bugfix: CTD when climbing on roof. (Lighting.cpp LightRevealWall and LightHideWall additional check added)
+
+Bugfix: CTD when try to pickup items from dead body. (Tiledef.cpp check CHECKF( usIndex < NUMBEROFTILES ); added into GetTileType and GetWallOrientation)
+
+Reverted changes to font.cpp made by Madd Mugsy. Ivan text works now with new fonts and new 007.edt
 
 
 
+*********************************************************
+*	2006/04/26					*
+*	Little Alien					*
+*	Developed in VS 2003				*
+*********************************************************
 
+Source: 
+
+- Soundmanager v1.1 added
+- Some changes for international versions
+
+
+
+*********************************************************
+*	2006/04/27					*
+*	Little Alien					*
+*	Developed in VS 2003				*
+*********************************************************
+
+Source: 
+
+- Some changes for international versions
