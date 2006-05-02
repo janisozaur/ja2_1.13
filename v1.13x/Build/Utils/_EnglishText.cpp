@@ -4036,7 +4036,10 @@ STR16 gzLateLocalizedString[] =
 	L"%s fires %d more rounds than intended!"
 };
 
-
+STR16 gzCWStrings[] = 
+{
+	L"Call reinforcements from adjacent sectors?",
+};
 
 
 #endif //ENGLISH

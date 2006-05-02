@@ -3819,4 +3819,9 @@ STR16 gzLateLocalizedString[] =
 
 };
 
+STR16 gzCWStrings[] = 
+{
+	L"Verstärkung von anliegenden Sektoren anfordern?",
+};
+
 #endif //GERMAN

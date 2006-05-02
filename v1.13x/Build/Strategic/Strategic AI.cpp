@@ -79,6 +79,7 @@ of the group.  If the priority of the group is high, they
 // values have been externalized into an INI file. Not all of them at this point,
 // but more will be externalized as time goes on.
 
+#define BASIC_POOL_INCREMENT guiBaseQueenPoolIncrement
 
 //Modifies the number of troops the queen has at the beginning of the game on top
 //of all of the garrison and patrol groups.  Additionally, there are a total of 
@@ -108,10 +109,10 @@ of the group.  If the priority of the group is high, they
 //Sets the starting alert chances.  Everytime an enemy arrives in a new sector, or the player,
 //this is the chance the enemy will detect the player in adjacent sectors.  This chance is associated
 //with each side checked.  Stationary groups do this check periodically.
-#define EASY_ENEMY_STARTING_ALERT_LEVEL			5
-#define	NORMAL_ENEMY_STARTING_ALERT_LEVEL		20
-#define HARD_ENEMY_STARTING_ALERT_LEVEL			60
-#define INSANE_ENEMY_STARTING_ALERT_LEVEL		80
+#define EASY_ENEMY_STARTING_ALERT_LEVEL			20
+#define	NORMAL_ENEMY_STARTING_ALERT_LEVEL		50
+#define HARD_ENEMY_STARTING_ALERT_LEVEL			70
+#define INSANE_ENEMY_STARTING_ALERT_LEVEL		90
 
 //When an enemy spots and chases a player group, the alertness value decrements by this value.  The
 //higher the value, the less of a chance the enemy will spot and attack subsequent groups.  This 
@@ -236,31 +237,31 @@ ARMY_COMPOSITION gOrigArmyComp[ NUM_ARMY_COMPOSITIONS ] =
 {	//COMPOSITION				PRIORITY		ELITE%		TROOP%		ADMIN 		DESIRED#		START#		PADDING
 	//																								START%
 	QUEEN_DEFENCE,				100,			100,		0,			0,			32,				32,				{0,0,0,0,0,0,0,0,0,0},
-	MEDUNA_DEFENCE,				95,				55,			45,			0,			16,				20,				{0,0,0,0,0,0,0,0,0,0},
-	MEDUNA_SAMSITE,				96,				65,			35,			0,			20,				20,				{0,0,0,0,0,0,0,0,0,0},
-	LEVEL1_DEFENCE,				40,				20,			80,			0,			12,				20,				{0,0,0,0,0,0,0,0,0,0},
-	LEVEL2_DEFENCE,				30,				10,			90,			0,			10,				20,				{0,0,0,0,0,0,0,0,0,0},
-	LEVEL3_DEFENCE,				20,				5,			95,			0,			8,				20,				{0,0,0,0,0,0,0,0,0,0},
-	ORTA_DEFENCE,				90,				50,			50,			0,			18,				19,				{0,0,0,0,0,0,0,0,0,0},
-	EAST_GRUMM_DEFENCE,			80,				20,			80,			0,			15,				15,				{0,0,0,0,0,0,0,0,0,0},
-	WEST_GRUMM_DEFENCE,			70,				0,			100,		40,			15,				15,				{0,0,0,0,0,0,0,0,0,0},
-	GRUMM_MINE,					85,				25,			75,			45,			15,				15,				{0,0,0,0,0,0,0,0,0,0},
-	OMERTA_WELCOME_WAGON,		0,				0,			100,		0,			0,				3,				{0,0,0,0,0,0,0,0,0,0},
-	BALIME_DEFENCE,				60,				45,			55,			20,			10,				4,				{0,0,0,0,0,0,0,0,0,0},
-	TIXA_PRISON,				80,				10,			90,			15,			15,				15,				{0,0,0,0,0,0,0,0,0,0},
-	TIXA_SAMSITE,				85,				10,			90,			0,			12,				12,				{0,0,0,0,0,0,0,0,0,0},
-	ALMA_DEFENCE,				74,				15,			85,			0,			11,				20,				{0,0,0,0,0,0,0,0,0,0},
-	ALMA_MINE,					80,				20,			80,			45,			15,				20,				{0,0,0,0,0,0,0,0,0,0},
-	CAMBRIA_DEFENCE,			50,				0,			100,		30,			10,				6,				{0,0,0,0,0,0,0,0,0,0},
-	CAMBRIA_MINE,				60,				15,			90,			40,			11,				6,				{0,0,0,0,0,0,0,0,0,0},
-	CHITZENA_DEFENCE,			30,				0,			100,		75,			12,				10,				{0,0,0,0,0,0,0,0,0,0},
-	CHITZENA_MINE,				40,				0,			100,		75,			10,				10,				{0,0,0,0,0,0,0,0,0,0},
-	CHITZENA_SAMSITE,			75,				10,			90,			0,			9,				9,				{0,0,0,0,0,0,0,0,0,0},
-	DRASSEN_AIRPORT,			30,				0,			100,		85,			12,				10,				{0,0,0,0,0,0,0,0,0,0},
-	DRASSEN_DEFENCE,			20,				0,			100,		80,			10,				8,				{0,0,0,0,0,0,0,0,0,0},
-	DRASSEN_MINE,				35,				0,			100,		75,			11,				9,				{0,0,0,0,0,0,0,0,0,0},
-	DRASSEN_SAMSITE,			50,				0,			100,		0,			10,				10,				{0,0,0,0,0,0,0,0,0,0},
-	ROADBLOCK,					20,				2,			98,			0,			8,				0,				{0,0,0,0,0,0,0,0,0,0},
+	MEDUNA_DEFENCE,				95,				55,			45,			0,			32,				20,				{0,0,0,0,0,0,0,0,0,0},
+	MEDUNA_SAMSITE,				96,				65,			35,			0,			32,				20,				{0,0,0,0,0,0,0,0,0,0},
+	LEVEL1_DEFENCE,				40,				20,			80,			0,			32,				20,				{0,0,0,0,0,0,0,0,0,0},
+	LEVEL2_DEFENCE,				30,				10,			90,			0,			30,				20,				{0,0,0,0,0,0,0,0,0,0},
+	LEVEL3_DEFENCE,				20,				5,			95,			0,			26,				20,				{0,0,0,0,0,0,0,0,0,0},
+	ORTA_DEFENCE,					90,				50,			50,			0,			32,				19,				{0,0,0,0,0,0,0,0,0,0},
+	EAST_GRUMM_DEFENCE,		80,				20,			80,			0,			32,				15,				{0,0,0,0,0,0,0,0,0,0},
+	WEST_GRUMM_DEFENCE,		70,				0,			100,		40,			32,				15,				{0,0,0,0,0,0,0,0,0,0},
+	GRUMM_MINE,						85,				25,			75,			45,			32,				15,				{0,0,0,0,0,0,0,0,0,0},
+	OMERTA_WELCOME_WAGON,	0,				0,			100,		0,			0,				3,				{0,0,0,0,0,0,0,0,0,0},
+	BALIME_DEFENCE,				60,				45,			55,			20,			30,				4,				{0,0,0,0,0,0,0,0,0,0},
+	TIXA_PRISON,					80,				10,			90,			15,			32,				15,				{0,0,0,0,0,0,0,0,0,0},
+	TIXA_SAMSITE,					85,				10,			90,			0,			32,				12,				{0,0,0,0,0,0,0,0,0,0},
+	ALMA_DEFENCE,					74,				15,			85,			0,			31,				20,				{0,0,0,0,0,0,0,0,0,0},
+	ALMA_MINE,						80,				20,			80,			45,			32,				20,				{0,0,0,0,0,0,0,0,0,0},
+	CAMBRIA_DEFENCE,			50,				0,			100,		30,			30,				6,				{0,0,0,0,0,0,0,0,0,0},
+	CAMBRIA_MINE,					60,				15,			90,			40,			31,				6,				{0,0,0,0,0,0,0,0,0,0},
+	CHITZENA_DEFENCE,			30,				0,			100,		75,			32,				10,				{0,0,0,0,0,0,0,0,0,0},
+	CHITZENA_MINE,				40,				0,			100,		75,			30,				10,				{0,0,0,0,0,0,0,0,0,0},
+	CHITZENA_SAMSITE,			75,				10,			90,			0,			28,				9,				{0,0,0,0,0,0,0,0,0,0},
+	DRASSEN_AIRPORT,			30,				0,			100,		85,			32,				10,				{0,0,0,0,0,0,0,0,0,0},
+	DRASSEN_DEFENCE,			20,				0,			100,		80,			30,				8,				{0,0,0,0,0,0,0,0,0,0},
+	DRASSEN_MINE,					35,				0,			100,		75,			31,				9,				{0,0,0,0,0,0,0,0,0,0},
+	DRASSEN_SAMSITE,			50,				0,			100,		0,			30,				10,				{0,0,0,0,0,0,0,0,0,0},
+	ROADBLOCK,						20,				2,			98,			0,			28,				0,				{0,0,0,0,0,0,0,0,0,0},
 	SANMONA_SMALL,				0,				0,			0,			0,			0,				0,				{0,0,0,0,0,0,0,0,0,0},			
 };
 
@@ -2956,7 +2957,7 @@ void EvaluateQueenSituation()
 	if( !giReinforcementPool )
 	{ //Queen has run out of reinforcements.  Simulate recruiting and training new troops
 		uiOffset *= 10;
-		giReinforcementPool += 30;
+		giReinforcementPool += ( BASIC_POOL_INCREMENT * gGameOptions.ubDifficultyLevel ) * ( 100 + CurrentPlayerProgressPercentage() ) / 100 ;
 		AddStrategicEvent( EVENT_EVALUATE_QUEEN_SITUATION, GetWorldTotalMin() + uiOffset, 0 );
 		return;
 	}

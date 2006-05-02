@@ -93,6 +93,8 @@ UINT8 gubMilitiaTurnSpeedUpFactor = 1;
 UINT8 gubCivTurnSpeedUpFactor = 1;
 //turnspeed
 
+extern BOOLEAN fAllowTacticalMilitiaCommand; //lal
+
 extern INT16 DirIncrementer[8];
 
 #define		PALETTEFILENAME							"BINARYDATA\\ja2pal.dat"
@@ -10820,7 +10822,7 @@ BOOLEAN PlayerSoldierStartTalking( SOLDIERTYPE *pSoldier, UINT8 ubTargetID, BOOL
 	if ( GetCivType( pTSoldier ) != CIV_TYPE_NA )
 	{
 		//lal
-		if ( pTSoldier->bTeam == MILITIA_TEAM )
+		if ( ( pTSoldier->bTeam == MILITIA_TEAM ) && ( fAllowTacticalMilitiaCommand == TRUE ) )
 		{
 			PopupMilitiaControlMenu( pTSoldier );
 			return( FALSE );

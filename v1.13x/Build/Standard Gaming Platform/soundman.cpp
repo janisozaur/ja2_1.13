@@ -805,7 +805,7 @@ SOUNDPARMS spParms;
 		{
 			pSampleList[uiSample].uiTimeNext=GetTickCount()+pSampleList[uiSample].uiTimeMin+Random(pSampleList[uiSample].uiTimeMax-pSampleList[uiSample].uiTimeMin);
 			pSampleList[uiSample].uiInstances++;
-			
+			//SoundLog((CHAR8 *)String("  SoundPlayRandom():  Sample #%d = '%s'", uiSample, pFilename ) );
 			return(TRUE);
 		}
         else
