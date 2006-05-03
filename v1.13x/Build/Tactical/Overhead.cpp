@@ -6197,10 +6197,10 @@ BOOLEAN CheckForEndOfBattle( BOOLEAN fAnEnemyRetreated )
 					pTeamSoldier->ubNoiseVolume = 0;
 					pTeamSoldier->bNewSituation = FALSE;
 					pTeamSoldier->bOrders = STATIONARY;
-					if ( pTeamSoldier->bLife >= OKLIFE )
-					{
-						pTeamSoldier->bBleeding = 0;
-					}
+					if ( pTeamSoldier->bLife < OKLIFE )
+						pTeamSoldier->bLife = OKLIFE;
+
+					pTeamSoldier->bBleeding = 0; // let's think, the autobandage was done for the militia too
 				}
 			}
 			gTacticalStatus.Team[ MILITIA_TEAM ].bAwareOfOpposition = FALSE;

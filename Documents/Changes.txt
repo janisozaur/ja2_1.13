@@ -170,3 +170,77 @@ Source:
 Source: 
 
 - Some changes for international versions
+
+
+
+*********************************************************
+*	2006/04/30					*
+*	RoWa21						*
+*	Developed in VS 2003				*
+*********************************************************
+
+Source:
+
+- Re-enabled Ironman-Feature in the "Start new game screen"
+- Added a "Previous" and "Next" button to the merc account screen
+
+Data:
+
+- Added new data (data\laptop)
+
+
+
+*********************************************************
+*	2006/04/30					*
+*	Little Alien					*
+*	Developed in VS 2003				*
+*********************************************************
+
+Source: Source_2006_04_30_2.rar 
+
+- Bugfix: not possible to hit enemy on roof, bullet hits something just after shot
+
+
+
+
+*********************************************************
+*	2006/05/01					*
+*	Madd Mugsy					*
+*	Developed in VS 2003				*
+*********************************************************
+
+Source:
+- Added bullet tracers (& tracerEffect to AmmoTypes.xml)
+- Remedied IMP name saving, which didn't seem to upload properly
+
+Data:
+- Add bullet_tracer.sti to tilecache (will upload a full data folder w/new images at some point)
+
+
+
+
+*********************************************************
+*	2006/05/01					*
+*	Little Alien					*
+*	Developed in VS 2003				*
+*********************************************************
+
+Source: ja2_v1.13.rar 
+- Added militia control in tactical (can be turned on/off in ja2.ini file)
+- Aiming/readying gun: show in red points needed for readying gun
+
+Data:
+- Added new ja2.ini
+
+
+
+
+*********************************************************
+*	2006/05/03					*
+*	RoWa21						*
+*	Developed in VS 2003				*
+*********************************************************
+
+Source: JA2_v1.13_2006_05_03.rar 
+- Commented out the laptop zooming feature, when clicking on the laptop button in the strategy screen
+- Laptop zooming did not work properly -> some graphic glitches

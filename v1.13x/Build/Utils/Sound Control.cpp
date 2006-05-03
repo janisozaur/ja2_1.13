@@ -437,16 +437,29 @@ BOOLEAN ShutdownJA2Sound( )
 
 UINT32 PlayJA2Sample( UINT32 usNum, UINT32 usRate, UINT32 ubVolume, UINT32 ubLoops, UINT32 uiPan )
 {
-  SOUNDPARMS spParms;
+	//SoundLog((CHAR8 *)String(" Play sound %s on volume %d", szSoundEffects[usNum], ubVolume));
+
+	SOUNDPARMS spParms;
 
 	memset(&spParms, 0xff, sizeof(SOUNDPARMS));
 
 	spParms.uiSpeed = usRate;
-	spParms.uiVolume = CalculateSoundEffectsVolume( ubVolume );
-    spParms.uiVolume &= 0xFFL;
+	
+	if ( strstr( szSoundEffects[usNum], "WEAPONS" ) == NULL )
+	{
+		spParms.uiVolume = CalculateSoundEffectsVolume( ubVolume );		
+	}
+	else
+	{
+		spParms.uiVolume = HIGHVOLUME;
+	}
+
+	spParms.uiVolume &= 0xFFL;
 	spParms.uiLoop = ubLoops;
 	spParms.uiPan = uiPan & 0xFFL;
 	spParms.uiPriority=GROUP_PLAYER;
+
+	//SoundLog((CHAR8 *)String(" Play sound %s on volume %d", szSoundEffects[usNum], spParms.uiVolume));
 
 	return(SoundPlay(szSoundEffects[usNum], &spParms));
 }
@@ -459,6 +472,7 @@ UINT32 PlayJA2StreamingSample( UINT32 usNum, UINT32 usRate, UINT32 ubVolume, UIN
 	memset(&spParms, 0xff, sizeof(SOUNDPARMS));
 
 	spParms.uiSpeed = usRate;
+
 	spParms.uiVolume = CalculateSoundEffectsVolume( ubVolume );
 	spParms.uiLoop = ubLoops;
 	spParms.uiPan = uiPan;
@@ -470,23 +484,32 @@ UINT32 PlayJA2StreamingSample( UINT32 usNum, UINT32 usRate, UINT32 ubVolume, UIN
 
 UINT32 PlayJA2SampleFromFile( STR8 szFileName, UINT32 usRate, UINT32 ubVolume, UINT32 ubLoops, UINT32 uiPan )
 {
-
+	//SoundLog((CHAR8 *)String(" Play sound %s on volume %d", szFileName, ubVolume));
 	// does the same thing as PlayJA2Sound, but one only has to pass the filename, not the index of the sound array
 
-  SOUNDPARMS spParms;
+	SOUNDPARMS spParms;
 
 	memset(&spParms, 0xff, sizeof(SOUNDPARMS));
 
 	spParms.uiSpeed = usRate;
-	spParms.uiVolume = CalculateSoundEffectsVolume( ubVolume );
+
+	if ( strstr( szFileName, "WEAPONS" ) == NULL )
+	{
+		spParms.uiVolume = CalculateSoundEffectsVolume( ubVolume );
+	}
+	else
+	{
+		spParms.uiVolume = HIGHVOLUME;
+	}
+	
 	spParms.uiLoop = ubLoops;
 	spParms.uiPan = uiPan;
 	spParms.uiPriority=GROUP_PLAYER;
 
-	//return(SoundPlay(szFileName, &spParms));
+	//SoundLog((CHAR8 *)String(" Play sound %s on volume %d", szFileName, spParms.uiVolume));
+
 	return(SoundPlay((STR) szFileName, &spParms));
 }
-
 
 UINT32 PlayJA2StreamingSampleFromFile( STR8 szFileName, UINT32 usRate, UINT32 ubVolume, UINT32 ubLoops, UINT32 uiPan, SOUND_STOP_CALLBACK EndsCallback )
 {
@@ -523,7 +546,7 @@ UINT32 PlayJA2Ambient( UINT32 usNum, UINT32 ubVolume, UINT32 ubLoops)
 
 UINT32 PlayJA2AmbientRandom( UINT32 usNum, UINT32 uiTimeMin, UINT32 uiTimeMax)
 {
-RANDOMPARMS rpParms;
+	RANDOMPARMS rpParms;
 
 	memset(&rpParms, 0xff, sizeof(RANDOMPARMS));
 
