@@ -4047,7 +4047,7 @@ void AttackTarget( SOLDIERCELL *pAttacker, SOLDIERCELL *pTarget )
 			return;
 		}
 
-		ubAccuracy = (UINT8)((usAttack - usDefence + PreRandom( usDefence - pTarget->usDefence ) )/10);
+		ubAccuracy = (UINT8)((usAttack - usDefence + PreRandom( usDefence - pTarget->usDefence ) )/10);  
 
 		//Determine attacking weapon.
 		pAttacker->pSoldier->usAttackingWeapon = 0;
@@ -4057,19 +4057,19 @@ void AttackTarget( SOLDIERCELL *pAttacker, SOLDIERCELL *pTarget )
 			if( Item[ pItem->usItem ].usItemClass & IC_WEAPON )
 				pAttacker->pSoldier->usAttackingWeapon = pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ].usItem;
 		}
-
-		if( pAttacker->bWeaponSlot != HANDPOS )
-		{ //switch items
-			memcpy( &tempItem, &pAttacker->pSoldier->inv[ HANDPOS ], sizeof( OBJECTTYPE ) );
-			memcpy( &pAttacker->pSoldier->inv[ HANDPOS ], &pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ], sizeof( OBJECTTYPE ) ); //CTD
-			iImpact = HTHImpact( pAttacker->pSoldier, pTarget->pSoldier, ubAccuracy, (BOOLEAN)(fKnife | fClaw) );
-			memcpy( &pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ], &pAttacker->pSoldier->inv[ HANDPOS ], sizeof( OBJECTTYPE ) );
-			memcpy( &pAttacker->pSoldier->inv[ HANDPOS ], &tempItem, sizeof( OBJECTTYPE ) );
-		}
-		else
-		{
-			iImpact = HTHImpact( pAttacker->pSoldier, pTarget->pSoldier, ubAccuracy, (BOOLEAN)(fKnife || fClaw) );
-		}
+		
+		//if( pAttacker->bWeaponSlot != HANDPOS )
+		//{ //switch items			
+		//	memcpy( &tempItem, &pAttacker->pSoldier->inv[ HANDPOS ], sizeof( OBJECTTYPE ) );			
+		//	memcpy( &pAttacker->pSoldier->inv[ HANDPOS ], &pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ], sizeof( OBJECTTYPE ) ); //CTD
+		//	iImpact = HTHImpact( pAttacker->pSoldier, pTarget->pSoldier, ubAccuracy, (BOOLEAN)(fKnife | fClaw) );
+		//	memcpy( &pAttacker->pSoldier->inv[ pAttacker->bWeaponSlot ], &pAttacker->pSoldier->inv[ HANDPOS ], sizeof( OBJECTTYPE ) );
+		//	memcpy( &pAttacker->pSoldier->inv[ HANDPOS ], &tempItem, sizeof( OBJECTTYPE ) );
+		//}
+		//else
+		//{
+		//	iImpact = HTHImpact( pAttacker->pSoldier, pTarget->pSoldier, ubAccuracy, (BOOLEAN)(fKnife || fClaw) );
+		//}
 
 		iNewLife = pTarget->pSoldier->bLife - iImpact;
 
