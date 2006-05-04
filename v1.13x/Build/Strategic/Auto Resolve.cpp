@@ -4040,7 +4040,7 @@ void AttackTarget( SOLDIERCELL *pAttacker, SOLDIERCELL *pTarget )
 	else
 	{
 		OBJECTTYPE *pItem;
-		OBJECTTYPE tempItem;
+		//OBJECTTYPE tempItem;
 		PlayAutoResolveSample( (UINT8)(BULLET_IMPACT_1+PreRandom(3)), RATE_11025, 50, 1, MIDDLEPAN );
 		if( !pTarget->pSoldier->bLife )
 		{ //Soldier already dead (can't kill him again!)
@@ -4070,7 +4070,7 @@ void AttackTarget( SOLDIERCELL *pAttacker, SOLDIERCELL *pTarget )
 		//{
 		//	iImpact = HTHImpact( pAttacker->pSoldier, pTarget->pSoldier, ubAccuracy, (BOOLEAN)(fKnife || fClaw) );
 		//}
-
+		iImpact = 0;
 		iNewLife = pTarget->pSoldier->bLife - iImpact;
 
 		if( pAttacker->uiFlags & CELL_MERC )
