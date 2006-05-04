@@ -1098,7 +1098,7 @@ void AddPossiblePendingEnemiesToBattle()
 	SECTORINFO *pSector = &SectorInfo[ SECTOR( gWorldSectorX, gWorldSectorY ) ];
 	static UINT8 ubPredefinedInsertionCode = 255;
 
-	if( !PlayerMercsInSector( gWorldSectorX, gWorldSectorY, 0 ) || !CountAllMilitiaInSector( gWorldSectorX, gWorldSectorY ) 
+	if( ( !PlayerMercsInSector( gWorldSectorX, gWorldSectorY, 0 ) && !CountAllMilitiaInSector( gWorldSectorX, gWorldSectorY ) )
 		|| !NumEnemiesInSector( gWorldSectorX, gWorldSectorY ) ) return;
 
 
