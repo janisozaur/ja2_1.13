@@ -3012,7 +3012,7 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 								// Search for gun
 								for (UINT32 bLoop2 = 0; bLoop2 < NUM_INV_SLOTS; bLoop2++)
 								{
-									if (Item[pTeamSoldier->inv[bLoop2].usItem].usItemClass & IC_GUN )
+									if (Item[pTeamSoldier->inv[bLoop2].usItem].usItemClass & IC_GUN || Item[pTeamSoldier->inv[bLoop2].usItem].usItemClass == IC_LAUNCHER)
 									{	
 										pGun  = &(pTeamSoldier->inv[bLoop2]);
 										//magazine is not full

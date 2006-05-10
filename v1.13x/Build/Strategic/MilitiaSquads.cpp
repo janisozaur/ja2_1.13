@@ -441,7 +441,7 @@ void UpdateMilitiaSquads(INT16 sMapX, INT16 sMapY )
 	SECTORINFO *pSectorInfo = &( SectorInfo[ SECTOR( sMapX, sMapY ) ] );
 	UINT8 uiMilitiaCount;
 
-	if( !gfAllowMilitiaGroups )
+	if( !gGameExternalOptions.gfAllowMilitiaGroups )
 		return;
 
 	if( sMapX == 1 && sMapY == 1 )
@@ -658,7 +658,7 @@ void MilitiaHelpFromAdjacentSectors( INT16 sMapX, INT16 sMapY )
 	sMSMapX = sMapX;
 	sMSMapY = sMapY;
 
-	if( !gfAllowMilitiaGroups )
+	if( !gGameExternalOptions.gfAllowMilitiaGroups )
 		return;
 
 	if( CountAllMilitiaInSector( sMapX, sMapY ) ) MSCallBack( MSG_BOX_RETURN_YES );

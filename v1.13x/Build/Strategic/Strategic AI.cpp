@@ -79,7 +79,7 @@ of the group.  If the priority of the group is high, they
 // values have been externalized into an INI file. Not all of them at this point,
 // but more will be externalized as time goes on.
 
-#define BASIC_POOL_INCREMENT guiBaseQueenPoolIncrement
+#define BASIC_POOL_INCREMENT gGameExternalOptions.guiBaseQueenPoolIncrement
 
 //Modifies the number of troops the queen has at the beginning of the game on top
 //of all of the garrison and patrol groups.  Additionally, there are a total of 
