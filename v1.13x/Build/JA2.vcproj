@@ -3,6 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="ja2"
+	RootNamespace="ja2"
 	SccProjectName=""
 	SccAuxPath=""
 	SccLocalPath=""
@@ -565,7 +566,8 @@
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCPreBuildEventTool"
+				CommandLine="%PROGRAMFILES%\TortoiseSVN\bin\SubWCRev.exe $(InputDir) $(InputDir)\Res\GameVersion.cpp.template $(InputDir)\GameVersion.cpp"/>
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
@@ -2367,6 +2369,9 @@
 				RelativePath="VtuneApi.h">
 			</File>
 		</Filter>
+		<File
+			RelativePath=".\Res\GameVersion.cpp.template">
+		</File>
 		<File
 			RelativePath="Res\jagged3.ico">
 		</File>
