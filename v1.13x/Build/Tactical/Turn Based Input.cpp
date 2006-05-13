@@ -224,7 +224,7 @@ void HandleStealthChangeFromUIKeys( );
 
 UINT8			gubCheatLevel		= STARTING_CHEAT_LEVEL;
 
-
+extern void StackObjs( OBJECTTYPE * pSourceObj, OBJECTTYPE * pTargetObj, UINT8 ubNumberToCopy );
 extern BOOLEAN CompatibleAmmoForGun( OBJECTTYPE *pTryObject, OBJECTTYPE *pTestObject );
 extern void DetermineWhichAssignmentMenusCanBeShown( void );
 extern void DetermineWhichMilitiaControlMenusCanBeShown( void ); //lal
@@ -3067,6 +3067,8 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 							HandleStanceChangeFromUIKeys( ANIM_PRONE );
 					break;
 
+
+
 					// Make auto reload with magazines from sector inventory
 				case 'R':					
 					if (! (gTacticalStatus.uiFlags & INCOMBAT) )
@@ -3094,7 +3096,7 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 											// Search for ammo in sector
 											for ( UINT32 uiLoop = 0; uiLoop < guiNumWorldItems; uiLoop++ )												
 											{
-												if ( gWorldItems[ uiLoop ].fExists) //item exists
+												if ( gWorldItems[ uiLoop ].fExists)  //item exists && (gWorldItems[ uiLoop ].usFlags & WORLD_ITEM_REACHABLE)
 												{
 													if ( ( Item[ gWorldItems[ uiLoop ].o.usItem ].usItemClass & IC_AMMO ) ) // the item is ammo
 													{
@@ -3185,6 +3187,79 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 						}
 					}
 					break;
+
+
+
+
+
+					case 'S':
+						
+						if (! (gTacticalStatus.uiFlags & INCOMBAT) )
+						{
+							for ( UINT32 uiLoop = 0; uiLoop < guiNumWorldItems; uiLoop++ )												
+							{
+								if ( ( gWorldItems[ uiLoop ].fExists) && (gWorldItems[ uiLoop ].usFlags & WORLD_ITEM_REACHABLE) )//item exists and is reachable
+								{
+									//find out how many items can be put in a big slot
+									INT8 ubSlotLimit = ItemSlotLimit( gWorldItems[ uiLoop ].o.usItem, BIGPOCK1POS );
+
+									//if we still have some space
+									if ( gWorldItems[ uiLoop ].o.ubNumberOfObjects < ubSlotLimit )
+									{
+										//if the next item is the same
+										if ( gWorldItems[ uiLoop ].o.usItem == gWorldItems[ uiLoop + 1 ].o.usItem )
+										{
+											INT8 ubObjCount = ubSlotLimit - gWorldItems[ uiLoop ].o.ubNumberOfObjects;										
+											INT8 bPointsToMove = __min( ubObjCount, gWorldItems[ uiLoop +1 ].o.ubNumberOfObjects );
+
+											StackObjs( &(gWorldItems[ uiLoop +1 ].o), &(gWorldItems[ uiLoop ].o), bPointsToMove);
+										}
+									}
+								}
+							}
+						}
+					break;
+
+					//if  ( Item[ gWorldItems[ uiLoop ].o.usItem ].usItemClass == IC_AMMO ) || 
+					//	( Item[ gWorldItems[ uiLoop ].o.usItem ].usItemClass == IC_MEDKIT )
+					//{
+					//	// transfer points...
+					//	if ( Item[ gWorldItems[ uiLoop ].o.usItem ].usItemClass == IC_AMMO )
+					//	{
+					//		ubLimit = Magazine[ Item[ gWorldItems[ uiLoop ].o.usItem ].ubClassIndex ].ubMagSize;
+					//	}
+					//	else
+					//	{
+					//		ubLimit = 100;
+					//	}
+
+					//	// count down through # of attaching items and add to status of item in position 0
+					//	for (INT8 bLoop = pAttachment->ubNumberOfObjects - 1; bLoop >= 0; bLoop--)
+					//	{
+					//		if (pTargetObj->bStatus[0] + pAttachment->bStatus[bLoop] <= ubLimit)
+					//		{
+					//			// consume this one totally and continue
+					//			pTargetObj->bStatus[0] += pAttachment->bStatus[bLoop];
+					//			RemoveObjFrom( pAttachment, bLoop );
+					//			// reset loop limit
+					//			bLoop = pAttachment->ubNumberOfObjects; // add 1 to counteract the -1 from the loop
+					//		}
+					//		else
+					//		{
+					//			// add part of this one and then we're done
+					//			pAttachment->bStatus[bLoop] -= (ubLimit - pTargetObj->bStatus[0]);
+					//			pTargetObj->bStatus[0] = ubLimit;
+					//			break;
+					//		}
+					//	}
+					//}
+					//else
+					//{
+					//	INT8 ubObjCount = ubSlotLimit - gWorldItems[ uiLoop ].o.ubNumberOfObjects;										
+					//	INT8 bPointsToMove = __min( ubObjCount, gWorldItems[ uiLoop +1 ].o.ubNumberOfObjects );
+
+					//	StackObjs( &(gWorldItems[ uiLoop +1 ].o), &(gWorldItems[ uiLoop ].o), bPointsToMove);
+					//}
 
 
 
