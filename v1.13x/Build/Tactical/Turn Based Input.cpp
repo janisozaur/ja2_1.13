@@ -3083,13 +3083,13 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 							if ( OK_CONTROLLABLE_MERC( pTeamSoldier ) && pTeamSoldier->bAssignment == CurrentSquad( ) && !AM_A_ROBOT( pTeamSoldier ) )
 							{	
 
-								// Search for gun
+								// Search for gun in soldier inventory
 								for (UINT32 bLoop2 = 0; bLoop2 < NUM_INV_SLOTS; bLoop2++)
 								{
-									if (Item[pTeamSoldier->inv[bLoop2].usItem].usItemClass & IC_GUN || Item[pTeamSoldier->inv[bLoop2].usItem].usItemClass == IC_LAUNCHER)
+									if ( (Item[pTeamSoldier->inv[bLoop2].usItem].usItemClass & IC_GUN) || (Item[pTeamSoldier->inv[bLoop2].usItem].usItemClass == IC_LAUNCHER) )
 									{	
 										pGun  = &(pTeamSoldier->inv[bLoop2]);
-										//magazine is not full
+										//if magazine is not full
 										if ( pGun->ubGunShotsLeft < GetMagSize( pGun )  )
 										{
 
@@ -3134,7 +3134,7 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 						{
 							if ( OK_CONTROLLABLE_MERC( pTeamSoldier ) && pTeamSoldier->bAssignment == CurrentSquad( ) && !AM_A_ROBOT( pTeamSoldier ) )
 							{	
-								if (Item[pTeamSoldier->inv[HANDPOS].usItem].usItemClass & IC_GUN || Item[pTeamSoldier->inv[HANDPOS].usItem].usItemClass == IC_LAUNCHER)
+								if ( (Item[pTeamSoldier->inv[HANDPOS].usItem].usItemClass & IC_GUN) || (Item[pTeamSoldier->inv[HANDPOS].usItem].usItemClass == IC_LAUNCHER) )
 								{
 									pGun  = &(pTeamSoldier->inv[HANDPOS]);
 
@@ -3148,6 +3148,25 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 						}
 					}
 					break;
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
 
 
 				case 'r':
@@ -3204,63 +3223,28 @@ void GetKeyboardInput( UINT32 *puiNewEvent )
 									INT8 ubSlotLimit = ItemSlotLimit( gWorldItems[ uiLoop ].o.usItem, BIGPOCK1POS );
 
 									//if we still have some space
-									if ( gWorldItems[ uiLoop ].o.ubNumberOfObjects < ubSlotLimit )
+									INT32 i = 0;
+									while ( gWorldItems[ uiLoop ].o.ubNumberOfObjects < ubSlotLimit )
 									{
+										i++;
 										//if the next item is the same
-										if ( gWorldItems[ uiLoop ].o.usItem == gWorldItems[ uiLoop + 1 ].o.usItem )
+										if ( gWorldItems[ uiLoop ].o.usItem == gWorldItems[ uiLoop + i ].o.usItem )
 										{
 											INT8 ubObjCount = ubSlotLimit - gWorldItems[ uiLoop ].o.ubNumberOfObjects;										
-											INT8 bPointsToMove = __min( ubObjCount, gWorldItems[ uiLoop +1 ].o.ubNumberOfObjects );
+											INT8 bPointsToMove = __min( ubObjCount, gWorldItems[ uiLoop + i ].o.ubNumberOfObjects );
 
-											StackObjs( &(gWorldItems[ uiLoop +1 ].o), &(gWorldItems[ uiLoop ].o), bPointsToMove);
+											StackObjs( &(gWorldItems[ uiLoop + i ].o), &(gWorldItems[ uiLoop ].o), bPointsToMove);
+											
+										}
+										else
+										{
+											break;
 										}
 									}
 								}
 							}
 						}
 					break;
-
-					//if  ( Item[ gWorldItems[ uiLoop ].o.usItem ].usItemClass == IC_AMMO ) || 
-					//	( Item[ gWorldItems[ uiLoop ].o.usItem ].usItemClass == IC_MEDKIT )
-					//{
-					//	// transfer points...
-					//	if ( Item[ gWorldItems[ uiLoop ].o.usItem ].usItemClass == IC_AMMO )
-					//	{
-					//		ubLimit = Magazine[ Item[ gWorldItems[ uiLoop ].o.usItem ].ubClassIndex ].ubMagSize;
-					//	}
-					//	else
-					//	{
-					//		ubLimit = 100;
-					//	}
-
-					//	// count down through # of attaching items and add to status of item in position 0
-					//	for (INT8 bLoop = pAttachment->ubNumberOfObjects - 1; bLoop >= 0; bLoop--)
-					//	{
-					//		if (pTargetObj->bStatus[0] + pAttachment->bStatus[bLoop] <= ubLimit)
-					//		{
-					//			// consume this one totally and continue
-					//			pTargetObj->bStatus[0] += pAttachment->bStatus[bLoop];
-					//			RemoveObjFrom( pAttachment, bLoop );
-					//			// reset loop limit
-					//			bLoop = pAttachment->ubNumberOfObjects; // add 1 to counteract the -1 from the loop
-					//		}
-					//		else
-					//		{
-					//			// add part of this one and then we're done
-					//			pAttachment->bStatus[bLoop] -= (ubLimit - pTargetObj->bStatus[0]);
-					//			pTargetObj->bStatus[0] = ubLimit;
-					//			break;
-					//		}
-					//	}
-					//}
-					//else
-					//{
-					//	INT8 ubObjCount = ubSlotLimit - gWorldItems[ uiLoop ].o.ubNumberOfObjects;										
-					//	INT8 bPointsToMove = __min( ubObjCount, gWorldItems[ uiLoop +1 ].o.ubNumberOfObjects );
-
-					//	StackObjs( &(gWorldItems[ uiLoop +1 ].o), &(gWorldItems[ uiLoop ].o), bPointsToMove);
-					//}
-
 
 
 				case 's':
