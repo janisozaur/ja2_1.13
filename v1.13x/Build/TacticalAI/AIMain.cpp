@@ -474,7 +474,6 @@ void HandleSoldierAI( SOLDIERTYPE *pSoldier )
 
 	if (gfTurnBasedAI)
 	{
-		//
 		if ( ( GetJA2Clock() - gTacticalStatus.uiTimeSinceMercAIStart	) > ( gGameExternalOptions.gubDeadLockDelay * 1000 ) && !gfUIInDeadlock )
 		{
       // ATE: Display message that deadlock occured...
