@@ -42,7 +42,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libexpatMT.lib mss32.lib winmm.lib smackw32.lib"
+				AdditionalDependencies="libexpatMT.lib mss32.lib winmm.lib smackw32.lib fmodvc.lib"
 				OutputFile="C:\games\Jagged Alliance 2 Gold\ja2_debug.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
@@ -566,8 +566,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"/>
 			<Tool
-				Name="VCPreBuildEventTool"
-				CommandLine="%PROGRAMFILES%\TortoiseSVN\bin\SubWCRev.exe $(InputDir) $(InputDir)\Res\GameVersion.cpp.template $(InputDir)\GameVersion.cpp"/>
+				Name="VCPreBuildEventTool"/>
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
@@ -2369,9 +2368,6 @@
 				RelativePath="VtuneApi.h">
 			</File>
 		</Filter>
-		<File
-			RelativePath=".\Res\GameVersion.cpp.template">
-		</File>
 		<File
 			RelativePath="Res\jagged3.ico">
 		</File>
