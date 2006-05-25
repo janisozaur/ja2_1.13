@@ -7297,13 +7297,31 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 
     if ( Item[ usItem ].usItemClass == IC_GUN && !Item[usItem].rocketlauncher && !Item[usItem].rocketrifle )
     {
-        swprintf( (wchar_t *)pStr, L"%s (%s) [%d%%]", ItemNames[ usItem ], AmmoCaliber[ Weapon[ usItem ].ubCalibre ], sValue );
+		swprintf( (wchar_t *)pStr, L"%s (%s) [%d%%]\nDamage: %d\nAccuracy: %d\nGun Range: %d\nActual Range: %d\n", 
+		ItemNames[ usItem ], 
+		AmmoCaliber[ Weapon[ usItem ].ubCalibre ], 
+		sValue, 
+		GetDamage(pObject), 
+		Weapon[ usItem ].bAccuracy,
+		Weapon[ usItem ].usRange,
+		GunRange( pObject )		
+		);
     }
     // The next is for ammunition which gets the measurement 'rnds'
     else if (Item[ usItem ].usItemClass == IC_AMMO)
     {
         swprintf( (wchar_t *)pStr, L"%s [%d rnds]", ItemNames[ usItem ], pObject->ubShotsLeft[0] );
     }
+
+	// explosives
+    else if ( (Item[ usItem ].usItemClass == IC_GRENADE)||(Item[ usItem ].usItemClass == IC_BOMB) )
+	{
+		UINT16 explDamage = (UINT16)( Explosive[Item[ usItem ].ubClassIndex].ubDamage + ( (double) Explosive[Item[ usItem ].ubClassIndex].ubDamage / 100) * gGameExternalOptions.ubExplosivesDamageMultiplier );
+		UINT16 explStunDamage = (UINT16)( Explosive[Item[ usItem ].ubClassIndex].ubStunDamage + ( (double) Explosive[Item[ usItem ].ubClassIndex].ubStunDamage / 100) * gGameExternalOptions.ubExplosivesDamageMultiplier );
+
+		swprintf( (wchar_t *)pStr, L"%s [%d%%]\nDamage: %d\nStun Damage: %d", ItemNames[ usItem ], sValue, explDamage, explStunDamage);
+    }
+
     // The final, and typical case, is that of an item with a percent status
     else
     {
