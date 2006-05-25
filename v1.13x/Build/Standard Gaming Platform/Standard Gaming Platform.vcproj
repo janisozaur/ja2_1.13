@@ -2761,6 +2761,9 @@
 				RelativePath="font.h">
 			</File>
 			<File
+				RelativePath="gameloop.h">
+			</File>
+			<File
 				RelativePath="himage.h">
 			</File>
 			<File
