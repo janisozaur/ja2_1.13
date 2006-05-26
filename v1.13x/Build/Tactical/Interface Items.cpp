@@ -7295,38 +7295,52 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 			}
 		}
 
-    if ( Item[ usItem ].usItemClass == IC_GUN && !Item[usItem].rocketlauncher && !Item[usItem].rocketrifle )
-    {
-		swprintf( (wchar_t *)pStr, L"%s (%s) [%d%%]\nDamage: %d\nAccuracy: %d\nGun Range: %d\nActual Range: %d\n", 
-		ItemNames[ usItem ], 
-		AmmoCaliber[ Weapon[ usItem ].ubCalibre ], 
-		sValue, 
-		GetDamage(pObject), 
-		Weapon[ usItem ].bAccuracy,
-		Weapon[ usItem ].usRange,
-		GunRange( pObject )		
-		);
-    }
-    // The next is for ammunition which gets the measurement 'rnds'
-    else if (Item[ usItem ].usItemClass == IC_AMMO)
-    {
-        swprintf( (wchar_t *)pStr, L"%s [%d rnds]", ItemNames[ usItem ], pObject->ubShotsLeft[0] );
-    }
+		FLOAT fWeight;
+		fWeight = (float)(CalculateObjectWeight( pObject )) / 10;
+		if ( !gGameSettings.fOptions[ TOPTION_USE_METRIC_SYSTEM ] ) // metric units not enabled
+		{
+			fWeight = fWeight * 2.2f;
+		}
 
-	// explosives
-    else if ( (Item[ usItem ].usItemClass == IC_GRENADE)||(Item[ usItem ].usItemClass == IC_BOMB) )
-	{
-		UINT16 explDamage = (UINT16)( Explosive[Item[ usItem ].ubClassIndex].ubDamage + ( (double) Explosive[Item[ usItem ].ubClassIndex].ubDamage / 100) * gGameExternalOptions.ubExplosivesDamageMultiplier );
-		UINT16 explStunDamage = (UINT16)( Explosive[Item[ usItem ].ubClassIndex].ubStunDamage + ( (double) Explosive[Item[ usItem ].ubClassIndex].ubStunDamage / 100) * gGameExternalOptions.ubExplosivesDamageMultiplier );
+		// Add weight of attachments here !
+		if ( fWeight < 0.1 )
+		{
+			fWeight = 0.1f;
+		}
 
-		swprintf( (wchar_t *)pStr, L"%s [%d%%]\nDamage: %d\nStun Damage: %d", ItemNames[ usItem ], sValue, explDamage, explStunDamage);
-    }
+		if ( Item[ usItem ].usItemClass == IC_GUN && !Item[usItem].rocketlauncher && !Item[usItem].rocketrifle )
+		{
+			swprintf( (wchar_t *)pStr, L"%s (%s) [%d%%]\nDamage: %d\nAccuracy: %d\nGun Range: %d\nActual Range: %d\nWeight: %1.1f", 
+				ItemNames[ usItem ], 
+				AmmoCaliber[ Weapon[ usItem ].ubCalibre ], 
+				sValue, 
+				GetDamage(pObject), 
+				Weapon[ usItem ].bAccuracy,
+				Weapon[ usItem ].usRange,
+				GunRange( pObject ),
+				fWeight
+				);
+		}
+		// The next is for ammunition which gets the measurement 'rnds'
+		else if (Item[ usItem ].usItemClass == IC_AMMO)
+		{
+			swprintf( (wchar_t *)pStr, L"%s [%d rnds]\nWeight: %1.1f", ItemNames[ usItem ], pObject->ubShotsLeft[0], fWeight );
+		}
 
-    // The final, and typical case, is that of an item with a percent status
-    else
-    {
-        swprintf( (wchar_t *)pStr, L"%s [%d%%]", ItemNames[ usItem ], sValue );
-    }
+		// explosives
+		else if ( (Item[ usItem ].usItemClass == IC_GRENADE)||(Item[ usItem ].usItemClass == IC_BOMB) )
+		{
+			UINT16 explDamage = (UINT16)( Explosive[Item[ usItem ].ubClassIndex].ubDamage + ( (double) Explosive[Item[ usItem ].ubClassIndex].ubDamage / 100) * gGameExternalOptions.ubExplosivesDamageMultiplier );
+			UINT16 explStunDamage = (UINT16)( Explosive[Item[ usItem ].ubClassIndex].ubStunDamage + ( (double) Explosive[Item[ usItem ].ubClassIndex].ubStunDamage / 100) * gGameExternalOptions.ubExplosivesDamageMultiplier );
+
+			swprintf( (wchar_t *)pStr, L"%s [%d%%]\nDamage: %d\nStun Damage: %d\nWeight: %1.1f", ItemNames[ usItem ], sValue, explDamage, explStunDamage, fWeight );
+		}
+
+		// The final, and typical case, is that of an item with a percent status
+		else
+		{
+			swprintf( (wchar_t *)pStr, L"%s [%d%%]\nWeight: %1.1f", ItemNames[ usItem ], sValue, fWeight );
+		}
 
 		if ( ( Item[pObject->usItem].fingerprintid ) && pObject->ubImprintID < NO_PROFILE )
 		{
@@ -7344,13 +7358,13 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 
 				if ( iNumAttachments == 1 )
 				{
-					wcscat( pStr, L" ( " );
+					wcscat( pStr, L"\n( " );
 				}
 				else
 				{
-					wcscat( pStr, L", \n" );
+					wcscat( pStr, L", " );
 				}
-	
+
 				wcscat( pStr, ItemNames[ pObject->usAttachItem[ cnt ] ] );
 			}
 		}
