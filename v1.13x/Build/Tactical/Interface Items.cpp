@@ -7325,11 +7325,11 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 			INT16 apStr2[20];
 			UINT8 ubAttackAPs = BaseAPsToShootOrStab( DEFAULT_APS, DEFAULT_AIMSKILL, pObject );
 
-			swprintf( (wchar_t *)apStr, L"%2d", ubAttackAPs );
+			swprintf( (wchar_t *)apStr, L"%d", ubAttackAPs );
 
 			if (GetShotsPerBurst(pObject) > 0)
 			{
-				swprintf( (wchar_t *)apStr2, L" / %2d", ubAttackAPs + CalcAPsToBurst( DEFAULT_APS, pObject ) );
+				swprintf( (wchar_t *)apStr2, L" / %d", ubAttackAPs + CalcAPsToBurst( DEFAULT_APS, pObject ) );
 				wcscat( apStr, apStr2 );
 			}
 			else
@@ -7339,7 +7339,7 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 
 			if (GetAutofireShotsPerFiveAPs(pObject) > 0)
 			{
-				swprintf( (wchar_t *)apStr2, L" / %2d", ubAttackAPs + CalcAPsToAutofire( DEFAULT_APS, pObject, 3 ) );
+				swprintf( (wchar_t *)apStr2, L" / %d", ubAttackAPs + CalcAPsToAutofire( DEFAULT_APS, pObject, 3 ) );
 				wcscat( apStr, apStr2 );
 			}
 			else
@@ -7355,7 +7355,7 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 		//Info for weapons
 		if ( Item[ usItem ].usItemClass == IC_GUN && !Item[usItem].rocketlauncher && !Item[usItem].rocketrifle )
 		{			
-			swprintf( (wchar_t *)pStr, L"%s (%s) [%d%%]\n%s %d\n%s %d\n%s %d / %d\n%s %s\n%s %1.1f %s", 
+			swprintf( (wchar_t *)pStr, L"%s (%s) [%d%%]\n%s %d\n%s %d\n%s %d (%d)\n%s %s\n%s %1.1f %s", 
 				ItemNames[ usItem ], 
 				AmmoCaliber[ Weapon[ usItem ].ubCalibre ], 
 				sValue, 
@@ -7364,8 +7364,8 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 				gWeaponStatsDesc[ 11 ],		//Damage String
 				GetDamage(pObject), 
 				gWeaponStatsDesc[ 10 ],		//Range String
-				Weapon[ usItem ].usRange,	//Gun Range 
 				GunRange( pObject ),		//Modified Range
+				Weapon[ usItem ].usRange,	//Gun Range 
 				gWeaponStatsDesc[ 5 ],		//AP String
 				apStr,						//AP's
 				gWeaponStatsDesc[ 12 ],		//Weight String
@@ -7377,17 +7377,25 @@ void GetHelpTextForItem( INT16 * pzStr, OBJECTTYPE *pObject, SOLDIERTYPE *pSoldi
 		// The next is for ammunition which gets the measurement 'rnds'
 		else if (Item[ usItem ].usItemClass == IC_AMMO)
 		{
-			swprintf( (wchar_t *)pStr, L"%s %d %s %d [%d rnds]\n%s %1.1f %s", 				
-				AmmoCaliber[ Magazine[ Item[usItem].ubClassIndex ].ubCalibre ],		//Ammo calibre
-				Magazine[ Item[usItem].ubClassIndex ].ubAmmoType,					//Ammo type
-				//ItemNames[ usItem ],
-				L"Magazine",
-				Magazine[ Item[usItem].ubClassIndex ].ubMagSize,					//Magazine capacity
-				pObject->ubShotsLeft[0], 
+			swprintf( (wchar_t *)pStr, L"%s [%d rnds]\n%s %1.1f %s", 				
+				ItemNames[ usItem ],		//Item long name
+				pObject->ubShotsLeft[0],	//Shots left
 				gWeaponStatsDesc[ 12 ],		//Weight String
 				fWeight,					//Weight
 				GetWeightUnitString()		//Weight units
 				);
+
+			//Lal: do not delete, commented out for next version
+			//swprintf( (wchar_t *)pStr, L"%s %s %s %d [%d rnds]\n%s %1.1f %s", 				
+			//	AmmoCaliber[ Magazine[ Item[usItem].ubClassIndex ].ubCalibre ],			//Ammo calibre
+			//	AmmoTypes[Magazine[ Item[usItem].ubClassIndex ].ubAmmoType].ammoName,	//Ammo type
+			//	MagNames[Magazine[ Item[usItem].ubClassIndex ].ubMagType],				//Magazine type
+			//	Magazine[ Item[usItem].ubClassIndex ].ubMagSize,						//Magazine capacity
+			//	pObject->ubShotsLeft[0],	//Shots left
+			//	gWeaponStatsDesc[ 12 ],		//Weight String
+			//	fWeight,					//Weight
+			//	GetWeightUnitString()		//Weight units
+			//	);
 		}
 
 		// explosives
