@@ -435,37 +435,6 @@ BOOLEAN CloseEnoughForGrenadeToss( INT16 sGridNo, INT16 sGridNo2 )
 	return( TRUE );
 }
 
-BOOLEAN CheckIfGrenadeHasEffect( UINT16 usGrenade, SOLDIERTYPE *pOpponent )
-{
-	if( usGrenade == TEARGAS_GRENADE  ||usGrenade == MUSTARD_GRENADE )
-		if( pOpponent->inv[ HEAD1POS ].usItem == GASMASK ||pOpponent->inv[ HEAD2POS ].usItem == GASMASK )
-			return FALSE;
-
-	return TRUE;
-}
-
-FLOAT CalculateGrenadeEffectiveness( UINT16 usGrenade, SOLDIERTYPE *pOpponent )
-{
-//	FLOAT fpRes = 1.0f;
-	
-	if( usGrenade == STUN_GRENADE || usGrenade == GL_STUN_GRENADE )
-		if( pOpponent->bCollapsed )// decrease chance if enemy's already collapsed
-		{
-			if( pOpponent->bBreath < 0 )// his breath is already low, let's dont waste the grenade
-			{
-				return 0.25f;
-			}else
-				return 0.5f;
-		}
-
-	if( usGrenade == MINI_GRENADE || usGrenade == HAND_GRENADE ||usGrenade == GL_HE_GRENADE )
-		if( pOpponent->bCollapsed )	// decrease chance if enemy's already collapsed
-			return 0.5f;
-			
-
-	return 1.0f;
-}
-
 void CalcBestThrow(SOLDIERTYPE *pSoldier, ATTACKTYPE *pBestThrow)
 {
 	DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"calcbestthrow");
@@ -653,11 +622,6 @@ void CalcBestThrow(SOLDIERTYPE *pSoldier, ATTACKTYPE *pBestThrow)
 		{
 			continue;          // next soldier
 		}
-
-		// don't consider the opponent, if he can't be damaged by this type of grenades
-		if( !CheckIfGrenadeHasEffect( usGrenade, pOpponent ) )
-			continue;
-
 
 		// Special stuff for Carmen the bounty hunter
 		if (pSoldier->bAttitude == ATTACKSLAYONLY && pOpponent->ubProfile != 64)
