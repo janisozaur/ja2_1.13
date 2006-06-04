@@ -1169,6 +1169,24 @@ UINT16 ReplacementAmmo[][2] =
 	{ 0,								0							 }
 };
 
+//BOOLEAN IsWeaponItemEmpty(OBJECTTYPE * pGun)
+//{
+//	if(Weapon[Item[pGun->usItem].ubClassIndex].ubChamber)
+//		return !pGun->ubShotsLeft && !pGun->ubCartridgeInChamber;
+//	else
+//		return !pGun->ubShotsLeft;
+//}
+//
+//UINT8 DecreaseWeaponItemMag(OBJECTTYPE * pGun)
+//{
+////	if(Weapon[Item[pGun->usItem].ubClassIndex].ubSelfloading)
+//
+////	if(Weapon[Item[pGun->usItem].ubClassIndex].ubChamber)
+////		return !pGun->ubShotsLeft && !pGun->ubCartridgeInChamber;
+////	else
+////		return (pGun->ubShotsLeft--);
+//	return 0;
+//}
 
 BOOLEAN ItemIsLegal( UINT16 usItemIndex )
 {
@@ -7100,3 +7118,44 @@ INT8 FindNightGoggles( SOLDIERTYPE * pSoldier, INT16 bonusToBeat  )
 	}
 	return( ITEM_NOT_FOUND );
 }
+
+INT16 GetMinRangeForAimBonus( OBJECTTYPE * pObj )
+{
+	INT16 bns;
+
+	bns = Item[pObj->usItem].minrangeforaimbonus;
+	bns += Item[pObj->usGunAmmoItem].minrangeforaimbonus;
+
+	for (int i = 0; i < MAX_ATTACHMENTS; i++)
+	{
+		bns += Item[pObj->usAttachItem[i]].minrangeforaimbonus;
+	}
+
+	return( bns );
+}
+
+UINT8 AllowedAimingLevels(SOLDIERTYPE * pSoldier)
+{
+	UINT8 aimLevels = 4;
+	OBJECTTYPE obj = pSoldier->inv[pSoldier->ubAttackingHand]; 
+	BOOLEAN allowed = TRUE;
+
+	if ( gGameSettings.fOptions[TOPTION_AIM_LEVEL_RESTRICTION] && Weapon[obj.usItem].ubWeaponType != GUN_RIFLE && Weapon[obj.usItem].ubWeaponType != GUN_SN_RIFLE )
+			allowed = FALSE;
+
+	if ( allowed && IsScoped( &obj ) )
+	{
+		if ( GetMinRangeForAimBonus(&obj) >= (UINT8)(gGameExternalOptions.ubStraightSightRange * 3) ) // >= 30% of sight range (~4 tiles by default)
+		{
+			aimLevels += 2;
+		}
+		
+		if ( GetMinRangeForAimBonus(&obj) >= (UINT8)(gGameExternalOptions.ubStraightSightRange * 6) ) // >= 60% of sight range (~9 tiles by default)
+		{
+			aimLevels += 2;
+		}
+	}
+
+	return aimLevels;
+}
+

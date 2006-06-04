@@ -1687,7 +1687,7 @@ BOOLEAN UseGun( SOLDIERTYPE *pSoldier , INT16 sTargetGridNo )
 		DeductAmmo( pSoldier, pSoldier->ubAttackingHand );
 
 		// ATE: Check if we should say quote...
-		if ( pSoldier->inv[ pSoldier->ubAttackingHand ].ubGunShotsLeft == 0 && !Item[pSoldier->usAttackingWeapon].singleshotrocketlauncher ) 
+		if ( pSoldier->inv[ pSoldier->ubAttackingHand ].ubGunShotsLeft == 0 && !Item[pSoldier->usAttackingWeapon].rocketlauncher ) 
 		{
 			if ( pSoldier->bTeam == gbPlayerNum )
 			{
@@ -5535,7 +5535,7 @@ INT8 GetAPsToReload( OBJECTTYPE *pObj )
 //	 DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("GetAPsToReload"));
 
 	return ( Weapon[ pObj->usItem ].APsToReload *
-		( 100 - GetPercentReloadTimeAPReduction(pObj) ) + 50 ) / 100;
+		( 100 - GetPercentReloadTimeAPReduction(pObj) ) ) / 100;
 
 }
 

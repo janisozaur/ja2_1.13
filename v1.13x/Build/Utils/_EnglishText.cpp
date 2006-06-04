@@ -3302,8 +3302,8 @@ STR16			zSaveLoadText[] =
 
 	L"Saving...",			//When saving a game, a message box with this string appears on the screen
 
+	L"Normal Guns",
 	L"Tons of Guns",
-	L"10 Tons of Guns",
 	L"Realistic style",
 	L"Sci Fi style",
 
@@ -3414,6 +3414,9 @@ STR16		zOptionsToggleText[] =
 	L"Show Chance to Hit on the cursor",
 	L"GL Burst Uses Burst Cursor",
 	L"Enemies Drop All Items",
+	L"High Angle Grenade Launching",
+	L"Restrict Extra Aim Levels to Rifles",
+	L"Space selects next squad",
 };
 
 //This is the help text associated with the above toggles.
@@ -3482,6 +3485,9 @@ STR16	zOptionsScreenHelpText[] =
 	L"When ON, the chance to hit is shown on the cursor.",
 	L"GL Burst uses burst cursor.",
 	L"Enemies drop all items on death.",
+	L"Grenade launchers fire grenades at higher angles.",
+	L"Aim levels beyond 4 are restricted to rifles and sniper rifles.",
+	L"When enabled |S|p|a|c|e selects next squad automatically.",
 };
 
 
@@ -3493,8 +3499,8 @@ STR16	gzGIOScreenText[] =
 	L"Sci Fi",
 	L"Platinum",
 	L"Items",
-	L"10 Tons of Guns",
 	L"Tons of Guns",
+	L"Normal Guns",
 	L"Difficulty Level",
 	L"Novice",
 	L"Experienced",
@@ -3691,6 +3697,8 @@ STR16 pMessageStrings[] =
 	L"Grenade Bursts - Using Trajectory Cursor (Spread fire disabled)",
 	L"Drop All Enabled",
 	L"Drop All Disabled",
+	L"Grenade Launchers - Fire at standard angles",
+	L"Grenade Launchers - Fire at high angles",
 #ifdef JA2BETAVERSION
 	L"Successfully Saved the Game into the End Turn Auto Save slot.",
 #endif

@@ -78,8 +78,9 @@ typedef struct
 			INT8		bGunStatus;			// status % of gun
 			UINT8		ubGunAmmoType;	// ammo type, as per weapons.h
 			UINT8		ubGunShotsLeft;	// duh, amount of ammo left
-			UINT16	usGunAmmoItem;	// the item # for the item table
+			UINT16		usGunAmmoItem;	// the item # for the item table
 			INT8		bGunAmmoStatus; // only for "attached ammo" - grenades, mortar shells
+			//UINT8		ubCartridgeInChamber; // SB
 			UINT8		ubGunUnused[MAX_OBJECTS_PER_SLOT - 6];
 		};
 		struct
