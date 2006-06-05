@@ -1874,9 +1874,7 @@ INT8 TryToReload( SOLDIERTYPE * pSoldier )
 	{
 		pObj->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
 		DeductPoints(pSoldier,RECHARGE_APS(pObj),0);
-		//tsSound = Weapon[ Item[pObj->usItem].ubClassIndex ].sLocknLoadSound;
-		//if ( *tsSound )
-		//PlayJA2Sample( Weapon[ Item[pObj->usItem].ubClassIndex ].sLocknLoadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
+		//PlayJA2Sample( Weapon[ Item[pObj->usItem].ubClassIndex ].ManualReloadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
 		return TRUE;
 	}
 //</SB>

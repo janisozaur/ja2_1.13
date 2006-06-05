@@ -3,7 +3,7 @@
 
 //SB
 //#define RECHARGE_APS(pObj)	(Weapon[Item[(pObj)->usItem].ubClassIndex].usReloadDelay)
-#define RECHARGE_APS(pObj)	(Weapon[Item[(pObj)->usItem].ubClassIndex].APsToReload)
+#define RECHARGE_APS(pObj)	(Weapon[Item[(pObj)->usItem].ubClassIndex].ManualReloadAPs)
 
 #define AP_MINIMUM              10      // no merc can have less for his turn
 #define AP_MAXIMUM              25      // no merc can have more for his turn

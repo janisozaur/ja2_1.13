@@ -1169,25 +1169,6 @@ UINT16 ReplacementAmmo[][2] =
 	{ 0,								0							 }
 };
 
-//BOOLEAN IsWeaponItemEmpty(OBJECTTYPE * pGun)
-//{
-//	if(Weapon[Item[pGun->usItem].ubClassIndex].ubChamber)
-//		return !pGun->ubShotsLeft && !pGun->ubCartridgeInChamber;
-//	else
-//		return !pGun->ubShotsLeft;
-//}
-
-//UINT8 DecreaseWeaponItemMag(OBJECTTYPE * pGun)
-//{
-////	if(Weapon[Item[pGun->usItem].ubClassIndex].ubSelfloading)
-//
-////	if(Weapon[Item[pGun->usItem].ubClassIndex].ubChamber)
-////		return !pGun->ubShotsLeft && !pGun->ubCartridgeInChamber;
-////	else
-////		return (pGun->ubShotsLeft--);
-//	return 0;
-//}
-
 BOOLEAN ItemIsLegal( UINT16 usItemIndex )
 {
 	//if the user has selected the reduced gun list
@@ -2751,6 +2732,8 @@ BOOLEAN ReloadGun( SOLDIERTYPE * pSoldier, OBJECTTYPE * pGun, OBJECTTYPE * pAmmo
 		pGun->bGunAmmoStatus = 100;
 	}
 
+	pGun->ubGunState |= GS_CARTRIDGE_IN_CHAMBER; // Madd: reloading should automatically put cartridge in chamber
+
 	return( TRUE );
 }
 
@@ -2939,7 +2922,6 @@ BOOLEAN AutoReload( SOLDIERTYPE * pSoldier )
 	INT8					bSlot, bAPCost;
 	BOOLEAN				fRet;
 
-	//LPCTSTR tsSound;
 	CHECKF( pSoldier );
 	pObj = &(pSoldier->inv[HANDPOS]);
 
@@ -2948,9 +2930,7 @@ BOOLEAN AutoReload( SOLDIERTYPE * pSoldier )
 	{
 		pObj->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
 		DeductPoints(pSoldier,RECHARGE_APS(pObj),0);
-		//tsSound = Weapon[ Item[pObj->usItem].ubClassIndex ].sLocknLoadSound;
-		//if ( *tsSound )
-			PlayJA2Sample( Weapon[ Item[pObj->usItem].ubClassIndex ].sLocknLoadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
+		PlayJA2Sample( Weapon[ Item[pObj->usItem].ubClassIndex ].ManualReloadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
 		return TRUE;
 	}
 //</SB>
@@ -4683,6 +4663,7 @@ BOOLEAN CreateGun( UINT16 usItem, INT8 bStatus, OBJECTTYPE * pObj )
 			pObj->ubGunAmmoType = Magazine[ Item[ usAmmo ].ubClassIndex].ubAmmoType;
 			pObj->bGunAmmoStatus = 100;
 			pObj->ubGunShotsLeft = Magazine[ Item[ usAmmo ].ubClassIndex ].ubMagSize;
+			pObj->ubGunState |= GS_CARTRIDGE_IN_CHAMBER; // Madd: new guns should have cartridge in chamber
 			/*
 			if (usItem == CAWS)
 			{
@@ -4736,7 +4717,7 @@ BOOLEAN CreateItem( UINT16 usItem, INT8 bStatus, OBJECTTYPE * pObj )
 	{
 		pObj->usItem = usItem;
 		pObj->ubNumberOfObjects = 1;
-		if (usItem == MONEY)
+		if (usItem == MONEY || Item[usItem].usItemClass == IC_MONEY )
 		{
 			// special case... always set status to 100 when creating
 			// and use status value to determine amount!

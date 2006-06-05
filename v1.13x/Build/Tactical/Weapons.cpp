@@ -395,7 +395,8 @@ weaponStartElementHandle(void *userData, const char *name, const char **atts)
 				strcmp(name, "MaxDistForMessyDeath") == 0 ||
 				strcmp(name, "SilencedSound") == 0 || // Lesh: add new field (OR operand)
                 strcmp(name, "BurstAniDelay") == 0 || // Lesh: add new field (field itself)
-				strcmp(name, "ubSelfloading") == 0)
+				strcmp(name, "ManualReloadAPs") == 0 ||
+				strcmp(name, "ManualReloadSound") == 0)
 				)
 		{
 			pData->curElement = WEAPON_ELEMENT_WEAPON_PROPERY;
@@ -612,10 +613,15 @@ weaponEndElementHandle(void *userData, const char *name)
             pData->curWeapon.sAniDelay = (INT16) atol(pData->szCharData);
 		}
         // Lesh: end
-   		else if(strcmp(name, "Selfloading") == 0)
+   		else if(strcmp(name, "ManualReloadAPs") == 0)
 		{
 			pData->curElement = WEAPON_ELEMENT_WEAPON;
-            pData->curWeapon.ubSelfloading = (BOOLEAN) atol(pData->szCharData);
+            pData->curWeapon.ManualReloadAPs = (UINT8) atol(pData->szCharData);
+		}
+   		else if(strcmp(name, "ManualReloadSound") == 0)
+		{
+			pData->curElement = WEAPON_ELEMENT_WEAPON;
+            pData->curWeapon.ManualReloadSound = (UINT16) atol(pData->szCharData);
 		}
 
 		pData->maxReadDepth--;
@@ -769,6 +775,8 @@ BOOLEAN ReadInWeaponStats(STR fileName)
 			FilePrintf(hFile,"\t\t<sLocknLoadSound>%d</sLocknLoadSound>\r\n",					Weapon[cnt].sLocknLoadSound);
 			FilePrintf(hFile,"\t\t<bBurstAP>%d</bBurstAP>\r\n",				Weapon[cnt].bBurstAP);
 			FilePrintf(hFile,"\t\t<bAutofireShotsPerFiveAP>%d</bAutofireShotsPerFiveAP>\r\n",	Weapon[cnt].bAutofireShotsPerFiveAP);
+			FilePrintf(hFile,"\t\t<ManualReloadAPs>%d</ManualReloadAPs>\r\n",				Weapon[cnt].ManualReloadAPs);
+			FilePrintf(hFile,"\t\t<ManualReloadSound>%d</ManualReloadSound>\r\n",				Weapon[cnt].ManualReloadSound);
 			FilePrintf(hFile,"\t</WEAPON>\r\n");
 		}
 		FilePrintf(hFile,"</WEAPONLIST>\r\n");
@@ -1921,7 +1929,7 @@ BOOLEAN UseGun( SOLDIERTYPE *pSoldier , INT16 sTargetGridNo )
 	}
 
 //<SB> manual recharge
-	if (!Weapon[Item[usItemNum].ubClassIndex].ubSelfloading)
+	if ( Weapon[Item[usItemNum].ubClassIndex].ManualReloadAPs > 0 )
 		pSoldier->inv[ pSoldier->ubAttackingHand ].ubGunState &= ~GS_CARTRIDGE_IN_CHAMBER;
 //<SB>
 	DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("UseGun: done"));
