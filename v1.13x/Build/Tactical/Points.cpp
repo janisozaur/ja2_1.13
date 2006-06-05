@@ -1768,7 +1768,9 @@ INT8 GetAPsToAutoReload( SOLDIERTYPE * pSoldier )
 
 //<SB> manual recharge
 	if (pObj->ubGunShotsLeft && !(pObj->ubGunState & GS_CARTRIDGE_IN_CHAMBER) )
-		return RECHARGE_APS(pObj);
+	{
+		return Weapon[Item[(pObj)->usItem].ubClassIndex].APsToReloadManually;
+	}
 //</SB>
 
 	if (Item[pObj->usItem].usItemClass == IC_GUN || Item[pObj->usItem].usItemClass == IC_LAUNCHER) 

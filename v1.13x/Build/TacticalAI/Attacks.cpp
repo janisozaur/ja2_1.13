@@ -1873,7 +1873,9 @@ INT8 TryToReload( SOLDIERTYPE * pSoldier )
 	if (pObj->ubGunShotsLeft && !(pObj->ubGunState & GS_CARTRIDGE_IN_CHAMBER) )
 	{
 		pObj->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
-		DeductPoints(pSoldier,RECHARGE_APS(pObj),0);
+
+		DeductPoints(pSoldier, Weapon[Item[(pObj)->usItem].ubClassIndex].APsToReloadManually, 0);
+		
 		//PlayJA2Sample( Weapon[ Item[pObj->usItem].ubClassIndex ].ManualReloadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
 		return TRUE;
 	}

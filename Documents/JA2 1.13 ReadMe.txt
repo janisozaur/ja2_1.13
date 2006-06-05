@@ -687,21 +687,54 @@ body.
 
 Many people contributed to the creation of this mod and should be recognized for their input: 
 
-Corpse - sounds
-DeFrog - converting the C code to VC.NET
-John Wright - tilesets
-Kaiden - coding
-Khor - graphics, animations
-lalienxx - coding 
-Lesh - coding 
-Madd Mugsy - coding, items
-Nitrat - web hosting
-RoWa21 - coding 
-Scorpion - graphics, items, testing
-Snap - coding, tilesets
-Starwalker - item and weapon stats, testing
-Toxic - XML editor 
-Wil473 - graphics & items
+Corpse 
+	- sounds
+
+DeFrog 
+	- converting the C code to VC.NET
+
+John Wright 
+	- tilesets
+
+Kaiden 
+	- coding
+
+Khor 
+	- graphics, animations
+
+Little Alien 
+	- coding, tactical militia control
+
+Lesh 
+	- coding, soundmanager, limited sight
+
+Madd Mugsy 
+	- coding, items
+
+Nitrat 
+	- web hosting
+
+RoWa21 
+	- coding 
+
+Scorpion 
+	- graphics, items, testing
+
+Snap 
+	- coding, tilesets
+
+Starwalker 
+	- item and weapon stats, testing
+
+Toxic 
+	- XML editor 
+
+The Drill
+	- Moving militia, rain
+
+Wil473 
+	- graphics & items
+
 
 The White Hat team - for providing the code base of this project.
 
