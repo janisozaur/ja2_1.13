@@ -394,8 +394,9 @@ weaponStartElementHandle(void *userData, const char *name, const char **atts)
 				strcmp(name, "NoSemiAuto") == 0 ||
 				strcmp(name, "MaxDistForMessyDeath") == 0 ||
 				strcmp(name, "SilencedSound") == 0 || // Lesh: add new field (OR operand)
-                strcmp(name, "BurstAniDelay") == 0))   // Lesh: add new field (field itself)
-
+                strcmp(name, "BurstAniDelay") == 0 || // Lesh: add new field (field itself)
+				strcmp(name, "ubSelfloading") == 0)
+				)
 		{
 			pData->curElement = WEAPON_ELEMENT_WEAPON_PROPERY;
 
@@ -611,6 +612,11 @@ weaponEndElementHandle(void *userData, const char *name)
             pData->curWeapon.sAniDelay = (INT16) atol(pData->szCharData);
 		}
         // Lesh: end
+   		else if(strcmp(name, "Selfloading") == 0)
+		{
+			pData->curElement = WEAPON_ELEMENT_WEAPON;
+            pData->curWeapon.ubSelfloading = (BOOLEAN) atol(pData->szCharData);
+		}
 
 		pData->maxReadDepth--;
 	}
@@ -1914,7 +1920,10 @@ BOOLEAN UseGun( SOLDIERTYPE *pSoldier , INT16 sTargetGridNo )
 		pSoldier->bMonsterSmell--;
 	}
 
-
+//<SB> manual recharge
+	if (!Weapon[Item[usItemNum].ubClassIndex].ubSelfloading)
+		pSoldier->inv[ pSoldier->ubAttackingHand ].ubGunState &= ~GS_CARTRIDGE_IN_CHAMBER;
+//<SB>
 	DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("UseGun: done"));
 	return( TRUE );
 }

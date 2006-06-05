@@ -1176,7 +1176,7 @@ UINT16 ReplacementAmmo[][2] =
 //	else
 //		return !pGun->ubShotsLeft;
 //}
-//
+
 //UINT8 DecreaseWeaponItemMag(OBJECTTYPE * pGun)
 //{
 ////	if(Weapon[Item[pGun->usItem].ubClassIndex].ubSelfloading)
@@ -2872,6 +2872,12 @@ INT8 FindAmmoToReload( SOLDIERTYPE * pSoldier, INT8 bWeaponIn, INT8 bExcludeSlot
 		return( NO_SLOT );
 	}
 	pObj = &(pSoldier->inv[bWeaponIn]);
+
+//<SB> manual recharge
+	if (pObj->ubGunShotsLeft && !(pObj->ubGunState & GS_CARTRIDGE_IN_CHAMBER) )
+		return bWeaponIn;
+//</SB>
+
 	if ( Item[pObj->usItem].usItemClass == IC_GUN && !Item[pObj->usItem].cannon )
 	{
 		// look for same ammo as before
@@ -2933,8 +2939,21 @@ BOOLEAN AutoReload( SOLDIERTYPE * pSoldier )
 	INT8					bSlot, bAPCost;
 	BOOLEAN				fRet;
 
+	//LPCTSTR tsSound;
 	CHECKF( pSoldier );
 	pObj = &(pSoldier->inv[HANDPOS]);
+
+//<SB> manual recharge
+	if (pObj->ubGunShotsLeft && !(pObj->ubGunState & GS_CARTRIDGE_IN_CHAMBER) )
+	{
+		pObj->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
+		DeductPoints(pSoldier,RECHARGE_APS(pObj),0);
+		//tsSound = Weapon[ Item[pObj->usItem].ubClassIndex ].sLocknLoadSound;
+		//if ( *tsSound )
+			PlayJA2Sample( Weapon[ Item[pObj->usItem].ubClassIndex ].sLocknLoadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
+		return TRUE;
+	}
+//</SB>
 
 	if (Item[pObj->usItem].usItemClass == IC_GUN || Item[pObj->usItem].usItemClass == IC_LAUNCHER)
 	{

@@ -268,6 +268,7 @@ typedef struct
  BOOLEAN NoSemiAuto;
  UINT8 AutoPenalty;
  INT16  sAniDelay;          // Lesh: for burst animation delay
+ BOOLEAN ubSelfloading;
 
 } WEAPONTYPE;
 typedef struct
