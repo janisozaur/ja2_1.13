@@ -522,6 +522,7 @@ void GenerateRandomEquipment( SOLDIERCREATE_STRUCT *pp, INT8 bSoldierClass, INT8
 					{
 						fLAW = FALSE;
 					}
+					pItem->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
 					break;
 				case IC_AMMO:
 					bAmmoClips = 0;
@@ -531,6 +532,7 @@ void GenerateRandomEquipment( SOLDIERCREATE_STRUCT *pp, INT8 bSoldierClass, INT8
 					bKnifeClass = 0;
 					break;
 				case IC_LAUNCHER:
+					pItem->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
 					fGrenadeLauncher = FALSE;
 					fMortar = FALSE;
 					fRPG = FALSE;
