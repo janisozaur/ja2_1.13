@@ -1,0 +1,69 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Complete v1.13", "Complete v1.13\Complete v1.13.vdproj", "{023A95D4-2D14-4FE3-872D-98C200124265}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Loadscreens", "Loadscreens\Loadscreens.vdproj", "{DA5F4210-4FB1-4C24-BF51-5B4F10EC6518}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Speech", "Speech\Speech.vdproj", "{3B5C7E76-F582-4C63-B67B-E4EE58FD2673}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Data", "Data\Data.vdproj", "{421CE91D-9CB5-480F-AFDA-A9DC25FAFE31}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sound - Part1", "Sound - Part1\Sound - Part1.vdproj", "{CD3099F1-C7A2-48B5-968A-69E3D8A07EBB}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sound - Part2", "Sound - Part2\Sound - Part2.vdproj", "{910BE145-1C0B-4EB8-9D75-C7FD70A4E0D9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sound - Part3", "Sound - Part3\Sound - Part3.vdproj", "{A158022B-E926-44FA-8320-C5A1553D5445}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{023A95D4-2D14-4FE3-872D-98C200124265}.Debug.ActiveCfg = Debug
+		{023A95D4-2D14-4FE3-872D-98C200124265}.Debug.Build.0 = Debug
+		{023A95D4-2D14-4FE3-872D-98C200124265}.Release.ActiveCfg = Release
+		{023A95D4-2D14-4FE3-872D-98C200124265}.Release.Build.0 = Release
+		{DA5F4210-4FB1-4C24-BF51-5B4F10EC6518}.Debug.ActiveCfg = Debug
+		{DA5F4210-4FB1-4C24-BF51-5B4F10EC6518}.Debug.Build.0 = Debug
+		{DA5F4210-4FB1-4C24-BF51-5B4F10EC6518}.Release.ActiveCfg = Release
+		{DA5F4210-4FB1-4C24-BF51-5B4F10EC6518}.Release.Build.0 = Release
+		{3B5C7E76-F582-4C63-B67B-E4EE58FD2673}.Debug.ActiveCfg = Debug
+		{3B5C7E76-F582-4C63-B67B-E4EE58FD2673}.Debug.Build.0 = Debug
+		{3B5C7E76-F582-4C63-B67B-E4EE58FD2673}.Release.ActiveCfg = Release
+		{3B5C7E76-F582-4C63-B67B-E4EE58FD2673}.Release.Build.0 = Release
+		{421CE91D-9CB5-480F-AFDA-A9DC25FAFE31}.Debug.ActiveCfg = Debug
+		{421CE91D-9CB5-480F-AFDA-A9DC25FAFE31}.Debug.Build.0 = Debug
+		{421CE91D-9CB5-480F-AFDA-A9DC25FAFE31}.Release.ActiveCfg = Release
+		{421CE91D-9CB5-480F-AFDA-A9DC25FAFE31}.Release.Build.0 = Release
+		{CD3099F1-C7A2-48B5-968A-69E3D8A07EBB}.Debug.ActiveCfg = Debug
+		{CD3099F1-C7A2-48B5-968A-69E3D8A07EBB}.Debug.Build.0 = Debug
+		{CD3099F1-C7A2-48B5-968A-69E3D8A07EBB}.Release.ActiveCfg = Release
+		{CD3099F1-C7A2-48B5-968A-69E3D8A07EBB}.Release.Build.0 = Release
+		{910BE145-1C0B-4EB8-9D75-C7FD70A4E0D9}.Debug.ActiveCfg = Debug
+		{910BE145-1C0B-4EB8-9D75-C7FD70A4E0D9}.Debug.Build.0 = Debug
+		{910BE145-1C0B-4EB8-9D75-C7FD70A4E0D9}.Release.ActiveCfg = Release
+		{910BE145-1C0B-4EB8-9D75-C7FD70A4E0D9}.Release.Build.0 = Release
+		{A158022B-E926-44FA-8320-C5A1553D5445}.Debug.ActiveCfg = Debug
+		{A158022B-E926-44FA-8320-C5A1553D5445}.Debug.Build.0 = Debug
+		{A158022B-E926-44FA-8320-C5A1553D5445}.Release.ActiveCfg = Release
+		{A158022B-E926-44FA-8320-C5A1553D5445}.Release.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
