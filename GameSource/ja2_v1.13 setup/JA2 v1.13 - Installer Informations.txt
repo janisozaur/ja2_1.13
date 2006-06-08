@@ -1,0 +1,48 @@
+The folder "JA2 v1.13 Setup" must be placed on your hard disk on the same folder level like the "GameDir" folder from SVN.
+Otherwise the links to the game data (coded in the setup-project files) files will not be found, when trying to build the projects from VS .NET.
+
+Example of the folder structure:
+
+C:\
+	- Build
+	- GameDir		(-> same folder level like "JA2 v1.13 Setup")
+	- Tools
+	- JA2 v1.13 Setup	(-> same folder level like "GameDir")
+		- Complete v1.13
+		- Data
+		- ...
+
+If any of the files in "GameDir" changes (or new files are added or deleted) you must update the references
+for each file (from the GameDir) of the respective project in the solution.
+
+The solution of the installer contains the following packages:
+
+*****************************************************************************************************************
+*		NAME				*	SIZE	* 		CONTAINING DATA			*						
+*****************************************************************************************************************
+JA2 v1.13 - Complete (All-In-One).msi			164 MB	  All the v1.13 GameDir including Loadscreens, Speech, Weapon Sounds, ...) -> ALL-IN-ONE!
+JA2 v1.13 - Data.msi					 11 MB	  All the v1.13 GameDir, excluding Weapon Sounds, Speech, Optional Loadscreens (but the main menu background image!)	
+JA2 v1.13 - Optional Loadscreens.msi			 21 MB	  The optional Loadscreens (Data\Loadscreens), but without the main menu background image	
+JA2 v1.13 - Weapon Sounds (Part 1).msi			 28 MB	  Data-1.13\Sounds\Weapons (Single Shots & up to 15 burst rounds)	
+JA2 v1.13 - Weapon Sounds (Part 2).msi			 37 MB	  Data-1.13\Sounds\Weapons (16 to 30 burst rounds)	
+JA2 v1.13 - Weapon Sounds (Part 3).msi			 55 MB	  Data-1.13\Sounds\Weapons (31 to 50 burst rounds)
+JA2 v1.13 - Speech.msi					 18 MB	  Data\Speech	
+
+The folder "JA2 v1.13 Setup" contains a subfolder named "Support". This folder contains the *.rtf files, JA2-Icon, Images for the Splash Screens, ....
+The *.rtf files are displayed after the splash screen of the installer package. 
+These files should contain some informations of the installer package (Todo!!).
+
+To add any new files to the setup-projects (in Visual Studio .NET), you must do the following:
+- Select the setup-project in the solution explorer
+- Open the file system editor
+- Select the "Application Folder" and then browse to the folder where you like to add some files
+- Click "Add -> File". Then browse in the "GameDir" folder and select the file(s) you like to add.
+
+To build the installation package (*.msi), select the project and then "Build". 
+If you click "Build" on the solution file, all the setup-projects are going to be build.
+
+HINT: The project "JA2 v1.13 - Complete (All-In-One)" takes some minutes to be build (-> so take a coffee or two  :-) ...)
+
+ 
+
+	
