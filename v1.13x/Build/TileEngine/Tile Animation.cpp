@@ -138,20 +138,19 @@ ANITILE *CreateAnimationTile( ANITILE_PARAMS *pAniParams )
 
 		if ( uiFlags & ANITILE_LIGHT )
 		{
-			if ( ubAmbientLightLevel >= MIN_AMB_LEVEL_FOR_MERC_LIGHTS )
+			if( !IsLightEffectAtTile(sGridNo) && ( pNewAniNode->lightSprite=LightSpriteCreate("L-R03.LHT", 0 ) )!=(-1))
 			{
-
-				if( ( pNewAniNode->lightSprite=LightSpriteCreate("L-R03.LHT", 0 ) )!=(-1))
+				LightSpritePower(pNewAniNode->lightSprite, TRUE);
 				{
-					LightSpritePower(pNewAniNode->lightSprite, TRUE);
-					{
-						INT16 sXPos, sYPos;
+					INT16 sXPos, sYPos;
 
-						ConvertGridNoToCenterCellXY( sGridNo, &sXPos, &sYPos );
-						LightSpritePosition( pNewAniNode->lightSprite, (INT16)(sXPos/CELL_X_SIZE), (INT16)(sYPos/CELL_Y_SIZE));
-					}
+					ConvertGridNoToCenterCellXY( sGridNo, &sXPos, &sYPos );
+					LightSpritePosition( pNewAniNode->lightSprite, (INT16)(sXPos/CELL_X_SIZE), (INT16)(sYPos/CELL_Y_SIZE));
+					AllTeamsLookForAll( FALSE );
 				}
 			}
+			else
+				pNewAniNode->lightSprite = -1;
 		}
 
 		if ( ( uiFlags & ANITILE_CACHEDTILE ) )
@@ -381,7 +380,7 @@ void DeleteAniTile( ANITILE *pAniTile )
 						break;
 
 				}
-				if ( pAniNode->uiFlags & ANITILE_LIGHT && ubAmbientLightLevel >= MIN_AMB_LEVEL_FOR_MERC_LIGHTS )
+				if ( pAniNode->uiFlags & ANITILE_LIGHT && pAniNode->lightSprite > 0 )
 				{
 					LightSpriteDestroy(pAniNode->lightSprite);
 				}
@@ -614,10 +613,10 @@ void UpdateAniTiles( )
 					}
 					else
 					{		
-						//if ( pNode->uiFlags & ANITILE_LIGHT )
-						//{
-						//	LightSpriteDestroy(pNode->lightSprite);
-						//}
+						if ( pNode->uiFlags & ANITILE_LIGHT && pNode->lightSprite > 0 )
+						{
+							LightSpriteDestroy(pAniNode->lightSprite);
+						}
 
 						// Delete from world!
 						DeleteAniTile( pNode );

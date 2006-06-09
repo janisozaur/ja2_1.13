@@ -2,13 +2,14 @@
 #define __LIGHT_EFFECTS
 
 
+/*
 // Light effect types
 enum
 {
 	NO_LIGHT_EFFECT,
 	LIGHT_FLARE_MARK_1,
 };
-
+*/
 
 typedef struct
 {
@@ -18,7 +19,6 @@ typedef struct
 	UINT8		bRadius;	          // the current radius
 	INT8		bAge;				        // the number of turns light has been around
 	BOOLEAN	fAllocated;
-	INT8		bType;
 	INT32		iLight;
 	UINT32	uiTimeOfLastUpdate;
 
@@ -35,7 +35,7 @@ void AddLightEffectToTile( INT8 bType, INT16 sGridNo );
 
 void RemoveLightEffectFromTile( INT16 sGridNo );
 
-INT32 NewLightEffect( INT16 sGridNo, INT8 bType );
+INT32 NewLightEffect( INT16 sGridNo, UINT8 ubDuration, UINT8 ubStartRadius );
 
 
 BOOLEAN SaveLightEffectsToSaveGameFile( HWFILE hFile );
@@ -44,5 +44,7 @@ BOOLEAN LoadLightEffectsFromLoadGameFile( HWFILE hFile );
 BOOLEAN SaveLightEffectsToMapTempFile( INT16 sMapX, INT16 sMapY, INT8 bMapZ );
 BOOLEAN LoadLightEffectsFromMapTempFile( INT16 sMapX, INT16 sMapY, INT8 bMapZ );
 void ResetLightEffects();
+
+BOOLEAN IsLightEffectAtTile( INT16 sGridNo );
 
 #endif
