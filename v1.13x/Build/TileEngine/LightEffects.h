@@ -17,8 +17,9 @@ typedef struct
 
 	UINT8		ubDuration;		       // the number of turns will remain effective
 	UINT8		bRadius;	          // the current radius
-	INT8		bAge;				        // the number of turns light has been around
+	UINT8		bAge;				        // the number of turns light has been around
 	BOOLEAN	fAllocated;
+	INT8		bType;
 	INT32		iLight;
 	UINT32	uiTimeOfLastUpdate;
 
