@@ -146,7 +146,6 @@ ANITILE *CreateAnimationTile( ANITILE_PARAMS *pAniParams )
 
 					ConvertGridNoToCenterCellXY( sGridNo, &sXPos, &sYPos );
 					LightSpritePosition( pNewAniNode->lightSprite, (INT16)(sXPos/CELL_X_SIZE), (INT16)(sYPos/CELL_Y_SIZE));
-					AllTeamsLookForAll( FALSE );
 				}
 			}
 			else
@@ -316,6 +315,7 @@ void DeleteAniTiles( )
 
 		DeleteAniTile( pNode );
 	}
+	DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("DeleteAniTiles done") );
 }
 
 
@@ -382,7 +382,9 @@ void DeleteAniTile( ANITILE *pAniTile )
 				}
 				if ( pAniNode->uiFlags & ANITILE_LIGHT && pAniNode->lightSprite >= 0 )
 				{
+					DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("@@@@@@@1 Destroying light sprite %d", pAniNode->lightSprite) );
 					LightSpriteDestroy(pAniNode->lightSprite);
+					DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("@@@@@@@1 Light sprite destroyed") );
 				}
 
 				if ( ( pAniNode->uiFlags & ANITILE_CACHEDTILE ) )
@@ -453,7 +455,9 @@ void DeleteAniTile( ANITILE *pAniTile )
 				}
 			}
 
+			DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("@@@@@@@ freeing up animation memory") );
 			MemFree( pAniNode );
+			DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("@@@@@@@ DeleteAniTile: done") );
 			return;
 		}
 
@@ -613,16 +617,13 @@ void UpdateAniTiles( )
 					}
 					else
 					{		
-						if ( pNode->uiFlags & ANITILE_LIGHT && pNode->lightSprite >= 0 )
-						{
-							LightSpriteDestroy(pAniNode->lightSprite);
-						}
 
 						// Delete from world!
 						DeleteAniTile( pNode );
 
 						// Turn back on redunency checks!
 						gTacticalStatus.uiFlags &= (~NOHIDE_REDUNDENCY);
+						DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("UpdateAniTiles: tile deleted, flags updated - done") );
 
 						return;
 					}
@@ -714,6 +715,7 @@ void UpdateAniTiles( )
 					{
 						// Delete from world!
 						DeleteAniTile( pNode );
+						DebugMsg( TOPIC_JA2, DBG_LEVEL_3, String("UpdateAniTiles: tile deleted - done") );
 
 						return;
 					}
