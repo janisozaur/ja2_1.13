@@ -1439,13 +1439,39 @@ void BeginInventoryPoolPtr( OBJECTTYPE *pInventorySlot )
 		else if ( _KeyDown ( ALT ) && fSELLALL)
 		{
 
-			INT32 iPrice = (Item[gpItemPointer->usItem].usPrice );
-			for (INT8 bLoop = 0; bLoop < MAX_ATTACHMENTS; bLoop++)
+			INT32 iPrice = 0;
+			
+			if( gItemPointer.ubNumberOfObjects > 1)
 			{
-				iPrice += Item[gpItemPointer->usAttachItem[bLoop]].usPrice;
+				if( Item[ gpItemPointer->usItem ].usItemClass == IC_AMMO )
+				{
+					for (INT8 bLoop = 0; bLoop < gItemPointer.ubNumberOfObjects; bLoop++)
+					{
+						iPrice += (INT32)( Item[gpItemPointer->usItem].usPrice * (float) gpItemPointer->ubShotsLeft[bLoop] / Magazine[ Item[gpItemPointer->usItem].ubClassIndex ].ubMagSize );
+					}					
+				}
+				else
+				{
+					for (INT8 bLoop = 0; bLoop < gItemPointer.ubNumberOfObjects; bLoop++)
+					{
+						iPrice += (INT32)( Item[gpItemPointer->usItem].usPrice * (float)gpItemPointer->bStatus[bLoop] / 100 );
+					}
+				}
 			}
+			else
+			{
+				iPrice = ( Item[gpItemPointer->usItem].usPrice * gpItemPointer->bStatus[0] / 100 );
 
-			iPrice = (INT32) (iPrice / iPriceModifier) * gItemPointer.ubNumberOfObjects;
+				for (INT8 bLoop = 0; bLoop < MAX_ATTACHMENTS; bLoop++)
+				{
+					iPrice += (INT32) ( Item[gpItemPointer->usAttachItem[bLoop]].usPrice * (float)gpItemPointer->bAttachStatus[bLoop] / 100);
+				}
+			}
+			
+			if( iPriceModifier < 1) iPriceModifier = 1;
+
+			iPrice = (INT32) (iPrice / iPriceModifier);			
+			
 			AddTransactionToPlayersBook( SOLD_ITEMS, 0, GetWorldTotalMin(), iPrice );
 		    PlayJA2Sample( COMPUTER_BEEP2_IN, RATE_11025, 15, 1, MIDDLEPAN );			              
 			gpItemPointer = NULL;
