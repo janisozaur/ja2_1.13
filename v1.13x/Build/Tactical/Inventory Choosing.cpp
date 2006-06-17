@@ -624,6 +624,7 @@ void ChooseWeaponForSoldierCreateStruct( SOLDIERCREATE_STRUCT *pp, INT8 bWeaponC
 				usGunIndex = pp->Inv[ i ].usItem;
 				ubChanceStandardAmmo = 100 - (bWeaponClass * -9);		// weapon class is negative!
 				usAmmoIndex = RandomMagazine( usGunIndex, ubChanceStandardAmmo );
+				pp->Inv[ i ].ubGunAmmoType = Magazine[Item[usAmmoIndex].ubClassIndex].ubAmmoType;
 
 				if ( Item[usGunIndex].fingerprintid )
 				{
@@ -891,12 +892,19 @@ void ChooseWeaponForSoldierCreateStruct( SOLDIERCREATE_STRUCT *pp, INT8 bWeaponC
 		//}
 
 		usAmmoIndex = RandomMagazine( &pp->Inv[HANDPOS], ubChanceStandardAmmo );
+		pp->Inv[ HANDPOS ].ubGunAmmoType = Magazine[Item[usAmmoIndex].ubClassIndex].ubAmmoType;
 	}
 
 	//Ammo
 	DebugMsg (TOPIC_JA2,DBG_LEVEL_3,String("ChooseWeaponForSoldierCreateStruct: create ammo"));
 	if( bAmmoClips && usAmmoIndex )
 	{
+		//Madd: ensure a minimum # of bullets to make sure enemies don't run out and run away
+		while ( ( bAmmoClips * Weapon[usGunIndex].ubMagSize - Weapon[usGunIndex].ubMagSize) < 20 ) // each soldier should have at least 20 bullets, ie: 2 9mm 15rd clips, 3 7rd shotgun shells, 4 6rd speedloaders, etc.  
+		{
+			bAmmoClips++;
+		}
+
 		CreateItems( usAmmoIndex, 100, bAmmoClips, &Object );
 		Object.fFlags |= OBJECT_UNDROPPABLE;
 		PlaceObjectInSoldierCreateStruct( pp, &Object );

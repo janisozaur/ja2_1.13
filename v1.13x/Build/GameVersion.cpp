@@ -23,7 +23,7 @@ INT16		zVersionLabel[256]		= { L"Beta v. 0.98" };
 #else
 
 	//RELEASE BUILD VERSION 
-	INT16		zVersionLabel[256]		= { L"Release v1.13x.234" };
+	INT16		zVersionLabel[256]		= { L"Release v1.13x.249" };
 
 
 #endif
