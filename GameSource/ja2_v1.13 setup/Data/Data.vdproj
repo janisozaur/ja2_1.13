@@ -177,6 +177,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_09A906CB652947A39B090CCE27455912"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_09D42E8CA908420F9D28DDC2C202D929"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1311,6 +1317,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3BE28A15C5BB43BEAB00407A90E25C4A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3BFF0E1D37D4422392B5B4E3C8E2B849"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1504,6 +1516,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4432CE9CD29D4F768418B4918943AF50"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_444B0A157EFD4925B43DAAF3C93AD502"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3915,6 +3933,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B13EECE219ED4A9EBDB6C5FFFB507BA9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B170F725AE894997B3EC3B018AA13E07"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -3934,6 +3958,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B261E43D0DDA433192292DA8958A0F1D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B27B4745B8D245DD8AEB38A2983890FC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -6169,6 +6199,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\p1item454.sti"
             "TargetName" = "8:p1item454.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_09A906CB652947A39B090CCE27455912"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\GUN29.sti"
+            "TargetName" = "8:GUN29.sti"
             "Tag" = "8:"
             "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
             "Condition" = "8:"
@@ -9965,6 +10015,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_3BE28A15C5BB43BEAB00407A90E25C4A"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\p1item463.sti"
+            "TargetName" = "8:p1item463.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_3BFF0E1D37D4422392B5B4E3C8E2B849"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data\\battlesnds\\167_NOTH.WAV"
@@ -10609,6 +10679,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\GUN176.sti"
             "TargetName" = "8:GUN176.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_444B0A157EFD4925B43DAAF3C93AD502"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\p1item464.sti"
+            "TargetName" = "8:p1item464.sti"
             "Tag" = "8:"
             "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
             "Condition" = "8:"
@@ -18645,6 +18735,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B13EECE219ED4A9EBDB6C5FFFB507BA9"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\Gun28.sti"
+            "TargetName" = "8:Gun28.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_B170F725AE894997B3EC3B018AA13E07"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data\\Interface\\Timebaryellow_800x600.sti"
@@ -18709,6 +18819,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\P1ITEM149.sti"
             "TargetName" = "8:P1ITEM149.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B27B4745B8D245DD8AEB38A2983890FC"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\p1item462.sti"
+            "TargetName" = "8:p1item462.sti"
             "Tag" = "8:"
             "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
             "Condition" = "8:"

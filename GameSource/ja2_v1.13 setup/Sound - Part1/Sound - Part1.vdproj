@@ -51,6 +51,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_012EDA02469C409D8C07DFC2D8503392"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_015868564EE74E2D9860A3D583F644A4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -159,6 +165,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_03D136A89BF74B34B9EBDB221B9857D4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_03DB91A35ABA415089E61D6D33D1629D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -256,6 +268,12 @@
         "Entry"
         {
         "MsmKey" = "8:_067B180744754C11A50EFE3CED4A722A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_068FC868B92C4FA3B4CD7BFEA10109EF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -423,6 +441,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0B8FE5431AF6423ABAB0BE65BFF09F33"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0BFC2527A111423C9BB8FABDC094CED6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -502,6 +526,18 @@
         "Entry"
         {
         "MsmKey" = "8:_0E774A6263D64D24BE501593B137EBF2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0EA5E95A4334446FBB25FD253AF2EDFD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0F186C0891C1417091B6CD2B9F92C234"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -592,6 +628,12 @@
         "Entry"
         {
         "MsmKey" = "8:_11A2C23C5A754766ABE844843D7790B9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_11ED89C8088947D1A39B6B2644E6301E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1107,6 +1149,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_21DBBB5270B547AF916336E3439BE087"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2209820814B44AC388793D5F631BDC90"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1228,6 +1276,12 @@
         "Entry"
         {
         "MsmKey" = "8:_255A8C81FB344834A07CA7544023E662"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2633423154A44E399E2C8159D4DB3D7D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2013,6 +2067,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3D0315D53F3F471E902A5B29894735DA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3D083F36B5DE4F8BA74D7D61D10BF023"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2050,6 +2110,12 @@
         "Entry"
         {
         "MsmKey" = "8:_3DF12467E15A47C9ABA1259E154954CC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3E046247384C454EBBD123C5B10FC315"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2331,6 +2397,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_45D04B7B665345A29F8F2403DE17151E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_45DBC462C6254E7CA15013F29B62F5B6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4623F9059719482EABA3588371586EFB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2356,6 +2434,12 @@
         "Entry"
         {
         "MsmKey" = "8:_46E47DB869AA49808228E7179EE37384"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_474E9927E677415D9024F6028BB4EF88"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2505,6 +2589,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4A8AAD6A8D4444A98CD0F4883EAAE456"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4AB7151F57C9474C8ECAC97104EF5E49"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2590,6 +2680,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4C86A7B1BC4C427FBC8BCFB72E11071A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4C96ED974611403D92821FAA7EF4441D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2992,6 +3088,12 @@
         "Entry"
         {
         "MsmKey" = "8:_5A26D718923E48A3849E9B21DD0D3263"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5A3786406ADD4BE1AE310BF8313CBB18"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3519,6 +3621,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6A2AAE43B2FE42559F1AC3D436B8E924"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6A3238605083469282591144A2520AA0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -3615,7 +3723,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6E7AD37927E7488F8BC912072326488F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6E967EA4ECDA445999960321B4F1059D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6F36B522FB6C4974B77ADB9B56883AB9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3706,6 +3826,12 @@
         "Entry"
         {
         "MsmKey" = "8:_713F7DC4259B44329A1F61F251608540"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_715F816BCC974686B2E6FC991F3B4238"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3849,6 +3975,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_759F471191DB40B5AF91E94B5A747750"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_75C817E1A48B44B5B12416AA3D01068B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -3981,6 +4113,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7877442C79214AF2B08F3C8EDBF6A527"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_788E9DB079E54D7A8967A4CC66DD5A7B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -4030,6 +4168,12 @@
         "Entry"
         {
         "MsmKey" = "8:_7A5B182B0A0C41EFB548E4D21600951B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7A69449E71E64244952A5BE1527A686B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4305,6 +4449,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_82162FF8FEE74AE3A34608CA360B480B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_824859EF642F445B8BF642711CB77068"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -4372,6 +4522,12 @@
         "Entry"
         {
         "MsmKey" = "8:_83848C42EAEA48BD9D52CB9152BF692F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_83A0D262DAC04CC68B8A65DA265F355A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4533,6 +4689,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_88274D4E025A495F9363AAFF206E42FC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8844AFB2030A436787FE9D719F7E6C95"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -4623,6 +4785,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8A89FBEDE342496EA00E43D6AC2EAD8E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8ABFB1F3345D460B9C691C28E20851FA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -4689,6 +4857,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8D24B1255FA9456C973F26AB41B93BCB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8D5B034B889E49CA954B08DAF420E867"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -4744,6 +4918,12 @@
         "Entry"
         {
         "MsmKey" = "8:_8E8EA64EC50548E0A6395E7AF7260C9B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8EA54A1197634C5C892480BE4F0D9533"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4821,6 +5001,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9168DD7480854DE08E18022D20698B0E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_91921C42DCEF47CBA51E1537869A996D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -4864,6 +5050,12 @@
         "Entry"
         {
         "MsmKey" = "8:_92D4947F693D4767A543B11226AF2C1F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_92E30DED1169446D97C377A05A635613"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -5187,6 +5379,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9A319784A15440C79B549E908B0E5D57"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9A36C2358FFF4F3F94B5E4D75317814D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5295,6 +5493,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9D9A27DC55274ACAA5BFF8683052C9AA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9E5ABA28CEE34348946DAC5E347237D7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5320,6 +5524,12 @@
         "Entry"
         {
         "MsmKey" = "8:_9E99F40067AF4517AEE2F71148038316"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9E9D3FDE3BF34096B3349F1B7CBBD786"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -5386,6 +5596,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A0AA129A7F054D1BB448AE59108154B5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A0B1D9A3724C480984211544D6E7ED4A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -5482,6 +5698,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A2C890A0BC414AEA9325DDDCE958D1BA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A318B1041CB5412F82F7B24838090F49"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -5650,6 +5872,12 @@
         "Entry"
         {
         "MsmKey" = "8:_A811CC161AED49BD84B979E889353C7B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A8141E96B03F4CCC98DAAED33168948D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -5955,6 +6183,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B0B74192A4704D7DAC53A4B705F8BC0B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B0C46916AA8B4C1C8E5DC85DC89B0B3C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5985,6 +6219,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B208F499A19F4A3B958B932A5767345A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B29241201D7F4EE48508D4AE78ABE3E1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5992,6 +6232,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B2AD3EAB334E40FA97BA3BFDC6267678"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B319B5B0D92A46238D7ACBE6A8B158AF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -6039,6 +6285,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B3BB143A4AAC47338CE3D19651617368"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B3C31806AC094F0285DB674AFE9CFA9B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -6058,6 +6310,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B3FCCC8D97444A3AB8130B3BACD6B477"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B3FD4F2A87A54750BB124002DB077721"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -6111,6 +6369,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B592EB8E4A1841DE8739347594B9612E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B5A0EBF1566E4018A7F19CC298EDE0B4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -6136,6 +6400,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B64B2ED774894D9298506617B0D5C182"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B65B6E40F7BA4BAAA6A1BB70673E4277"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -6250,6 +6520,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B91D0285C696421590F152AF59B1287B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B93C0B60E8AF4B158105CE279E0318C0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -6537,6 +6813,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C3249262435748B2AEFCFFE90427C4D1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C343848085C84A61BCF865A19A7AEEE4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -6730,6 +7012,12 @@
         "Entry"
         {
         "MsmKey" = "8:_C9BD7994B9E04E3BB3C9DEE07E61DEB7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C9F4CAE8503B45C2B9B02769187464F0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -6993,6 +7281,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D2C9B6C017F044708CE49C91AB67B689"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D2D24201F0584AA983BC00AF26FEFEF3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -7000,6 +7294,12 @@
         "Entry"
         {
         "MsmKey" = "8:_D2FE166A571245E18177C03CC936A619"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D3133F3E16974EC2B244BEAE1C82E44B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -7125,6 +7425,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D740020ED65A4DF59CB6A426C280C66A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D7522E1F7605469299E09AC56B9B15DE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -7203,6 +7509,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D989DB811C2746E0BDE7BA29A1BEFA93"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D994316F1B234BC6AFB58D3598BD920E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -7228,6 +7540,12 @@
         "Entry"
         {
         "MsmKey" = "8:_DA1E03D771254A96AE76C1E413A9FE3D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DA489C21D87842D58117ECDA269380EB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -7317,6 +7635,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DC19D1CA9BAE44C290FD942230A2226E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DC70335BB63F40819887941684119A60"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -7366,6 +7690,12 @@
         "Entry"
         {
         "MsmKey" = "8:_DDECE3C3A5B34BE785B6ACB6F4DD4FF4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DE1DC407993743C98EB97A1646BBD9B7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -7551,7 +7881,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E2AD9C96448848118198504C190CD3C0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E2B6A2B2C4324CB89E9CCA40D9299733"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E2C5C86E065D4AE7845D22B3F1B0B01A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -7606,6 +7948,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E384982737A34323A51097356034F876"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E38BEBAEDE734CF696C7C31217F2DCE6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -8175,6 +8523,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F4DF62F3E5B04393A7BCA67E5E0AC01A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F4E8FD8AA17C46EEBE34F7822E411B12"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -8236,6 +8590,12 @@
         "Entry"
         {
         "MsmKey" = "8:_F66D0CDEDF954AE9A0D3C682938ED0CE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F688012223E24074BF559ED71B22CBF9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -8439,6 +8799,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FD13647D5AE147ACADD1514C970F4560"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FD3AAB622B7F48BFA8DD2AA3BEAB5431"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -8458,6 +8824,12 @@
         "Entry"
         {
         "MsmKey" = "8:_FD863D59D5E740D69F8EAD30DB3C6830"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD89815E1867420EA3B2B746D04023AA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -8739,6 +9111,26 @@
             "TargetName" = "8:9MMPM AEK919K BURST 4.ogg"
             "Tag" = "8:"
             "Folder" = "8:_0ACEE09906074BDD8C8AF588A56FDE5B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_012EDA02469C409D8C07DFC2D8503392"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 7.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 7.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -9113,6 +9505,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_03D136A89BF74B34B9EBDB221B9857D4"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 8.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 8.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_03DB91A35ABA415089E61D6D33D1629D"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\545\\5,45 AN-94 BURST 9.ogg"
@@ -9439,6 +9851,26 @@
             "TargetName" = "8:7,62X54R PECHENEG BURST 2.ogg"
             "Tag" = "8:"
             "Folder" = "8:_3916B8CD6E5E4971B19EBA9021AC3007"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_068FC868B92C4FA3B4CD7BFEA10109EF"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 14.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 14.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -9993,6 +10425,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_0B8FE5431AF6423ABAB0BE65BFF09F33"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 12.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 12.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_0BFC2527A111423C9BB8FABDC094CED6"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 G41 BURST 3.ogg"
@@ -10259,6 +10711,46 @@
             "TargetName" = "8:9X39 SR3 BURST 5.ogg"
             "Tag" = "8:"
             "Folder" = "8:_D250005F2F3447ECA9B5DB4DB6068A06"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_0EA5E95A4334446FBB25FD253AF2EDFD"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 15.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 15.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_0F186C0891C1417091B6CD2B9F92C234"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 15.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 15.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -10559,6 +11051,26 @@
             "TargetName" = "8:9MM CALICO BURST 11.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_11ED89C8088947D1A39B6B2644E6301E"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 13.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 13.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -12273,6 +12785,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_21DBBB5270B547AF916336E3439BE087"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 13.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 13.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_2209820814B44AC388793D5F631BDC90"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x51\\7,62 NATO M14 BURST 12.ogg"
@@ -12679,6 +13211,26 @@
             "TargetName" = "8:7,62 WP AEK973 BURST 4.ogg"
             "Tag" = "8:"
             "Folder" = "8:_F967A1188107408781480F51811506A8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_2633423154A44E399E2C8159D4DB3D7D"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 6.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 6.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -15293,6 +15845,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_3D0315D53F3F471E902A5B29894735DA"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 8.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 8.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_3D083F36B5DE4F8BA74D7D61D10BF023"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 FN2000 BURST 11.ogg"
@@ -15419,6 +15991,26 @@
             "TargetName" = "8:9MM AGRAM BURST 7.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_3E046247384C454EBBD123C5B10FC315"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 4.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 4.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -16353,6 +16945,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_45D04B7B665345A29F8F2403DE17151E"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 1.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 1.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_45DBC462C6254E7CA15013F29B62F5B6"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 15.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 15.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_4623F9059719482EABA3588371586EFB"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x25\\7,62x25MM TT33 SINGLE SHOT.ogg"
@@ -16437,6 +17069,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 M16A3 BURST 13.ogg"
             "TargetName" = "8:5,56 M16A3 BURST 13.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_474E9927E677415D9024F6028BB4EF88"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 6.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 6.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
@@ -16933,6 +17585,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_4A8AAD6A8D4444A98CD0F4883EAAE456"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 2.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 2.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_4AB7151F57C9474C8ECAC97104EF5E49"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\545\\5,45 AK107 BURST 9.ogg"
@@ -17219,6 +17891,26 @@
             "TargetName" = "8:7,62 WP RPK BURST 13.ogg"
             "Tag" = "8:"
             "Folder" = "8:_F967A1188107408781480F51811506A8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_4C96ED974611403D92821FAA7EF4441D"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 7.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 7.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -18559,6 +19251,26 @@
             "TargetName" = "8:9MM GG95 BURST 5.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_5A3786406ADD4BE1AE310BF8313CBB18"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 8.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 8.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -20313,6 +21025,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_6A2AAE43B2FE42559F1AC3D436B8E924"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 9.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 9.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_6A3238605083469282591144A2520AA0"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x39\\7,62 WP AEK973 BURST 7.ogg"
@@ -20633,12 +21365,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_6E7AD37927E7488F8BC912072326488F"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 10.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 10.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_6E967EA4ECDA445999960321B4F1059D"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\9x19\\9MM UZI BURST 9.ogg"
             "TargetName" = "8:9MM UZI BURST 9.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_6F36B522FB6C4974B77ADB9B56883AB9"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 10.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 10.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -20937,6 +21709,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MINIMI BURST 8.ogg"
             "TargetName" = "8:5,56 MINIMI BURST 8.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_715F816BCC974686B2E6FC991F3B4238"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 7.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 7.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
@@ -21413,6 +22205,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_759F471191DB40B5AF91E94B5A747750"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 9.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 9.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_75C817E1A48B44B5B12416AA3D01068B"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 XM8 BURST 10.ogg"
@@ -21853,6 +22665,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_7877442C79214AF2B08F3C8EDBF6A527"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 9.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 9.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_788E9DB079E54D7A8967A4CC66DD5A7B"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\50\\50 BMG BURST 14.ogg"
@@ -22017,6 +22849,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 M4 BURST 5.ogg"
             "TargetName" = "8:5,56 M4 BURST 5.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_7A69449E71E64244952A5BE1527A686B"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 10.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 10.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
@@ -22933,6 +23785,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_82162FF8FEE74AE3A34608CA360B480B"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 12.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 12.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_824859EF642F445B8BF642711CB77068"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x51\\7,62 NATO HK21 BURST 7.ogg"
@@ -23159,6 +24031,26 @@
             "TargetName" = "8:7,62x25MM PPSh41 BURST 12.ogg"
             "Tag" = "8:"
             "Folder" = "8:_529B73CD4FC4416594125F874A1AA57D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_83A0D262DAC04CC68B8A65DA265F355A"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 1.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 1.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -23693,6 +24585,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_88274D4E025A495F9363AAFF206E42FC"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 4.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 4.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_8844AFB2030A436787FE9D719F7E6C95"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\12g\\12-g JACKHAMMER BURST 3.ogg"
@@ -23993,6 +24905,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_8A89FBEDE342496EA00E43D6AC2EAD8E"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 11.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 11.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_8ABFB1F3345D460B9C691C28E20851FA"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\9x39\\9X39 VAL BURST 9.ogg"
@@ -24213,6 +25145,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_8D24B1255FA9456C973F26AB41B93BCB"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 3.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 3.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_8D5B034B889E49CA954B08DAF420E867"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MINIMI FR BURST 5.ogg"
@@ -24397,6 +25349,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 F88 BURST 8.ogg"
             "TargetName" = "8:5,56 F88 BURST 8.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_8EA54A1197634C5C892480BE4F0D9533"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 12.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 12.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
@@ -24653,6 +25625,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_9168DD7480854DE08E18022D20698B0E"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 11.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 11.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_91921C42DCEF47CBA51E1537869A996D"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\57\\5,7 BURST 5.ogg"
@@ -24799,6 +25791,26 @@
             "TargetName" = "8:4,6 BURST 6.ogg"
             "Tag" = "8:"
             "Folder" = "8:_290686C9048046F2AF5D8F244D82E0EB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_92E30DED1169446D97C377A05A635613"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 3.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 3.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -25873,6 +26885,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_9A319784A15440C79B549E908B0E5D57"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 11.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 11.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_9A36C2358FFF4F3F94B5E4D75317814D"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x54R\\7,62X54R PECHENEG BURST 6.ogg"
@@ -26233,6 +27265,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_9D9A27DC55274ACAA5BFF8683052C9AA"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 13.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 13.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_9E5ABA28CEE34348946DAC5E347237D7"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x39\\7,62 WP BURST 14.ogg"
@@ -26319,6 +27371,26 @@
             "TargetName" = "8:9MMPM BIZON BURST 1.ogg"
             "Tag" = "8:"
             "Folder" = "8:_0ACEE09906074BDD8C8AF588A56FDE5B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_9E9D3FDE3BF34096B3349F1B7CBBD786"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 15.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 15.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -26539,6 +27611,26 @@
             "TargetName" = "8:9MM TMP BURST 11.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_A0B1D9A3724C480984211544D6E7ED4A"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 7.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 7.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -26857,6 +27949,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 SIG551 BURST 3.ogg"
             "TargetName" = "8:5,56 SIG551 BURST 3.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_A318B1041CB5412F82F7B24838090F49"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 11.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 11.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
@@ -27417,6 +28529,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 M4 BURST 9.ogg"
             "TargetName" = "8:5,56 M4 BURST 9.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_A8141E96B03F4CCC98DAAED33168948D"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 5.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 5.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
@@ -28433,6 +29565,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B0B74192A4704D7DAC53A4B705F8BC0B"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 2.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 2.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_B0C46916AA8B4C1C8E5DC85DC89B0B3C"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\545\\5,45 AK107 BURST 15.ogg"
@@ -28533,6 +29685,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B208F499A19F4A3B958B932A5767345A"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 3.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 3.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_B29241201D7F4EE48508D4AE78ABE3E1"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\9x19\\9MM MP5SD SINGLE SHOT.ogg"
@@ -28559,6 +29731,26 @@
             "TargetName" = "8:9MM TMP BURST 2.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B319B5B0D92A46238D7ACBE6A8B158AF"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 8.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 8.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -28713,6 +29905,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B3BB143A4AAC47338CE3D19651617368"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 12.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 12.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_B3C31806AC094F0285DB674AFE9CFA9B"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\9x39\\9X39 GROZA BURST 12.ogg"
@@ -28779,6 +29991,26 @@
             "TargetName" = "8:7,62 NATO G3 SINGLE SHOT.ogg"
             "Tag" = "8:"
             "Folder" = "8:_8CABC7538330425081E039A2E11D3377"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B3FD4F2A87A54750BB124002DB077721"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 14.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 14.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -28953,6 +30185,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B592EB8E4A1841DE8739347594B9612E"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 13.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 13.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_B5A0EBF1566E4018A7F19CC298EDE0B4"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 AK108 BURST 14.ogg"
@@ -29039,6 +30291,26 @@
             "TargetName" = "8:9MM GG95 BURST 6.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B65B6E40F7BA4BAAA6A1BB70673E4277"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 5.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 5.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -29419,6 +30691,26 @@
             "TargetName" = "8:5,56 CAR15 BURST 11.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_B93C0B60E8AF4B158105CE279E0318C0"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\SINGLE-ACTION.ogg"
+            "TargetName" = "8:SINGLE-ACTION.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_EDB61B056D964DD6856DAFEE7F1B7E1A"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -30373,6 +31665,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_C3249262435748B2AEFCFFE90427C4D1"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 1.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 1.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_C343848085C84A61BCF865A19A7AEEE4"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 FNC BURST 4.ogg"
@@ -31019,6 +32331,26 @@
             "TargetName" = "8:5,7 BURST 11.ogg"
             "Tag" = "8:"
             "Folder" = "8:_3F768F17FA204674A31D92BE74A0F6EC"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_C9F4CAE8503B45C2B9B02769187464F0"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 9.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 9.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -31893,6 +33225,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_D2C9B6C017F044708CE49C91AB67B689"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 4.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 4.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_D2D24201F0584AA983BC00AF26FEFEF3"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\47\\4,7 CALIBER BURST 12.ogg"
@@ -31919,6 +33271,26 @@
             "TargetName" = "8:7,62 WP AEK973 BURST 8.ogg"
             "Tag" = "8:"
             "Folder" = "8:_F967A1188107408781480F51811506A8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_D3133F3E16974EC2B244BEAE1C82E44B"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 4.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 4.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -32333,6 +33705,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_D740020ED65A4DF59CB6A426C280C66A"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 6.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 6.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_D7522E1F7605469299E09AC56B9B15DE"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x39\\7,62 WP BURST 5.ogg"
@@ -32593,6 +33985,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_D989DB811C2746E0BDE7BA29A1BEFA93"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 AK101 BURST 1.ogg"
+            "TargetName" = "8:5,56 AK101 BURST 1.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_D994316F1B234BC6AFB58D3598BD920E"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\9x19\\9MM CALICO BURST 3.ogg"
@@ -32679,6 +34091,26 @@
             "TargetName" = "8:9MMPM VZ82 BURST 15.ogg"
             "Tag" = "8:"
             "Folder" = "8:_0ACEE09906074BDD8C8AF588A56FDE5B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_DA489C21D87842D58117ECDA269380EB"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 6.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 6.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -32973,6 +34405,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_DC19D1CA9BAE44C290FD942230A2226E"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 5.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 5.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_DC70335BB63F40819887941684119A60"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\9x39\\9X39 VAL BURST 10.ogg"
@@ -33139,6 +34591,26 @@
             "TargetName" = "8:7,62 WP GROZA BURST 1.ogg"
             "Tag" = "8:"
             "Folder" = "8:_F967A1188107408781480F51811506A8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_DE1DC407993743C98EB97A1646BBD9B7"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 14.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 14.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -33753,12 +35225,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_E2AD9C96448848118198504C190CD3C0"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 10.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 10.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_E2B6A2B2C4324CB89E9CCA40D9299733"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\9x18\\9MMPM STECHKIN BURST 3.ogg"
             "TargetName" = "8:9MMPM STECHKIN BURST 3.ogg"
             "Tag" = "8:"
             "Folder" = "8:_0ACEE09906074BDD8C8AF588A56FDE5B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_E2C5C86E065D4AE7845D22B3F1B0B01A"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 14.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 14.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -33939,6 +35451,26 @@
             "TargetName" = "8:9MS SFZ2500 BURST 1.ogg"
             "Tag" = "8:"
             "Folder" = "8:_DBCA2CF865DA48BFB3401B7D4EB77440"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_E38BEBAEDE734CF696C7C31217F2DCE6"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG36 BURST 2.ogg"
+            "TargetName" = "8:5,56 MG36 BURST 2.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -35833,6 +37365,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_F4DF62F3E5B04393A7BCA67E5E0AC01A"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MICRO-GALIL BURST 5.ogg"
+            "TargetName" = "8:5,56 MICRO-GALIL BURST 5.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_F4E8FD8AA17C46EEBE34F7822E411B12"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x39\\7,62 WP RK76 BURST 7.ogg"
@@ -36037,6 +37589,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 XM8 BURST 8.ogg"
             "TargetName" = "8:5,56 XM8 BURST 8.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_F688012223E24074BF559ED71B22CBF9"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 2.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 2.ogg"
             "Tag" = "8:"
             "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
@@ -36713,6 +38285,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_FD13647D5AE147ACADD1514C970F4560"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 MG43 BURST 3.ogg"
+            "TargetName" = "8:5,56 MG43 BURST 3.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_FD3AAB622B7F48BFA8DD2AA3BEAB5431"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\762x54R\\7,62X54R SVU-A BURST 10.ogg"
@@ -36779,6 +38371,26 @@
             "TargetName" = "8:9MM GG95 BURST 2.ogg"
             "Tag" = "8:"
             "Folder" = "8:_7DC418FA2DBC48B4B9BEC4C8A2DD9400"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_FD89815E1867420EA3B2B746D04023AA"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\Sounds\\Weapons\\556\\5,56 HK416 BURST 1.ogg"
+            "TargetName" = "8:5,56 HK416 BURST 1.ogg"
+            "Tag" = "8:"
+            "Folder" = "8:_6E82795BEE5544328D04D7AC62FB20C1"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
