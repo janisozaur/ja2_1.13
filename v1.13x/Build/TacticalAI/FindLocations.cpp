@@ -548,23 +548,11 @@ INT16 FindBestNearbyCover(SOLDIERTYPE *pSoldier, INT32 morale, INT32 *piPercentB
 	INT8 *		pbPublOL;
 	SOLDIERTYPE *pOpponent;
 	UINT16 usMovementMode;
-	INT8	fHasGasMask;
 
 	UINT8	ubBackgroundLightLevel;
 	UINT8	ubBackgroundLightPercent = 0;
 	UINT8	ubLightPercentDifference;
 	BOOLEAN		fNight;
-
-	switch( FindObj( pSoldier, GASMASK ) )
-	{
-		case HEAD1POS:
-		case HEAD2POS:
-			fHasGasMask = TRUE;
-			break;
-		default:
-			fHasGasMask = FALSE;
-			break;
-	}
 
 	if ( gbWorldSectorZ > 0 )
 	{
@@ -914,12 +902,9 @@ INT16 FindBestNearbyCover(SOLDIERTYPE *pSoldier, INT32 morale, INT32 *piPercentB
 				continue;
 			}
 
-			if ( !fHasGasMask )
+			if ( InGas( pSoldier, sGridNo ) )
 			{
-				if ( InGas( pSoldier, sGridNo ) )
-				{
-					continue;
-				}
+				continue;
 			}
 
 			// ignore blacklisted spot
@@ -1119,19 +1104,6 @@ INT16 FindSpotMaxDistFromOpponents(SOLDIERTYPE *pSoldier)
 	INT16	sOrigin;
 	INT32	iRoamRange;
 
-	INT8	fHasGasMask;
-	
-	switch( FindObj( pSoldier, GASMASK ) )
-	{
-		case HEAD1POS:
-		case HEAD2POS:
-			fHasGasMask = TRUE;
-			break;
-		default:
-			fHasGasMask = FALSE;
-			break;
-	}
-
 	// BUILD A LIST OF THREATENING GRID #s FROM PERSONAL & PUBLIC opplistS
 
 	// look through all opponents for those we know of
@@ -1322,14 +1294,6 @@ INT16 FindSpotMaxDistFromOpponents(SOLDIERTYPE *pSoldier)
 				continue;
 			}			
 
-			if ( !fHasGasMask )
-			{
-				if ( InGas( pSoldier, sGridNo ) )
-				{
-					continue;
-				}
-			}
-
 			if ( pSoldier->bTeam == CIV_TEAM )
 			{
 				iRoamRange = RoamingRange( pSoldier, &sOrigin );
@@ -1344,6 +1308,10 @@ INT16 FindSpotMaxDistFromOpponents(SOLDIERTYPE *pSoldier)
 			{
 				continue;
 			}
+
+			//Madd: skip lighted spots
+			if ( InLightAtNight( sGridNo, pSoldier->bLevel ) )
+				continue;
 
 			// OK, this place shows potential.  How useful is it as cover?
 			//NumMessage("Promising seems gridno #",gridno);
@@ -2382,18 +2350,7 @@ INT16 FindFlankingSpot(SOLDIERTYPE *pSoldier, INT16 sPos, INT8 bAction )
 	INT32 iSearchRange = 4;
 	INT16	sMaxLeft, sMaxRight, sMaxUp, sMaxDown, sXOffset, sYOffset;
 
-	INT8	fHasGasMask;
 	DebugMsg ( TOPIC_JA2AI , DBG_LEVEL_3 , String("FindFlankingSpot: orig loc = %d, loc to flank = %d", pSoldier->sGridNo , sPos));
-	switch( FindObj( pSoldier, GASMASK ) )
-	{
-		case HEAD1POS:
-		case HEAD2POS:
-			fHasGasMask = TRUE;
-			break;
-		default:
-			fHasGasMask = FALSE;
-			break;
-	}
 
 	// hit the edge of the map
 	if ( FindNearestEdgePoint ( pSoldier->sGridNo ) == pSoldier->sGridNo  )
@@ -2535,19 +2492,15 @@ INT16 FindFlankingSpot(SOLDIERTYPE *pSoldier, INT16 sPos, INT8 bAction )
 				continue;
 			}			
 
-			if ( !fHasGasMask )
-			{
-				if ( InGas( pSoldier, sGridNo ) )
-				{
-					continue;
-				}
-			}
-
 			// exclude locations with tear/mustard gas (at this point, smoke is cool!)
 			if ( InGas( pSoldier, sGridNo ) )
 			{
 				continue;
 			}
+
+			//Madd: skip lighted spots
+			if ( InLightAtNight( sGridNo, pSoldier->bLevel ) )
+				continue;
 
 			// allow an extra direction for flanking
 			if ( bAction == AI_ACTION_FLANK_LEFT )
