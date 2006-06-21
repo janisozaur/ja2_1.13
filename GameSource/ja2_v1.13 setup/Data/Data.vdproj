@@ -105,6 +105,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_037A421547B0486EA56E5E7934018C2B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_03AC8B4288B049BA8747217A92CCDFF7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2193,6 +2199,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_61DDF2C0A43540799067FFA6A5456DB3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_61FF028A24594A76826CA17D5CB9F57E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2847,6 +2859,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7E58D1A469C543B7BA12D0A576FDE803"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7E64D3518B5944B695CFB6379D2AF117"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -3220,6 +3238,12 @@
         "Entry"
         {
         "MsmKey" = "8:_8D92696313214C649320883CB14C2CED"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8E0AB16680244386AD13C7F1D0D24EA5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -5961,6 +5985,26 @@
             "TargetName" = "8:COMPFONT.STI"
             "Tag" = "8:"
             "Folder" = "8:_D20A3475E171471A9EFA4DE9A94883BA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_037A421547B0486EA56E5E7934018C2B"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\GUN258.sti"
+            "TargetName" = "8:GUN258.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -12935,6 +12979,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_61DDF2C0A43540799067FFA6A5456DB3"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\GUN260.sti"
+            "TargetName" = "8:GUN260.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_61FF028A24594A76826CA17D5CB9F57E"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\gun153.sti"
@@ -15115,6 +15179,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_7E58D1A469C543B7BA12D0A576FDE803"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\GUN261.sti"
+            "TargetName" = "8:GUN261.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_7E64D3518B5944B695CFB6379D2AF117"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\p1item397.sti"
@@ -16359,6 +16443,26 @@
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\p1item395.sti"
             "TargetName" = "8:p1item395.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_8E0AB16680244386AD13C7F1D0D24EA5"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\GUN259.STI"
+            "TargetName" = "8:GUN259.STI"
             "Tag" = "8:"
             "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
             "Condition" = "8:"
@@ -24832,12 +24936,12 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Bears Pit Coders"
+        "Manufacturer" = "8:Bear's Pit Coders"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:http://v113.ja2mods.de"
+        "ARPHELPLINK" = "8:http://ja2v113.schtuff.com/installation"
         "Title" = "8:Jagged Alliance 2 v1.13 - Game Data"
         "Subject" = "8:The Game Data files for Jagged Alliance 2 v1.13"
-        "ARPCONTACT" = "8:Bears Pit Coders"
+        "ARPCONTACT" = "8:Bear's Pit Coders"
         "Keywords" = "8:Game Data"
         "ARPCOMMENTS" = "8:The Game Data files for Jagged Alliance 2 v1.13"
         "ARPURLINFOABOUT" = "8:http://www.ja-galaxy-forum.com"
