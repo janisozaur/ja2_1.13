@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0042545D9BAF48BEBCF1384D46709B4D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_00615E07745F40B19D4F8CE005572DEA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2806,6 +2812,12 @@
         "Entry"
         {
         "MsmKey" = "8:_7B27B93A53854C2581736656DC96C264"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7BDF1C0B3B0C4A6F9701CCB182F8716E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -5699,6 +5711,26 @@
         }
         "File"
         {
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_0042545D9BAF48BEBCF1384D46709B4D"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\GUN262.STI"
+            "TargetName" = "8:GUN262.STI"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_00615E07745F40B19D4F8CE005572DEA"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\P1ITEM144.sti"
@@ -15005,6 +15037,26 @@
             "TargetName" = "8:Highl3.sti"
             "Tag" = "8:"
             "Folder" = "8:_FC05A53B3144406BAD1315B8F76AB55E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_7BDF1C0B3B0C4A6F9701CCB182F8716E"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\gun263.sti"
+            "TargetName" = "8:gun263.sti"
+            "Tag" = "8:"
+            "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
