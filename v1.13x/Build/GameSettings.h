@@ -215,7 +215,7 @@ typedef struct
 	UINT32	guiMaxMilitiaSquadSize;
 	UINT32	guiMaxMilitiaSquadSizeBattle;
 
-
+	BOOLEAN gfAllowSoldierToolTips;
 
 	
 	//Sight range
@@ -282,6 +282,17 @@ typedef struct
 	UINT32 ubNormalNumAwareBattles;
 	UINT32 ubHardNumAwareBattles;
 	UINT32 ubInsaneNumAwareBattles;
+
+
+	BOOLEAN gfEasyUnlimitedTroops;
+	BOOLEAN gfNormalUnlimitedTroops;
+	BOOLEAN gfHardUnlimitedTroops;
+	BOOLEAN gfInsaneUnlimitedTroops;
+
+	BOOLEAN gfEasyAggressiveQueen;
+	BOOLEAN gfNormalAggressiveQueen;
+	BOOLEAN gfHardAggressiveQueen;
+	BOOLEAN gfInsaneAggressiveQueen;
 
 } GAME_EXTERNAL_OPTIONS;
 

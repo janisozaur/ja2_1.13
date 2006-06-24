@@ -924,11 +924,11 @@ BOOLEAN fCivilian = (PTR_CIVILIAN && (pSoldier->ubCivilianGroup == NON_CIV_GROUP
 			case STATIONARY:     iChance *= 0; break;
 			case ONGUARD:        iChance += 10; break;
 			case ONCALL:                         break;
-			case CLOSEPATROL:    iChance += -10; break;
+			case CLOSEPATROL:    iChance += -20; break;
 			case RNDPTPATROL:
-			case POINTPATROL:    iChance  = -20; break;
-			case FARPATROL:      iChance += -30; break;
-			case SEEKENEMY:      iChance += -20; break;
+			case POINTPATROL:    iChance  = -30; break;
+			case FARPATROL:      iChance += -40; break;
+			case SEEKENEMY:      iChance += -30; break;
 			case SNIPER:		 iChance += 70; break;
 			}
 
@@ -4845,6 +4845,8 @@ INT8 DecideAction(SOLDIERTYPE *pSoldier)
  UINT32		uiStartTime, uiEndTime;
 #endif
 
+	if ( pSoldier->bTeam != MILITIA_TEAM )
+	{
 	if ( !sniperwarning && pSoldier->bOrders == SNIPER )
 	{
 		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, L"Watch out for snipers..." );
@@ -4857,7 +4859,7 @@ INT8 DecideAction(SOLDIERTYPE *pSoldier)
 		//TODO: don't say this again after reloading a savegame
 		SayQuoteFromAnyBodyInSector( QUOTE_WEARY_SLASH_SUSPUCIOUS );
 	}
-
+	}
  // turn off cautious flag
 	pSoldier->fAIFlags &= (~AI_CAUTIOUS);
 	//reset flank count
