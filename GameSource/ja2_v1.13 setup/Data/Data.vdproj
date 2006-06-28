@@ -243,12 +243,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0D3F174D113742C1B762DC02066EC14C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0D45A644D2C749D6950B0C2018EBFF2F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -2439,6 +2433,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_69DF74D87E10434C9F0A151BBDC8E782"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6A1171F02E344DA7B156665DA40E6BDF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -3411,12 +3411,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_95260567544945FCA94FA3E638CDC512"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_956EC9D997154B1FBF8C17F579CFBD94"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -3496,6 +3490,12 @@
         "Entry"
         {
         "MsmKey" = "8:_98CA97D26D7445C2B150DEC8FBBDBA07"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_98D8CE7D19A04F35B920C09CFA68CACF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -3748,12 +3748,6 @@
         "Entry"
         {
         "MsmKey" = "8:_A624DE179785413D8C17D703D1126D23"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A6380D8BF94B432A805AAA8B705E2FAC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4569,6 +4563,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CC4F6998120E4434B6C3A7AF4DB61104"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CC602DED6FC54CA4B0D34C4502FA7B0B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5187,12 +5187,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E695CF9582884654A32F61CB8C6C134E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E6BC7F9CE01E4DE6A9B609DD90ADE98D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5397,12 +5391,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F2F8F946546B4157933748C1E7D3C20D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F315F91BF7674530A6A060B7199C9029"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5602,6 +5590,12 @@
         "Entry"
         {
         "MsmKey" = "8:_FC5336031F974FAA9107ECCA13B7C746"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD34CF4F398C45BAB354F020C945830F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -6457,26 +6451,6 @@
             "TargetName" = "8:p1item306.sti"
             "Tag" = "8:"
             "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_0D3F174D113742C1B762DC02066EC14C"
-            {
-            "SourcePath" = "8:..\\..\\GameDir\\Patch112.txt"
-            "TargetName" = "8:Patch112.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -13791,6 +13765,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_69DF74D87E10434C9F0A151BBDC8E782"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Patch112.txt"
+            "TargetName" = "8:Patch112.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_6A1171F02E344DA7B156665DA40E6BDF"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\gun227.sti"
@@ -17031,26 +17025,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_95260567544945FCA94FA3E638CDC512"
-            {
-            "SourcePath" = "8:..\\..\\GameDir\\ja2.exe"
-            "TargetName" = "8:ja2.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_956EC9D997154B1FBF8C17F579CFBD94"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data\\Interface\\OverheadInterface_800x600.sti"
@@ -17317,6 +17291,26 @@
             "TargetName" = "8:gun236.sti"
             "Tag" = "8:"
             "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_98D8CE7D19A04F35B920C09CFA68CACF"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\fmod.dll"
+            "TargetName" = "8:fmod.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -18157,26 +18151,6 @@
             "TargetName" = "8:097.npc"
             "Tag" = "8:"
             "Folder" = "8:_BEF4B54362BE49A2845617E0EE0D412E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_A6380D8BF94B432A805AAA8B705E2FAC"
-            {
-            "SourcePath" = "8:..\\..\\GameDir\\ja2_debug.exe"
-            "TargetName" = "8:ja2_debug.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -20891,6 +20865,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_CC4F6998120E4434B6C3A7AF4DB61104"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\ja2v113.exe"
+            "TargetName" = "8:ja2v113.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_CC602DED6FC54CA4B0D34C4502FA7B0B"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\gun218.sti"
@@ -22951,26 +22945,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_E695CF9582884654A32F61CB8C6C134E"
-            {
-            "SourcePath" = "8:..\\..\\GameDir\\Ja2.ini"
-            "TargetName" = "8:Ja2.ini"
-            "Tag" = "8:"
-            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_E6BC7F9CE01E4DE6A9B609DD90ADE98D"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data-1.13\\BigItems\\gun148.sti"
@@ -23637,26 +23611,6 @@
             "TargetName" = "8:p1item223.sti"
             "Tag" = "8:"
             "Folder" = "8:_19AA04FDF04E4CBA825FBA4D95DAD288"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_F2F8F946546B4157933748C1E7D3C20D"
-            {
-            "SourcePath" = "8:..\\..\\GameDir\\fmod.dll"
-            "TargetName" = "8:fmod.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -24351,6 +24305,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_FD34CF4F398C45BAB354F020C945830F"
+            {
+            "SourcePath" = "8:..\\..\\GameDir\\Ja2.ini"
+            "TargetName" = "8:Ja2.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_FDF2E85BEF604648AB48F03C1206B10D"
             {
             "SourcePath" = "8:..\\..\\GameDir\\Data\\battlesnds\\168_DYING.WAV"
@@ -24981,13 +24955,13 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Jagged Alliance 2 v1.13 - Game Data"
-        "ProductCode" = "8:{05E72168-F561-4694-B267-3CA40AEEEF39}"
-        "PackageCode" = "8:{9DA463AA-171E-4880-8261-8DB63580B28B}"
+        "ProductCode" = "8:{6088F309-94D2-4CE7-AECA-CC05AC89404A}"
+        "PackageCode" = "8:{167CF00B-824D-4721-BFB2-EB158F54443A}"
         "UpgradeCode" = "8:{EB1A278C-208C-4DFA-BB2B-265223508699}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.0.0"
         "Manufacturer" = "8:Bear's Pit Coders"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://ja2v113.schtuff.com/installation"
@@ -25104,7 +25078,7 @@
         }
         "Shortcut"
         {
-            "{478F747B-8505-45D1-9AAE-8C3B645C26E3}:_2248070914564542A0C6668C9CF97B1A"
+            "{478F747B-8505-45D1-9AAE-8C3B645C26E3}:_517E6FCD98434E9AB3FDDF328675B177"
             {
             "Name" = "8:Jagged Alliance 2 v1.13"
             "Arguments" = "8:"
@@ -25112,13 +25086,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_95260567544945FCA94FA3E638CDC512"
+            "Target" = "8:_CC4F6998120E4434B6C3A7AF4DB61104"
             "Folder" = "8:_FFC16568AB5449EDA884B70380242D06"
             "WorkingFolder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
-            "Icon" = "8:"
+            "Icon" = "8:_479DB5A3DF2E419B945B6E58BCC6A544"
             "Feature" = "8:"
             }
-            "{478F747B-8505-45D1-9AAE-8C3B645C26E3}:_2ED991E8D0914B2687B6F16064A91500"
+            "{478F747B-8505-45D1-9AAE-8C3B645C26E3}:_B73DBC14DC324064BDFCA5DA3B003070"
             {
             "Name" = "8:Jagged Alliance 2 v1.13"
             "Arguments" = "8:"
@@ -25126,10 +25100,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_95260567544945FCA94FA3E638CDC512"
+            "Target" = "8:_CC4F6998120E4434B6C3A7AF4DB61104"
             "Folder" = "8:_EA9BC47762D142CF935BE111BC5C9B35"
             "WorkingFolder" = "8:_9ECF4059962D44C0AB6072E054273FAE"
-            "Icon" = "8:"
+            "Icon" = "8:_479DB5A3DF2E419B945B6E58BCC6A544"
             "Feature" = "8:"
             }
         }
