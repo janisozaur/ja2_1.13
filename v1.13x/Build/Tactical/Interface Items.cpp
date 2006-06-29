@@ -3335,7 +3335,16 @@ void RenderItemDescriptionBox( )
 				}		
 
 			 //Ap's
-			 swprintf( (wchar_t *)pStr, L"%2d", ubAttackAPs );
+				if ( Weapon[ gpItemDescObject->usItem ].NoSemiAuto )
+				{
+					swprintf( (wchar_t *)pStr, L"- ", ubAttackAPs );
+				}
+				else
+				{
+					swprintf( (wchar_t *)pStr, L"%2d", ubAttackAPs );	
+				}
+
+
 			 FindFontRightCoordinates( (INT16)(gMapWeaponStats[ 5 ].sX + gsInvDescX + gMapWeaponStats[ 5 ].sValDx), (INT16)(gMapWeaponStats[ 5 ].sY + gsInvDescY ), ITEM_STATS_WIDTH ,ITEM_STATS_HEIGHT ,pStr, BLOCKFONT2, &usX, &usY);
 			 mprintf( usX, usY, pStr );
 

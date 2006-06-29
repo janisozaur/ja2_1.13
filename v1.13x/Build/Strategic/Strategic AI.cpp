@@ -4013,12 +4013,16 @@ void ExecuteStrategicAIAction( UINT16 usActionCode, INT16 sSectorX, INT16 sSecto
 
 			//MoveSAIGroupToSector( &pGroup, ubSectorID, EVASIVE, pGroup->pEnemyGroup->ubIntention );
 
+			if ( !gGameExternalOptions.gfSendTroopsToDrassen )
+				break;
 
 			ubSectorID = SEC_D13;
 			
 			ubNumSoldiers = (UINT8)( gubMinEnemyGroupSize + gGameOptions.ubDifficultyLevel * 3);
 			//pGroup = CreateNewEnemyGroupDepartingFromSector( SEC_P3, 0, ubNumSoldiers, 0 );
 
+			//ScreenMsg( FONT_RED, MSG_INTERFACE, L"Elites: %d", (ubNumSoldiers - ubNumSoldiers / gGameOptions.ubDifficultyLevel) );
+			
 			pGroup0 = CreateNewEnemyGroupDepartingFromSector( SEC_H13, 0, ubNumSoldiers, ubNumSoldiers - ubNumSoldiers / gGameOptions.ubDifficultyLevel );
 			pGroup1 = CreateNewEnemyGroupDepartingFromSector( SEC_H13, 0, ubNumSoldiers, ubNumSoldiers - ubNumSoldiers / gGameOptions.ubDifficultyLevel );
 			pGroup2 = CreateNewEnemyGroupDepartingFromSector( SEC_H13, 0, ubNumSoldiers, ubNumSoldiers - ubNumSoldiers / gGameOptions.ubDifficultyLevel );
