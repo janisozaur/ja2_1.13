@@ -3219,12 +3219,12 @@ STR16 zOptionsToggleText[] =
 	L"Drahtgitter zeigen",
 	L"3D Cursor zeigen",
 	L"Trefferchance anzeigen",
-	L"GL Burst verwendet Burst Cursor",
+	L"GL Burst mit Burst Cursor",
 	L"Gegner lassen alles fallen",
-	L"Granatwerfer feuern in hohem Winkel",
-	L"Extra Zielgenauigkeit bei Gewehren",
-	L"Space selektiert die nächste Gruppe",
-	L"Gegenständen mit Schatten",
+	L"Granatwerferflugbahn erhöhen",
+	L"Extra Zielgenauigkeit",
+	L"Nächste Gruppe selektieren",
+	L"Gegenstände mit Schatten",
 	L"Waffenreichweite in Felder",
 };
 
