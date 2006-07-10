@@ -1212,7 +1212,19 @@ DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("DecideActionGreen: Snipers like to raise 
 					}
 				 else
 					{
-						pSoldier->usActionData = (UINT16)Random(8); 
+						INT32 iNoiseValue;
+						BOOLEAN fClimb;
+						BOOLEAN fReachable;
+						INT16 sNoiseGridNo = MostImportantNoiseHeard(pSoldier,&iNoiseValue, &fClimb, &fReachable);
+						UINT8 ubNoiseDir;
+
+						if (sNoiseGridNo != NOWHERE)
+							ubNoiseDir = atan8(CenterX(pSoldier->sGridNo),CenterY(pSoldier->sGridNo),CenterX(sNoiseGridNo),CenterY(sNoiseGridNo));
+	
+						if ( sNoiseGridNo != NOWHERE && pSoldier->bDirection != ubNoiseDir )
+							pSoldier->usActionData = ubNoiseDir; 
+						else
+							pSoldier->usActionData = (UINT16)PreRandom(8); 
 					}
 				} while (pSoldier->usActionData == pSoldier->bDirection);
 
@@ -4026,19 +4038,23 @@ bCanAttack = FALSE;
    {
      case AI_ACTION_FIRE_GUN:
        memcpy(&BestAttack,&BestShot,sizeof(BestAttack));
+	   DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: best attack = firing a gun");
        break;
 
      case AI_ACTION_TOSS_PROJECTILE:
        memcpy(&BestAttack,&BestThrow,sizeof(BestAttack));
+	   DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: best attack = tossing a grenade");
        break;
 
 		 case AI_ACTION_THROW_KNIFE:
      case AI_ACTION_KNIFE_MOVE:
+	   DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: best attack = stab with a knife");
        memcpy(&BestAttack,&BestStab,sizeof(BestAttack));
        break;
 
 		 default:
 			 // set to empty
+		     DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: best attack = no good attack");
 			 memset( &BestAttack, 0, sizeof( BestAttack ) );
 			 break;
 	 }
@@ -4060,6 +4076,7 @@ bCanAttack = FALSE;
 			fAllowCoverCheck = TRUE;
 			if ( PreRandom( 10 ) > BestAttack.ubChanceToReallyHit )
 			{
+			   DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: can't hit so screw the attack");
 				// screw the attack!
 				ubBestAttackAction = AI_ACTION_NONE;
 			}
@@ -4090,6 +4107,7 @@ bCanAttack = FALSE;
 	sBestCover = NOWHERE;
 #endif
 
+  DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: DECIDE BETWEEN ATTACKING AND DEFENDING (TAKING COVER)");
  //////////////////////////////////////////////////////////////////////////
  // IF NECESSARY, DECIDE BETWEEN ATTACKING AND DEFENDING (TAKING COVER)
  //////////////////////////////////////////////////////////////////////////
@@ -4155,15 +4173,19 @@ bCanAttack = FALSE;
 	DebugAI( tempstr );
 #endif
 
+  DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: if his defensive instincts win out, forget all about the attack");
    // if his defensive instincts win out, forget all about the attack
    if (iDefense > iOffense)
      ubBestAttackAction = AI_ACTION_NONE;
  }
 
 
+  DebugMsg (TOPIC_JA2,DBG_LEVEL_3,String("DecideActionBlack: is attack still desirable?  ubBestAttackAction = %d",ubBestAttackAction));
+
 	// if attack is still desirable (meaning it's also preferred to taking cover)
 	if (ubBestAttackAction != AI_ACTION_NONE)
 	{
+	  DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: attack is still desirable (meaning it's also preferred to taking cover)");
 		// if we wanted to be REALLY mean, we could look at chance to hit and decide whether
 		// to shoot at the head...
 
@@ -4254,6 +4276,7 @@ bCanAttack = FALSE;
 				pSoldier->inv[BestAttack.bWeaponIn].ubGunShotsLeft > 1 &&
 				(pSoldier->bTeam != gbPlayerNum || pSoldier->bRTPCombat == RTP_COMBAT_AGGRESSIVE) )
 			{
+			  DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: ENOUGH APs TO BURST, RANDOM CHANCE OF DOING SO");
 
 				ubBurstAPs = CalcAPsToBurst( CalcActionPoints( pSoldier ), &(pSoldier->inv[BestAttack.bWeaponIn]) );
 
@@ -4316,6 +4339,7 @@ bCanAttack = FALSE;
 				(( pSoldier->inv[BestAttack.bWeaponIn].ubGunShotsLeft > 1 &&
 				BestAttack.ubAimTime != BURSTING ) || Weapon[pSoldier->inv[BestAttack.bWeaponIn].usItem].NoSemiAuto) )
 			{
+				  DebugMsg (TOPIC_JA2,DBG_LEVEL_3,"DecideActionBlack: ENOUGH APs TO AUTOFIRE, RANDOM CHANCE OF DOING SO");
 				pSoldier->bDoAutofire = 0;
 				do
 				{
