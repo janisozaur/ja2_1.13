@@ -2922,9 +2922,9 @@ INT8 FindAmmoToReload( SOLDIERTYPE * pSoldier, INT8 bWeaponIn, INT8 bExcludeSlot
 
 BOOLEAN AutoReload( SOLDIERTYPE * pSoldier )
 {
-	OBJECTTYPE *	pObj;
-	INT8					bSlot, bAPCost;
-	BOOLEAN				fRet;
+	OBJECTTYPE *pObj, *pObj2;
+	INT8		bSlot, bAPCost;
+	BOOLEAN		fRet;
 
 	CHECKF( pSoldier );
 	pObj = &(pSoldier->inv[HANDPOS]);
@@ -2938,7 +2938,36 @@ BOOLEAN AutoReload( SOLDIERTYPE * pSoldier )
 
 		PlayJA2Sample( Weapon[ Item[pObj->usItem].ubClassIndex ].ManualReloadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
 
+		if ( IsValidSecondHandShot( pSoldier ) )
+		{
+			pObj2 = &(pSoldier->inv[SECONDHANDPOS]);
+
+			if (pObj2->ubGunShotsLeft && !(pObj2->ubGunState & GS_CARTRIDGE_IN_CHAMBER) )
+			{				
+				pObj2->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
+				PlayJA2Sample( Weapon[ Item[pObj2->usItem].ubClassIndex ].ManualReloadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
+			}
+		}
+
 		return TRUE;
+	}
+	else
+	{
+		if ( IsValidSecondHandShot( pSoldier ) )
+		{
+			pObj2 = &(pSoldier->inv[SECONDHANDPOS]);
+
+			if (pObj2->ubGunShotsLeft && !(pObj2->ubGunState & GS_CARTRIDGE_IN_CHAMBER) )
+			{
+				pObj2->ubGunState |= GS_CARTRIDGE_IN_CHAMBER;
+
+				DeductPoints(pSoldier, Weapon[Item[(pObj2)->usItem].ubClassIndex].APsToReloadManually, 0);
+
+				PlayJA2Sample( Weapon[ Item[pObj2->usItem].ubClassIndex ].ManualReloadSound, RATE_11025, SoundVolume( HIGHVOLUME, pSoldier->sGridNo ), 1, SoundDir( pSoldier->sGridNo ) );
+
+				return TRUE;
+			}
+		}
 	}
 //</SB>
 
@@ -3711,8 +3740,6 @@ BOOLEAN PlaceObject( SOLDIERTYPE * pSoldier, INT8 bPos, OBJECTTYPE * pObj )
 		UpdateRobotControllerGivenController( pSoldier );
 	}
 	
-	ApplyEquipmentBonuses(pSoldier);
-
 	return( TRUE );
 }
 
@@ -7086,14 +7113,16 @@ void ApplyEquipmentBonuses(SOLDIERTYPE * pSoldier)
 	if ( oldCamo != newCamo )
 	{	
 		pSoldier->wornCamo = newCamo;
-		if ( pSoldier->bInSector)
-			CreateSoldierPalettes( pSoldier );
-
-		fInterfacePanelDirty = DIRTYLEVEL2;
 
 		if ( newCamo > oldCamo && pSoldier->bTeam == OUR_TEAM )
 			DoMercBattleSound( pSoldier, BATTLE_SOUND_COOL1 );
 	}
+
+	//Madd: do this regardless of camo.  This will need to be called to do custom part colours and new overlays anyway.
+	if ( pSoldier->bInSector)
+		CreateSoldierPalettes( pSoldier );
+
+	fInterfacePanelDirty = DIRTYLEVEL2;
 }
 
 UINT16 GetFirstExplosiveOfType(UINT16 expType)
@@ -7164,11 +7193,11 @@ UINT8 AllowedAimingLevels(SOLDIERTYPE * pSoldier)
 	{
 		iScopeBonus = ( (float)gGameExternalOptions.ubStraightSightRange * GetMinRangeForAimBonus(&obj) / 100 );
 
-		if (  iScopeBonus >= ( (float)gGameExternalOptions.ubStraightSightRange * 0.3) ) // >= 30% of sight range (~4 tiles by default)
+		if ( iScopeBonus >= ( (float)gGameExternalOptions.ubStraightSightRange * 0.3) ) // >= 30% of sight range (~4 tiles by default)
 		{
 			aimLevels += 2;
 		}
-		
+
 		if ( iScopeBonus >= ( (float)gGameExternalOptions.ubStraightSightRange * 0.6) ) // >= 60% of sight range (~9 tiles by default)
 		{			
 			aimLevels += 2;
