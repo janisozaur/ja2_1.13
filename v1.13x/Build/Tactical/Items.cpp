@@ -2177,8 +2177,9 @@ UINT8 CalculateObjectWeight( OBJECTTYPE *pObject )
 	// Start with base weight
 	usWeight = pItem->ubWeight;
 
-	if (pItem->ubPerPocket < 2)
+	if ( pItem->ubPerPocket < 2 && pItem->usItemClass != IC_AMMO )
 	{
+
 		// account for any attachments
 		for ( cnt = 0; cnt < MAX_ATTACHMENTS; cnt++ )
 		{
@@ -2191,12 +2192,70 @@ UINT8 CalculateObjectWeight( OBJECTTYPE *pObject )
 		// add in weight of ammo
 		if (Item[ pObject->usItem ].usItemClass == IC_GUN && pObject->ubGunShotsLeft > 0)
 		{
-			usWeight += Item[ pObject->usGunAmmoItem ].ubWeight;
+			if( gGameExternalOptions.fAmmoDynamicWeight == TRUE )
+			{
+				//Pulmu:
+				//Temporary calculation for minWeight
+				UINT32 uiMinWeight = (Item[ pObject->usGunAmmoItem].ubWeight / 5.0) + 0.5;
+				if( uiMinWeight < 1 || uiMinWeight > Item[ pObject->usGunAmmoItem].ubWeight)
+				{
+					uiMinWeight = 1;
+				}
+
+				if( uiMinWeight == Item[ pObject->usGunAmmoItem].ubWeight )
+				{
+					usWeight += uiMinWeight;
+				}
+				else
+				{
+					double weight = (double)uiMinWeight + (( (double)pObject->ubGunShotsLeft / (double)Weapon[pObject->usItem].ubMagSize) * ( (double)Item[ pObject->usGunAmmoItem].ubWeight - (double)uiMinWeight )) + 0.5; //Pulmu: Account for number of rounds left.
+					usWeight += (UINT16)weight;
+				}
+			}
+			else
+			{
+				usWeight += Item[ pObject->usGunAmmoItem ].ubWeight;
+			}
 		}
 	}
-	
+	else if ( pItem->usItemClass == IC_AMMO && gGameExternalOptions.fAmmoDynamicWeight == TRUE )//Pulmu: added weight allowance for ammo not being full
+	{
+		usWeight = 0;
+		//Temporary calculation for minWeight. 0.2*ubWeight rounded correctly 
+		UINT32 uiMinWeight = (Item[pObject->usItem].ubWeight / 5.0) + 0.5;
+		//UINT32 uiMinWeight = Magazine[ Item[ pObject->usItem].ubClassIndex].ubMinWeight; //Minimum weight of magazine, now disabled because not corresponding entry in magazines.xml and weapons.h
+		if( uiMinWeight < 1 || uiMinWeight > Item[pObject->usItem].ubWeight)
+		{
+			uiMinWeight = 1;
+		}
+
+		double weight = 0.0;
+		
+		for( cnt = 0; cnt < pObject->ubNumberOfObjects; cnt++ )
+		{
+			if(pObject->ubShotsLeft[cnt] > 0)
+			{
+				if( uiMinWeight == Item[pObject->usItem].ubWeight )
+				{
+					weight += (double)uiMinWeight;
+				}
+				else
+				{
+					weight += (double)uiMinWeight + (( (double)pObject->ubShotsLeft[cnt] / (double)Magazine[ Item[ pObject->usItem].ubClassIndex ].ubMagSize) * ( (double)Item[pObject->usItem].ubWeight - (double)uiMinWeight ));
+				}
+			}
+		}
+		weight += 0.5; //Pulmu:To round correctly
+		usWeight = (UINT16)weight;
+		//Pulmu end
+	}
+
+
 	// make sure it really fits into that UINT8, in case we ever add anything real heavy with attachments/ammo
 	Assert(usWeight <= 255);
+
+	if ( usWeight > 255 )
+		usWeight = 255; //Madd: limit to 255 to prevent negative weights, at least until we can change the OBJECTTYPE structure
 
 	return( (UINT8) usWeight );
 }
@@ -2209,10 +2268,11 @@ UINT32 CalculateCarriedWeight( SOLDIERTYPE * pSoldier )
 	UINT16  usWeight;
 	UINT8		ubStrengthForCarrying;
 
+	//Pulmu: Changes for dynamic ammo weight
 	for( ubLoop = 0; ubLoop < NUM_INV_SLOTS; ubLoop++)
 	{
 		usWeight = pSoldier->inv[ubLoop].ubWeight;
-		if (Item[ pSoldier->inv[ubLoop].usItem ].ubPerPocket > 1)
+		if (Item[ pSoldier->inv[ubLoop].usItem ].ubPerPocket > 1 && (Item[ pSoldier->inv[ubLoop].usItem].usItemClass != IC_AMMO || gGameExternalOptions.fAmmoDynamicWeight == FALSE))
 		{
 			// account for # of items
 			usWeight *= pSoldier->inv[ubLoop].ubNumberOfObjects;
@@ -2770,7 +2830,9 @@ BOOLEAN EmptyWeaponMagazine( OBJECTTYPE * pWeapon, OBJECTTYPE *pAmmo )
 		}
 
 		pWeapon->ubWeight = CalculateObjectWeight( pWeapon );
-
+		// Pulmu bugfix:
+		pAmmo->ubWeight = CalculateObjectWeight( pAmmo );
+		// Pulmu end:
 		return( TRUE );
 	}
 	else
@@ -3740,6 +3802,10 @@ BOOLEAN PlaceObject( SOLDIERTYPE * pSoldier, INT8 bPos, OBJECTTYPE * pObj )
 		UpdateRobotControllerGivenController( pSoldier );
 	}
 	
+	ApplyEquipmentBonuses(pSoldier);
+	//Pulmu bugfix
+	pInSlot->ubWeight = CalculateObjectWeight(pInSlot);
+	//Pulmu end
 	return( TRUE );
 }
 
@@ -3752,6 +3818,8 @@ BOOLEAN InternalAutoPlaceObject( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOL
 	// statuses of extra objects would be 0 if the # exceeds the maximum
 	Assert( pObj->ubNumberOfObjects <= MAX_OBJECTS_PER_SLOT);
 
+	//Pulmu bugfix		
+	pObj->ubWeight = CalculateObjectWeight( pObj);
 	pItem = &(Item[pObj->usItem]);
 	ubPerSlot = pItem->ubPerPocket;
 
@@ -4430,32 +4498,32 @@ UINT16 DefaultMagazine( UINT16 usItem )
 
 UINT16 FindReplacementMagazine( UINT8 ubCalibre, UINT8 ubMagSize, UINT8 ubAmmoType )
 {
-	UINT8 ubLoop;
+	UINT16 usLoop;
 	UINT16 usDefault;
 	
-	ubLoop = 0;
+	usLoop = 0;
 	usDefault = NOTHING;
 	DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("FindReplacementMagazine: calibre = %d, Mag size = %d, ammo type = %d",ubCalibre,ubMagSize,ubAmmoType));
 
-	while ( Magazine[ubLoop].ubCalibre != NOAMMO )
+	while ( Magazine[usLoop].ubCalibre != NOAMMO )
 	{
-		if (Magazine[ubLoop].ubCalibre == ubCalibre &&
-				Magazine[ubLoop].ubMagSize == ubMagSize )
+		if (Magazine[usLoop].ubCalibre == ubCalibre &&
+				Magazine[usLoop].ubMagSize == ubMagSize )
 		{
-			if ( Magazine[ubLoop].ubAmmoType == ubAmmoType )
+			if ( Magazine[usLoop].ubAmmoType == ubAmmoType )
 			{
-				DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("FindReplacementMagazine: returning item = %d",MagazineClassIndexToItemType( ubLoop )));
-				return( MagazineClassIndexToItemType( ubLoop ) );
+				DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("FindReplacementMagazine: returning item = %d",MagazineClassIndexToItemType( usLoop )));
+				return( MagazineClassIndexToItemType( usLoop ) );
 			}
 			else if ( usDefault == NOTHING )
 			{
 				// store this one to use if all else fails
-				usDefault = MagazineClassIndexToItemType( ubLoop );
+				usDefault = MagazineClassIndexToItemType( usLoop );
 			}
 			
 		}
 
-		ubLoop++;
+		usLoop++;
 	}
 
 	DebugMsg(TOPIC_JA2,DBG_LEVEL_3,String("FindReplacementMagazine: returning default item = %d",usDefault));
@@ -5554,29 +5622,74 @@ void WaterDamage( SOLDIERTYPE *pSoldier )
 			}
 		}
 	}
+	BOOLEAN camoWoreOff = FALSE;
 	if (pSoldier->bCamo > 0 && !HAS_SKILL_TRAIT( pSoldier, CAMOUFLAGED ) )
 	{
 		// reduce camouflage by 2% per tile of deep water
 		// and 1% for medium water
 		if ( pSoldier->bOverTerrainType == DEEP_WATER )
-		{
 			pSoldier->bCamo = __max( 0, pSoldier->bCamo - 2 );
-		}
 		else
-		{
 			pSoldier->bCamo = __max( 0, pSoldier->bCamo - 1 );
-		}
-		if ( (pSoldier->bCamo)== 0)
-		{
-			// Reload palettes....
-			if ( pSoldier->bInSector )
-			{	
-				CreateSoldierPalettes( pSoldier );
-			}
-			ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, Message[STR_CAMMO_WASHED_OFF], pSoldier->name );
-		}
 
+		if ( (pSoldier->bCamo)== 0)
+			camoWoreOff = TRUE;
 	}
+
+	if (pSoldier->urbanCamo > 0 && !HAS_SKILL_TRAIT( pSoldier, CAMOUFLAGED_URBAN ) )
+	{
+		// reduce camouflage by 2% per tile of deep water
+		// and 1% for medium water
+		if ( pSoldier->bOverTerrainType == DEEP_WATER )
+			pSoldier->urbanCamo = __max( 0, pSoldier->urbanCamo - 2 );
+		else
+			pSoldier->urbanCamo = __max( 0, pSoldier->urbanCamo - 1 );
+
+		if ( (pSoldier->urbanCamo)== 0)
+			camoWoreOff = TRUE;
+	}
+
+	if (pSoldier->desertCamo > 0 && !HAS_SKILL_TRAIT( pSoldier, CAMOUFLAGED_DESERT ) )
+	{
+		// reduce camouflage by 2% per tile of deep water
+		// and 1% for medium water
+		if ( pSoldier->bOverTerrainType == DEEP_WATER )
+			pSoldier->desertCamo = __max( 0, pSoldier->desertCamo - 2 );
+		else
+			pSoldier->desertCamo = __max( 0, pSoldier->desertCamo - 1 );
+
+		if ( (pSoldier->desertCamo)== 0)
+			camoWoreOff = TRUE;
+	}
+
+	if (pSoldier->snowCamo > 0 && !HAS_SKILL_TRAIT( pSoldier, CAMOUFLAGED_SNOW ) )
+	{
+		// reduce camouflage by 2% per tile of deep water
+		// and 1% for medium water
+		if ( pSoldier->bOverTerrainType == DEEP_WATER )
+			pSoldier->snowCamo = __max( 0, pSoldier->snowCamo - 2 );
+		else
+			pSoldier->snowCamo = __max( 0, pSoldier->snowCamo - 1 );
+
+		if ( (pSoldier->snowCamo)== 0)
+			camoWoreOff = TRUE;
+	}
+
+	if ( camoWoreOff )
+	{
+		// Reload palettes....
+		if ( pSoldier->bInSector )
+		{	
+			CreateSoldierPalettes( pSoldier );
+		}
+		ScreenMsg( FONT_MCOLOR_LTYELLOW, MSG_INTERFACE, Message[STR_CAMMO_WASHED_OFF], pSoldier->name );
+	}
+
+
+
+
+
+
 	if ( pSoldier->bTeam == gbPlayerNum && pSoldier->bMonsterSmell > 0 )
 	{
 		if ( pSoldier->bOverTerrainType == DEEP_WATER )
@@ -5621,7 +5734,11 @@ BOOLEAN ApplyCammo( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN *pfGoodAP
 		return( FALSE );
 	}
 
-	if ((pSoldier->bCamo + pSoldier->wornCamo ) >= 100)
+	//get total camo bonus for kit -- note that camo kits now require the camobonus tag to be set
+	int itemCamo = Item[pObj->usItem].camobonus + Item[pObj->usItem].urbanCamobonus + Item[pObj->usItem].desertCamobonus + Item[pObj->usItem].snowCamobonus;
+
+	int totalCamo = pSoldier->bCamo + pSoldier->wornCamo + pSoldier->urbanCamo+pSoldier->wornUrbanCamo+pSoldier->desertCamo+pSoldier->wornDesertCamo+pSoldier->snowCamo+pSoldier->wornSnowCamo;
+	if ((totalCamo) >= 100)
 	{
 		// nothing more to add
 		return( FALSE );
@@ -5629,9 +5746,19 @@ BOOLEAN ApplyCammo( SOLDIERTYPE * pSoldier, OBJECTTYPE * pObj, BOOLEAN *pfGoodAP
 
 	// points are used up at a rate of 50% kit = 100% cammo on guy
 	// add 1 to round off
-	bPointsToUse = (100 - (pSoldier->bCamo + pSoldier->wornCamo) + 1 ) / 2;
+	bPointsToUse = (100 - (totalCamo) + 1 ) / 2;
 	bPointsToUse = __min( bPointsToUse, usTotalKitPoints );
-	pSoldier->bCamo = __min( 100, pSoldier->bCamo + bPointsToUse * 2);
+
+	//figure out proportions of each to be applied, one item can theoretically have more than one camouflage type this way
+	int urban = (int)(Item[pObj->usItem].urbanCamobonus * bPointsToUse * 2 / 100 );
+	int jungle = (int)(Item[pObj->usItem].camobonus * bPointsToUse * 2 / 100 );
+	int desert = (int)(Item[pObj->usItem].desertCamobonus * bPointsToUse * 2 / 100 );
+	int snow = (int)(Item[pObj->usItem].snowCamobonus * bPointsToUse * 2 / 100 );
+
+	pSoldier->bCamo = __min( 100, pSoldier->bCamo + jungle );
+	pSoldier->urbanCamo = __min( 100, pSoldier->urbanCamo + urban );
+	pSoldier->desertCamo = __min( 100, pSoldier->desertCamo + desert );
+	pSoldier->snowCamo = __min( 100, pSoldier->snowCamo + snow );
 	
 	UseKitPoints( pObj, bPointsToUse, pSoldier );
 
@@ -7090,6 +7217,45 @@ INT16 GetCamoBonus( OBJECTTYPE * pObj )
 	}
 	return( bns );
 }
+INT16 GetUrbanCamoBonus( OBJECTTYPE * pObj )
+{
+	INT8	bLoop;
+	INT16 bns=0;
+
+	bns = (INT16) (Item[pObj->usItem].urbanCamobonus);// * (WEAPON_STATUS_MOD(pObj->bStatus[0]) / 100)) ;
+
+	for (bLoop = 0; bLoop < MAX_ATTACHMENTS; bLoop++)
+	{
+		bns += (INT16) (Item[pObj->usAttachItem[bLoop]].urbanCamobonus);// * (WEAPON_STATUS_MOD(pObj->bAttachStatus[bLoop]) / 100));
+	}
+	return( bns );
+}
+INT16 GetDesertCamoBonus( OBJECTTYPE * pObj )
+{
+	INT8	bLoop;
+	INT16 bns=0;
+
+	bns = (INT16) (Item[pObj->usItem].desertCamobonus);// * (WEAPON_STATUS_MOD(pObj->bStatus[0]) / 100)) ;
+
+	for (bLoop = 0; bLoop < MAX_ATTACHMENTS; bLoop++)
+	{
+		bns += (INT16) (Item[pObj->usAttachItem[bLoop]].desertCamobonus);// * (WEAPON_STATUS_MOD(pObj->bAttachStatus[bLoop]) / 100));
+	}
+	return( bns );
+}
+INT16 GetSnowCamoBonus( OBJECTTYPE * pObj )
+{
+	INT8	bLoop;
+	INT16 bns=0;
+
+	bns = (INT16) (Item[pObj->usItem].snowCamobonus);// * (WEAPON_STATUS_MOD(pObj->bStatus[0]) / 100)) ;
+
+	for (bLoop = 0; bLoop < MAX_ATTACHMENTS; bLoop++)
+	{
+		bns += (INT16) (Item[pObj->usAttachItem[bLoop]].snowCamobonus);// * (WEAPON_STATUS_MOD(pObj->bAttachStatus[bLoop]) / 100));
+	}
+	return( bns );
+}
 INT16 GetWornCamo( SOLDIERTYPE * pSoldier )
 {
 	INT8	bLoop;
@@ -7103,6 +7269,45 @@ INT16 GetWornCamo( SOLDIERTYPE * pSoldier )
 
 	return __min( ttl, 100 );
 }
+INT16 GetWornUrbanCamo( SOLDIERTYPE * pSoldier )
+{
+	INT8	bLoop;
+	INT16 ttl=0;
+
+	for (bLoop = HELMETPOS; bLoop <= LEGPOS; bLoop++)
+	{
+		if ( pSoldier->inv[bLoop].usItem > NONE )
+			ttl += GetUrbanCamoBonus(&pSoldier->inv[bLoop]);
+	}
+
+	return __min( ttl, 100 );
+}
+INT16 GetWornDesertCamo( SOLDIERTYPE * pSoldier )
+{
+	INT8	bLoop;
+	INT16 ttl=0;
+
+	for (bLoop = HELMETPOS; bLoop <= LEGPOS; bLoop++)
+	{
+		if ( pSoldier->inv[bLoop].usItem > NONE )
+			ttl += GetDesertCamoBonus(&pSoldier->inv[bLoop]);
+	}
+
+	return __min( ttl, 100 );
+}
+INT16 GetWornSnowCamo( SOLDIERTYPE * pSoldier )
+{
+	INT8	bLoop;
+	INT16 ttl=0;
+
+	for (bLoop = HELMETPOS; bLoop <= LEGPOS; bLoop++)
+	{
+		if ( pSoldier->inv[bLoop].usItem > NONE )
+			ttl += GetSnowCamoBonus(&pSoldier->inv[bLoop]);
+	}
+
+	return __min( ttl, 100 );
+}
 
 void ApplyEquipmentBonuses(SOLDIERTYPE * pSoldier)
 {
@@ -7111,12 +7316,25 @@ void ApplyEquipmentBonuses(SOLDIERTYPE * pSoldier)
 	INT16 newCamo = GetWornCamo ( pSoldier );
 	INT16 oldCamo = pSoldier->wornCamo;
 	if ( oldCamo != newCamo )
-	{	
-		pSoldier->wornCamo = newCamo;
+		pSoldier->wornCamo = (INT8)newCamo;
 
-		if ( newCamo > oldCamo && pSoldier->bTeam == OUR_TEAM )
-			DoMercBattleSound( pSoldier, BATTLE_SOUND_COOL1 );
-	}
+	newCamo = GetWornUrbanCamo ( pSoldier );
+	oldCamo = pSoldier->wornUrbanCamo;
+	if ( oldCamo != newCamo )
+		pSoldier->wornUrbanCamo = (INT8)newCamo;
+
+	newCamo = GetWornDesertCamo ( pSoldier );
+	oldCamo = pSoldier->wornDesertCamo;
+	if ( oldCamo != newCamo )
+		pSoldier->wornDesertCamo = (INT8)newCamo;
+
+	newCamo = GetWornSnowCamo ( pSoldier );
+	oldCamo = pSoldier->wornSnowCamo;
+	if ( oldCamo != newCamo )
+		pSoldier->wornSnowCamo = (INT8)newCamo;
+
+	if ( newCamo > oldCamo && pSoldier->bTeam == OUR_TEAM )
+		DoMercBattleSound( pSoldier, BATTLE_SOUND_COOL1 );
 
 	//Madd: do this regardless of camo.  This will need to be called to do custom part colours and new overlays anyway.
 	if ( pSoldier->bInSector)

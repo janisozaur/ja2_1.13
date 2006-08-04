@@ -50,6 +50,7 @@ enum
 	TOPTION_SHOW_WEAPON_RANGE_IN_TILES,
 	TOPTION_TRACERS_FOR_SINGLE_FIRE,
 	TOPTION_RAIN_SOUND,
+	TOPTION_ALLOW_CROWS,
 	NUM_GAME_OPTIONS,				//Toggle up this will be able to be Toggled by the player
 	
 
@@ -302,6 +303,8 @@ typedef struct
 	BOOLEAN gfNormalAggressiveQueen;
 	BOOLEAN gfHardAggressiveQueen;
 	BOOLEAN gfInsaneAggressiveQueen;
+
+	BOOLEAN fAmmoDynamicWeight; //Pulmu
 
 } GAME_EXTERNAL_OPTIONS;
 

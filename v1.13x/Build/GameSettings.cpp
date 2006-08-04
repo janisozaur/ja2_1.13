@@ -255,7 +255,8 @@ void InitGameSettings()
 	gGameSettings.fOptions[ TOPTION_SHOW_ITEM_SHADOW ]					= TRUE;
 	gGameSettings.fOptions[ TOPTION_SHOW_WEAPON_RANGE_IN_TILES ]		= TRUE;
 	gGameSettings.fOptions[ TOPTION_TRACERS_FOR_SINGLE_FIRE ]			= FALSE;
-	gGameSettings.fOptions[ TOPTION_RAIN_SOUND ]					= TRUE;
+	gGameSettings.fOptions[ TOPTION_RAIN_SOUND ]						= TRUE;
+	gGameSettings.fOptions[ TOPTION_ALLOW_CROWS ]						= TRUE;
 
 	gGameSettings.ubSizeOfDisplayCover = 4;
 	gGameSettings.ubSizeOfLOS = 4;
@@ -480,6 +481,8 @@ void LoadGameExternalOptions()
 	gGameExternalOptions.iMilitiaTrainingCost				= iniReader.ReadInteger("JA2 Gameplay Settings","MILITIA_TRAINING_COST",750);
 	gGameExternalOptions.iMinLoyaltyToTrain					= iniReader.ReadInteger("JA2 Gameplay Settings","MIN_LOYALTY_TO_TRAIN",20);
 
+	//Misc
+	gGameExternalOptions.fAmmoDynamicWeight			= iniReader.ReadBoolean("JA2 Gameplay Settings", "DYNAMIC_AMMO_WEIGHT", TRUE); //Pulmu
 
 }
 
