@@ -1,0 +1,228 @@
+dn: cn=JA2Coder_AndroidXP,mail=AndroidXP@gmx.at
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: AndroidXP
+cn: JA2Coder_AndroidXP
+mail: AndroidXP@gmx.at
+modifytimestamp: 0Z
+o: C-Coding, general
+
+dn: cn=JA2Coder_FarmerToby_(XML,Translation),mail=Info_an_Toby@web.de
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_FarmerToby_(XML,Translation)
+cn: JA2Coder_FarmerToby_(XML,Translation)
+mail: Info_an_Toby@web.de
+modifytimestamp: 0Z
+o: English / German Translation in XML files
+
+dn: cn=JA2Coder_Lesh_(aka_Alexeij),mail=leshmail@list.ru
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: Lesh
+cn: JA2Coder_Lesh_(aka_Alexeij)
+mail: leshmail@list.ru
+modifytimestamp: 0Z
+o: C-Coding, Linux porting
+
+dn: cn=JA2Coder_MarlboroMan_(aka_AricM.),mail=eric_murray2001@yahoo.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_MarlboroMan_(aka_AricM.)
+cn: JA2Coder_MarlboroMan_(aka_AricM.)
+mail: eric_murray2001@yahoo.com
+modifytimestamp: 0Z
+o: Item graphic artwork
+
+dn: cn=JA2Coder_RoWa21_(aka_RobertW),mail=WanneBox@gmx.at
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: Roman
+sn: Wannenmacher
+cn: JA2Coder_RoWa21_(aka_RobertW)
+mail: WanneBox@gmx.at
+modifytimestamp: 0Z
+o: C-Coding, German EXE, general
+
+dn: cn=JA2Coder_Sgt.Kolja_(aka_MeatRunner),mail=sergeantkolja@yahoo.de
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_Sgt.Kolja_(aka_MeatRunner)
+cn: JA2Coder_Sgt.Kolja_(aka_MeatRunner)
+mail: sergeantkolja@yahoo.de
+modifytimestamp: 0Z
+o: C-Coding, general
+
+dn: cn=JA2Coder_StarWalker_(aka_MartinV.),mail=volkmann@ifbk.uni-hannover.de
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: Starwalker
+cn: JA2Coder_StarWalker_(aka_MartinV.)
+mail: volkmann@ifbk.uni-hannover.de
+modifytimestamp: 0Z
+o: Weapon database Maintainer, Weapon stats
+
+dn: cn=JA2Coder_SpaceViking_(aka_BillS.),mail=Bill@seurer.net
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_SpaceViking_(aka_BillS.)
+cn: JA2Coder_SpaceViking_(aka_BillS.)
+mail: Bill@seurer.net
+modifytimestamp: 0Z
+o: C-Coding, general
+
+dn: cn=JA2Modder_Khor_(aka_Daniel_W.),mail=Khor1966@yahoo.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Modder_Khor_(aka_Daniel_W.)
+cn: JA2Modder_Khor_(aka_Daniel_W.)
+mail: Khor1966@yahoo.com
+modifytimestamp: 0Z
+o: WWII Mod
+
+dn: cn=JA2MailingList_Developers,mail=ja2113development@googlemail.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2MailingList_Developers
+cn: JA2MailingList_Developers
+mail: ja2113development@googlemail.com
+modifytimestamp: 0Z
+
+dn: cn=JA2Coder_Kaiden_(aka_AcyForsythe),mail=acyf88@hotmail.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_Kaiden_(aka_AcyForsythe)
+cn: JA2Coder_Kaiden_(aka_AcyForsythe)
+mail: acyf88@hotmail.com
+modifytimestamp: 0Z
+o: C-Coding, Strategic
+
+dn: cn=JA2Coder_MaddMugsy,mail=madd_mugsy@msn.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_MaddMugsy
+cn: JA2Coder_MaddMugsy
+mail: madd_mugsy@msn.com
+modifytimestamp: 0Z
+o: XML master maintainer, Admin
+
+dn: cn=JA2Coder_Lisac_(aka_SlavenO.),mail=lisac2k@chello.at
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_Lisac_(aka_SlavenO.)
+cn: JA2Coder_Lisac_(aka_SlavenO.)
+mail: lisac2k@chello.at
+modifytimestamp: 0Z
+o: C-Coding, also Fallout Modding
+
+dn: cn=JA2Coder_LittleAlien_(aka_lalien),mail=lalienxx@gmail.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_LittleAlien_(aka_lalien)
+cn: JA2Coder_LittleAlien_(aka_lalien)
+mail: lalienxx@gmail.com
+modifytimestamp: 0Z
+o: C-Coding, SVN Admin
+
+dn: cn=JA2Modder_Scorpion_(Modder,Moderator),mail=vladtheempalor@gmx.ch
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Modder_Scorpion
+cn: JA2Modder_Scorpion_(Modder,Moderator)
+mail: vladtheempalor@gmx.ch
+modifytimestamp: 0Z
+o: Modding, Forum Moderatoration
+
+dn: cn=JA2Moderator_BearPit,mail=bearpit@iprimus.com.au
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Moderator_BearPit
+cn: JA2Moderator_BearPit
+mail: bearpit@iprimus.com.au
+modifytimestamp: 0Z
+o: JA2 Forum admin & moderation, UC Modding
+
+dn: cn=JA2Moderator_Abdul,mail=abdul@strategyplanet.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Moderator_Abdul
+cn: JA2Moderator_Abdul
+mail: abdul@strategyplanet.com
+modifytimestamp: 0Z
+o: JA2 Forum admin
+
+dn: cn=JA2Moderator_Linx,mail=jaspers@kliksafe.nl
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Moderator_Linx
+cn: JA2Moderator_Linx
+mail: jaspers@kliksafe.nl
+modifytimestamp: 0Z
+o: JA2 Forum Moderation
+
+dn: cn=JA2Moderator_Toxic,mail=tox@owahosting.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Moderator_Toxic
+cn: JA2Moderator_Toxic
+mail: tox@owahosting.com
+modifytimestamp: 0Z
+o: JA2 Forum moderation
+
