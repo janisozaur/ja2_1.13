@@ -4,7 +4,7 @@ objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
-givenName: AndroidXP
+givenName: JA2Coder_AndroidXP
 cn: JA2Coder_AndroidXP
 mail: AndroidXP@gmx.at
 modifytimestamp: 0Z
@@ -28,33 +28,32 @@ objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
-givenName: Lesh
+givenName: JA2Coder_Lesh_(aka_Alexeij)
 cn: JA2Coder_Lesh_(aka_Alexeij)
 mail: leshmail@list.ru
 modifytimestamp: 0Z
 o: C-Coding, Linux porting
 
-dn: cn=JA2Coder_MarlboroMan_(aka_AricM.),mail=eric_murray2001@yahoo.com
+dn: cn=JA2Coder_MarlboroMan_(aka_EricM.),mail=eric_murray2001@yahoo.com
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
-givenName: JA2Coder_MarlboroMan_(aka_AricM.)
-cn: JA2Coder_MarlboroMan_(aka_AricM.)
+givenName: JA2Coder_MarlboroMan_(aka_EricM.)
+cn: JA2Coder_MarlboroMan_(aka_EricM.)
 mail: eric_murray2001@yahoo.com
 modifytimestamp: 0Z
 o: Item graphic artwork
 
-dn: cn=JA2Coder_RoWa21_(aka_RobertW),mail=WanneBox@gmx.at
+dn: cn=JA2Coder_RoWa21_(aka_Wanne),mail=WanneBox@gmx.at
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
-givenName: Roman
-sn: Wannenmacher
-cn: JA2Coder_RoWa21_(aka_RobertW)
+givenName: JA2Coder_RoWa21_(aka_Wanne)
+cn: JA2Coder_RoWa21_(aka_Wanne)
 mail: WanneBox@gmx.at
 modifytimestamp: 0Z
 o: C-Coding, German EXE, general
@@ -77,7 +76,7 @@ objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
-givenName: Starwalker
+givenName: JA2Coder_StarWalker_(aka_MartinV.)
 cn: JA2Coder_StarWalker_(aka_MartinV.)
 mail: volkmann@ifbk.uni-hannover.de
 modifytimestamp: 0Z
@@ -95,14 +94,14 @@ mail: Bill@seurer.net
 modifytimestamp: 0Z
 o: C-Coding, general
 
-dn: cn=JA2Modder_Khor_(aka_Daniel_W.),mail=Khor1966@yahoo.com
+dn: cn=JA2Modder_Khor_(aka_DanielW.),mail=Khor1966@yahoo.com
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
-givenName: JA2Modder_Khor_(aka_Daniel_W.)
-cn: JA2Modder_Khor_(aka_Daniel_W.)
+givenName: JA2Modder_Khor_(aka_DanielW.)
+cn: JA2Modder_Khor_(aka_DanielW.)
 mail: Khor1966@yahoo.com
 modifytimestamp: 0Z
 o: WWII Mod
@@ -152,7 +151,7 @@ givenName: JA2Coder_Lisac_(aka_SlavenO.)
 cn: JA2Coder_Lisac_(aka_SlavenO.)
 mail: lisac2k@chello.at
 modifytimestamp: 0Z
-o: C-Coding, also Fallout Modding
+o: Graphics, also Fallout Modding
 
 dn: cn=JA2Coder_LittleAlien_(aka_lalien),mail=lalienxx@gmail.com
 objectclass: top
@@ -166,17 +165,17 @@ mail: lalienxx@gmail.com
 modifytimestamp: 0Z
 o: C-Coding, SVN Admin
 
-dn: cn=JA2Modder_Scorpion_(Modder,Moderator),mail=vladtheempalor@gmx.ch
+dn: cn=JA2Modder_Scorpion,mail=vladtheempalor@gmx.ch
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
 givenName: JA2Modder_Scorpion
-cn: JA2Modder_Scorpion_(Modder,Moderator)
+cn: JA2Modder_Scorpion
 mail: vladtheempalor@gmx.ch
 modifytimestamp: 0Z
-o: Modding, Forum Moderatoration
+o: Modding, partially Forum Moderatoration (of Renegade Republik Mod)
 
 dn: cn=JA2Moderator_BearPit,mail=bearpit@iprimus.com.au
 objectclass: top
@@ -212,9 +211,9 @@ givenName: JA2Moderator_Linx
 cn: JA2Moderator_Linx
 mail: jaspers@kliksafe.nl
 modifytimestamp: 0Z
-o: JA2 Forum Moderation
+o: JA2 Forum moderation
 
-dn: cn=JA2Moderator_Toxic,mail=tox@owahosting.com
+dn: cn=JA2Moderator_Toxic,mail=tox(sorry_is_invalid_inbetween)@owahosting.com
 objectclass: top
 objectclass: person
 objectclass: organizationalPerson
@@ -222,7 +221,7 @@ objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
 givenName: JA2Moderator_Toxic
 cn: JA2Moderator_Toxic
-mail: tox@owahosting.com
+mail: tox(sorry_is_invalid_inbetween)@owahosting.com
 modifytimestamp: 0Z
 o: JA2 Forum moderation
 
