@@ -177,3 +177,15 @@ mail: vladtheempalor@gmx.ch
 modifytimestamp: 0Z
 o: Modding, partially Forum Moderatoration (of Renegade Republik Mod)
 
+dn: cn=JA2Coder_Overhaul,mail=overhaul@nmia.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_Overhaul
+cn: JA2Coder_Overhaul
+mail: overhaul@nmia.com
+modifytimestamp: 0Z
+o: C-Coding, general
+
