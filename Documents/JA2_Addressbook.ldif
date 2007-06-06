@@ -189,3 +189,14 @@ mail: overhaul@nmia.com
 modifytimestamp: 0Z
 o: C-Coding, general
 
+dn: cn=JA2Coder_Bugmonster,mail=bugmonster@mail.ru
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_Bugmonster
+cn: JA2Coder_Bugmonster
+mail: bugmonster@mail.ru
+modifytimestamp: 0Z
+o: C-Coding, JA2005
