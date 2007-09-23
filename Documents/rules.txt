@@ -1,0 +1,94 @@
+Development Rules for the JA2 1.13 Team:
+
+
+
+What we are - and what are not
+==============================
+
+§1) We are friendly and polite to the public and to each other
+
+§2) We come together to improve the computer game "Jagged Alliance 2" and give the Community of players a better game
+
+§3) We don't violate copyrights and don't offend other people
+
+§4) Even if we do all the work just for fun or for our ego, we try to act as a cooperative team
+
+§5) We don't ignore criticism from the public, even if they are not polite
+
+§6) Communication language in the team is English. If we are contacted by non-english speaking users, we try to answer in their mothers language - if we have a speaker of his language in the team (think on §1).
+
+§7) we do not mix up JA2 source with code that is not compatible to SFI-LA, like GPL. (f.i. LGPL and MIT/X11 License are compatible)
+
+§8) we do not offer or give away addresses and names without explicit permission. Everybody can be added or removed from JA2_Addresbook.LDIF as he like it.
+
+How to join the Team
+====================
+§9) Somebody can be accepted as new team member only if he has already done something for the project (bug fixing, new features). The new team members are accepted only if more than 66% (2/3) of the team members are ready to accept him _plus_ he is okay with this document.
+
+
+What we do and how we do
+========================
+§10) we change Code and/or Artwork of the old game. Artwork means static graphics, animation graphics, sounds, musics and screen layout. Code means C++ code, XML tables and so on
+
+§11) we access the code via SubVersion (SVN) repository, currently at https://81.169.133.124/source/ja2, readonly for the public, read-write with individual username + password
+
+§12) we do commiting only _well_ _tested_ Changes to the SVN repository
+
+§13) we always change as most as needed but as least as possible. This keeps us able to easily check differences between two versions of  the same file - which is often very important!
+
+§14) we do _not_ do cosmetic changes like indentations or spaces/tab replacements globally or automatically (please check Your editor's preferences!)
+
+§15) we do cosmetic changes like indentions only if it is _really_ too hard to understand or maintain the code otherwise
+
+§16) we never change things that only one person does not like. In such cases this person calls the others for their opinion (called "voting")
+
+§17) we always make a comment when change something in code, the comment should contain the coders name, date and short description on the change
+
+§18) If possible, we don't just delete the old code, but comment it out (or #ifdef it out) for reference. We delete it only if  it's really necessary.
+
+§19) We write nice and safe code:
+  - check values, returned by functions, for errors
+  - use protected versions of functions, like strncpy, to avoid array overflow
+  - Always try to re-use existing functions, write a new one only if it's really necessary.
+  - Always make a description for new functions.
+
+§20) we think on keeping Visual Studio 97 / MSVC 6 compatibility - until otherwise voted. In fact, almost everyone has access to MSVS2005 Express Edition and the Project compiles fine with VS2005. But there are still some VS97 users out there. We don't want to discourage them.
+
+§21) we keep the 640x480 display resolution - until otherwise voted
+
+§22) we keep the Vanilla ("\DATA") in a way, it will behave mostly like the original Game _plus_ User Interface enhancements _minus_ Bugs
+
+§23.a) Working with SVN: Bug fixes and code changes that will have no effect on game play (like code optimisations) may be committed immediately (after well done testing) and other team members notified by mail. The info about the change should be put in SVN comments.
+§23.b) New features, mostly that type which will affect the game balancing or gameplay (better targeting, different character stats and so on) will be discussed with team members first, they should be optional as well. And it's a good idea to make a post in forum before starting to work on something new. We keep the Modmakers work valuable. Means: don't implement things which can junk modmakers work. Changes that will have an impact on the gameplay should be voted and able to be disabled by external ressources.
+The one and only exception are new items and weapons. Starwalker is the master maintainer of new items, and he will decide wisely which items are going in the game and which don't (It's planned to have a switchboard like item filter soon. So the modmakers should no longer be afraid about new mighty items then).
+
+§24) some times we back up our source or artwork sandbox files to the SVN private folders ("\branches"). We do it f.i. before a hollyday gap or when occupied by bigger real life tasks.
+
+§25) we try to give a monthly report to the team on what we are doing, what we are planning, and what we did not managed to finish so far.
+
+§26) some modules or game parts have special maintainers, like Starwalker for the Weaponry. We co-ordinate every change on that modules with the maintainer _before_ we commit the changed files. (It's most times better to co-ordinate already the idea of changing).
+  Currently there are:
+  little'Alien:           SVN Server, EXE Releases
+  Starwalker:             Item Graphics inside STI Files, Item Data inside XML Files
+  Marlboro Man:           Weapon and Items Graphic Artwork
+  Madd Mugsy:             all other XML Stuff and the XML Editor
+  Lesh:                   Linux Port
+  RoWa:                   German localisation of the EXE, EXE Releases (German),
+                          Release Installers, 800x600 and 1024x768 resolution adaption
+  Sergeant Kolja:         German localisation of XML (Items, Weapons & Ammo - only until Farmer Tobey is back on the job)
+  Overhaul:               LUA Scripting
+  Kaiden:                 mod listing and file hosting @ MOD DB
+
+(This is not a "contributors" list. There are still a lot of other people doing or done an invaluably job!)
+
+
+Future planned additions, but not yet part of the rules:
+========================================================
+- Sergeant Kolja and/or other DoxyGen veteran provides a brief introduction into the small part, we all together need to know (it is really tiny, one page consisting of usage samples, will fill in the requirement).
+
+- Every time one works on a function (regardless of writing a new or editing an old one), he should insert a doxygen header in front of that foo, document the params briefly and write a brief explanation on every return() statement
+
+- Every time, an experienced DoxyUser works on a file, he checks, if the file has already an \addtogroup tag. He will complete this, if not.
+
+
+--- 2007-08-20
