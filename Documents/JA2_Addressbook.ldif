@@ -7,6 +7,7 @@ objectclass: mozillaAbPersonObsolete
 givenName: JA2Coder_AndroidXP
 cn: JA2Coder_AndroidXP
 mail: AndroidXP@gmx.at
+xmozillausehtmlmail: true
 modifytimestamp: 0Z
 o: C-Coding, general
 
@@ -20,7 +21,7 @@ givenName: JA2Coder_FarmerToby_(XML,Translation)
 cn: JA2Coder_FarmerToby_(XML,Translation)
 mail: Info_an_Toby@web.de
 modifytimestamp: 0Z
-o: English / German Translation in XML files
+o: English to German Translation in XML files
 
 dn: cn=JA2Coder_Lesh_(aka_Alexeij),mail=leshmail@list.ru
 objectclass: top
@@ -31,6 +32,7 @@ objectclass: mozillaAbPersonObsolete
 givenName: JA2Coder_Lesh_(aka_Alexeij)
 cn: JA2Coder_Lesh_(aka_Alexeij)
 mail: leshmail@list.ru
+xmozillausehtmlmail: false
 modifytimestamp: 0Z
 o: C-Coding, Linux porting
 
@@ -55,6 +57,7 @@ objectclass: mozillaAbPersonObsolete
 givenName: JA2Coder_RoWa21_(aka_Wanne)
 cn: JA2Coder_RoWa21_(aka_Wanne)
 mail: WanneBox@gmx.at
+xmozillausehtmlmail: true
 modifytimestamp: 0Z
 o: C-Coding, German EXE, general
 
@@ -68,7 +71,7 @@ givenName: JA2Coder_Sgt.Kolja_(aka_MeatRunner)
 cn: JA2Coder_Sgt.Kolja_(aka_MeatRunner)
 mail: sergeantkolja@yahoo.de
 modifytimestamp: 0Z
-o: C-Coding, general
+o: C-Coding, general, English to German Translation
 
 dn: cn=JA2Coder_StarWalker_(aka_MartinV.),mail=volkmann@ifbk.uni-hannover.de
 objectclass: top
@@ -91,6 +94,7 @@ objectclass: mozillaAbPersonObsolete
 givenName: JA2Coder_SpaceViking_(aka_BillS.)
 cn: JA2Coder_SpaceViking_(aka_BillS.)
 mail: Bill@seurer.net
+xmozillausehtmlmail: false
 modifytimestamp: 0Z
 o: C-Coding, general
 
@@ -162,6 +166,7 @@ objectclass: mozillaAbPersonObsolete
 givenName: JA2Coder_LittleAlien_(aka_lalien)
 cn: JA2Coder_LittleAlien_(aka_lalien)
 mail: lalienxx@gmail.com
+xmozillausehtmlmail: true
 modifytimestamp: 0Z
 o: C-Coding, SVN Admin
 
@@ -186,6 +191,7 @@ objectclass: mozillaAbPersonObsolete
 givenName: JA2Coder_Overhaul
 cn: JA2Coder_Overhaul
 mail: overhaul@nmia.com
+xmozillausehtmlmail: true
 modifytimestamp: 0Z
 o: C-Coding, general
 
@@ -195,8 +201,23 @@ objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
 objectclass: mozillaAbPersonObsolete
-givenName: JA2Coder_Bugmonster
+givenName: JA2Coder_Bugmonster_(aka_Sergey)
 cn: JA2Coder_Bugmonster
 mail: bugmonster@mail.ru
 modifytimestamp: 0Z
-o: C-Coding, JA2005
+o: C-Coding, general
+
+dn: cn=JA2Coder_Aalaardb,mail=aalaardb@gmail.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Coder_Aalaardb
+cn: JA2Coder_Aalaardb
+mail: aalaardb@gmail.com
+xmozillausehtmlmail: true
+modifytimestamp: 0Z
+o: C-Coding, AI
+description:: CmFhbGFhcmRiLCBpbiBjb2RlIGNvbW1lbnRzIC8vQURCCkkgCmh0bWw=
+
