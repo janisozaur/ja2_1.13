@@ -221,3 +221,16 @@ modifytimestamp: 0Z
 o: C-Coding, AI
 description:: CmFhbGFhcmRiLCBpbiBjb2RlIGNvbW1lbnRzIC8vQURCCkkgCmh0bWw=
 
+dn: cn=JA2Admin_JAPH_(aka_CraigD),mail=craig.dunigan@gmail.com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+objectclass: mozillaAbPersonObsolete
+givenName: JA2Admin_JAPH_(aka_CraigD)
+cn: JA2Admin_JAPH_(aka_CraigD)
+mail: craig.dunigan@gmail.com
+xmozillausehtmlmail: false
+modifytimestamp: 0Z
+o: BugZilla
+
