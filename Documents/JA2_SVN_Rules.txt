@@ -1,0 +1,49 @@
+Guidelines for Jagged Alliance 2 SVN server
+
+There are some JA2 related projects that are hosted on the same server.
+
+
+JA2 Source: JA2 1.13 project source code trunk and branches.
+JA2 Data: JA2 1.13 project data repository.
+.
+.
+.
+.
+.
+
+
+General rules for working with SVN
+
+Currently only few coders are allowed to commit changes to the main branch. 
+The changes will be committed only after testing.
+
+Each coder has an own branch in "branches" folder, there are also projects folders with write access for multiple users.
+
+
+
+
+
+
+Committing changes:
+
+Make sure that you familiar with SVN and TortoiseSVN before you start committing something!
+
+Do not upload Debug and Release folders,  *.ncb, *.suo files (they are big and will be changed on each build).
+
+Also do not upload test exe's, release archives, often changed and big files to svn, put them to the FTP.
+
+
+
+Folder structure inside of user folder:
+
+Generally you can make it the way you like, here are some guidelines. If you have more then one project you should make a folder for each of them. Choose a self explaining name for it. Inside of this folder make folders GameSource, GameData and Documents. Put the build folder of the project into GameSource and GameDir into GameData. Put docs and other stuff to Documents folder.
+
+It should look like this:
+/branches/UserName/ProjectName/GameSource/Build/
+/branches/UserName/ProjectName/GameData/GameDir/
+/branches/UserName/ProjectName/Documents/
+
+
+
+
+Make a check out to an empty folder with this path first, than copy only new files over (without the hidden .svn folders !!!), choose add files from the Tortoise SVN menu (when needed) and then commit.
