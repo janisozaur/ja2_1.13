@@ -5,9 +5,9 @@ This feature has been reworked by Headrock
 XML filename format:
 -------------------------
 
-\tabledata\Map\[SectorGrid]_[ZLevel]_ExtraItems_[DifficultyName].xml
+\TableData\Map\[SectorGrid]_[ZLevel]_ExtraItems_[DifficultyName].xml
 
-Examples:
+Examples (Filename):
 \TableData\Map\A9_0_ExtraItems_Novice.xml	-> for entering the A9 surface sector (Omerta) when playing novice difficulty.
 \TableData\Map\D13_1_ExtraItems_Expert.xml	-> for entering the first level of the Drassen Mine on Expert difficulty.
 
@@ -17,7 +17,6 @@ The following "DifficultyNames" are valid:
 - Experienced
 - Expert
 - Insane
-
 
 -------------------------
 XML content format:
@@ -30,6 +29,42 @@ XML content format:
       <condition>#</condition>
       <gridno>#</gridno>
       <visible>#</visible>
+   </Item>
+</ExtraItems>
+
+-------------------------
+Example-XML
+Filename: TableData\Map\A9_0_ExtraItems_Expert.xml
+-------------------------
+
+<ExtraItems>
+   <Item>
+      <uiIndex>211</uiIndex>
+      <quantity>2</quantity>
+      <condition>100</condition>
+      <gridno>6430</gridno>
+      <visible>1</visible>
+   </Item>
+   <Item>
+      <uiIndex>212</uiIndex>
+      <quantity>3</quantity>
+      <condition>80</condition>
+      <gridno>2750</gridno>
+      <visible>1</visible>
+   </Item>
+   <Item>
+      <uiIndex>213</uiIndex>
+      <quantity>1</quantity>
+      <condition>44</condition>
+      <gridno>6300</gridno>
+      <visible>0</visible>
+   </Item>
+    <Item>
+      <uiIndex>293</uiIndex>
+      <quantity>1</quantity>
+      <condition>100</condition>
+      <gridno>4720</gridno>
+      <visible>1</visible>
    </Item>
 </ExtraItems>
 
