@@ -1,0 +1,655 @@
+[Action]
+//-------------------
+1;NPC rejects an item given by merc
+4;NPC joins the Squad
+22;NPC turns hostile
+23;NPC joins the squad
+24;NPC stops conversation
+//
+// TODO: ADD HISTORY LOG BEEPS!!!
+// eg. 270;Got the RR from Krott
+//
+601;NPC moves to a different location
+700;EPC joins the Squad
+701;Remove EPC the squad
+[End]
+
+[PCInput]
+//--------------------------
+1;Merc talks friendly to the NPC
+2;Merc talks directly to the NPC
+3;Merc threatens NPC
+4;Merc tries to recruit NPC
+6;NPC receives an item
+10;This record was activated by another record or NPC
+19;Merc tries to talk to NPC during Combat
+[End]
+
+[Items]
+//--------------
+// 0;Nada This is commented out. If NPC has/gives Nada it's treated as ignored.
+1;Glock 17
+2;Glock 18
+3;Beretta 92F
+4;Beretta 93R
+5;.38 Special
+6;Barracuda
+7;Desert Eagle
+8;Colt .45
+9;H&K MP5K
+10;MAC-10
+11;Thompson M1A1
+12;Colt Commando
+13;H&K MP53
+14;AKSU-74
+15;FN-P90
+16;Type-85
+17;SKS
+18;Dragunov
+19;M24
+20;Steyr AUG
+21;H&K G41
+22;Ruger Mini-14
+23;C-7
+24;FA-MAS
+25;AK-74
+26;AKM
+27;M-14
+28;FN-FAL
+29;H&K G3A3
+30;H&K G11
+31;Remington M870
+32;SPAS-15
+33;CAWS
+34;FN Minimi
+35;RPK-74
+36;H&K 21
+37;Combat Knife
+38;Throwing Knife
+39;A Rock
+40;Grenade Launcher
+41;Mortar
+42;Another Rock
+43;Young Male Creature Claws
+44;Young Female Creature Claws
+45;Adult Male Creature Claws
+46;Adult Female Creature Claws
+47;Queen Tentacle
+48;Queen Creature Spit
+49;Knuckle Dusters
+50;Underslung Grenade Launcher
+51;LAW
+52;Bloodcat Claws
+53;Bloodcat Bite
+54;Machete
+55;Rocket Rifle
+56;Automag III
+57;Infant Creature Spit
+58;Young Male Spit
+59;Old Male Spit
+60;Tank Cannon
+61;Dart Gun
+62;Bloody Throwing Knife
+63;Flamethrower
+64;Crowbar
+65;Auto Rocket Rifle
+71;9mm Pistol Magazine
+72;9mm SMG Magazine
+73;9mm Pistol Magazine, AP
+74;9mm SMG Magazine, AP
+75;9mm Pistol Magazine, HP
+76;9mm SMG Magazine, HP
+77;.38 Speed Loader
+78;.38 Speed Loader, AP
+79;.38 Speed Loader, HP
+80;.45 Pistol Magazine
+81;.45 SMG Magazine
+82;.45 Pistol Magazine, AP
+83;.45 SMG Magazine, AP
+84;.45 Pistol Magazine, HP
+85;.45 SMG Magazine, HP
+86;.357 Speed Loader
+87;.357 Magazine
+88;.357 Speed Loader, AP
+89;.357 Magazine, AP
+90;.357 Speed Loader, HP
+91;.357 Magazine, HP
+92;5.45mm Magazine
+93;5.45mm Magazine, HP
+94;5.56mm Magazine
+95;5.56mm Magazine, HP
+96;7.62mm WP Magazine, 10
+97;7.62mm WP Magazine, 30
+98;7.62mm WP Magazine, 10 HP
+99;7.62mm WP Magazine, 30 HP
+100;7.62mm NATO Magazine, 5
+101;7.62mm NATO Magazine, 20
+102;7.62mm NATO Magazine, 5 HP
+103;7.62mm NATO Magazine, 20 HP
+104;4.7mm Magazine
+105;5.7mm Magazine
+106;5.7mm Magazine, HP
+107;12 Gauge Magazine
+108;12 Gauge Magazine, Buckshot
+109;CAWS Magazine
+110;CAWS Magazine, Buckshot
+111;Minirockets, AP
+112;Minirockets, HE
+113;Minirockets, HEAP
+114;Tranquilizer Dart
+131;Stun Grenade
+132;Tear Gas Grenade
+133;Mustard Gas Grenade
+134;Mini Hand Grenade
+135;Reg Hand Grenade
+136;A Jar of RDX Crystals
+137;TNT
+138;HMX
+139;C1
+140;Mortar Shell
+141;Land Mine
+142;C4
+143;Trip Flare
+144;Trip Klaxon
+145;Shaped Charge
+146;Chemical Break Light
+147;40mm Grenade
+148;40mm Tear Gas Grenade
+149;40mm Stun Grenade
+150;40mm Smoke Grenade
+151;Smoke Grenade
+152;Tank Shell
+153;Struct Ignite
+154;Creature cocktail
+155;Structure Explosion
+156;Great big explosion
+157;Big Tear Gas
+158;Small Creature Gas
+159;Large Creature Gas
+161;Flak Jacket
+162;Compound 18 Flak Jacket
+163;Coated Flak Jacket
+164;Kevlar Vest
+165;Compound 18 Kevlar Vest
+166;Coated Kevlar Vest
+167;Spectra Vest
+168;Compound 18 Spectra Vest
+169;Coated Spectra Vest
+170;Kevlar Leggings
+171;Compound 18 Kevlar Leggings
+172;Coated Kevlar Leggings
+173;Spectra Leggings
+174;Compound 18 Spectra Leggings
+175;Coated Spectra Leggings
+176;Steel Helmet
+177;Kevlar Helmet
+178;Compound 18 Kevlar Helmet
+179;Coated Kevlar Helmet
+180;Spectra Helmet
+181;Compound 18 Spectra Helmet
+182;Coated Spectra Helmet
+183;Ceramic Plates
+184;Infant Creature Hide
+185;Young Adult Creature Hide
+186;Adult Creature Hide
+187;Queen Creature Hide
+188;Leather Jacket
+189;Leather & Kevlar Jacket
+190;Compound 18 Leather & Kevlar Jacket
+191;Coated Leather & Kevlar Jacket
+192;Young Female Hide
+193;Old Female Hide
+194;Arulco T-Shirt
+195;Deidranna T-Shirt
+196;Guardian Vest
+197;Treated Guardian Vest
+198;Coated Guardian Vest
+201;First Aid Kit
+202;Medical Kit
+203;Tool Kit
+204;Locksmith Kit
+205;Camouflage kit
+206;Boobytrap Kit
+207;Silencer
+208;Sniper Scope
+209;Bipod
+210;Extended Ear
+211;Night Vision Goggles
+212;Sun Goggles
+213;Gas Mask
+214;Canteen
+215;Metal Detector
+216;Compound 18
+217;Royal Jelly
+218;Jar of Elixir
+219;Money
+220;Glass Jar
+221;Jar of Blood
+222;Energy Booster
+223;Detonator
+224;Remote Detonator
+225;Videotape
+226;Deed
+227;Letter from Enrico
+228;Computer Diskette
+229;Chalice of Chance
+230;Bloodcat Claws
+231;Bloodcat Teeth
+232;Bloodcat Pelt
+233;Switch
+234;Action Item
+235;Regeneration Booster
+236;Syringe (1)
+237;Syringe (2)
+238;Syringe (3)
+239;Jar of Human Blood
+241;Laser Scope
+242;Remote Bomb Trigger
+243;Wire Cutters
+244;Duckbill
+245;Bottle of Alcohol
+246;UV Goggles
+247;Discarded LAW
+248;Head
+249;Impostor's Head
+250;T-Rex's Head
+251;Slay's Head
+252;Druggist's Head
+253;Matron's Head
+254;Tiffany's Head
+255;Wine
+256;Beer
+257;Porno Magazine
+258;Video Camera
+259;Robot Remote Control
+260;Creature Claw
+261;Creature Flesh
+262;Creature Organ
+263;Remote Control
+264;Platinum Watch
+265;Golf Clubs
+266;Walkman
+267;Portable TV
+269;Cigars
+271;Small key
+272;Prison key
+273;Cheap key
+274;Dull key
+275;Shiny key
+276;Padlock key
+277;Electronic Key
+278;Key card
+279;Key (01)
+280;Key (02)
+281;Key (03)
+282;Key (04)
+283;Key (05)
+284;Key (06)
+285;Key (07)
+286;Key (08)
+287;Key (09)
+288;Key (10)
+289;Key (11)
+290;Key (12)
+291;Key (13)
+292;Key (14)
+293;Key (15)
+294;Key (16)
+295;Key (17)
+296;Key (18)
+297;Key (19)
+298;Key (20)
+299;Key (21)
+300;Key (22)
+301;Key (23)
+302;Key (24)
+303;Silver Platter
+304;Duct Tape
+305;Aluminum Rod
+306;Spring
+307;Rod & Spring
+308;Steel Tube
+309;Quick Glue
+310;Gun Barrel Extender
+311;String
+312;Soda Can
+313;Soda Can with String
+314;Marbles
+315;LameBoy Display
+316;Copper Wire
+317;Display Unit
+318;FumblePak
+319;X-ray Tube
+320;Pack of Gum
+321;X-ray Device
+322;Batteries
+323;Rubber Band
+324;X-ray Detector
+325;Silver Nugget
+326;Gold Nugget
+327;Tank of Gas
+[End]
+
+[Quests]
+//--------------
+0;Odszukaj Marie
+1;Odszukaj PaSOC'a
+2;Zabij Carlosa
+3;Zabij Chrisa
+4;Kingpin Money
+5;Runaway Joey
+6;Rescue Maria
+7;Chitzena Chalice
+8;Held in Alma
+9;Interogation
+10;Hillbilly Problem
+11;Find Scientist
+12;Deliver Video Camera
+13;Blood Cats
+14;Find Hermit
+15;Creatures
+16;Find Chopper Pilot
+17;Escort SkyRider
+18;Free Dynamo
+19;Escort Tourists
+20;Doreen
+21;Leather Shop Dream
+22;Escort Shank
+23;[UB] Destory Missiles
+24;[UB] Fix Laptop
+25;[UB] Kill Bloodcats at Bettys
+26;[MiniMod] Mission 1
+27;[MiniMod] Mission 2
+28;[MiniMod] Mission 3
+29;[MiniMod] Mission 4
+30;[MiniMod] Mission 5
+[End]
+
+[Triggers]
+// These triggers are used universally for both True, False and Set situations.
+// -------------
+0;Omerta Liberated
+1;Drassen Liberated
+2;Sanmona Liberated
+3;Cambria Liberated
+4;Alma Liberated
+5;Grumm Liberated
+6;Tixa Liberated
+7;Chitzena Liberated 
+8;Estoni Liberated
+9;Balime Liberated
+10;Orta Liberated
+11;Meduna Liberated
+12;Pacos approched 
+13;Fatima Read note
+14;Fatima Walked away from player
+15;Dimitri (#60) is dead
+16;Fatima responded to Dimitri's supprise
+17;Carlo's exclaimed 'no one moves'
+18;Fatima described note
+19;Fatima arrives at final dest
+20;Dimitri said Fatima has proof
+21;Miguel overheard conversation
+22;Miguel asked for letter
+23;Miguel read note
+24;Ira comment on Miguel reading note
+25;Rebels are enemies
+26;Fatima spoken to before given note
+27;Start Drassen quest
+28;Miguel offered Ira
+29;Pacos hurt/Killed
+30;Pacos is in A10
+31;Current Sector is safe
+32;Bobby Ray's Shipment in transit
+33;Bobby Ray's Shipment in Drassen
+34;33 is TRUE and it arrived within 2 hours
+35;33 is TRUE 34 is false more then 2 hours
+36;Player has realized part of shipment is missing
+37;36 is TRUE and Pablo was injured by player
+38;Pablo admitted theft
+39;Pablo returned goods, set 37 false
+40;Miguel will join team
+41;Gave some cash to Pablo
+42;Skyrider is currently under escort
+43;Skyrider is close to his chopper in Drassen
+44;Skyrider explained deal
+45;Player has clicked on Heli in Mapscreen at least once
+46;NPC is owed money
+47;Npc is wounded
+48;Npc was wounded by Player
+49;Father was told of food shortage
+50;Ira is not in sector
+51;Ira is doing the talking
+52;Food quest over
+53;Pablo stole something from last shipment
+54;Last shipment crashed
+55;Last shipment went to wrong airport
+56;24 hours elapsed since notified that shipment went to wrong airport
+57;Lost package arrived with damaged goods. 56 to False
+58;Lost package is lost permanently. Turn 56 False
+59;Next package can (random) be lost
+60;Next package can (random) be delayed
+61;Package is medium sized
+62;Package is largesized
+63;Doreen has conscience
+64;Player Spoke to Gordon
+65;Ira is still npc and in A10-2(hasn't joined)
+66;Dynamo asked for first aid
+67;Dynamo can be recruited
+68;Npc is bleeding
+69;Shank wants to join
+70;NPC is bleeding
+71;Player Team has head & Carmen in San Mona
+72;Player Team has head & Carmen in Cambria
+73;Player Team has head & Carmen in Drassen
+74;Father is drunk
+75;Player has wounded mercs within 8 tiles of NPC
+76;1 & only 1 merc wounded within 8 tiles of NPC
+77;More then 1 wounded merc within 8 tiles of NPC
+78;Brenda is in the store
+79;Brenda is Dead
+80;Brenda is at home
+81;NPC is an enemy
+82;Speaker Strength >= 84 and < 3 males present
+83;Speaker Strength >= 84 and at least 3 males present
+84;Hans lets ou see Tony
+85;Hans is standing on 13523
+86;Tony isnt available Today
+87;Female is speaking to NPC
+88;Player has enjoyed the Brothel
+89;Carla is available
+90;Cindy is available
+91;Bambi is available
+92;No girls is available
+93;Player waited for girls
+94;Player paid right amount of money
+95;Mercs walked by goon
+96;More thean 1 merc present within 3 tiles of NPC
+97;At least 1 merc present withing 3 tiles of NPC
+98;Kingping expectingh visit from player
+99;Darren expecting money from player
+100;Player within 5 tiles and NPC is visible
+101;Carmen is in San Mona
+102;Player Spoke to Carmen
+103;KingPin knows about stolen money
+104;Player gave money back to KingPin
+105;Frank was given the money ( not to buy booze )
+106;Player was told about KingPin watching fights
+107;Past club closing time and Darren warned Player. (reset every day)
+108;Joey is EPC
+109;Joey is in C5
+110;Joey is within 5 tiles of Martha(109) in sector G8
+111;Joey is Dead!
+112;At least one player merc within 5 tiles of Martha
+113;Spike is occuping tile 9817
+114;Angel offered vest
+115;Angel sold vest
+116;Maria is EPC
+117;Maria is EPC and inside leather Shop
+118;Player wants to buy vest
+119;Maria rescue was noticed by KingPin goons and Kingpin now enemy
+120;Angel left deed on counter
+121;Maria quest over
+122;Player bandaged NPC today
+123;Doreen revealed allegiance to Queen
+124;Pablo should not steal from player
+125;Player shipment arrived but loyalty to low, so it left
+126;Helicopter is in working condition
+127;Player is giving amount of money >= $1000
+128;Player is giving amount less than $1000
+129;Waldo agreed to fix helicopter( heli is damaged )
+130;Helicopter was destroyed
+131;Waldo told us about heli pilot
+132;Father told us about Deidranna killing sick people
+133;Father told us about Chivaldori family
+134;Father told us about creatures
+135;Loyalty is OK
+136;Loyalty is Low
+137;Loyalty is High
+138;Player doing poorly
+139;Player gave valid head to Carmen
+140;Current sector is G9(Cambria)
+141;Current sector is C5(SanMona)
+142;Current sector is C13(Drassen
+143;Carmen has at least $10,000 on him
+144;Player has Slay on team for over 48 hours
+145;Carmen is suspicous about slay
+146;Slay is in current sector
+147;Carmen gave us final warning
+148;Vince has explained that he has to charge
+149;Vince is expecting cash (reset everyday)
+150;Player stole some medical supplies once
+151;Player stole some medical supplies again
+152;Vince can be recruited
+153;Vince is currently doctoring
+154;Vince was recruited
+155;Slay offered deal
+156;All terrorists killed
+158;Maria left in wrong sector
+159;Skyrider left in wrong sector
+160;Joey left in wrong sector
+161;John left in wrong sector
+162;Mary left in wrong sector
+163;Walter was bribed
+164;Shank(67) is part of squad but not speaker
+165;Maddog spoken to
+166;Jake told us about shank
+167;Shank(67) is not in sector
+168;Bloodcat quest on for more than 2 days
+169;Effective threat made to Armand
+170;Queen is DEAD!
+171;Speaker is with Aim or Aim person on squad within 10 tiles
+172;Current mine is empty
+173;Current mine is running out
+174;Loyalty low in affiliated town (low mine production)
+175;Creatures invaded current mine
+176;Player LOST current mine
+177;Current mine is at FULL production
+178;Dynamo(66) is Speaker or within 10 tiles of speaker
+179;Fred told us about creatures
+180;Matt told us about creatures
+181;Oswald told us about creatures
+182;Calvin told us about creatures
+183;Carl told us about creatures
+184;Chalice stolen from museaum
+185;John(118) is EPC
+186;Mary(119) and John (118) are EPC's
+187;Mary(119) is alive
+188;Mary(119)is EPC
+189;Mary(119) is bleeding
+190;John(118) is alive
+191;John(118) is bleeding
+192;John or Mary close to airport in Drassen(B13)
+193;Mary is Dead
+194;Miners placed
+195;Krott planning to shoot player
+196;Madlab explained his situation
+197;Madlab expecting a firearm
+198;Madlab expecting a video camera.
+199;Item condition is < 70
+200;Madlab complained about bad firearm.
+201;Madlab complained about bad video camera.
+202;Robot is ready to go!
+203;First robot destroyed.
+204;Madlab given a good camera.
+205;Robot is ready to go a second time!
+206;Second robot destroyed.
+207;Mines explained to player.
+208;Dynamo (#66) is in sector J9.
+209;Dynamo (#66) is alive.
+210;One PC hasn't fought, but is able, and less than 3 fights have occured
+211;Player receiving mine income from Drassen, Cambria, Alma & Chitzena
+212;Player has been to K4_b1
+213;Brewster got to talk while Warden was alive
+214;Warden (#103) is dead.
+215;Ernest gave us the guns
+216;This is the first bartender
+217;This is the second bartender
+218;This is the third bartender
+219;This is the fourth bartender
+220;Manny is a bartender.
+221;Nothing is repaired yet (some stuff being worked on, nothing to give player right now)
+222;Player made purchase from Howard (#125)
+223;Dave sold vehicle
+224;Dave's vehicle ready
+225;Dave expecting cash for car
+226;Dave has gas. (randomized daily)
+227;Vehicle is present
+228;First battle won by player
+229;Robot recruited and moved
+230;No club fighting allowed
+231;Player already fought 3 fights today
+232;Hans mentioned Joey
+233;Player is doing better than 50% (Alex's function)
+234;Player is doing very well (better than 80%)
+235;Father is drunk and sci-fi option is on
+236;Micky (#96) is drunk
+237;Player has attempted to force their way into brothel
+238;Rat effectively threatened 3 times
+239;Player paid for two people to enter brothel
+242;Player owns 2 towns including omerta
+243;Player owns 3 towns including omerta
+244;Player owns 4 towns including omerta
+248;Fact male speaking female present
+249;Fact hicks married player merc
+250;Fact museum open
+251;Fact brothel open
+252;Fact club open
+253;Fact first battle fought
+254;Fact first battle being fought
+255;Fact kingpin introduced self
+256;Fact kingpin not in office
+257;Fact dont owe kingpin money
+258;Fact pc marrying daryl is Flo
+261;Fact npc cowering
+264;Fact top and bottom levels cleared
+265;Fact top level cleared
+266;Fact bottom level cleared
+267;Fact need to speak nicely
+268;Fact attached item before
+269;Fact skyrider ever escorted
+270;Fact npc not under fire
+271;Fact willis heard about joey rescue
+272;Fact willis gives discount
+273;Fact hillbillies killed
+274;Fact keith out of business
+275;Fact mike available to army
+276;Fact kingpin can send assassins
+277;Fact estoni refuelling possible
+278;Fact museum alarm went off
+280;Fact maddog is speaker
+282;Fact angel mentioned deed
+283;Fact iggy available to army
+284;Fact pc has conrads recruit opinion
+289;Fact npc hostile or pissed off
+291;Fact tony in building
+292;Fact shank speaking
+293;Fact doreen alive
+294;Fact waldo alive
+295;Fact perko alive
+296;Fact tony alive
+298;Fact vince alive
+299;Fact jenny alive
+302;Fact arnold alive
+304;Fact rocket rifle exists
+[End]

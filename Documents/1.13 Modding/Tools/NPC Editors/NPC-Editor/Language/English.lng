@@ -1,0 +1,141 @@
+; English Interface for NPC Scripter v.0.5.8 beta
+
+[Lang]
+
+Lng=English
+
+; Menu ----------------------------
+;
+mn100=File
+mn101=New
+mn102=Open
+mn103=Save
+mn104=Save As
+mn105=Open EDT-File
+mn106=Exit
+mn200=Edit
+mn201=Cut
+mn202=Copy
+mn203=Paste
+mn204=Clean
+mn205=Delete
+mn206=Record Initialisation
+mn207=Move Up
+mn208=Move Down
+mn300=Macro
+mn301=Macro Manager
+mn302=Save Macro
+mn400=Service
+mn401=Standart Format
+mn402=Buka-Format
+mn403=Update Text
+mn404=Show EDT-File
+mn405=Open EDT-Editor
+mn406=Configuration
+mn500=Help
+mn501=Help
+mn502=About
+
+; Interface -----------------------
+;
+rec01=Record:
+rec02=Empty record:
+rec03=Rule to start entry
+rec04=Result if record is finish
+rec05=Action:
+rec06=Mode:
+rec07=Time:
+rec08=First day:
+rec09=Last day:
+rec10=Item in:
+rec11=Trigger is TRUE:
+rec12=Trigger is FALSE:
+rec13=Quest:
+rec14=Leadership:
+rec15=Start quest:
+rec16=End quest:
+rec17=Send control to:
+rec18=NPC #:
+rec19=Record #:
+rec20=Trigger to TRUE:
+rec21=Item out:
+rec22=Quote #:
+rec23=Quotes number:
+rec24=Go to tile #:
+rec25=NPC reaction:
+
+cfg01=Selected EDT-Editor:
+cfg02=Modify data lists folder:
+cfg03=Switch off warning messages
+cfg04=Language:
+;cfg05=
+
+mcr01=Macros list:
+mcr02=Edit of macro name:
+mcr03=New macro
+mcr04=New macro name:
+
+abt01=NPC-Script Editor
+abt01a=for JA2/UB
+abt02=Author:
+
+btn01=Cancel
+btn02=Ok
+
+; Hints ---------------------------
+;
+hnt01=Creates a new empty npc-script.
+hnt02=Opens a npc-script.
+hnt03=Saves the current script using the same filename.
+hnt04=Saves the current script to a specified filename.
+hnt05=Loads an another edt-file.
+hnt06=Cuts the current record, all records below will be move up.
+hnt07=Copies the current record into the inside buffer.
+hnt08=Inserts the record into the selected line, all records below will be move down.
+hnt09=Deletes the record, all records below will be move up.
+hnt10=Cleans the current record from the all values.
+hnt11=Fills current record by default values.
+hnt12=Moves up current record.
+hnt13=Moves down current record.
+hnt14=Opens the Macros list manager.
+hnt15=Saves the current record into macros list.
+hnt16=Reloads the current edt-file.
+hnt17=Opens the current edt-file into another form.
+hnt18=Opens the outside edt-editor.
+hnt19=Opens the configuration manager.
+hnt20=Sets npc-file format: standart or Buka (Russian)
+hnt21=Select Macro
+hnt21a=Inserts selected macro into the current record.
+hnt22=Sets a default value.
+
+; Messages ------------------------
+;
+msg01=The current script not saved.
+msg02=Do you want to create a new script?
+msg03=Do you want to open an another NPC-file?
+msg04=EDT-file for this NPC not present.
+msg05=Do you want to load an another EDT-file?
+msg06=This file alredy exist.
+msg07=Do you want to replace it?
+msg08=Last record will be removed.
+msg09=Do you want to insert?
+msg10=There are links with this record:
+msg11=Do you want to delete the current record?
+msg12=The current record will be clean!
+msg13=Error of reading file
+msg14=Selected file in not NPC-script
+msg15=This value is not documented,
+msg16=correct it, if you not sure.
+msg17=This value must be in range
+msg18=New macro name not present
+
+; Dialogs -------------------------
+;
+dlg01=Open NPC-Script
+dlg02=Open EDT-פאיכ
+dlg03=Save NPC-Script
+dlg04=NPC-Script
+dlg05=EDT-File
+dlg06=All Files
+dlg07=Select EDT-Editor
+dlg08=Select Mod-Lists Folder
