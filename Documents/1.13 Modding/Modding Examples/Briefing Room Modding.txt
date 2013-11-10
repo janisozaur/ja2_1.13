@@ -1,0 +1,42 @@
+*** Using the Briefing Room Feature in 1.13, you can play mission based JA2, like it was done in JA2 Deadly Games.
+
+The Briefing Room can be access from the laptop (BRIEFING_ROOM has to be enabled in ja2_options.ini).
+- You can enter the briefing room on the laptop. The code is: SN5631
+- After you entered the code click on the "Exit" button.
+
+***************************
+* Information for modders *
+***************************
+
+++ Editing missions and descriptions edt files ++
+
+All texts are contained in files "mission(number).edt" in the folder "BriefingRoom\edt\". 
+Example : Mission0.edt. 0 - uindex from the file Tabledata\BriefingRoom\BriefingRoom.xml
+
+We add pictures to the folder "BriefingRoom". The name consists of "missionX_Y.sti". X - uiIndex from "Tabledata\BriefingRoom\BriefingRoom.xml". Y - the number of picture.
+Example : Mission0_0.edt, Mission0_1.edt...Mission0_20.edt
+
+The name of the sound file consists of "MissionX.wav". X - uiIndex from "Tabledata\BriefingRoom\BriefingRoom.xml".
+
+The file "descriptionXXX.edt" contains the descriptions of displayed pictures. Every record is the separate description for picture. Record 0 is for picture 
+mission0_0.sti, record 1 for picture mission0_1.sti... XXX - uiIndex from "Tabledata\BriefingRoom\BriefingRoom.xml".
+
+EdtMegaEditor now supports the editing of Missions-EDT and Descriptions-EDT:
+Get EdtMegaEditor from SVN: https://ja2svn.dyndns.org/source/ja2/trunk/Documents/1.13%20Modding/Tools/EDT%20Editors/EdtMegaEditor
+When opening files in EdtMegaEditor, select the proper file type:
+- Mission format edt (BREFINGROOM\EDT\mission*.EDT)
+- Mission image description format edt (BREFINGROOM\EDT\description*.EDT)
+
+
+++ Editing BriefingRoom.xml ++
+
+Tags of the file BriefingRoom.xml :
+
+Name - name of mission
+Hidden : 1 - hidden mission. Accessible mission after complete of the previous mission; 0 - displayed mission. First mission has to be visible; 
+
+MaxPages - the quantity of pages. The amount of used records from the file "missionX.edt".
+MaxImages - the quantity of pictures. 
+ImagePositionX - position X of all pictures
+ImagePositionY - position Y of all pictures
+NextMission - After the mission complete, activate the next mission. Write number ID of the next mission.
