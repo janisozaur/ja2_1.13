@@ -24,23 +24,22 @@ File transfer has two levels of built in security:
 
 To send files to a client, you need to set up a mod folder in your GAME DIRECTORY (in short: GAMEDIR) ( this is where your ja2.exe's
 are stored ). You can call this mod folder whatever you like, "My Server" for example.
-Per default, this folder is in your "GAMEDIR\MULTIPLAYER\Servers\My Server", but can also be in another location inside your GAMEDIR folder.
+Per default, this folder is in your "GAMEDIR\MULTIPLAYER\Servers\My Server".
 
 Once you have created a folder (the folder "GAMEDIR\MULTIPLAYER\Servers\My Server" should already be created), you can add the modified game files to it in the
 relative places they would be stored under GAMEDIR\Data\ or GAMEDIR\Data-1.13\. For example put modified TABLEDATA xml files
-into "GAMEDIR\MULTIPLAYER\Servers\My Server\TABLEDATA\" and the "ja2_Options.ini" inside the "GAMEDIR\MULTIPLAYER\Servers\My Server\" folder.
+into "GAMEDIR\MULTIPLAYER\Servers\My Server\TableData\" and the "ja2_Options.ini" inside the "GAMEDIR\MULTIPLAYER\Servers\My Server\" folder.
+
+INFO: The server will NOT USE the files from the "GAMEDIR\MULTIPLAYER\Servers\My Server" folder when the game gets initialized.
+Instead it uses the files in the "Data-1.13" folder for initializing. So be sure, that the files in the "My Server" folder are the same than in the "Data-1.13" folder, otherwise the clients get initialized with different files than the server!
+So the best way is to modify the files in the "Data-1.13" folder and then copy the modified files in your "My Server" folder.
 
 Once this is done you can host a game. Run the game and do the following on the HOST options screen:
- 1) Check the Sync MP Clients Directory option.
- 2) Enter 'MULTIPLAYER/Servers/My Server' or the name of your mod folder (do not start with the GAMEDIR folder), without the quotes (''). If your path is nested,
-    seperate the folder names with a forwardslash /. Eg 'MULTIPLAYER/Servers/My Server'
- 3) Host the game!
- 4) NOTE: Even if you do not want to send files to the client ("Sync. MP Clients Directory" option is unchecked)
-    the folder entered in "MP Sync directory" has to exist on the server, because this folder will be used in the first place for initializing files.
-    If the specificed files are not found in this folder it will look in the "Data-1.13" folder and then in the "Data" folder.
+ 1) Check (enable) the Sync MP Clients Directory option.
+ 2) Host the game!
 
-You will host the game as normal, now when clients connect you will see a blue progress bar behind their
-name in the player list (in the Strategy Screen) so you can see how long they have left on thier downloads.
+When clients connect you will see a blue progress bar behind their
+name in the player list (in the Strategy Screen), so you can see how long they have left on thier downloads.
 
 NOTE: you cannot START GAME until all players have finished downloading
 
