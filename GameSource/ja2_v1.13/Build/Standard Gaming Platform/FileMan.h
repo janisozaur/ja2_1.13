@@ -13,6 +13,8 @@
 #ifndef _FILEMAN_H
 #define _FILEMAN_H
 
+#define _cdecl
+
 //**************************************************************************
 //
 //				Includes
